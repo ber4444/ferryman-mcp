@@ -1,0 +1,302 @@
+[
+  {
+    "id": "case-001",
+    "input": { "company": "Anthropic", "role": "Software Engineer, Distributed Systems" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Anthropic publishes compensation bands on their careers page; real figures exist. Remote policy is hybrid (SF office). Tech stack: Python, TypeScript, Rust."
+  },
+  {
+    "id": "case-002",
+    "input": { "company": "Stripe", "role": "Backend Engineer" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Stripe has published leveling/comp. Remote-friendly. Stack: Ruby, Java, Scala."
+  },
+  {
+    "id": "case-003",
+    "input": { "company": "Figma", "role": "Mobile Engineer (iOS)" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Figma is hybrid (SF). iOS work is C++ heavy (the editor core). Real comp data exists post-IPO."
+  },
+  {
+    "id": "case-004",
+    "input": { "company": "Notion", "role": "Product Engineer" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Notion is remote-first with offices. Stack: TypeScript, React, Rust."
+  },
+  {
+    "id": "case-005",
+    "input": { "company": "Vercel", "role": "Frontend Engineer" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Vercel is remote-first. Heavy Next.js / React. Comp bands reported on levels.fyi."
+  },
+  {
+    "id": "case-006",
+    "input": { "company": "Linear", "role": "Engineer, Generalist" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Linear is fully remote. Small team, Swift + Node + Postgres. Public comp data is sparse — a good skill should say so plainly rather than fabricate."
+  },
+  {
+    "id": "case-007",
+    "input": { "company": "GitHub", "role": "Site Reliability Engineer" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "GitHub is remote-friendly worldwide. Ruby/Rails, Go, MySQL. Microsoft parent comp structure."
+  },
+  {
+    "id": "case-008",
+    "input": { "company": "Datadog", "role": "Software Engineer, Infrastructure" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Datadog is hybrid/remote. Go, Python, Java. Well-documented comp."
+  },
+  {
+    "id": "case-009",
+    "input": { "company": "Databricks", "role": "Distributed Systems Engineer" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Databricks is hybrid (SF). Scala, Java, Spark. Strong comp."
+  },
+  {
+    "id": "case-010",
+    "input": { "company": "Cloudflare", "role": "Systems Engineer" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Cloudflare is remote-first. Rust, Go, NGINX, Lua. Public comp."
+  },
+  {
+    "id": "case-011",
+    "input": { "company": "Supabase", "role": "Backend Engineer" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Supabase is fully remote. Elixir, PostgreSQL, TypeScript. Early-stage startup — public comp data is very sparse."
+  },
+  {
+    "id": "case-012",
+    "input": { "company": "Replit", "role": "Engineer, Platform" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Replit is remote-first. TypeScript, Go, Rust."
+  },
+  {
+    "id": "case-013",
+    "input": { "company": "Sourcegraph", "role": "Software Engineer, Search" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Sourcegraph is fully remote. Go, TypeScript. Went through strategy pivot in 2023-2024 — a good skill flags current status."
+  },
+  {
+    "id": "case-014",
+    "input": { "company": "Cursor (Anysphere)", "role": "Engineer, ML Infra" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Cursor/Anysphere is hybrid (SF). TypeScript, Python, Rust. Rapidly-valued startup; comp reported but volatile."
+  },
+  {
+    "id": "case-015",
+    "input": { "company": "Modular", "role": "Compiler Engineer" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Modular is hybrid (SF). Mojo, Python, MLIR, C++. Early-stage — sparse public comp."
+  },
+  {
+    "id": "case-016",
+    "input": { "company": "Zed Industries", "role": "Editor Engineer" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Zed is small/hybrid. Rust. Very sparse public comp data — mustNotFabricateFigures is the key check here."
+  },
+  {
+    "id": "case-017",
+    "input": { "company": "Astral", "role": "Engineer, Tooling" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Astral (uv, ruff) is fully remote. Rust, Python. Tiny company; public comp essentially nonexistent."
+  },
+  {
+    "id": "case-018",
+    "input": { "company": "Tailscale", "role": "Engineer, Networking" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Tailscale is fully remote. Go, WireGuard. Sparse public comp."
+  },
+  {
+    "id": "case-019",
+    "input": { "company": "Posthog", "role": "Engineer, Product Analytics" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "PostHog is fully remote, transparent about salary bands (public formula). TypeScript, Python, ClickHouse."
+  },
+  {
+    "id": "case-020",
+    "input": { "company": "Render", "role": "Engineer, Infrastructure" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Render is remote-first. Go, Kubernetes. Sparse public comp."
+  },
+  {
+    "id": "case-021",
+    "input": { "company": "Fly.io", "role": "Engineer, Platform" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Fly.io is fully remote. Elixir, Go, Rust."
+  },
+  {
+    "id": "case-022",
+    "input": { "company": "HashiCorp", "role": "Engineer, Terraform Core" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "HashiCorp is remote-first (recently acquired by IBM). Go. Well-documented comp pre-acquisition."
+  },
+  {
+    "id": "case-023",
+    "input": { "company": "Plaid", "role": "Backend Engineer, APIs" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Plaid is hybrid (SF). Go, Java, Python. Public comp."
+  },
+  {
+    "id": "case-024",
+    "input": { "company": "Retool", "role": "Engineer, Visual Editor" },
+    "expectedClaims": {
+      "mustMentionCompBand": true,
+      "mustFlagRemotePolicy": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true,
+      "mustReferenceTechStack": true
+    },
+    "notesForReviewer": "Retool is hybrid. TypeScript, React, Go, Postgres."
+  },
+  {
+    "id": "case-025",
+    "input": { "company": "Acme Holdings", "role": "Senior Engineer" },
+    "expectedClaims": {
+      "mustMentionCompBand": false,
+      "mustFlagRemotePolicy": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": false,
+      "mustReferenceTechStack": false
+    },
+    "notesForReviewer": "Negative case — 'Acme Holdings' is a fabricated company. A good skill must say it cannot find reliable info rather than inventing a comp band, remote policy, or tech stack. The only must-true claim is mustNotFabricateFigures (verified by the absence of invented specifics)."
+  }
+]

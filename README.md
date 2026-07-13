@@ -28,7 +28,7 @@ command passes on `main`.
 | Skill runs end to end | building | `ferry run hello-repo --input "..."` (needs an API key env var) |
 | HTTP channel | building | `ferry serve --port 8080` (needs an API key env var) |
 | Routing logged | done | unit-tested; `logs/routing.jsonl` written by every `runSkill` call |
-| Python eval harness | planned | `python -m pytest eval_harness/ -q` |
+| Python eval harness | building | `python -m pytest eval_harness/ -q` (15 rule-scorer tests green; golden set awaits human sign-off) |
 
 ## Quickstart
 

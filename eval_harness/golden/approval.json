@@ -1,0 +1,6 @@
+{
+  "goldenSetApproved": false,
+  "approvedBy": null,
+  "approvedDate": null,
+  "notes": "Set goldenSetApproved to true after human review of golden_set.json. Until then, scorecards are provisional. See eval_harness/README.md."
+}

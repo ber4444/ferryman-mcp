@@ -1,0 +1,34 @@
+name: eval-harness
+
+# Runs the eval harness's rule scorers on changes to skill prompts or the
+# harness itself. Rule scorers are deterministic and need no API key, so they
+# run on every PR cheaply.
+#
+# The LLM-judge pass is a separate, less-frequent job (ci-eval-judge.yml, not
+# yet wired) — per-PR judge-model cost is not worth paying on every push, and
+# the plan states that tradeoff explicitly.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "ferryman/skills/**"
+      - "eval_harness/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "ferryman/skills/**"
+      - "eval_harness/**"
+
+jobs:
+  rule-scorers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install harness (dev deps)
+        run: pip install -e eval_harness[dev]
+      - name: Run rule-scorer tests
+        run: python -m pytest eval_harness/ -q

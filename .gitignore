@@ -33,3 +33,6 @@ __pycache__/
 venv/
 .pytest_cache/
 eval_harness/.braintrust/
+
+# Python build output
+*.egg-info/

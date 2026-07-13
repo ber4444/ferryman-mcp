@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ferryman-eval-harness"
+version = "0.1.0"
+description = "Eval harness for ferryman skills — rule-based and LLM-judge scorers over a human-authored golden set."
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+dependencies = []
+
+# Explicit package config — golden/ and judge/ are data dirs (JSON + Markdown),
+# not importable Python packages. Only eval_harness/ (with its __init__.py) is.
+[tool.setuptools]
+packages = ["eval_harness"]
+
+[tool.setuptools.package-data]
+eval_harness = ["golden/*.json", "rubric.md"]
+
+[project.optional-dependencies]
+# promptfoo: chosen as the default scorer backend — fully self-hosted, no account,
+# local model invocation. Install only what you need; the harness degrades
+# gracefully if optional deps are absent (see invoke.py).
+promptfoo = ["promptfoo>=0.105"]
+# braintrust: the alternative backend, chosen if you want hosted dataset versioning
+# and experiment comparison. Requires a BRAINTRUST_API_KEY.
+braintrust = ["braintrust>=0.0.150"]
+# judge scorer dependencies — the OpenAI-compatible client for the judge model.
+judge = ["httpx>=0.27"]
+dev = ["pytest>=8", "pytest-asyncio>=0.24"]
+
+[tool.pytest.ini_options]
+testpaths = ["eval_harness/tests"]
+asyncio_mode = "auto"
