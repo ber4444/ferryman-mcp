@@ -86,5 +86,32 @@ error instead.
 
 Before trusting judge scores in the scorecard, run the same case through the
 judge 3–5 times and confirm the score doesn't swing by more than ~1.0 across
-runs. A wildly inconsistent judge is worse than no judge. (A helper for this is
-in `tests/`.)
+runs. A wildly inconsistent judge is worse than no judge. The
+`judge_variance()` helper in `tests/test_judge_consistency.py` does the repeats
+and reports per-criterion spread; a spread > 1.0 is the "don't trust" signal.
+
+The judge also enforces **family exclusion** — a judge never grades its own
+family (per the z.ai/GLM addendum hard rule #5). If the evaluated route is GLM,
+the judge must be a non-GLM model, and vice versa. The `model_family()` helper
+derives the family from the model id; a collision raises `JudgeFamilyConflict`,
+which the scorecard runner catches and records as a skip.
+
+## Latency and cost columns
+
+The `--all-providers` scorecard reports three measured columns per case and a
+per-provider aggregate:
+
+- **Latency** — wall-clock of the whole skill invocation, measured in the
+  Python adapter (`invoke.py`). Accurate end-to-end.
+- **Cost (est.)** — computed from `pricing.json`, which records verified
+  per-token prices with `dateChecked` and `sourceUrl`. GLM-5.2: $1.40/M input,
+  $4.40/M output (checked 2026-07-13 against `docs.z.ai/guides/overview/pricing`).
+- **Pricing date** — when the per-token price was last verified against the
+  live docs. Re-verify before trusting cost numbers older than a few weeks.
+
+**Why cost is labeled "est.":** the Kotlin providers don't yet parse `usage`
+from the provider response, so token counts are estimated (chars ÷ 4). When real
+`usage` data flows through `CompletionResult → SkillResult → InvokeResponse`,
+the same `pricing.json` formula computes real cost — only the token source
+changes. The latency number is already real.
+

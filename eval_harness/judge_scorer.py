@@ -43,10 +43,42 @@ class JudgeVerdict:
         return {"key": self.key, "passed": self.passed, "reason": self.reason, "score": self.score}
 
 
-def judge(output: str, case: dict) -> list[JudgeVerdict]:
+def model_family(model_id: str) -> str:
+    """
+    Derive a model family from a model id, for the judge-exclusion rule.
+    `glm-5.2` → `glm`, `claude-sonnet-4-5` → `claude`, `gpt-4o` → `gpt`.
+    The family is the lowercase word before the first digit or version separator.
+    """
+    if not model_id:
+        return "unknown"
+    # Take the leading alphabetic run, stopping at a digit, '-', or '_'.
+    import re
+    match = re.match(r"^([a-zA-Z]+)", model_id)
+    return match.group(1).lower() if match else "unknown"
+
+
+class JudgeFamilyConflict(RuntimeError):
+    """Raised when the judge model family matches the evaluated model family.
+
+    A judge never grades its own family — per the z.ai/GLM addendum hard rule.
+    The runner catches this and records a skip rather than letting it crash
+    the scorecard.
+    """
+
+
+def judge(
+    output: str,
+    case: dict,
+    *,
+    evaluated_model: str | None = None,
+) -> list[JudgeVerdict]:
     """
     Score one skill output across all rubric criteria. Raises if the judge
     provider is unreachable so run_scorecard can catch and record a skip.
+
+    If [evaluated_model] is provided, enforces the family-exclusion rule: a
+    judge never grades its own family (GLM doesn't judge GLM, Claude doesn't
+    judge Claude). Raises [JudgeFamilyConflict] on a collision.
 
     Honesty (criterion 3) is a hard fail below 3.0 regardless of the mean —
     inventing data is the failure mode this harness exists to catch.
@@ -56,6 +88,17 @@ def judge(output: str, case: dict) -> list[JudgeVerdict]:
         raise RuntimeError(
             f"{JUDGE_API_KEY_ENV} not set — judge scorer needs a separate API key",
         )
+
+    # Family-exclusion enforcement (z.ai/GLM addendum hard rule #5).
+    judge_family = model_family(JUDGE_MODEL)
+    if evaluated_model is not None:
+        evaluated_family = model_family(evaluated_model)
+        if judge_family == evaluated_family and judge_family != "unknown":
+            raise JudgeFamilyConflict(
+                f"judge family '{judge_family}' (model {JUDGE_MODEL}) cannot grade "
+                f"evaluated family '{evaluated_family}' (model {evaluated_model}) — "
+                "a judge never grades its own family",
+            )
 
     rubric = RUBRIC_PATH.read_text()
     prompt = _build_prompt(rubric, output, case)

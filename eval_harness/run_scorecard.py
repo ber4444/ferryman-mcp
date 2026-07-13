@@ -50,6 +50,8 @@ class CaseResult:
     rule_scores: list[dict[str, object]] = field(default_factory=list)
     judge_scores: list[dict[str, object]] = field(default_factory=list)
     error: str | None = None
+    latency_ms: int | None = None
+    estimated_cost_usd: float | None = None
 
     @property
     def rule_pass_rate(self) -> float:
@@ -79,6 +81,42 @@ def enumerate_providers() -> list[str]:
         return ["zai-glm", "anthropic"]
 
 
+PRICING_PATH = Path(__file__).resolve().parent / "pricing.json"
+
+
+def load_pricing() -> dict:
+    """Load the recorded per-token pricing. Empty dict if missing — cost stays None."""
+    try:
+        with PRICING_PATH.open() as f:
+            return json.load(f).get("providers", {})
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+
+# Rough chars-per-token factor for cost estimation. English prose averages ~4
+# chars/token across modern tokenizers. This is an ESTIMATE — see README for why
+# real cost arrives only once `usage` data propagates through the Kotlin side.
+_CHARS_PER_TOKEN = 4.0
+
+
+def estimate_cost(result: invoke_mod.InvocationResult, pricing: dict) -> float | None:
+    """
+    Estimate USD cost from recorded pricing + char-count token estimate.
+    Returns None if the provider isn't in pricing.json. Clearly an estimate
+    until real `usage` token counts flow through the providers.
+    """
+    entry = pricing.get(result.provider)
+    if entry is None:
+        return None
+    input_tokens = result.input_chars / _CHARS_PER_TOKEN
+    output_tokens = result.output_chars / _CHARS_PER_TOKEN
+    cost = (
+        input_tokens * entry.get("inputPricePerMillionTokens", 0.0)
+        + output_tokens * entry.get("outputPricePerMillionTokens", 0.0)
+    ) / 1_000_000
+    return round(cost, 6)
+
+
 def run_one(case: dict, provider: str | None, mode: str) -> CaseResult:
     """Invoke the skill for one case and apply rule scorers."""
     result = invoke_mod.invoke(case["input"], provider=provider, mode=mode)
@@ -90,6 +128,7 @@ def run_one(case: dict, provider: str | None, mode: str) -> CaseResult:
             case_input=case["input"],
         )
     ]
+    pricing = load_pricing()
     return CaseResult(
         id=case["id"],
         input=case["input"],
@@ -98,6 +137,8 @@ def run_one(case: dict, provider: str | None, mode: str) -> CaseResult:
         output=result.output,
         rule_scores=rule_scores,
         error=result.error,
+        latency_ms=result.latency_ms,
+        estimated_cost_usd=estimate_cost(result, pricing),
     )
 
 
@@ -127,8 +168,12 @@ def _judge_if_available(case_result: CaseResult, case: dict) -> list[dict]:
     except ImportError:
         return [{"key": "_judge", "passed": False, "reason": "judge deps not installed (pip install -e .[judge])"}]
     try:
-        verdicts = judge_scorer.judge(case_result.output, case)
+        # Pass the evaluated model so the judge can enforce family-exclusion
+        # (a judge never grades its own family).
+        verdicts = judge_scorer.judge(case_result.output, case, evaluated_model=case_result.model)
         return [v.as_dict() for v in verdicts]
+    except judge_scorer.JudgeFamilyConflict as e:
+        return [{"key": "_judge", "passed": False, "reason": f"family conflict (skipped): {e}"}]
     except Exception as e:  # noqa: BLE001 — judge failures must not crash the scorecard
         return [{"key": "_judge", "passed": False, "reason": f"judge error: {e}"}]
 
@@ -141,6 +186,7 @@ def write_scorecard(results: list[CaseResult], *, use_judge: bool) -> None:
 
 
 def _render_markdown(results: list[CaseResult], *, use_judge: bool) -> str:
+    pricing = load_pricing()
     lines = [
         "# ferryman eval scorecard",
         "",
@@ -149,17 +195,37 @@ def _render_markdown(results: list[CaseResult], *, use_judge: bool) -> str:
         "",
         "## Rule-scorer results",
         "",
-        "| Case | Provider | Pass rate | Failed checks |",
-        "|---|---|---|---|",
+        "| Case | Provider | Pass rate | Failed checks | Latency | Cost (est.) |",
+        "|---|---|---|---|---|---|",
     ]
     for r in results:
         failed = [s["key"] for s in r.rule_scores if not s["passed"]]
+        latency = f"{r.latency_ms} ms" if r.latency_ms is not None else "—"
+        cost = f"${r.estimated_cost_usd:.4f}" if r.estimated_cost_usd is not None else "—"
         lines.append(
-            f"| {r.id} | {r.provider} | {r.rule_pass_rate:.0%} | {', '.join(failed) or '—'} |",
+            f"| {r.id} | {r.provider} | {r.rule_pass_rate:.0%} | "
+            f"{', '.join(failed) or '—'} | {latency} | {cost} |",
         )
     overall = sum(r.rule_pass_rate for r in results) / max(len(results), 1)
     lines.append("")
     lines.append(f"**Overall rule pass rate: {overall:.0%}**")
+    # Per-provider aggregate row (the multi-provider matrix comparison).
+    lines.append("")
+    lines.append("## Per-provider summary")
+    lines.append("")
+    lines.append("| Provider | Cases | Mean pass rate | Mean latency | Mean cost (est.) | Pricing date |")
+    lines.append("|---|---|---|---|---|---|")
+    for provider_id in sorted({r.provider for r in results}):
+        prov_results = [r for r in results if r.provider == provider_id]
+        mean_pass = sum(r.rule_pass_rate for r in prov_results) / len(prov_results)
+        latencies = [r.latency_ms for r in prov_results if r.latency_ms is not None]
+        mean_lat = f"{sum(latencies) // len(latencies)} ms" if latencies else "—"
+        costs = [r.estimated_cost_usd for r in prov_results if r.estimated_cost_usd is not None]
+        mean_cost = f"${sum(costs) / len(costs):.4f}" if costs else "—"
+        date_checked = pricing.get(provider_id, {}).get("dateChecked", "—")
+        lines.append(
+            f"| {provider_id} | {len(prov_results)} | {mean_pass:.0%} | {mean_lat} | {mean_cost} | {date_checked} |",
+        )
     if use_judge:
         lines.append("")
         lines.append("## Judge-scorer results")

@@ -1,0 +1,25 @@
+{
+  "_comment": "Recorded per-token pricing for providers the harness can score cost against. Per the z.ai/GLM addendum hard rule #1, every entry cites a sourceUrl and dateChecked — do not hardcode a price from memory, re-verify against the live docs before trusting it.",
+  "providers": {
+    "zai-glm": {
+      "model": "glm-5.2",
+      "family": "glm",
+      "inputPricePerMillionTokens": 1.40,
+      "outputPricePerMillionTokens": 4.40,
+      "cachedInputPricePerMillionTokens": 0.26,
+      "cachedInputNote": "limited availability; harness uses the uncached input price by default",
+      "dateChecked": "2026-07-13",
+      "sourceUrl": "https://docs.z.ai/guides/overview/pricing"
+    },
+    "anthropic": {
+      "model": "claude-sonnet-4-5",
+      "family": "claude",
+      "inputPricePerMillionTokens": 3.00,
+      "outputPricePerMillionTokens": 15.00,
+      "cachedInputPricePerMillionTokens": 0.30,
+      "cachedInputNote": "prompt caching tier; harness uses the uncached input price by default",
+      "dateChecked": "2026-07-13",
+      "sourceUrl": "https://www.anthropic.com/pricing"
+    }
+  }
+}

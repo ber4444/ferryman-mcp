@@ -38,6 +38,11 @@ class InvocationResult:
     tool_calls: list[str] = field(default_factory=list)
     latency_ms: int | None = None
     error: str | None = None
+    # Character counts of the input payload and output text. Used to estimate
+    # token counts (and thus cost) until real `usage` data flows through the
+    # Kotlin providers → SkillResult → InvokeResponse. Marked estimated downstream.
+    input_chars: int = 0
+    output_chars: int = 0
 
     @property
     def ok(self) -> bool:
@@ -67,6 +72,27 @@ def invoke(
     Returns:
         InvocationResult with the skill's output text and routing metadata.
     """
+    import time
+
+    started = time.monotonic()
+    result = _dispatch(skill_input, skill, provider, mode, http_url, binary)
+    result.latency_ms = int((time.monotonic() - started) * 1000)
+    # Record char counts so the scorecard can estimate cost. The input payload
+    # is what we sent (serialized); the output is what came back.
+    result.input_chars = len(json.dumps(skill_input))
+    result.output_chars = len(result.output)
+    return result
+
+
+def _dispatch(
+    skill_input: dict[str, Any],
+    skill: str,
+    provider: str | None,
+    mode: str,
+    http_url: str,
+    binary: str,
+) -> InvocationResult:
+    """Select and run the invocation mode. Timed by the caller."""
     if mode == "auto":
         try:
             return _invoke_http(skill_input, skill, provider, http_url)
