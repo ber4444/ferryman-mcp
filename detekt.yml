@@ -1,0 +1,27 @@
+# Detekt configuration — relaxed from defaults to keep the build honest but not
+# punitive for a small single-module project. Tuned to fail on real issues
+# (complexity, duplication) while allowing common Kotlin idioms.
+complexity:
+  LongMethod:
+    threshold: 80
+  LongParameterList:
+    functionThreshold: 7
+    constructorThreshold: 7
+  CyclomaticComplexMethod:
+    threshold: 20
+style:
+  ReturnCount:
+    active: false
+  MagicNumber:
+    active: false
+  WildcardImport:
+    active: false
+  MaxLineLength:
+    maxLineLength: 140
+exceptions:
+  TooGenericExceptionCaught:
+    active: false
+  SwallowedException:
+    active: false
+  TooGenericExceptionThrown:
+    active: false

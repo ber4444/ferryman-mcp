@@ -1,0 +1,27 @@
+# ferryman — provider routing configuration.
+#
+# This file is the single source of truth for which LLM providers ferryman can
+# route skills to. It is intentionally TOML so the Python eval harness reads it
+# with stdlib `tomllib` — see docs/plans/eval-harness.md.
+#
+# `apiKeyEnv` holds the *name* of the environment variable, never the key.
+# Secrets live in the environment only.
+
+default_provider = "zai-glm"
+
+[providers.anthropic]
+type = "anthropic"
+baseUrl = "https://api.anthropic.com/v1"
+# Verify the current Claude model id against Anthropic's docs before relying on it.
+model = "claude-sonnet-4-5"
+apiKeyEnv = "ANTHROPIC_API_KEY"
+
+[providers.zai-glm]
+type = "openai-compatible"
+# z.ai GLM Coding Plan endpoint — OpenAI-compatible. Credits expire 2026-07-19;
+# after that, repoint baseUrl/model to Ollama/vLLM/OpenRouter/Together/Fireworks
+# with no code change (the whole point of the provider abstraction).
+baseUrl = "https://api.z.ai/api/coding/paas/v4"
+# glm-5.2 is z.ai's flagship coding model at time of writing; verify at docs.z.ai.
+model = "glm-5.2"
+apiKeyEnv = "ZAI_API_KEY"
