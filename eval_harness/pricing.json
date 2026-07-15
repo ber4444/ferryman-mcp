@@ -22,10 +22,10 @@
       "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "hf-llama": {
-      "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+      "model": "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
       "family": "llama",
-      "inputPricePerMillionTokens": 0.02,
-      "outputPricePerMillionTokens": 0.05,
+      "inputPricePerMillionTokens": 0.59,
+      "outputPricePerMillionTokens": 0.79,
       "cachedInputPricePerMillionTokens": null,
       "cachedInputNote": "DeepInfra direct; no input caching",
       "dateChecked": "2026-07-15",

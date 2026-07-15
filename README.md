@@ -183,7 +183,7 @@ See `AGENTS.md` for the package map and contribution rules.
 |---|---|---|---|
 | zai-glm (default) | glm-5.2 | openai-compatible | $1.40 in / $4.40 out |
 | gemini | gemini-3.5-flash | openai-compatible | $0.30 in / $2.50 out |
-| hf-llama | Meta-Llama-3.1-8B-Instruct-Turbo | openai-compatible (DeepInfra) | $0.02 in / $0.05 out |
+| hf-llama | Meta-Llama-3.1-70B-Instruct-Turbo | openai-compatible (DeepInfra) | $0.59 in / $0.79 out |
 
 Adding an OpenAI-compatible provider is a config-only change — edit
 `ferryman/config.toml`, no code needed.

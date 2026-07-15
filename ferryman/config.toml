@@ -29,10 +29,10 @@ apiKeyEnv = "GEMINI_API_KEY"
 
 [providers.hf-llama]
 type = "openai-compatible"
-# DeepInfra direct — OpenAI-compatible. The HF router doesn't guarantee routing
-# to the tool-supporting provider, so we hit DeepInfra directly.
+# DeepInfra direct — OpenAI-compatible.
 # Verified at https://deepinfra.com/docs (2026-07-15).
 baseUrl = "https://api.deepinfra.com/v1/openai"
-# Llama 3.1 8B — supports function calling on DeepInfra, $0.02/$0.05 per token.
-model = "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo"
+# Llama 3.1 70B — handles function calling reliably (8B was too small, emitted
+# fake tool-call syntax as text). $0.59/$0.79 per 1M tokens on DeepInfra.
+model = "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo"
 apiKeyEnv = "DEEPINFRA_API_KEY"
