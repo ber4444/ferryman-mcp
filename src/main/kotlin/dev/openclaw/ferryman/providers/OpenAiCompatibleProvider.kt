@@ -12,6 +12,8 @@ import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.http.isSuccess
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -99,7 +101,6 @@ class OpenAiCompatibleProvider(
         val tools =
             request.tools.map { descriptor ->
                 ToolDef(
-                    type = "function",
                     function =
                         FunctionDef(
                             // OpenAI function names must match ^[a-zA-Z0-9_-]+$.
@@ -149,9 +150,10 @@ private data class ChatMessage(
     @SerialName("tool_calls") val toolCalls: List<ToolCallSpec>? = null,
 )
 
+@OptIn(ExperimentalSerializationApi::class)
 @Serializable
 private data class ToolDef(
-    val type: String,
+    @EncodeDefault val type: String = "function",
     val function: FunctionDef,
 )
 
@@ -162,10 +164,11 @@ private data class FunctionDef(
     val parameters: JsonElement,
 )
 
+@OptIn(ExperimentalSerializationApi::class)
 @Serializable
 private data class ToolCallSpec(
     val id: String,
-    val type: String = "function",
+    @EncodeDefault val type: String = "function",
     val function: FunctionCall,
 )
 
