@@ -60,7 +60,7 @@ command passes on `main`.
 |---|---|---|
 | Build, lint, test | done | `./gradlew build` (28 Kotlin tests, ktlint, detekt) |
 | CLI launcher | done | `./gradlew installDist` → `build/install/ferry/bin/ferry` |
-| Provider routing (2 providers) | done | `ferry providers list` — zai-glm, gemini |
+| Provider routing (3 providers) | done | `ferry providers list` — zai-glm, gemini, hf-phi |
 | Skills enumerable | done | `ferry skills list` — company-role-research, hello-repo |
 | MCP host aggregates tools | done | `ferry tools list` — filesystem + fetch MCP servers |
 | Fit summary | done | `ferry run company-role-research --input '{"company":"...","role":"..."}'` |
@@ -147,7 +147,7 @@ JUDGE_API_KEY=... python eval_harness/run_scorecard.py --all-providers --judge
 flowchart LR
     CLI[CLI channel] --> Orchestrator
     HTTP[HTTP channel] --> Orchestrator
-    Orchestrator -->|selects| Providers[2 providers]
+    Orchestrator -->|selects| Providers[3 providers]
     Orchestrator -->|dispatches tool calls| McpHost[MCP host]
     McpHost -->|stdio| FS[filesystem server]
     McpHost -->|stdio| Fetch[fetch server]
@@ -159,8 +159,9 @@ flowchart LR
 - **Orchestrator** (`orchestrator/`) — `runSkill(name, input)`: loads the skill,
   selects a provider, runs the model↔tool loop, writes a routing log line.
 - **Providers** (`providers/`) — `LlmProvider` with `OpenAiCompatibleProvider`
-  (covers z.ai GLM, Gemini, OpenRouter, Ollama, vLLM, …). Both configured
-  providers route through the same abstraction.
+  (covers z.ai GLM, Gemini, Hugging Face, OpenRouter, Ollama, vLLM, …). All
+  configured providers route through the same abstraction. Retries 429/503
+  with backoff (up to 3 attempts).
 - **MCP host** (`host/`) — connects stdio servers, aggregates tools into a
   namespaced registry (`<server>.<tool>`). Two servers configured: filesystem
   (`@modelcontextprotocol/server-filesystem`) and fetch (`mcp-server-fetch`).
@@ -182,6 +183,7 @@ See `AGENTS.md` for the package map and contribution rules.
 |---|---|---|---|
 | zai-glm (default) | glm-5.2 | openai-compatible | $1.40 in / $4.40 out |
 | gemini | gemini-3.5-flash | openai-compatible | $0.30 in / $2.50 out |
+| hf-phi | microsoft/Phi-3.5-mini-instruct | openai-compatible | $0.07 in / $0.14 out |
 
 Adding an OpenAI-compatible provider is a config-only change — edit
 `ferryman/config.toml`, no code needed.

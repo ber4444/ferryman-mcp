@@ -40,20 +40,29 @@ class OpenAiCompatibleProvider(
 ) : LlmProvider {
     override suspend fun complete(request: CompletionRequest): CompletionResult {
         val payload = buildChatRequest(request)
-        val httpResponse =
-            client.post("${baseUrl.trimEnd('/')}/chat/completions") {
-                header("Authorization", "Bearer $apiKey")
-                contentType(ContentType.Application.Json)
-                setBody(payload)
+        val maxRetries = 3
+        var lastError: String? = null
+        repeat(maxRetries) { attempt ->
+            val httpResponse =
+                client.post("${baseUrl.trimEnd('/')}/chat/completions") {
+                    header("Authorization", "Bearer $apiKey")
+                    contentType(ContentType.Application.Json)
+                    setBody(payload)
+                }
+            if (httpResponse.status.isSuccess()) {
+                val response: ChatCompletionResponse = httpResponse.body()
+                return response.toResult()
             }
-        if (!httpResponse.status.isSuccess()) {
             val errorBody = httpResponse.bodyAsText()
-            throw RuntimeException(
-                "Provider '$id' returned ${httpResponse.status}: ${errorBody.take(500)}",
-            )
+            lastError = "Provider '$id' returned ${httpResponse.status}: ${errorBody.take(500)}"
+            // Retry on 429 (rate limit) and 503 (overloaded) with backoff.
+            val retryable = httpResponse.status.value == 429 || httpResponse.status.value == 503
+            if (!retryable || attempt == maxRetries - 1) {
+                throw RuntimeException(lastError)
+            }
+            kotlinx.coroutines.delay((attempt + 1) * 5000L)
         }
-        val response: ChatCompletionResponse = httpResponse.body()
-        return response.toResult()
+        throw RuntimeException(lastError ?: "exhausted retries")
     }
 
     private fun buildChatRequest(request: CompletionRequest): ChatCompletionRequest {

@@ -26,3 +26,12 @@ baseUrl = "https://generativelanguage.googleapis.com/v1beta/openai"
 # Verify current model at https://ai.google.dev/gemini-api/docs/deprecations
 model = "gemini-3.5-flash"
 apiKeyEnv = "GEMINI_API_KEY"
+
+[providers.hf-phi]
+type = "openai-compatible"
+# Hugging Face Inference Providers — OpenAI-compatible chat completions.
+# Base URL verified at https://huggingface.co/docs/inference-providers/en/index (2026-07-15).
+baseUrl = "https://router.huggingface.co/v1"
+# microsoft/Phi-3.5-mini-instruct — small, fast, good uptime (dedicated infra, not overloaded like Gemini free tier).
+model = "microsoft/Phi-3.5-mini-instruct"
+apiKeyEnv = "HF_TOKEN"
