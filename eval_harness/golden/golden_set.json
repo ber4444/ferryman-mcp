@@ -2,487 +2,7 @@
   {
     "id": "case-001",
     "input": {
-      "company": "Anthropic",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": true,
-      "mobileFirst": false,
-      "aiNative": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "AI research lab. Not mobile-first. SF HQ hybrid. No Compose/KMP evidence. Verify mobile-specific remote policy. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-002",
-    "input": {
-      "company": "Stripe",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": true,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Payments infra. SF/remote split. Mobile apps exist but secondary; Android stack not publicly Compose-documented. Verify Compose against eng blog. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-003",
-    "input": {
-      "company": "Figma",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": true,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Design tool, web-first (C++ core to WASM). Mobile is companion. SF hybrid. Verify Compose on Android app. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-004",
-    "input": {
-      "company": "Notion",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Remote-first from founding, SF presence. Not mobile-first. sfbaHybrid likely false (remote-first, not SF-hybrid). ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-005",
-    "input": {
-      "company": "Vercel",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Frontend infra, remote-first. Not mobile. Ships AI features (v0) but posture is infra, not AI-native \u2014 verify your definition. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-006",
-    "input": {
-      "company": "Linear",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Fully remote small team. Web/desktop (Electron). Not mobile, not AI-native. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-007",
-    "input": {
-      "company": "GitHub",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": true,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "SF HQ, remote-friendly worldwide (Microsoft sub.). Web/services first. Copilot is AI but GitHub-the-platform is not AI-native posture. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-008",
-    "input": {
-      "company": "Datadog",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Infra monitoring, NYC HQ (NOT SFBA). sfbaHybrid likely false \u2014 HQ is NYC. Verify SFBA presence. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-009",
-    "input": {
-      "company": "Databricks",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": true,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Data/AI platform, SF HQ. Not mobile. aiNative borderline \u2014 they sell ML infra but posture is data-platform. Verify definition. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-010",
-    "input": {
-      "company": "Cloudflare",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Remote-first infra, distributed culture. Not mobile. Runs AI at edge but posture is infra, not AI-native. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-011",
-    "input": {
-      "company": "Supabase",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Fully remote OSS backend. No SFBA. Not mobile, not AI-native. Small company, sparse detail. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-012",
-    "input": {
-      "company": "Replit",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": true,
-      "mobileFirst": false,
-      "aiNative": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "AI coding agent company. SF HQ hybrid. Browser/IDE product, not mobile. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-013",
-    "input": {
-      "company": "Sourcegraph",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Pivoted to AI (Cody). Fully remote. Not mobile. Verify aiNative post-2024 pivot. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-014",
-    "input": {
-      "company": "Cursor",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": true,
-      "mobileFirst": false,
-      "aiNative": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "AI code editor (Anysphere). SF HQ hybrid. Desktop (TS/VS Code fork), not mobile. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-015",
-    "input": {
-      "company": "Modular",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": true,
-      "mobileFirst": false,
-      "aiNative": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "AI infra (Mojo, MAX). SF HQ. Not mobile. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-016",
-    "input": {
-      "company": "Zed Industries",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Rust-native editor, small remote/hybrid. Not mobile. Not AI-native in posture (perf is the pitch), though ships AI features. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-017",
-    "input": {
-      "company": "Astral",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "uv/ruff (Python tooling in Rust). Fully remote. Not mobile, not AI-native. Tiny \u2014 mustNotFabricateFigures is the key claim. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-018",
-    "input": {
-      "company": "Tailscale",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Overlay networking, Go core. Fully remote (Toronto founding). Not mobile, not AI-native. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-019",
-    "input": {
-      "company": "PostHog",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Product analytics, OSS, fully remote, transparent salary formula. US/UK remote, not SFBA. Citing the formula is the good answer. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-020",
-    "input": {
-      "company": "Render",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "PaaS (Heroku-like), remote-first, SF cofounder. Not mobile, not AI-native. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-021",
-    "input": {
-      "company": "Fly.io",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Edge compute, fully remote. Elixir/Go/Rust. Not mobile, not AI-native. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-022",
-    "input": {
-      "company": "HashiCorp",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Remote-first (IBM-acquired). Go-centric. Not mobile, not AI-native. Post-acquisition status worth verifying. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-023",
-    "input": {
-      "company": "Plaid",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": true,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Fintech APIs, SF HQ. Consumer app (Link) is mobile-adjacent but engineering story is backend/API. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-024",
-    "input": {
-      "company": "Retool",
-      "role": "Senior Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": true,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Internal-tools platform, SF HQ. Mobile apps recent. Android Compose plausible but NOT confirmed \u2014 leave false until manual research confirms. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
-  },
-  {
-    "id": "case-025",
-    "input": {
-      "company": "Acme Holdings",
+      "company": "EarnIn",
       "role": "Senior Engineer"
     },
     "asOf": "2026-07",
@@ -495,8 +15,1728 @@
       "mobileFirst": false,
       "aiNative": false,
       "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": false
+      "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "NEGATIVE CASE: fabricated company. Skill must report no reliable info. sourceUrlsMustBeCited=false because honest 'cannot find' needs no citation. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
+    "notesForReviewer": "Ground-truth values for EarnIn not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-002",
+    "input": {
+      "company": "Step",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Step not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-003",
+    "input": {
+      "company": "Colossus Tech",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Colossus Tech not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-004",
+    "input": {
+      "company": "Hims & Hers",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Hims & Hers not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-005",
+    "input": {
+      "company": "Hightouch",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Hightouch not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-006",
+    "input": {
+      "company": "Fuse Energy",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Fuse Energy not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-007",
+    "input": {
+      "company": "Tern",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Tern not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-008",
+    "input": {
+      "company": "Runway",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Runway not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-009",
+    "input": {
+      "company": "Tailscale",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Tailscale not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-010",
+    "input": {
+      "company": "Owner.com",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Owner.com not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-011",
+    "input": {
+      "company": "iRhythm",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for iRhythm not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-012",
+    "input": {
+      "company": "Attentive",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Attentive not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-013",
+    "input": {
+      "company": "Goods & Services",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Goods & Services not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-014",
+    "input": {
+      "company": "Samsara",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Samsara not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-015",
+    "input": {
+      "company": "Grove Collaborative",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Grove Collaborative not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-016",
+    "input": {
+      "company": "Salesforce",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Salesforce not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-017",
+    "input": {
+      "company": "Zillow",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Zillow not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-018",
+    "input": {
+      "company": "SpotOn",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for SpotOn not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-019",
+    "input": {
+      "company": "Pinterest",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Pinterest not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-020",
+    "input": {
+      "company": "Airwallex",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Airwallex not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-021",
+    "input": {
+      "company": "Perchwell",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Perchwell not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-022",
+    "input": {
+      "company": "Upstart",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Upstart not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-023",
+    "input": {
+      "company": "Cantina",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Cantina not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-024",
+    "input": {
+      "company": "tilt finance",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for tilt finance not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-025",
+    "input": {
+      "company": "Sekai",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Sekai not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-026",
+    "input": {
+      "company": "Raptive",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Raptive not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-027",
+    "input": {
+      "company": "Walmart",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Walmart not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-028",
+    "input": {
+      "company": "Rocket",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Rocket not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-029",
+    "input": {
+      "company": "Ford",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Ford not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-030",
+    "input": {
+      "company": "NinjaOne",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for NinjaOne not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-031",
+    "input": {
+      "company": "Block",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Block not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-032",
+    "input": {
+      "company": "Eight Sleep",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Eight Sleep not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-033",
+    "input": {
+      "company": "Wonderly",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Wonderly not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-034",
+    "input": {
+      "company": "DroneDeploy",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for DroneDeploy not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-035",
+    "input": {
+      "company": "Toast",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Toast not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-036",
+    "input": {
+      "company": "Canary Technologies",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Canary Technologies not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-037",
+    "input": {
+      "company": "Drivemode (Honda)",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Drivemode (Honda) not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-038",
+    "input": {
+      "company": "TextNow",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for TextNow not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-039",
+    "input": {
+      "company": "Reddit",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Reddit not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-040",
+    "input": {
+      "company": "Ditto",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Ditto not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-041",
+    "input": {
+      "company": "Babylist",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Babylist not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-042",
+    "input": {
+      "company": "Amplitude",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Amplitude not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-043",
+    "input": {
+      "company": "Oura",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Oura not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-044",
+    "input": {
+      "company": "Doximity",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Doximity not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-045",
+    "input": {
+      "company": "Greenlight",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Greenlight not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-046",
+    "input": {
+      "company": "eBay",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for eBay not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-047",
+    "input": {
+      "company": "Anthropic",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Anthropic not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-048",
+    "input": {
+      "company": "Harvey",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Harvey not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-049",
+    "input": {
+      "company": "Meta",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Meta not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-050",
+    "input": {
+      "company": "Adobe",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Adobe not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-051",
+    "input": {
+      "company": "Thrive Market",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Thrive Market not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-052",
+    "input": {
+      "company": "DraftKings",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for DraftKings not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-053",
+    "input": {
+      "company": "OpenAI",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for OpenAI not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-054",
+    "input": {
+      "company": "SeatGeek",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for SeatGeek not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-055",
+    "input": {
+      "company": "Life360",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Life360 not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-056",
+    "input": {
+      "company": "Stripe",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Stripe not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-057",
+    "input": {
+      "company": "Classpass",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Classpass not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-058",
+    "input": {
+      "company": "xAI",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for xAI not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-059",
+    "input": {
+      "company": "Dayforce",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Dayforce not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-060",
+    "input": {
+      "company": "Dropbox",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Dropbox not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-061",
+    "input": {
+      "company": "Trust Wallet",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Trust Wallet not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-062",
+    "input": {
+      "company": "Twilio",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Twilio not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-063",
+    "input": {
+      "company": "Netflix",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Netflix not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-064",
+    "input": {
+      "company": "Fanatics",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Fanatics not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-065",
+    "input": {
+      "company": "Airbnb",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Airbnb not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-066",
+    "input": {
+      "company": "Yahoo",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Yahoo not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-067",
+    "input": {
+      "company": "Maven",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Maven not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-068",
+    "input": {
+      "company": "Thrive Global",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Thrive Global not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-069",
+    "input": {
+      "company": "RevenueCat",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for RevenueCat not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-070",
+    "input": {
+      "company": "Hook",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Hook not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-071",
+    "input": {
+      "company": "Tixr",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Tixr not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-072",
+    "input": {
+      "company": "Nestmed",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Nestmed not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-073",
+    "input": {
+      "company": "Robinhood",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Robinhood not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-074",
+    "input": {
+      "company": "WeightWatchers",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for WeightWatchers not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-075",
+    "input": {
+      "company": "Lenovo",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Lenovo not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-076",
+    "input": {
+      "company": "Gusto",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Gusto not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-077",
+    "input": {
+      "company": "Instacart",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Instacart not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-078",
+    "input": {
+      "company": "Ramp",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Ramp not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-079",
+    "input": {
+      "company": "XMTP Labs",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for XMTP Labs not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-080",
+    "input": {
+      "company": "Whatnot",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Whatnot not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-081",
+    "input": {
+      "company": "Fireblocks",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Fireblocks not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-082",
+    "input": {
+      "company": "OpenSea",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for OpenSea not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-083",
+    "input": {
+      "company": "Hatch Sleep",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Hatch Sleep not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-084",
+    "input": {
+      "company": "Franki",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Franki not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-085",
+    "input": {
+      "company": "Speechify",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Speechify not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-086",
+    "input": {
+      "company": "Speak",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Speak not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+  },
+  {
+    "id": "case-087",
+    "input": {
+      "company": "Zwift",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Ground-truth values for Zwift not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
   }
 ]
