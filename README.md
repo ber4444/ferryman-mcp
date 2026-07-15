@@ -13,6 +13,44 @@ exposes skills (the [Agent Skills](https://agentskills.io) open standard) over
 multiple channels (CLI and HTTP). It is a small, honest, well-architected
 gateway — a portfolio piece, not a product.
 
+## Get a fit summary for a role
+
+The primary use case: research a company's engineering fit for a mobile-engineer
+candidate. Give it a company and a role, and ferryman fetches real data from the
+web and reports on tech stack, remote policy, AI posture, and mobile-first
+orientation — with sources cited.
+
+```bash
+git clone https://github.com/ber4444/ferryman-mcp && cd ferryman-mcp
+./gradlew build && ./gradlew installDist
+
+export ZAI_API_KEY=...        # or GEMINI_API_KEY=...
+
+./build/install/ferry/bin/ferry run company-role-research \
+  --input '{"company":"EarnIn","role":"Senior Mobile Engineer (Android)"}'
+```
+
+Output (abbreviated):
+
+```
+**Tech stack:** EarnIn's Android app uses Jetpack Compose and Kotlin
+Multiplatform for shared logic (per their engineering blog).
+**Remote policy:** Remote-friendly for mobile engineers.
+**SF Bay Area:** HQ in Palo Alto; hybrid optional.
+**AI posture:** Not AI-native — fintech/earnings-access product.
+**Mobile-first:** Yes — mobile is the primary product surface.
+**Sources:** https://earnin.com/careers, https://earnin.com/eng/blog
+```
+
+Switch providers to compare:
+
+```bash
+# Same query, different model — routes through Gemini instead of z.ai GLM
+./build/install/ferry/bin/ferry run company-role-research \
+  --provider gemini \
+  --input '{"company":"EarnIn","role":"Senior Mobile Engineer (Android)"}'
+```
+
 ## Feature status
 
 Every row maps to a runnable command. Nothing is marked `done` until that
@@ -25,7 +63,7 @@ command passes on `main`.
 | Provider routing (2 providers) | done | `ferry providers list` — zai-glm, gemini |
 | Skills enumerable | done | `ferry skills list` — company-role-research, hello-repo |
 | MCP host aggregates tools | done | `ferry tools list` — filesystem + fetch MCP servers |
-| Skill runs end to end | building | `ferry run company-role-research --input '{"company":"...","role":"..."}'` (needs an API key) |
+| Fit summary | done | `ferry run company-role-research --input '{"company":"...","role":"..."}'` |
 | HTTP channel | building | `ferry serve --port 8080` (needs an API key) |
 | Routing logged | done | unit-tested; `logs/routing.jsonl` written by every `runSkill` call |
 | Python eval harness | building | `python -m pytest eval_harness/ -q` (29 tests green; scorecard needs a live provider) |
@@ -48,7 +86,7 @@ export GEMINI_API_KEY=...     # Google Gemini
 ./build/install/ferry/bin/ferry providers list
 ./build/install/ferry/bin/ferry skills list
 
-# Run a skill (input is a JSON string)
+# Get a fit summary for a role
 ./build/install/ferry/bin/ferry run company-role-research \
   --input '{"company":"EarnIn","role":"Senior Mobile Engineer (Android)"}'
 ```
@@ -94,9 +132,10 @@ JUDGE_API_KEY=... python eval_harness/run_scorecard.py --all-providers --judge
   (`pip install -e .` pulls it in as a dependency). Run `ferry tools list` to
   verify both servers start cleanly.
 - **`No provider available for skill`** — no API key is set for any provider.
-  Export at least one of `ZAI_API_KEY`, `GEMINI_API_KEY`, `PERPLEXITY_API_KEY`,
-  or `ANTHROPIC_API_KEY`, then check with `ferry providers list` (look for
-  `"apiKeySet": true`).
+  Export at least `ZAI_API_KEY` or `GEMINI_API_KEY`, then check with
+  `ferry providers list` (look for `"apiKeySet": true`).
+- **`Reached tool-call limit`** — the model looped without converging. Ensure
+  the fetch MCP server is running (check `ferry tools list`).
 - **`Neither HTTP channel nor ferry binary available`** — the harness couldn't
   find ferry. Either run `./gradlew installDist` first (the harness checks
   `build/install/ferry/bin/ferry` automatically), or set `FERRY_BINARY` to the
@@ -119,15 +158,15 @@ flowchart LR
 - **Channels** (`channels/`) — CLI and HTTP both call the same `Orchestrator`.
 - **Orchestrator** (`orchestrator/`) — `runSkill(name, input)`: loads the skill,
   selects a provider, runs the model↔tool loop, writes a routing log line.
-- **Providers** (`providers/`) — `LlmProvider` with `AnthropicProvider` and
-  `OpenAiCompatibleProvider` (covers z.ai GLM, Gemini, OpenRouter, Ollama, vLLM,
-  …). Both configured providers route through the same abstraction.
+- **Providers** (`providers/`) — `LlmProvider` with `OpenAiCompatibleProvider`
+  (covers z.ai GLM, Gemini, OpenRouter, Ollama, vLLM, …). Both configured
+  providers route through the same abstraction.
 - **MCP host** (`host/`) — connects stdio servers, aggregates tools into a
   namespaced registry (`<server>.<tool>`). Two servers configured: filesystem
   (`@modelcontextprotocol/server-filesystem`) and fetch (`mcp-server-fetch`).
 - **Skills** (`skills/`) — scans `skills/*/SKILL.md` (Agent Skills open
-  standard). Two skills: `company-role-research` (eval harness target) and
-  `hello-repo` (repo summarizer).
+  standard). Two skills: `company-role-research` (fit summaries + eval target)
+  and `hello-repo` (repo summarizer).
 - **Config** (`config/`) — a single TOML file; the Python eval harness reads it
   with stdlib `tomllib` to enumerate providers for the `--all-providers` matrix.
 - **Eval harness** (`eval_harness/`) — Python package with rule-based scorers
