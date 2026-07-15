@@ -23,16 +23,17 @@ Parse `company` and `role` from this JSON. They tell you what to research.
 
 ## Research process
 
-1. Use the available fetch tool to retrieve real pages about this company. Good
-   targets, in priority order:
-   - The company's engineering blog or tech page
-   - The company's careers / jobs page (for the specific role or similar roles)
-   - The company's about / team page
-   - Public data aggregators: levels.fyi, glassdoor.com, their GitHub org
+1. Use the fetch tool **at most twice**. Good targets:
+   - The company's careers page (search for the company name + "careers")
+   - Their engineering blog or about page
 
-2. If the fetch tool returns no useful results, or the company name appears to be
-   fabricated (no real website, no public footprint), say so plainly. Do not
-   invent facts to fill the gap.
+2. **After at most 2 fetch calls, STOP fetching and synthesize your answer.**
+   Do not call the fetch tool more than twice. Even if you didn't find
+   everything, produce your best answer with what you have — say "no reliable
+   public data found" for any dimension you couldn't verify.
+
+3. If the company name appears to be fabricated (no real website, no public
+   footprint), say so plainly. Do not invent facts to fill the gap.
 
 ## What to report
 

@@ -22,7 +22,7 @@ command passes on `main`.
 |---|---|---|
 | Build, lint, test | done | `./gradlew build` (28 Kotlin tests, ktlint, detekt) |
 | CLI launcher | done | `./gradlew installDist` → `build/install/ferry/bin/ferry` |
-| Provider routing (4 providers) | done | `ferry providers list` — anthropic, zai-glm, gemini, perplexity |
+| Provider routing (2 providers) | done | `ferry providers list` — zai-glm, gemini |
 | Skills enumerable | done | `ferry skills list` — company-role-research, hello-repo |
 | MCP host aggregates tools | done | `ferry tools list` — filesystem + fetch MCP servers |
 | Skill runs end to end | building | `ferry run company-role-research --input '{"company":"...","role":"..."}'` (needs an API key) |
@@ -40,11 +40,9 @@ git clone https://github.com/ber4444/ferryman-mcp && cd ferryman-mcp
 ./gradlew build
 ./gradlew installDist
 
-# Set at least one provider key (all four are optional, but you need one to run a skill)
+# Set at least one provider key (both are optional, but you need one to run a skill)
 export ZAI_API_KEY=...        # z.ai GLM (default provider)
 export GEMINI_API_KEY=...     # Google Gemini
-export PERPLEXITY_API_KEY=... # Perplexity Sonar
-export ANTHROPIC_API_KEY=...  # Anthropic Claude
 
 # List configured providers and skills
 ./build/install/ferry/bin/ferry providers list
@@ -110,7 +108,7 @@ JUDGE_API_KEY=... python eval_harness/run_scorecard.py --all-providers --judge
 flowchart LR
     CLI[CLI channel] --> Orchestrator
     HTTP[HTTP channel] --> Orchestrator
-    Orchestrator -->|selects| Providers[4 providers]
+    Orchestrator -->|selects| Providers[2 providers]
     Orchestrator -->|dispatches tool calls| McpHost[MCP host]
     McpHost -->|stdio| FS[filesystem server]
     McpHost -->|stdio| Fetch[fetch server]
@@ -122,9 +120,8 @@ flowchart LR
 - **Orchestrator** (`orchestrator/`) — `runSkill(name, input)`: loads the skill,
   selects a provider, runs the model↔tool loop, writes a routing log line.
 - **Providers** (`providers/`) — `LlmProvider` with `AnthropicProvider` and
-  `OpenAiCompatibleProvider` (covers z.ai GLM, Gemini, Perplexity, OpenRouter,
-  Ollama, vLLM, …). All four configured providers route through the same
-  abstraction.
+  `OpenAiCompatibleProvider` (covers z.ai GLM, Gemini, OpenRouter, Ollama, vLLM,
+  …). Both configured providers route through the same abstraction.
 - **MCP host** (`host/`) — connects stdio servers, aggregates tools into a
   namespaced registry (`<server>.<tool>`). Two servers configured: filesystem
   (`@modelcontextprotocol/server-filesystem`) and fetch (`mcp-server-fetch`).
@@ -145,9 +142,7 @@ See `AGENTS.md` for the package map and contribution rules.
 | Provider | Model | Type | Pricing (per 1M tokens) |
 |---|---|---|---|
 | zai-glm (default) | glm-5.2 | openai-compatible | $1.40 in / $4.40 out |
-| anthropic | claude-sonnet-4-5 | anthropic | $3.00 in / $15.00 out |
 | gemini | gemini-2.5-flash | openai-compatible | $0.30 in / $2.50 out |
-| perplexity | sonar | openai-compatible | $1.00 in / $1.00 out |
 
 Adding an OpenAI-compatible provider is a config-only change — edit
 `ferryman/config.toml`, no code needed.

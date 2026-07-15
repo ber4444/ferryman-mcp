@@ -126,6 +126,11 @@ class Orchestrator(
                         conversation = conversation.toList(),
                     ),
                 )
+            // Debug: log each turn to stderr so we can see what the model is doing.
+            System.err.println("[ferryman] iteration $iteration: ${response.toolCalls.size} tool calls, output=${response.output.take(100)}")
+            for (call in response.toolCalls) {
+                System.err.println("[ferryman]   tool: ${call.name} args=${call.argumentsJson.take(200)}")
+            }
             if (response.toolCalls.isEmpty()) {
                 return response.output
             }
@@ -138,6 +143,7 @@ class Orchestrator(
             // Dispatch each requested tool call through the host and collect results.
             for (call in response.toolCalls) {
                 val toolResult = dispatchToolCall(call, connected, toolCallsMade)
+                System.err.println("[ferryman]   result: ${toolResult.content.length} chars, error=${toolResult.isError}")
                 conversation.add(ConversationMessage.ToolResult(toolResult))
             }
         }
@@ -207,6 +213,6 @@ class Orchestrator(
     }
 
     companion object {
-        const val MAX_ITERATIONS = 8
+        const val MAX_ITERATIONS = 4
     }
 }

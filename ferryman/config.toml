@@ -9,20 +9,11 @@
 
 default_provider = "zai-glm"
 
-[providers.anthropic]
-type = "anthropic"
-baseUrl = "https://api.anthropic.com/v1"
-# Verify the current Claude model id against Anthropic's docs before relying on it.
-model = "claude-sonnet-4-5"
-apiKeyEnv = "ANTHROPIC_API_KEY"
-
 [providers.zai-glm]
 type = "openai-compatible"
-# z.ai GLM Coding Plan endpoint — OpenAI-compatible. Credits expire 2026-07-19;
-# after that, repoint baseUrl/model to Ollama/vLLM/OpenRouter/Together/Fireworks
-# with no code change (the whole point of the provider abstraction).
+# z.ai GLM Coding Plan endpoint — OpenAI-compatible.
 baseUrl = "https://api.z.ai/api/coding/paas/v4"
-# glm-5.2 is z.ai's flagship coding model at time of writing; verify at docs.z.ai.
+# glm-5.2 is z.ai's flagship coding model; verify at docs.z.ai.
 model = "glm-5.2"
 apiKeyEnv = "ZAI_API_KEY"
 
@@ -34,12 +25,3 @@ baseUrl = "https://generativelanguage.googleapis.com/v1beta/openai"
 # Verify current model id at https://ai.google.dev/gemini-api/docs/models
 model = "gemini-2.5-flash"
 apiKeyEnv = "GEMINI_API_KEY"
-
-[providers.perplexity]
-type = "openai-compatible"
-# Perplexity Sonar API — OpenAI-compatible, web-grounded chat completions.
-# Base URL verified at https://docs.perplexity.ai/docs/sonar/quickstart (2026-07-15).
-baseUrl = "https://api.perplexity.ai"
-# sonar is Perplexity's web-grounded model; sonar-pro is the deeper variant.
-model = "sonar"
-apiKeyEnv = "PERPLEXITY_API_KEY"
