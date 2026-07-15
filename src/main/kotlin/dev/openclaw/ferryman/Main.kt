@@ -121,15 +121,16 @@ class ToolsListCommand : CoreCliktCommand(name = "list") {
     }
 }
 
-/** `ferry run --skill <name> --input "..."` — run a skill end to end. */
+/** `ferry run --skill <name> --input "..." [--provider <id>]` — run a skill end to end. */
 class RunCommand : CoreCliktCommand(name = "run") {
     override fun help(context: Context): String = "Run a skill end to end"
 
     private val skill by option("--skill").required()
     private val input by option("--input").required()
+    private val provider by option("--provider")
 
     override fun run() {
-        val result = runBlocking { AppContext().orchestrator().runSkill(skill, input) }
+        val result = runBlocking { AppContext().orchestrator().runSkill(skill, input, provider) }
         echo(result.output)
     }
 }

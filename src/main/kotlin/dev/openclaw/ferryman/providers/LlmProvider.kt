@@ -6,15 +6,32 @@ import dev.openclaw.ferryman.config.ProviderConfig
  * A request to an LLM. [system] + [user] are the prompt parts built by the
  * orchestrator from the skill body and the caller's input. [tools] is the host's
  * aggregated tool registry serialised as OpenAI-style function schemas so any
- * provider can read them. [toolResults] carries results from a previous
- * tool-call turn when the orchestrator runs the completion loop.
+ * provider can read them. [conversation] carries the full multi-turn history
+ * (assistant tool-call turns + tool results) so the provider can reconstruct
+ * the correct message sequence for APIs that require it (OpenAI, Gemini).
  */
 data class CompletionRequest(
     val system: String,
     val user: String,
     val tools: List<ToolDescriptor> = emptyList(),
-    val toolResults: List<ToolResult> = emptyList(),
+    val conversation: List<ConversationMessage> = emptyList(),
 )
+
+/**
+ * One turn in the conversation history. The orchestrator builds this as the
+ * tool-call loop runs so providers can serialize the full message chain.
+ */
+sealed class ConversationMessage {
+    /** An assistant turn that requested tool calls (no final text answer yet). */
+    data class AssistantToolCall(
+        val toolCalls: List<ToolCall>,
+    ) : ConversationMessage()
+
+    /** A tool result returned to the model after dispatch. */
+    data class ToolResult(
+        val result: dev.openclaw.ferryman.providers.ToolResult,
+    ) : ConversationMessage()
+}
 
 /** A tool the model may call, described in provider-neutral terms. */
 data class ToolDescriptor(

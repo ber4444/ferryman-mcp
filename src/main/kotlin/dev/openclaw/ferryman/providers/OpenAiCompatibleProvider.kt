@@ -7,8 +7,10 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.header
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
+import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
+import io.ktor.http.isSuccess
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -36,13 +38,19 @@ class OpenAiCompatibleProvider(
 ) : LlmProvider {
     override suspend fun complete(request: CompletionRequest): CompletionResult {
         val payload = buildChatRequest(request)
-        val response: ChatCompletionResponse =
-            client
-                .post("${baseUrl.trimEnd('/')}/chat/completions") {
-                    header("Authorization", "Bearer $apiKey")
-                    contentType(ContentType.Application.Json)
-                    setBody(payload)
-                }.body()
+        val httpResponse =
+            client.post("${baseUrl.trimEnd('/')}/chat/completions") {
+                header("Authorization", "Bearer $apiKey")
+                contentType(ContentType.Application.Json)
+                setBody(payload)
+            }
+        if (!httpResponse.status.isSuccess()) {
+            val errorBody = httpResponse.bodyAsText()
+            throw RuntimeException(
+                "Provider '$id' returned ${httpResponse.status}: ${errorBody.take(500)}",
+            )
+        }
+        val response: ChatCompletionResponse = httpResponse.body()
         return response.toResult()
     }
 
@@ -51,15 +59,41 @@ class OpenAiCompatibleProvider(
             buildList {
                 add(ChatMessage(role = "system", content = request.system))
                 add(ChatMessage(role = "user", content = request.user))
-                // Prior tool results are fed back as tool messages so the model can continue.
-                for (result in request.toolResults) {
-                    add(
-                        ChatMessage(
-                            role = "tool",
-                            content = result.content,
-                            toolCallId = result.callId,
-                        ),
-                    )
+                // Reconstruct the full conversation: assistant tool-call turns
+                // interleaved with tool results. This is required by the OpenAI API —
+                // orphan tool messages without a preceding assistant tool_call cause
+                // the model to loop indefinitely.
+                for (msg in request.conversation) {
+                    when (msg) {
+                        is ConversationMessage.AssistantToolCall -> {
+                            add(
+                                ChatMessage(
+                                    role = "assistant",
+                                    content = "",
+                                    toolCalls =
+                                        msg.toolCalls.map { call ->
+                                            ToolCallSpec(
+                                                id = call.id,
+                                                function =
+                                                    FunctionCall(
+                                                        name = call.name.replace('.', '_'),
+                                                        arguments = call.argumentsJson,
+                                                    ),
+                                            )
+                                        },
+                                ),
+                            )
+                        }
+                        is ConversationMessage.ToolResult -> {
+                            add(
+                                ChatMessage(
+                                    role = "tool",
+                                    content = msg.result.content,
+                                    toolCallId = msg.result.callId,
+                                ),
+                            )
+                        }
+                    }
                 }
             }
         val tools =
@@ -68,7 +102,10 @@ class OpenAiCompatibleProvider(
                     type = "function",
                     function =
                         FunctionDef(
-                            name = descriptor.name,
+                            // OpenAI function names must match ^[a-zA-Z0-9_-]+$.
+                            // ferryman uses dots for namespacing (filesystem.read_file)
+                            // — replace them with underscores for the wire.
+                            name = descriptor.name.replace('.', '_'),
                             description = descriptor.description,
                             parameters = JsonObject(mapOf("type" to JsonPrimitive("object"))),
                         ),
@@ -149,7 +186,13 @@ private data class ChatCompletionResponse(
         val message = choice.message
         val calls =
             message.toolCalls.orEmpty().map {
-                ToolCall(id = it.id, name = it.function.name, argumentsJson = it.function.arguments)
+                // The model returns the sanitized wire name (filesystem_read_file).
+                // Reverse to the namespaced form (filesystem.read_file) so the
+                // orchestrator can dispatch to the correct MCP server.
+                val wireName = it.function.name
+                val namespaced =
+                    wireName.replaceFirst('_', '.')
+                ToolCall(id = it.id, name = namespaced, argumentsJson = it.function.arguments)
             }
         return CompletionResult(
             output = message.content ?: "",

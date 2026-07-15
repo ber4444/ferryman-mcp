@@ -5,6 +5,7 @@ import dev.openclaw.ferryman.host.McpHost
 import dev.openclaw.ferryman.logging.RoutingDecision
 import dev.openclaw.ferryman.logging.RoutingLogger
 import dev.openclaw.ferryman.providers.CompletionRequest
+import dev.openclaw.ferryman.providers.ConversationMessage
 import dev.openclaw.ferryman.providers.LlmProvider
 import dev.openclaw.ferryman.providers.ProviderRegistry
 import dev.openclaw.ferryman.providers.ToolCall
@@ -114,7 +115,7 @@ class Orchestrator(
         toolCallsMade: MutableList<String>,
     ): String {
         val tools = connected.tools.map { ToolDescriptor(it.namespacedName, it.description ?: "") }
-        val priorResults = mutableListOf<ToolResult>()
+        val conversation = mutableListOf<ConversationMessage>()
         repeat(MAX_ITERATIONS) { iteration ->
             val response =
                 provider.complete(
@@ -122,16 +123,22 @@ class Orchestrator(
                         system = system,
                         user = input,
                         tools = tools,
-                        toolResults = priorResults.toList(),
+                        conversation = conversation.toList(),
                     ),
                 )
             if (response.toolCalls.isEmpty()) {
                 return response.output
             }
+            // Record the assistant's tool-call turn in the conversation history.
+            conversation.add(
+                ConversationMessage.AssistantToolCall(
+                    toolCalls = response.toolCalls,
+                ),
+            )
             // Dispatch each requested tool call through the host and collect results.
             for (call in response.toolCalls) {
                 val toolResult = dispatchToolCall(call, connected, toolCallsMade)
-                priorResults.add(toolResult)
+                conversation.add(ConversationMessage.ToolResult(toolResult))
             }
         }
         return "Reached tool-call limit ($MAX_ITERATIONS) without a final answer."
