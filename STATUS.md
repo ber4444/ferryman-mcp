@@ -108,6 +108,6 @@ ferry skills list                       # hello-repo
 
 ## Naming
 
-Public name: **ferryman** (binary `ferry`). "OpenClaw" is the internal working
+Public name: **ferryman** (binary `ferry`). "ferryman" is the internal working
 title only — it collides with a ~381k-star AI agent (`openclaw.ai`) and a Captain
 Claw game reimplementation. See `AGENTS.md` → Naming.

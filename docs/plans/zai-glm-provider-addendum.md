@@ -10,20 +10,20 @@
 > provider once that prerequisite lands.
 
 Targets: the chess repo's `:server` module (after `opening-explainer-cloud-route.md` M1 lands)
-and the OpenClaw repo (after `openclaw-eval-harness-plan.md` M1 lands). Suggested location: a
+and the ferryman repo (after `eval-harness.md` M1 lands). Suggested location: a
 copy in each repo's `docs/plans/`.
 
 ## Context for the agent
 
 Two existing plans reference an LLM provider abstractly: the chess server's `LlmComposer`
-("enabled only when `COACH_LLM_API_KEY` is set") and OpenClaw's multi-provider eval matrix
+("enabled only when `COACH_LLM_API_KEY` is set") and ferryman's multi-provider eval matrix
 ("every provider the router can reach"). The repo owner has z.ai API credits to use, which
 makes GLM the natural first concrete provider for both — and provider diversity is itself a
 finding: the eval matrix and the judge-vs-judged separation only demonstrate anything if at
 least two genuinely different model families are wired.
 
 **Deadline and sequencing:** the z.ai credits expire **July 19, 2026**. Therefore run M2 (the
-OpenClaw provider matrix) first — it depends only on the harness plan's M1 scaffolding, not on
+ferryman provider matrix) first — it depends only on the harness plan's M1 scaffolding, not on
 the chess server — so the credits produce the multi-provider scorecard before they lapse. M1
 (the chess-server composer) has no deadline: build it provider-shaped as specified and debut it
 on the post-expiry provider below.
@@ -32,7 +32,7 @@ on the post-expiry provider below.
 OpenAI-compatible hosted open-model provider (OpenRouter, Together, Fireworks, DeepInfra —
 prefer one serving GLM's open-weight releases so the model family, and thus the eval numbers'
 comparability, is preserved), or (b) a local Ollama/vLLM endpoint serving an open model — zero
-marginal cost, and the stronger fit for OpenClaw's local-first framing. Because everything in
+marginal cost, and the stronger fit for ferryman's local-first framing. Because everything in
 this plan is env-configured, this is a config change plus one scorecard re-run; if the model
 family changes, mark pre- and post-swap rows as non-comparable in the scorecard rather than
 mixing them silently.
@@ -53,14 +53,14 @@ mixing them silently.
 - **The cost budget is enforced, not decorative.** `maxUsdCents = 0.2` per request translates
   to a hard token cap computed from the recorded per-token price; the composer refuses (and
   falls back to template) rather than exceeding it.
-- **A judge never grades its own family.** In the OpenClaw harness, when the evaluated route is
+- **A judge never grades its own family.** In the ferryman harness, when the evaluated route is
   GLM, the judge is a non-GLM model, and vice versa.
 
 ## Success command
 
 Chess repo: `./gradlew :server:test` (including the new composer tests) and one manual
 end-to-end request against the deployed service with the GLM env vars set.
-OpenClaw repo: `python eval_harness/run_scorecard.py --all-providers` with GLM appearing as a
+ferryman repo: `python eval_harness/run_scorecard.py --all-providers` with GLM appearing as a
 scored provider column.
 
 ## M1 — chess server `LlmComposer` (GLM-backed)
@@ -77,9 +77,9 @@ scored provider column.
   template on the judge criteria, at what latency/cost) is exactly the kind of concrete
   eval finding the articles are hungry for.
 
-## M2 — OpenClaw provider matrix
+## M2 — ferryman provider matrix
 
-- Add GLM (via z.ai) to OpenClaw's provider-routing config following whatever pattern existing
+- Add GLM (via z.ai) to ferryman's provider-routing config following whatever pattern existing
   providers use (M0 of the harness plan already required locating that config).
 - `--all-providers` now includes GLM; scorecard gains its column with score, latency, and cost
   (cost computed from the recorded pricing, marked with the date checked).
@@ -92,7 +92,7 @@ scored provider column.
 
 ## Article hooks (write only after real runs)
 
-- OpenClaw article, section 6: the provider table now has at least two real model families —
+- ferryman article, section 6: the provider table now has at least two real model families —
   the section's whole argument depends on that.
 - Coach article, evals section: one sentence comparing template vs. GLM composition on the
   opening explainer, with the measured delta, once the scorecard has it. Same honesty gate as

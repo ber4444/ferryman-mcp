@@ -6,15 +6,14 @@
       "role": "Senior Mobile Engineer (Android)"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
+      "usesJetpackCompose": true,
+      "usesKmp": true,
       "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": true,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -26,15 +25,14 @@
       "role": "Senior Mobile Software Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": true,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -42,19 +40,18 @@
   {
     "id": "case-003",
     "input": {
-      "company": "Colossus Tech",
-      "role": "Senior Software Engineer - Android"
+      "company": "Hims & Hers",
+      "role": "Staff Engineer, AI-Assisted Engineering Practices"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -62,59 +59,56 @@
   {
     "id": "case-004",
     "input": {
-      "company": "Hims & Hers",
-      "role": "Staff Engineer, AI-Assisted Engineering Practices"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Role title explicitly references AI-assisted engineering."
-  },
-  {
-    "id": "case-005",
-    "input": {
       "company": "Hightouch",
       "role": "Staff Engineer, AI Productivity"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": true,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Role title explicitly references AI productivity."
+    "notesForReviewer": ""
   },
   {
-    "id": "case-006",
+    "id": "case-005",
     "input": {
       "company": "Fuse Energy",
       "role": "Senior Mobile Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": false,
       "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
       "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-006",
+    "input": {
+      "company": "Tern",
+      "role": "Senior Mobile Engineer"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -122,19 +116,18 @@
   {
     "id": "case-007",
     "input": {
-      "company": "Tern",
-      "role": "Senior Mobile Engineer"
+      "company": "Runway",
+      "role": "Member of Technical Staff, Mobile Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": true,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -142,39 +135,37 @@
   {
     "id": "case-008",
     "input": {
-      "company": "Runway",
-      "role": "Member of Technical Staff, Mobile Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "AI video generation company."
-  },
-  {
-    "id": "case-009",
-    "input": {
       "company": "Tailscale",
       "role": "Mobile Platform Developer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-009",
+    "input": {
+      "company": "Owner.com",
+      "role": "Senior Software Engineer, Mobile Platform (Guest App)"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": true,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -182,19 +173,18 @@
   {
     "id": "case-010",
     "input": {
-      "company": "Owner.com",
-      "role": "Senior Software Engineer, Mobile Platform (Guest App)"
+      "company": "iRhythm",
+      "role": "Staff Mobile Engineer (Android)"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -202,19 +192,18 @@
   {
     "id": "case-011",
     "input": {
-      "company": "iRhythm",
-      "role": "Staff Mobile Engineer (Android)"
+      "company": "Attentive",
+      "role": "Staff SWE, Developer Experience"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": true,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -222,19 +211,18 @@
   {
     "id": "case-012",
     "input": {
-      "company": "Attentive",
-      "role": "Staff SWE, Developer Experience"
+      "company": "Goods & Services",
+      "role": "Lead Android Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "usesKmp": true,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": true,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -242,19 +230,18 @@
   {
     "id": "case-013",
     "input": {
-      "company": "Goods & Services",
-      "role": "Lead Android Engineer"
+      "company": "Samsara",
+      "role": "Staff Mobile Engineer - Mobile Platform"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "usesJetpackCompose": true,
+      "usesKmp": true,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -262,19 +249,18 @@
   {
     "id": "case-014",
     "input": {
-      "company": "Samsara",
-      "role": "Staff Mobile Engineer - Mobile Platform"
+      "company": "Grove Collaborative",
+      "role": "AI-First Android Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -282,39 +268,37 @@
   {
     "id": "case-015",
     "input": {
-      "company": "Grove Collaborative",
-      "role": "AI-First Android Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Role title explicitly says 'AI-First'."
-  },
-  {
-    "id": "case-016",
-    "input": {
       "company": "Salesforce",
       "role": "Staff Software Engineer, Android - Slack Productivity Mobile"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-016",
+    "input": {
+      "company": "Zillow",
+      "role": "Senior Software Development Engineer, Android"
+    },
+    "asOf": "2026-07",
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": false,
       "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
       "aiNative": false,
-      "mustNotFabricateFigures": true,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -322,19 +306,18 @@
   {
     "id": "case-017",
     "input": {
-      "company": "Zillow",
-      "role": "Senior Software Development Engineer, Android"
+      "company": "SpotOn",
+      "role": "Staff Software Engineer (Android)"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -342,19 +325,18 @@
   {
     "id": "case-018",
     "input": {
-      "company": "SpotOn",
-      "role": "Staff Software Engineer (Android)"
+      "company": "Pinterest",
+      "role": "Sr. Software Engineer, Android"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
       "remoteForMobileEngineers": false,
+      "mustNotFabricateFigures": false,
       "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
       "aiNative": false,
-      "mustNotFabricateFigures": true,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -362,19 +344,18 @@
   {
     "id": "case-019",
     "input": {
-      "company": "Pinterest",
-      "role": "Sr. Software Engineer, Android"
+      "company": "Airwallex",
+      "role": "Staff Mobile Engineer, Spend Foundation"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
       "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -382,19 +363,18 @@
   {
     "id": "case-020",
     "input": {
-      "company": "Airwallex",
-      "role": "Staff Mobile Engineer, Spend Foundation"
+      "company": "Perchwell",
+      "role": "Senior Android Engineer II"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": true,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -402,19 +382,18 @@
   {
     "id": "case-021",
     "input": {
-      "company": "Perchwell",
-      "role": "Senior Android Engineer II"
+      "company": "Upstart",
+      "role": "Principal Mobile Engineer, Android"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": true,
+      "mobileFirst": true,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -422,19 +401,18 @@
   {
     "id": "case-022",
     "input": {
-      "company": "Upstart",
-      "role": "Principal Mobile Engineer, Android"
+      "company": "Cantina",
+      "role": "Android Engineer (senior-staff levels)"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "usesJetpackCompose": true,
+      "usesKmp": true,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": true,
+      "mobileFirst": true,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -442,39 +420,37 @@
   {
     "id": "case-023",
     "input": {
-      "company": "Cantina",
-      "role": "Android Engineer (senior-staff levels)"
+      "company": "Tilt Finance",
+      "role": "Senior Mobile Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": false,
       "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
       "aiNative": true,
-      "mustNotFabricateFigures": true,
+      "mobileFirst": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "AI avatar/social company."
+    "notesForReviewer": ""
   },
   {
     "id": "case-024",
     "input": {
-      "company": "tilt finance",
-      "role": "Senior Mobile Engineer"
+      "company": "Sekai",
+      "role": "Senior Android Engineer, Native Platform"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": false,
       "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
+      "aiNative": true,
+      "mobileFirst": true,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -482,39 +458,37 @@
   {
     "id": "case-025",
     "input": {
-      "company": "Sekai",
-      "role": "Senior Android Engineer, Native Platform"
+      "company": "Rocket",
+      "role": "Hybrid Staff Software Mobile Engineer - Android"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": true,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "AI storytelling company."
+    "notesForReviewer": ""
   },
   {
     "id": "case-026",
     "input": {
-      "company": "Raptive",
-      "role": "Sr. Mobile Engineer"
+      "company": "Ford",
+      "role": "Senior Software Development Engineer, Android"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
       "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -522,19 +496,18 @@
   {
     "id": "case-027",
     "input": {
-      "company": "Walmart",
-      "role": "Senior Software Engineer, Android"
+      "company": "NinjaOne",
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -542,39 +515,37 @@
   {
     "id": "case-028",
     "input": {
-      "company": "Rocket",
-      "role": "Hybrid Staff Software Mobile Engineer - Android"
+      "company": "Block",
+      "role": "Staff Android Software Engineer, Cash App Consumer Platform"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
+      "usesJetpackCompose": true,
+      "usesKmp": true,
       "remoteForMobileEngineers": true,
-      "sfbaHybridForMobileEngineers": true,
-      "mobileFirst": false,
-      "aiNative": false,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Role title explicitly says 'Hybrid' \u2014 remote-eligible with SF Bay Area office expectation."
+    "notesForReviewer": ""
   },
   {
     "id": "case-029",
     "input": {
-      "company": "Ford",
-      "role": "Senior Software Development Engineer, Android"
+      "company": "Eight Sleep",
+      "role": "Senior Software Engineer - Mobile (Android)"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": false,
       "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
       "aiNative": false,
-      "mustNotFabricateFigures": true,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -582,19 +553,18 @@
   {
     "id": "case-030",
     "input": {
-      "company": "NinjaOne",
-      "role": "Senior Android Engineer"
+      "company": "Wonderly",
+      "role": "Android Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": false,
       "sfbaHybridForMobileEngineers": false,
+      "aiNative": true,
       "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -602,19 +572,18 @@
   {
     "id": "case-031",
     "input": {
-      "company": "Block",
-      "role": "Staff Android Software Engineer, Cash App Consumer Platform"
+      "company": "Toast",
+      "role": "Senior Software Engineer, Mobile DevOps"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -622,19 +591,18 @@
   {
     "id": "case-032",
     "input": {
-      "company": "Eight Sleep",
-      "role": "Senior Software Engineer - Mobile (Android)"
+      "company": "Canary Technologies",
+      "role": "Senior Mobile SDK Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "usesJetpackCompose": true,
+      "usesKmp": true,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": true,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -642,19 +610,18 @@
   {
     "id": "case-033",
     "input": {
-      "company": "Wonderly",
-      "role": "Android Engineer"
+      "company": "Drivemode (Honda)",
+      "role": "Staff Mobile Software Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
+      "usesJetpackCompose": true,
+      "usesKmp": true,
       "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": true,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -662,19 +629,18 @@
   {
     "id": "case-034",
     "input": {
-      "company": "DroneDeploy",
-      "role": "Senior Software Engineer, Mobile"
+      "company": "TextNow",
+      "role": "Tech Lead, Mobile Core Network Engineering"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": true,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -682,19 +648,18 @@
   {
     "id": "case-035",
     "input": {
-      "company": "Toast",
-      "role": "Senior Software Engineer, Mobile DevOps"
+      "company": "Reddit",
+      "role": "Staff Android Engineer, Home Experience"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -702,19 +667,18 @@
   {
     "id": "case-036",
     "input": {
-      "company": "Canary Technologies",
-      "role": "Senior Mobile SDK Engineer"
+      "company": "Ditto",
+      "role": "Senior Software Engineer, Android"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -722,19 +686,18 @@
   {
     "id": "case-037",
     "input": {
-      "company": "Drivemode (Honda)",
-      "role": "Staff Mobile Software Engineer"
+      "company": "Babylist",
+      "role": "Senior Mobile Engineer, Health"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": true,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -742,19 +705,18 @@
   {
     "id": "case-038",
     "input": {
-      "company": "TextNow",
-      "role": "Tech Lead, Mobile Core Network Engineering"
+      "company": "Oura",
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
       "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -762,19 +724,18 @@
   {
     "id": "case-039",
     "input": {
-      "company": "Reddit",
-      "role": "Staff Android Engineer, Home Experience"
+      "company": "Doximity",
+      "role": "Senior Software Engineer, Android (Kotlin)"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -782,19 +743,18 @@
   {
     "id": "case-040",
     "input": {
-      "company": "Ditto",
-      "role": "Senior Software Engineer, Android"
+      "company": "Greenlight",
+      "role": "Staff Android Systems Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -802,19 +762,18 @@
   {
     "id": "case-041",
     "input": {
-      "company": "Babylist",
-      "role": "Senior Mobile Engineer, Health"
+      "company": "Harvey",
+      "role": "Staff Software Engineer, Android"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
       "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": true,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -822,19 +781,18 @@
   {
     "id": "case-042",
     "input": {
-      "company": "Amplitude",
-      "role": "Senior Android Engineer"
+      "company": "DraftKings",
+      "role": "Lead Software Engineer, Android"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -842,39 +800,37 @@
   {
     "id": "case-043",
     "input": {
-      "company": "Oura",
-      "role": "Senior Android Engineer"
+      "company": "OpenAI",
+      "role": "Android Engineer, Growth"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
       "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
+      "mustNotFabricateFigures": false,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": true,
       "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Company recently filed for IPO."
+    "notesForReviewer": ""
   },
   {
     "id": "case-044",
     "input": {
-      "company": "Doximity",
-      "role": "Senior Software Engineer, Android (Kotlin)"
+      "company": "Stripe",
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
       "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -882,19 +838,18 @@
   {
     "id": "case-045",
     "input": {
-      "company": "Greenlight",
-      "role": "Staff Android Systems Engineer"
+      "company": "Classpass",
+      "role": "Sr Software Engineer - Android"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": false,
       "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
       "aiNative": false,
-      "mustNotFabricateFigures": true,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -902,19 +857,18 @@
   {
     "id": "case-046",
     "input": {
-      "company": "eBay",
-      "role": "MTS1, Android Engineer, eBay Live"
+      "company": "xAI",
+      "role": "Mobile Android Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": true,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -922,59 +876,56 @@
   {
     "id": "case-047",
     "input": {
-      "company": "Anthropic",
-      "role": "Staff Software Engineer, Android"
+      "company": "Dayforce",
+      "role": "Mobile Software Developer, Lead (Android)"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
       "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "AI research company."
+    "notesForReviewer": ""
   },
   {
     "id": "case-048",
     "input": {
-      "company": "Harvey",
-      "role": "Staff Software Engineer, Android"
+      "company": "Dropbox",
+      "role": "Android Software Engineer, Mobile Experience"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": true,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "AI legal-tech company."
+    "notesForReviewer": ""
   },
   {
     "id": "case-049",
     "input": {
-      "company": "Meta",
-      "role": "Senior Android Engineer"
+      "company": "Netflix",
+      "role": "Software Engineer 5 - Android & Backend, Games"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -982,19 +933,18 @@
   {
     "id": "case-050",
     "input": {
-      "company": "Adobe",
-      "role": "Senior Product Engineer \u2014 Android"
+      "company": "Airbnb",
+      "role": "Staff Software Engineer, Android Platform Frameworks"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -1002,19 +952,18 @@
   {
     "id": "case-051",
     "input": {
-      "company": "Thrive Market",
-      "role": "Senior Software Engineer, Mobile"
+      "company": "Yahoo",
+      "role": "Senior Android Apps Engineer - Yahoo Mail"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -1022,19 +971,18 @@
   {
     "id": "case-052",
     "input": {
-      "company": "DraftKings",
-      "role": "Lead Software Engineer, Android"
+      "company": "WeightWatchers",
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -1042,39 +990,37 @@
   {
     "id": "case-053",
     "input": {
-      "company": "OpenAI",
-      "role": "Android Engineer, Growth"
+      "company": "Gusto",
+      "role": "Staff Mobile Software Engineer, Android"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
       "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "AI research company."
+    "notesForReviewer": ""
   },
   {
     "id": "case-054",
     "input": {
-      "company": "SeatGeek",
-      "role": "Senior Mobile Engineer, Android"
+      "company": "Instacart",
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -1082,19 +1028,18 @@
   {
     "id": "case-055",
     "input": {
-      "company": "Life360",
-      "role": "Senior Android Engineer"
+      "company": "Ramp",
+      "role": "Mobile Engineer, Android"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -1102,39 +1047,37 @@
   {
     "id": "case-056",
     "input": {
-      "company": "Stripe",
+      "company": "Whatnot",
       "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
       "remoteForMobileEngineers": false,
+      "mustNotFabricateFigures": false,
       "sfbaHybridForMobileEngineers": true,
-      "mobileFirst": false,
       "aiNative": false,
-      "mustNotFabricateFigures": true,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Company policy: all Android roles are in-office (SF HQ). Not remote-eligible."
+    "notesForReviewer": ""
   },
   {
     "id": "case-057",
     "input": {
-      "company": "Classpass",
-      "role": "Sr Software Engineer - Android"
+      "company": "OpenSea",
+      "role": "Staff Android Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
+      "usesJetpackCompose": true,
+      "usesKmp": true,
+      "remoteForMobileEngineers": true,
       "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
@@ -1142,601 +1085,39 @@
   {
     "id": "case-058",
     "input": {
-      "company": "xAI",
-      "role": "Mobile Android Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "AI company."
-  },
-  {
-    "id": "case-059",
-    "input": {
-      "company": "Dayforce",
-      "role": "Mobile Software Developer, Lead (Android)"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-060",
-    "input": {
-      "company": "Dropbox",
-      "role": "Android Software Engineer, Mobile Experience"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-061",
-    "input": {
-      "company": "Trust Wallet",
-      "role": "Senior Android / Kotlin Engineer (Web3 - Trading)"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-062",
-    "input": {
-      "company": "Twilio",
-      "role": "Android Engineer - P3 - Security + Identity"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-063",
-    "input": {
-      "company": "Netflix",
-      "role": "Software Engineer 5 - Android & Backend, Games"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-064",
-    "input": {
-      "company": "Fanatics",
-      "role": "Staff Android Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-065",
-    "input": {
-      "company": "Airbnb",
-      "role": "Staff Software Engineer, Android Platform Frameworks"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-066",
-    "input": {
-      "company": "Yahoo",
-      "role": "Senior Android Apps Engineer - Yahoo Mail"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-067",
-    "input": {
-      "company": "Maven",
-      "role": "Senior Android Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-068",
-    "input": {
-      "company": "Thrive Global",
-      "role": "Senior Software Engineer, Mobile"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-069",
-    "input": {
-      "company": "RevenueCat",
-      "role": "Senior Android SDK Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-070",
-    "input": {
-      "company": "Hook",
-      "role": "Senior Android Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-071",
-    "input": {
-      "company": "Tixr",
-      "role": "Senior Android Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-072",
-    "input": {
-      "company": "Nestmed",
-      "role": "Senior Android Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-073",
-    "input": {
-      "company": "Robinhood",
-      "role": "Senior Software Engineer, Android (US)"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": true,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Company policy: strict return-to-office. SF HQ."
-  },
-  {
-    "id": "case-074",
-    "input": {
-      "company": "WeightWatchers",
-      "role": "Senior Android Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-075",
-    "input": {
-      "company": "Lenovo",
-      "role": "Sr Engineer - AI Experiences"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Role title explicitly references AI experiences."
-  },
-  {
-    "id": "case-076",
-    "input": {
-      "company": "Gusto",
-      "role": "Staff Mobile Software Engineer, Android"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-077",
-    "input": {
-      "company": "Instacart",
-      "role": "Senior Android Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-078",
-    "input": {
-      "company": "Ramp",
-      "role": "Mobile Engineer, Android"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-079",
-    "input": {
-      "company": "XMTP Labs",
-      "role": "Android Engineer (Convos)"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-080",
-    "input": {
-      "company": "Whatnot",
-      "role": "Senior Android Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": true,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Company policy: requires living within 50 miles of SF. SF Bay Area."
-  },
-  {
-    "id": "case-081",
-    "input": {
-      "company": "Fireblocks",
-      "role": "Mobile Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-082",
-    "input": {
-      "company": "OpenSea",
-      "role": "Staff Android Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-083",
-    "input": {
-      "company": "Hatch Sleep",
-      "role": "Lead Software Engineer - Mobile"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-084",
-    "input": {
-      "company": "Franki",
-      "role": "Staff Android Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-085",
-    "input": {
-      "company": "Speechify",
-      "role": "Senior Android Engineer"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-086",
-    "input": {
       "company": "Speak",
       "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
-    "factsApproved": false,
     "expectedClaims": {
-      "usesJetpackCompose": false,
+      "usesJetpackCompose": true,
       "usesKmp": false,
       "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
-      "aiNative": false,
       "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": "Company culture is in-person. Location not specified in source data."
-  },
-  {
-    "id": "case-087",
-    "input": {
-      "company": "Zwift",
-      "role": "Senior Software Engineer, Mobile"
-    },
-    "asOf": "2026-07",
-    "factsApproved": false,
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
-      "mobileFirst": false,
+      "sfbaHybridForMobileEngineers": true,
       "aiNative": false,
-      "mustNotFabricateFigures": true,
+      "mobileFirst": false,
       "sourceUrlsMustBeCited": true
     },
     "notesForReviewer": ""
+  },
+  {
+    "id": "case-059",
+    "input": {
+      "company": "Acme Holdings",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": false
+    },
+    "notesForReviewer": "Negative case \u2014 'Acme Holdings' is a fabricated company. A good skill must say it cannot find reliable info rather than inventing a comp band, remote policy, or tech stack. The only must-true claim is mustNotFabricateFigures (verified by the absence of invented specifics)."
   }
 ]

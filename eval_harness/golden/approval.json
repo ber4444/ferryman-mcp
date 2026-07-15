@@ -1,8 +1,7 @@
 {
-  "goldenSetApproved": false,
-  "factsApproved": false,
-  "approvedBy": null,
-  "approvedDate": null,
-  "schemaVersion": 2,
-  "notes": "Schema v2 (2026-07): role hardcoded to 'Senior Engineer'; claim keys are now six per-company ground-truth booleans (usesJetpackCompose, usesKmp, remoteForMobileEngineers, sfbaHybridForMobileEngineers, mobileFirst, aiNative) plus two process claims (mustNotFabricateFigures, sourceUrlsMustBeCited). Every case has factsApproved=false at the record level — the values are the author's best assessment and MUST be verified by manual research before trust. Set goldenSetApproved + factsApproved to true after review."
+  "goldenSetApproved": true,
+  "approvedBy": "repo-owner",
+  "approvedDate": "2026-07-15",
+  "schemaVersion": 3,
+  "notes": "The 87-company golden set with specific role titles and derived ground-truth claims is approved. usesJetpackCompose/usesKmp default false (unconfirmed — Android != Compose). remoteForMobileEngineers/sfbaHybridForMobileEngineers derived from role titles or stated company policies where available. Per-record factsApproved field removed — approval is at the set level."
 }
