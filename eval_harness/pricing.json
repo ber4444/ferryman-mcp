@@ -20,6 +20,26 @@
       "cachedInputNote": "prompt caching tier; harness uses the uncached input price by default",
       "dateChecked": "2026-07-13",
       "sourceUrl": "https://www.anthropic.com/pricing"
+    },
+    "gemini": {
+      "model": "gemini-2.5-flash",
+      "family": "gemini",
+      "inputPricePerMillionTokens": 0.30,
+      "outputPricePerMillionTokens": 2.50,
+      "cachedInputPricePerMillionTokens": 0.075,
+      "cachedInputNote": "context caching tier; harness uses the uncached input price by default",
+      "dateChecked": "2026-07-15",
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    "perplexity": {
+      "model": "sonar",
+      "family": "perplexity",
+      "inputPricePerMillionTokens": 1.00,
+      "outputPricePerMillionTokens": 1.00,
+      "cachedInputPricePerMillionTokens": null,
+      "cachedInputNote": "Perplexity does not offer input caching; base Sonar is flat $1/$1 per 1M. Sonar Pro is $3/$15.",
+      "dateChecked": "2026-07-15",
+      "sourceUrl": "https://docs.perplexity.ai/docs/getting-started/pricing"
     }
   }
 }

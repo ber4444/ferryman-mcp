@@ -25,3 +25,21 @@ baseUrl = "https://api.z.ai/api/coding/paas/v4"
 # glm-5.2 is z.ai's flagship coding model at time of writing; verify at docs.z.ai.
 model = "glm-5.2"
 apiKeyEnv = "ZAI_API_KEY"
+
+[providers.gemini]
+type = "openai-compatible"
+# Google Gemini OpenAI-compatible endpoint. Base URL verified at
+# https://ai.google.dev/gemini-api/docs/openai (checked 2026-07-15).
+baseUrl = "https://generativelanguage.googleapis.com/v1beta/openai"
+# Verify current model id at https://ai.google.dev/gemini-api/docs/models
+model = "gemini-2.5-flash"
+apiKeyEnv = "GEMINI_API_KEY"
+
+[providers.perplexity]
+type = "openai-compatible"
+# Perplexity Sonar API — OpenAI-compatible, web-grounded chat completions.
+# Base URL verified at https://docs.perplexity.ai/docs/sonar/quickstart (2026-07-15).
+baseUrl = "https://api.perplexity.ai"
+# sonar is Perplexity's web-grounded model; sonar-pro is the deeper variant.
+model = "sonar"
+apiKeyEnv = "PERPLEXITY_API_KEY"
