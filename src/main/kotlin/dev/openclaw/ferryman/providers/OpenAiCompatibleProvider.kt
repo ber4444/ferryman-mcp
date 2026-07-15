@@ -162,12 +162,14 @@ class OpenAiCompatibleProvider(
     }
 }
 
+@OptIn(ExperimentalSerializationApi::class)
 @Serializable
 private data class ChatCompletionRequest(
     val model: String,
     val messages: List<ChatMessage>,
     val tools: List<ToolDef>? = null,
     @SerialName("tool_choice") val toolChoice: String? = null,
+    @EncodeDefault @SerialName("max_tokens") val maxTokens: Int = 2048,
 )
 
 @Serializable
