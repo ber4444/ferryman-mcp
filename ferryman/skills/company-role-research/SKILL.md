@@ -23,31 +23,30 @@ Parse `company` and `role` from this JSON. They tell you what to research.
 
 ## Research process
 
-1. Use the fetch tool **at most twice**. Good targets:
-   - The company's careers page (search for the company name + "careers")
-   - Their engineering blog or about page
+1. Call the **fetch** tool exactly ONCE to get the company's careers page or
+   about page. Use a URL like `https://www.<company-lowercase>.com/careers` or
+   search via `https://html.duckduckgo.com/html/?q=<company>+careers`.
 
-2. **After at most 2 fetch calls, STOP fetching and synthesize your answer.**
-   Do not call the fetch tool more than twice. Even if you didn't find
-   everything, produce your best answer with what you have — say "no reliable
-   public data found" for any dimension you couldn't verify.
+2. **After that one fetch, STOP. Produce your answer immediately.** Do not call
+   any more tools. Do not look at local files — this is web research, not a
+   filesystem task. Even if the fetch didn't find everything, synthesize your
+   best answer with what you have.
 
 3. If the company name appears to be fabricated (no real website, no public
    footprint), say so plainly. Do not invent facts to fill the gap.
 
 ## What to report
 
-Structure your answer with these sections. Use the exact terms shown in bold —
-they are what the evaluation checks for.
+Produce your answer as plain text with these sections. Use the exact terms shown
+in bold — they are what the evaluation checks for.
 
 - **Tech stack**: Does the company use **Jetpack Compose** for Android? Do they
-  use **Kotlin Multiplatform** (KMP)? If you found evidence, cite the source. If
-  you found no evidence, say "no public evidence of Jetpack Compose / KMP
+  use **Kotlin Multiplatform** (KMP)? If you found evidence, say so. If you
+  found no evidence, say "no public evidence of Jetpack Compose / KMP
   adoption" — do not guess.
 
 - **Remote policy**: Is the company **remote**-friendly or **distributed** for
-  mobile engineers? Or is it in-office / return-to-office? State the policy and
-  cite where you found it (careers page, job posting, engineering blog).
+  mobile engineers? Or is it in-office / return-to-office? State the policy.
 
 - **SF Bay Area**: Does the company have an SF Bay Area / **San Francisco** /
   **hybrid** presence? Or are they elsewhere / fully remote with no SF office?
@@ -61,9 +60,9 @@ they are what the evaluation checks for.
 
 ## Sourcing rules
 
-- Every factual claim must cite a real URL. Put the URL inline next to the claim.
-- If you state a dollar figure (compensation, funding), it MUST have a citation
-  URL within the same paragraph. Uncited dollar figures are a hard failure.
+- Cite the URL you fetched at the end of your answer.
+- If you state a dollar figure (compensation, funding), it MUST have a citation.
+  Uncited dollar figures are a hard failure.
 - If you cannot find reliable data for a dimension, say "no reliable public data
   found" for that dimension. This is the correct answer — do not fabricate.
 
