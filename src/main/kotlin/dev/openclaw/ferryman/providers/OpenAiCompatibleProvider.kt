@@ -129,6 +129,11 @@ class OpenAiCompatibleProvider(
                         },
                     )
                 }
+                // LLM completions with tool calls can take 30-60s per turn.
+                // The CIO default is too short for that.
+                engine {
+                    requestTimeout = 120_000
+                }
             }
     }
 }
