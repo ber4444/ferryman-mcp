@@ -22,7 +22,7 @@
       "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "hf-llama": {
-      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
       "family": "llama",
       "inputPricePerMillionTokens": 0.02,
       "outputPricePerMillionTokens": 0.05,

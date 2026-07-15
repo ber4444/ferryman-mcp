@@ -34,5 +34,5 @@ type = "openai-compatible"
 # Verified at https://deepinfra.com/docs (2026-07-15).
 baseUrl = "https://api.deepinfra.com/v1/openai"
 # Llama 3.1 8B — supports function calling on DeepInfra, $0.02/$0.05 per token.
-model = "meta-llama/Llama-3.1-8B-Instruct"
+model = "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo"
 apiKeyEnv = "DEEPINFRA_API_KEY"
