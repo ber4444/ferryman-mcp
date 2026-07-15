@@ -114,7 +114,14 @@ class Orchestrator(
         connected: ConnectedHost,
         toolCallsMade: MutableList<String>,
     ): String {
-        val tools = connected.tools.map { ToolDescriptor(it.namespacedName, it.description ?: "") }
+        val tools =
+            connected.tools.map {
+                ToolDescriptor(
+                    name = it.namespacedName,
+                    description = it.description ?: "",
+                    parametersJson = it.inputSchemaJson,
+                )
+            }
         val conversation = mutableListOf<ConversationMessage>()
         repeat(MAX_ITERATIONS) { iteration ->
             val response =
@@ -127,7 +134,9 @@ class Orchestrator(
                     ),
                 )
             // Debug: log each turn to stderr so we can see what the model is doing.
-            System.err.println("[ferryman] iteration $iteration: ${response.toolCalls.size} tool calls, output=${response.output.take(100)}")
+            System.err.println(
+                "[ferryman] iteration $iteration: ${response.toolCalls.size} tool calls, output=${response.output.take(100)}",
+            )
             for (call in response.toolCalls) {
                 System.err.println("[ferryman]   tool: ${call.name} args=${call.argumentsJson.take(200)}")
             }

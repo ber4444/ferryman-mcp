@@ -4,7 +4,6 @@ import io.modelcontextprotocol.kotlin.sdk.ExperimentalMcpApi
 import io.modelcontextprotocol.kotlin.sdk.client.Client
 import io.modelcontextprotocol.kotlin.sdk.client.ClientOptions
 import io.modelcontextprotocol.kotlin.sdk.types.Implementation
-import io.modelcontextprotocol.kotlin.sdk.types.Tool
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonArray
@@ -25,17 +24,8 @@ data class AggregatedTool(
     val originalName: String,
     val namespacedName: String,
     val description: String?,
-) {
-    val tool: Tool
-        get() =
-            Tool(
-                name = originalName,
-                inputSchema =
-                    io.modelcontextprotocol.kotlin.sdk.types
-                        .ToolSchema(),
-                description = description,
-            )
-}
+    val inputSchemaJson: String = "{}",
+)
 
 /**
  * Connection to a single MCP server over stdio.
@@ -97,12 +87,26 @@ class McpHost(
             try {
                 val result = client.listTools()
                 for (tool in result.tools) {
+                    // Capture the input schema the server advertises so the
+                    // provider can pass it to the model — without it the model
+                    // doesn't know what arguments to supply.
+                    val schemaJson =
+                        try {
+                            kotlinx.serialization.json.Json.encodeToString(
+                                io.modelcontextprotocol.kotlin.sdk.types.ToolSchema
+                                    .serializer(),
+                                tool.inputSchema,
+                            )
+                        } catch (e: Exception) {
+                            "{}"
+                        }
                     tools.add(
                         AggregatedTool(
                             server = spec.name,
                             originalName = tool.name,
                             namespacedName = "${spec.name}.${tool.name}",
                             description = tool.description,
+                            inputSchemaJson = schemaJson,
                         ),
                     )
                 }

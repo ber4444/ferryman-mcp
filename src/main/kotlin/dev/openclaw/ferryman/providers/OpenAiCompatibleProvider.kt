@@ -18,8 +18,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
 
 /**
  * OpenAI Chat Completions–shaped provider. Covers OpenAI itself plus every
@@ -104,11 +102,12 @@ class OpenAiCompatibleProvider(
                     function =
                         FunctionDef(
                             // OpenAI function names must match ^[a-zA-Z0-9_-]+$.
-                            // ferryman uses dots for namespacing (filesystem.read_file)
-                            // — replace them with underscores for the wire.
                             name = descriptor.name.replace('.', '_'),
                             description = descriptor.description,
-                            parameters = JsonObject(mapOf("type" to JsonPrimitive("object"))),
+                            // Use the real input schema from the MCP server so the
+                            // model knows what arguments to supply.
+                            parameters =
+                                Json.parseToJsonElement(descriptor.parametersJson),
                         ),
                 )
             }

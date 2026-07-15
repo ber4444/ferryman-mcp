@@ -9,6 +9,8 @@ complexity:
     constructorThreshold: 7
   CyclomaticComplexMethod:
     threshold: 20
+  NestedBlockDepth:
+    threshold: 6
 style:
   ReturnCount:
     active: false

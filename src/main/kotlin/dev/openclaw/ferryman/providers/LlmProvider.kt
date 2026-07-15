@@ -37,6 +37,7 @@ sealed class ConversationMessage {
 data class ToolDescriptor(
     val name: String,
     val description: String,
+    val parametersJson: String = "{\"type\":\"object\",\"properties\":{}}",
 )
 
 /** A previously-dispatched tool call's result, fed back into the next turn. */
