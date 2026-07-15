@@ -60,7 +60,7 @@ command passes on `main`.
 |---|---|---|
 | Build, lint, test | done | `./gradlew build` (28 Kotlin tests, ktlint, detekt) |
 | CLI launcher | done | `./gradlew installDist` → `build/install/ferry/bin/ferry` |
-| Provider routing (3 providers) | done | `ferry providers list` — zai-glm, gemini, hf-phi |
+| Provider routing (3 providers) | done | `ferry providers list` — zai-glm, gemini, hf-llama |
 | Skills enumerable | done | `ferry skills list` — company-role-research, hello-repo |
 | MCP host aggregates tools | done | `ferry tools list` — filesystem + fetch MCP servers |
 | Fit summary | done | `ferry run company-role-research --input '{"company":"...","role":"..."}'` |
@@ -183,7 +183,7 @@ See `AGENTS.md` for the package map and contribution rules.
 |---|---|---|---|
 | zai-glm (default) | glm-5.2 | openai-compatible | $1.40 in / $4.40 out |
 | gemini | gemini-3.5-flash | openai-compatible | $0.30 in / $2.50 out |
-| hf-phi | microsoft/Phi-3.5-mini-instruct | openai-compatible | $0.07 in / $0.14 out |
+| hf-llama | meta-llama/Llama-3.1-8B-Instruct | openai-compatible | $0.02 in / $0.05 out |
 
 Adding an OpenAI-compatible provider is a config-only change — edit
 `ferryman/config.toml`, no code needed.

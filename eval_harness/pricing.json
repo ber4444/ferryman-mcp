@@ -21,13 +21,13 @@
       "dateChecked": "2026-07-15",
       "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing"
     },
-    "hf-phi": {
-      "model": "microsoft/Phi-3.5-mini-instruct",
-      "family": "phi",
-      "inputPricePerMillionTokens": 0.07,
-      "outputPricePerMillionTokens": 0.14,
+    "hf-llama": {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "family": "llama",
+      "inputPricePerMillionTokens": 0.02,
+      "outputPricePerMillionTokens": 0.05,
       "cachedInputPricePerMillionTokens": null,
-      "cachedInputNote": "HF serverless inference pricing; free tier available with rate limits",
+      "cachedInputNote": "DeepInfra via HF router; no input caching",
       "dateChecked": "2026-07-15",
       "sourceUrl": "https://huggingface.co/docs/inference-providers/en/pricing"
     }
