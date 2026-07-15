@@ -18,6 +18,8 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
 
 /**
  * OpenAI Chat Completions–shaped provider. Covers OpenAI itself plus every
@@ -66,21 +68,34 @@ class OpenAiCompatibleProvider(
                 for (msg in request.conversation) {
                     when (msg) {
                         is ConversationMessage.AssistantToolCall -> {
+                            // Embed the raw JSON from the model's original response
+                            // so provider-specific fields like Gemini's
+                            // thought_signature survive the round-trip verbatim.
+                            val rawElements =
+                                msg.toolCalls.map { call ->
+                                    if (call.rawJson != null) {
+                                        Json.parseToJsonElement(call.rawJson)
+                                    } else {
+                                        JsonObject(
+                                            mapOf(
+                                                "id" to JsonPrimitive(call.id),
+                                                "type" to JsonPrimitive("function"),
+                                                "function" to
+                                                    JsonObject(
+                                                        mapOf(
+                                                            "name" to JsonPrimitive(call.name.replace('.', '_')),
+                                                            "arguments" to JsonPrimitive(call.argumentsJson),
+                                                        ),
+                                                    ),
+                                            ),
+                                        )
+                                    }
+                                }
                             add(
                                 ChatMessage(
                                     role = "assistant",
                                     content = "",
-                                    toolCalls =
-                                        msg.toolCalls.map { call ->
-                                            ToolCallSpec(
-                                                id = call.id,
-                                                function =
-                                                    FunctionCall(
-                                                        name = call.name.replace('.', '_'),
-                                                        arguments = call.argumentsJson,
-                                                    ),
-                                            )
-                                        },
+                                    toolCalls = rawElements,
                                 ),
                             )
                         }
@@ -151,7 +166,12 @@ private data class ChatMessage(
     val role: String,
     val content: String,
     @SerialName("tool_call_id") val toolCallId: String? = null,
-    @SerialName("tool_calls") val toolCalls: List<ToolCallSpec>? = null,
+    // Raw JsonElements so provider-specific fields (Gemini's thought_signature)
+    // survive serialization round-trips.
+    @SerialName("tool_calls") val toolCalls: List<
+        @Serializable(with = RawJsonElementSerializer::class)
+        JsonElement,
+    >? = null,
 )
 
 @OptIn(ExperimentalSerializationApi::class)
@@ -168,20 +188,6 @@ private data class FunctionDef(
     val parameters: JsonElement,
 )
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable
-private data class ToolCallSpec(
-    val id: String,
-    @EncodeDefault val type: String = "function",
-    val function: FunctionCall,
-)
-
-@Serializable
-private data class FunctionCall(
-    val name: String,
-    val arguments: String,
-)
-
 @Serializable
 private data class ChatCompletionResponse(
     val choices: List<Choice> = emptyList(),
@@ -192,14 +198,22 @@ private data class ChatCompletionResponse(
                 ?: return CompletionResult(output = "", finishReason = "empty")
         val message = choice.message
         val calls =
-            message.toolCalls.orEmpty().map {
-                // The model returns the sanitized wire name (filesystem_read_file).
-                // Reverse to the namespaced form (filesystem.read_file) so the
-                // orchestrator can dispatch to the correct MCP server.
-                val wireName = it.function.name
-                val namespaced =
-                    wireName.replaceFirst('_', '.')
-                ToolCall(id = it.id, name = namespaced, argumentsJson = it.function.arguments)
+            message.toolCalls.orEmpty().map { rawElement ->
+                // Parse the known fields from the raw JSON element, but preserve
+                // the full object as rawJson so provider-specific fields (e.g.
+                // Gemini's thought_signature) survive the round-trip.
+                val obj = rawElement as? JsonObject
+                val id = obj?.get("id")?.let { (it as? kotlinx.serialization.json.JsonPrimitive)?.content } ?: ""
+                val func = obj?.get("function") as? JsonObject
+                val wireName = func?.get("name")?.let { (it as? kotlinx.serialization.json.JsonPrimitive)?.content } ?: ""
+                val namespaced = wireName.replaceFirst('_', '.')
+                val args = func?.get("arguments")?.let { (it as? kotlinx.serialization.json.JsonPrimitive)?.content } ?: "{}"
+                ToolCall(
+                    id = id,
+                    name = namespaced,
+                    argumentsJson = args,
+                    rawJson = rawElement.toString(),
+                )
             }
         return CompletionResult(
             output = message.content ?: "",
@@ -219,5 +233,38 @@ private data class Choice(
 private data class ResponseMessage(
     val role: String = "assistant",
     val content: String? = null,
-    @SerialName("tool_calls") val toolCalls: List<ToolCallSpec>? = null,
+    // Store tool_calls as raw JsonElements so provider-specific fields like
+    // Gemini's thought_signature survive deserialization and can be echoed
+    // back in the next request.
+    @SerialName("tool_calls") val toolCalls: List<
+        @Serializable(with = RawJsonElementSerializer::class)
+        JsonElement,
+    >? = null,
 )
+
+/**
+ * Pass-through serializer for [JsonElement] — reads and writes the raw JSON
+ * tree without loss, so provider-specific fields (e.g. Gemini's
+ * thought_signature inside tool call objects) survive serialization.
+ */
+private object RawJsonElementSerializer :
+    kotlinx.serialization.KSerializer<JsonElement> {
+    override val descriptor =
+        kotlinx.serialization.json.JsonElement
+            .serializer()
+            .descriptor
+
+    override fun serialize(
+        encoder: kotlinx.serialization.encoding.Encoder,
+        value: JsonElement,
+    ) {
+        kotlinx.serialization.json.JsonElement
+            .serializer()
+            .serialize(encoder, value)
+    }
+
+    override fun deserialize(decoder: kotlinx.serialization.encoding.Decoder): JsonElement =
+        kotlinx.serialization.json.JsonElement
+            .serializer()
+            .deserialize(decoder)
+}

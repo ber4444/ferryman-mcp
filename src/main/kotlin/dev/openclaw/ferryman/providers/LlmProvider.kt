@@ -53,6 +53,13 @@ data class ToolCall(
     val id: String,
     val name: String,
     val argumentsJson: String,
+    /**
+     * The raw JSON object of this tool call as returned by the provider.
+     * Preserved verbatim so provider-specific fields (e.g. Gemini's
+     * `thought_signature`) survive the round-trip when the conversation
+     * history is sent back.
+     */
+    val rawJson: String? = null,
 )
 
 /**
