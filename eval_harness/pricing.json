@@ -27,9 +27,9 @@
       "inputPricePerMillionTokens": 0.02,
       "outputPricePerMillionTokens": 0.05,
       "cachedInputPricePerMillionTokens": null,
-      "cachedInputNote": "DeepInfra via HF router; no input caching",
+      "cachedInputNote": "DeepInfra direct; no input caching",
       "dateChecked": "2026-07-15",
-      "sourceUrl": "https://huggingface.co/docs/inference-providers/en/pricing"
+      "sourceUrl": "https://deepinfra.com/pricing"
     }
   }
 }

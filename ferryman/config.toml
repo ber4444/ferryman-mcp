@@ -29,10 +29,10 @@ apiKeyEnv = "GEMINI_API_KEY"
 
 [providers.hf-llama]
 type = "openai-compatible"
-# Hugging Face Inference Providers — OpenAI-compatible chat completions.
-# Base URL verified at https://huggingface.co/docs/inference-providers/en/index (2026-07-15).
-baseUrl = "https://router.huggingface.co/v1"
-# Llama 3.1 8B via DeepInfra on HF router — supports tools, $0.02/$0.05 per token,
-# better uptime than Gemini free tier. Phi-3.5-mini not available with tool support on HF.
+# DeepInfra direct — OpenAI-compatible. The HF router doesn't guarantee routing
+# to the tool-supporting provider, so we hit DeepInfra directly.
+# Verified at https://deepinfra.com/docs (2026-07-15).
+baseUrl = "https://api.deepinfra.com/v1/openai"
+# Llama 3.1 8B — supports function calling on DeepInfra, $0.02/$0.05 per token.
 model = "meta-llama/Llama-3.1-8B-Instruct"
-apiKeyEnv = "HF_TOKEN"
+apiKeyEnv = "DEEPINFRA_API_KEY"
