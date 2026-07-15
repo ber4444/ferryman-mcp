@@ -181,7 +181,7 @@ See `AGENTS.md` for the package map and contribution rules.
 | Provider | Model | Type | Pricing (per 1M tokens) |
 |---|---|---|---|
 | zai-glm (default) | glm-5.2 | openai-compatible | $1.40 in / $4.40 out |
-| gemini | gemini-2.5-flash | openai-compatible | $0.30 in / $2.50 out |
+| gemini | gemini-3.5-flash | openai-compatible | $0.30 in / $2.50 out |
 
 Adding an OpenAI-compatible provider is a config-only change — edit
 `ferryman/config.toml`, no code needed.

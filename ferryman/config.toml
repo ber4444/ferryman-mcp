@@ -22,6 +22,7 @@ type = "openai-compatible"
 # Google Gemini OpenAI-compatible endpoint. Base URL verified at
 # https://ai.google.dev/gemini-api/docs/openai (checked 2026-07-15).
 baseUrl = "https://generativelanguage.googleapis.com/v1beta/openai"
-# Verify current model id at https://ai.google.dev/gemini-api/docs/models
-model = "gemini-2.5-flash"
+# gemini-2.5-flash deprecated 2026-06; gemini-3.5-flash is the replacement.
+# Verify current model at https://ai.google.dev/gemini-api/docs/deprecations
+model = "gemini-3.5-flash"
 apiKeyEnv = "GEMINI_API_KEY"
