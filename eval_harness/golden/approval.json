@@ -1,6 +1,8 @@
 {
   "goldenSetApproved": false,
+  "factsApproved": false,
   "approvedBy": null,
   "approvedDate": null,
-  "notes": "Set goldenSetApproved to true after human review of golden_set.json. Until then, scorecards are provisional. See eval_harness/README.md."
+  "schemaVersion": 2,
+  "notes": "Schema v2 (2026-07): role hardcoded to 'Senior Engineer'; claim keys are now six per-company ground-truth booleans (usesJetpackCompose, usesKmp, remoteForMobileEngineers, sfbaHybridForMobileEngineers, mobileFirst, aiNative) plus two process claims (mustNotFabricateFigures, sourceUrlsMustBeCited). Every case has factsApproved=false at the record level — the values are the author's best assessment and MUST be verified by manual research before trust. Set goldenSetApproved + factsApproved to true after review."
 }

@@ -1,28 +1,28 @@
 """
 Deterministic rule-based scorers. Each maps to one key in a golden case's
 expectedClaims and returns a ScoreResult (pass/fail + reason), never a bare
-boolean — the reason is what makes a scorecard debuggable.
+boolean.
 
-A scorer is only applied when the corresponding expectedClaims key is `True`.
-Keys absent or `False` mean the claim is not required, so the scorer is skipped
-(neutral), not failed. This matters for the negative cases (case-025) where
-the only must-true claim is mustNotFabricateFigures.
+Two kinds of claim:
+
+1. **Ground-truth correctness claims** (usesJetpackCompose, usesKmp,
+   remoteForMobileEngineers, sfbaHybridForMobileEngineers, mobileFirst, aiNative).
+   These carry a per-company true/false value that is the actual ground truth
+   (verified by manual research at freeze time). When the value is `true`, a rule
+   scorer does a cheap positive-presence check — if the output never mentions the
+   concept, that's a definite miss. When the value is `false`, a rule can't tell
+   "correctly reports no evidence" from "forgot to mention it" — that's the
+   judge's job. So ground-truth scorers only run when the claim value is `true`.
+
+2. **Process claims** (mustNotFabricateFigures, sourceUrlsMustBeCited). These run
+   whenever the claim key is present and `true`, regardless of ground-truth value.
+   They're the honesty gates.
 """
 from __future__ import annotations
 
 import re
 from dataclasses import dataclass
 from typing import Callable
-
-# Disallow-list of obviously fabricated compensation figures — patterns a model
-# invents when it has no real data. Built so the fabricated-figure check has
-# teeth without depending on the golden case. A real figure cited with a source
-# (levels.fyi, Glassdoor, the company's careers page) passes; an unsourced
-# precise dollar amount for a company with no public comp data fails.
-FABRICATED_FIGURE_PATTERNS = [
-    # "$185,000 base" style figures with no citation within ~200 chars.
-    # This is a heuristic — see _has_nearby_citation for the softening rule.
-]
 
 # Markers that a number is sourced rather than invented.
 CITATION_MARKERS = [
@@ -35,35 +35,6 @@ CITATION_MARKERS = [
     r"according\s+to",
     r"reported(?:ly)?",
     r"publicly(?:\s+available)?",
-]
-
-# Compensation signal words a good company/role research answer contains.
-COMP_BAND_SIGNALS = [
-    r"\$\s?\d{2,3}[,.]?\d{3}",  # a dollar figure
-    r"comp(?:ensation)?\s*(?:band|range)",
-    r"base\s*salary",
-    r"total\s*comp",
-    r"TC",
-    r"level(?:ing)?",
-]
-
-# Remote-policy signal words.
-REMOTE_POLICY_SIGNALS = [
-    r"remote",
-    r"hybrid",
-    r"in[- ]office",
-    r"on[- ]site",
-    r"work\s+from\s+(?:home|anywhere)",
-    r"distributed",
-]
-
-# Tech-stack signal words.
-TECH_STACK_SIGNALS = [
-    r"\b(?:rust|go|python|typescript|javascript|java|kotlin|swift|ruby|scala|elixir|c\+\+)\b",
-    r"\b(?:react|vue|svelte|node|rails|spring|django|flask)\b",
-    r"\b(?:postgres|mysql|kafka|redis|kubernetes|docker)\b",
-    r"stack",
-    r"tech(?:nology|nologies)?",
 ]
 
 
@@ -86,56 +57,27 @@ def score_all(
     case_input: dict[str, str] | None = None,
 ) -> list[ScoreResult]:
     """
-    Run every applicable scorer. A scorer runs only when its claim key is `True`
-    in expected_claims. Returns one ScoreResult per applied scorer.
+    Run every applicable scorer. For ground-truth claims, the scorer runs only
+    when the value is `true` (the case where a cheap positive check has teeth).
+    For process claims, the scorer runs whenever the key is present and `true`.
     """
     case_input = case_input or {}
     results: list[ScoreResult] = []
-    for key, required in expected_claims.items():
-        if not required:
-            continue
+    for key, value in expected_claims.items():
         scorer = SCORERS.get(key)
         if scorer is None:
             # Unknown claim key — surface it rather than silently passing.
             results.append(ScoreResult(key, False, f"unknown claim key: {key!r}"))
             continue
+        # Ground-truth scorers only run when the value is True.
+        # Process scorers run when present and True.
+        if value is not True:
+            continue
         results.append(scorer(output, case_input))
     return results
 
 
-# --- individual scorers -----------------------------------------------------
-
-
-def score_must_mention_comp_band(output: str, case_input: dict[str, str]) -> ScoreResult:
-    """Pass if the output contains a compensation signal (figure, band, or leveling)."""
-    for pattern in COMP_BAND_SIGNALS:
-        if re.search(pattern, output, re.IGNORECASE):
-            return ScoreResult(
-                "mustMentionCompBand",
-                True,
-                f"matched comp signal /{pattern}/",
-            )
-    return ScoreResult(
-        "mustMentionCompBand",
-        False,
-        "no compensation figure, band, or leveling reference found",
-    )
-
-
-def score_must_flag_remote_policy(output: str, case_input: dict[str, str]) -> ScoreResult:
-    """Pass if the output names a remote/hybrid/in-office policy."""
-    for pattern in REMOTE_POLICY_SIGNALS:
-        if re.search(pattern, output, re.IGNORECASE):
-            return ScoreResult(
-                "mustFlagRemotePolicy",
-                True,
-                f"matched remote-policy signal /{pattern}/",
-            )
-    return ScoreResult(
-        "mustFlagRemotePolicy",
-        False,
-        "no remote/hybrid/in-office policy statement found",
-    )
+# --- process scorers --------------------------------------------------------
 
 
 def score_must_not_fabricate_figures(output: str, case_input: dict[str, str]) -> ScoreResult:
@@ -182,20 +124,74 @@ def score_source_urls_must_be_cited(output: str, case_input: dict[str, str]) -> 
     )
 
 
-def score_must_reference_tech_stack(output: str, case_input: dict[str, str]) -> ScoreResult:
-    """Pass if the output references a technology or the word 'stack'."""
-    for pattern in TECH_STACK_SIGNALS:
-        if re.search(pattern, output, re.IGNORECASE):
-            return ScoreResult(
-                "mustReferenceTechStack",
-                True,
-                f"matched tech-stack signal /{pattern}/",
-            )
-    return ScoreResult(
-        "mustReferenceTechStack",
-        False,
-        "no technology or stack reference found",
+# --- ground-truth positive-presence scorers ---------------------------------
+#
+# Each runs only when the ground-truth value is `true`. If the output never
+# mentions the concept, that's a definite miss. When the value is `false`, the
+# scorer is skipped — only the judge can assess whether the skill correctly
+# reported "no public evidence" vs. lazily omitted it.
+
+
+def score_uses_jetpack_compose(output: str, case_input: dict[str, str]) -> ScoreResult:
+    return _positive_presence(
+        "usesJetpackCompose",
+        output,
+        [r"jetpack\s*compose", r"\bcompose\b(?!.*music)"],
+        "Jetpack Compose",
     )
+
+
+def score_uses_kmp(output: str, case_input: dict[str, str]) -> ScoreResult:
+    return _positive_presence(
+        "usesKmp",
+        output,
+        [r"kotlin\s*multiplatform", r"\bkmp\b", r"kotlin/native"],
+        "Kotlin Multiplatform",
+    )
+
+
+def score_remote_for_mobile_engineers(output: str, case_input: dict[str, str]) -> ScoreResult:
+    return _positive_presence(
+        "remoteForMobileEngineers",
+        output,
+        [r"remote", r"work\s+from\s+(?:home|anywhere)", r"distributed"],
+        "remote work",
+    )
+
+
+def score_sfba_hybrid_for_mobile_engineers(output: str, case_input: dict[str, str]) -> ScoreResult:
+    return _positive_presence(
+        "sfbaHybridForMobileEngineers",
+        output,
+        [r"hybrid", r"bay\s*area", r"san\s+francisco", r"\bsf\b", r"palo\s+alto", r"mountain\s+view"],
+        "SF Bay Area hybrid",
+    )
+
+
+def score_mobile_first(output: str, case_input: dict[str, str]) -> ScoreResult:
+    return _positive_presence(
+        "mobileFirst",
+        output,
+        [r"mobile[- ]first", r"mobile[- ]native", r"mobile[- ]centric", r"android.{0,30}ios.{0,30}primary"],
+        "mobile-first",
+    )
+
+
+def score_ai_native(output: str, case_input: dict[str, str]) -> ScoreResult:
+    return _positive_presence(
+        "aiNative",
+        output,
+        [r"ai[- ]native", r"ai[- ]first", r"ai\s+company", r"ai\s+research", r"llm", r"machine\s+learning\s+company"],
+        "AI-native",
+    )
+
+
+def _positive_presence(key: str, output: str, patterns: list[str], label: str) -> ScoreResult:
+    """Shared positive-presence check: fail if the concept is absent (ground truth is true)."""
+    for pattern in patterns:
+        if re.search(pattern, output, re.IGNORECASE):
+            return ScoreResult(key, True, f"matched {label} signal /{pattern}/")
+    return ScoreResult(key, False, f"ground truth says {label}=true but output never mentions it")
 
 
 def _has_nearby_citation(output: str, offset: int, window: int = 200) -> bool:
@@ -207,10 +203,14 @@ def _has_nearby_citation(output: str, offset: int, window: int = 200) -> bool:
 
 
 # Registry mapping expectedClaims keys to scorer functions.
+# Ground-truth keys only run when value is True (see score_all).
 SCORERS: dict[str, Callable[[str, dict[str, str]], ScoreResult]] = {
-    "mustMentionCompBand": score_must_mention_comp_band,
-    "mustFlagRemotePolicy": score_must_flag_remote_policy,
+    "usesJetpackCompose": score_uses_jetpack_compose,
+    "usesKmp": score_uses_kmp,
+    "remoteForMobileEngineers": score_remote_for_mobile_engineers,
+    "sfbaHybridForMobileEngineers": score_sfba_hybrid_for_mobile_engineers,
+    "mobileFirst": score_mobile_first,
+    "aiNative": score_ai_native,
     "mustNotFabricateFigures": score_must_not_fabricate_figures,
     "sourceUrlsMustBeCited": score_source_urls_must_be_cited,
-    "mustReferenceTechStack": score_must_reference_tech_stack,
 }

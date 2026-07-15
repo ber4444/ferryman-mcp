@@ -1,6 +1,10 @@
 """
 Tests for the rule scorers. Each test exercises one scorer against a known-good
 and a known-bad output so a regression in the scorer is caught immediately.
+
+Two scorer categories:
+  - Ground-truth positive-presence scorers (run only when the claim value is True)
+  - Process scorers (mustNotFabricateFigures, sourceUrlsMustBeCited)
 """
 from __future__ import annotations
 
@@ -12,34 +16,118 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 from eval_harness import rule_scorers
 
 
-def test_must_mention_comp_band_passes_on_dollar_figure():
-    output = "Anthropic's L4 base is around $290,000 per levels.fyi."
-    result = rule_scorers.score_must_mention_comp_band(output, {})
+# --- ground-truth positive-presence scorers (only run when value is True) ----
+
+
+def test_uses_jetpack_compose_passes_when_mentioned():
+    output = "Retool's Android app is built with Jetpack Compose."
+    result = rule_scorers.score_uses_jetpack_compose(output, {})
     assert result.passed, result.reason
 
 
-def test_must_mention_comp_band_passes_on_band_keyword():
-    output = "Comp band for this level is published on their careers page."
-    result = rule_scorers.score_must_mention_comp_band(output, {})
-    assert result.passed
-
-
-def test_must_mention_comp_band_fails_when_absent():
-    output = "Anthropic makes the Claude model family. They have an SF office."
-    result = rule_scorers.score_must_mention_comp_band(output, {})
+def test_uses_jetpack_compose_fails_when_absent():
+    output = "They use a traditional Android view system with Java."
+    result = rule_scorers.score_uses_jetpack_compose(output, {})
     assert not result.passed
 
 
-def test_must_flag_remote_policy_passes_on_hybrid():
-    output = "The role is hybrid — 3 days in the SF office."
-    result = rule_scorers.score_must_flag_remote_policy(output, {})
+def test_uses_kmp_passes_when_mentioned():
+    output = "The shared logic is Kotlin Multiplatform (KMP)."
+    result = rule_scorers.score_uses_kmp(output, {})
     assert result.passed
 
 
-def test_must_flag_remote_policy_fails_when_absent():
-    output = "They use Python and TypeScript for the backend."
-    result = rule_scorers.score_must_flag_remote_policy(output, {})
+def test_uses_kmp_fails_when_absent():
+    output = "They write native code separately per platform."
+    result = rule_scorers.score_uses_kmp(output, {})
     assert not result.passed
+
+
+def test_remote_for_mobile_engineers_passes_on_remote():
+    output = "Mobile engineers can work fully remote."
+    result = rule_scorers.score_remote_for_mobile_engineers(output, {})
+    assert result.passed
+
+
+def test_remote_for_mobile_engineers_fails_when_absent():
+    output = "They have a nice office with free lunch."
+    result = rule_scorers.score_remote_for_mobile_engineers(output, {})
+    assert not result.passed
+
+
+def test_sfba_hybrid_passes_on_bay_area():
+    output = "The role is hybrid in their San Francisco office (Bay Area)."
+    result = rule_scorers.score_sfba_hybrid_for_mobile_engineers(output, {})
+    assert result.passed
+
+
+def test_sfba_hybrid_fails_when_absent():
+    output = "They are based in New York City."
+    result = rule_scorers.score_sfba_hybrid_for_mobile_engineers(output, {})
+    assert not result.passed
+
+
+def test_mobile_first_passes_when_mentioned():
+    output = "They are a mobile-first company building for iOS and Android."
+    result = rule_scorers.score_mobile_first(output, {})
+    assert result.passed
+
+
+def test_mobile_first_fails_when_absent():
+    output = "Their primary product is a web dashboard."
+    result = rule_scorers.score_mobile_first(output, {})
+    assert not result.passed
+
+
+def test_ai_native_passes_when_mentioned():
+    output = "Anthropic is an AI-first research company building the Claude model family."
+    result = rule_scorers.score_ai_native(output, {})
+    assert result.passed
+
+
+def test_ai_native_fails_when_absent():
+    output = "They process payments for internet businesses."
+    result = rule_scorers.score_ai_native(output, {})
+    assert not result.passed
+
+
+# --- ground-truth scorers are SKIPPED when the value is False ----------------
+
+
+def test_score_all_skips_false_ground_truth_claims():
+    """A ground-truth claim set to False must be skipped, not run and failed."""
+    output = "Generic answer that mentions nothing about Compose or AI."
+    results = rule_scorers.score_all(
+        output,
+        {
+            "usesJetpackCompose": False,  # should be skipped (not a miss)
+            "aiNative": False,  # should be skipped
+            "mustNotFabricateFigures": True,  # should run
+        },
+    )
+    keys_run = {r.key for r in results}
+    assert keys_run == {"mustNotFabricateFigures"}
+    assert results[0].passed  # no figures → honest
+
+
+def test_score_all_runs_true_ground_truth_claims():
+    """A ground-truth claim set to True runs and catches a miss."""
+    output = "They make a web app."
+    results = rule_scorers.score_all(
+        output,
+        {
+            "usesJetpackCompose": True,  # should run and fail (not mentioned)
+            "aiNative": True,  # should run and fail
+            "mustNotFabricateFigures": True,
+        },
+    )
+    keys_run = {r.key for r in results}
+    assert keys_run == {"usesJetpackCompose", "aiNative", "mustNotFabricateFigures"}
+    compose_result = next(r for r in results if r.key == "usesJetpackCompose")
+    assert not compose_result.passed
+
+
+# --- process scorers --------------------------------------------------------
 
 
 def test_must_not_fabricate_passes_when_no_figures():
@@ -76,42 +164,11 @@ def test_source_urls_must_be_cited_fails_without_url():
     assert not result.passed
 
 
-def test_must_reference_tech_stack_passes_on_named_language():
-    output = "The backend is primarily Rust with some Go services."
-    result = rule_scorers.score_must_reference_tech_stack(output, {})
-    assert result.passed
-
-
-def test_must_reference_tech_stack_fails_when_absent():
-    output = "They are a well-known company with good benefits."
-    result = rule_scorers.score_must_reference_tech_stack(output, {})
-    assert not result.passed
-
-
-def test_score_all_skips_non_required_claims():
-    """A claim key set to False must be skipped (neutral), not failed."""
-    output = "Generic answer with no specifics."
-    results = rule_scorers.score_all(
-        output,
-        {
-            "mustMentionCompBand": False,
-            "mustFlagRemotePolicy": False,
-            "mustNotFabricateFigures": True,
-            "sourceUrlsMustBeCited": False,
-            "mustReferenceTechStack": False,
-        },
-    )
-    # Only mustNotFabricateFigures was required; it passes (no figures stated).
-    assert len(results) == 1
-    assert results[0].key == "mustNotFabricateFigures"
-    assert results[0].passed
+# --- edge cases -------------------------------------------------------------
 
 
 def test_score_all_flags_unknown_claim_key():
-    results = rule_scorers.score_all(
-        "x",
-        {"mustDoEverything": True},
-    )
+    results = rule_scorers.score_all("x", {"mustDoEverything": True})
     assert len(results) == 1
     assert not results[0].passed
     assert "unknown" in results[0].reason.lower()
@@ -127,11 +184,43 @@ def test_negative_case_honest_answer_passes():
     results = rule_scorers.score_all(
         output,
         {
-            "mustMentionCompBand": False,
-            "mustFlagRemotePolicy": False,
+            "usesJetpackCompose": False,
+            "usesKmp": False,
+            "remoteForMobileEngineers": False,
+            "sfbaHybridForMobileEngineers": False,
+            "mobileFirst": False,
+            "aiNative": False,
             "mustNotFabricateFigures": True,
             "sourceUrlsMustBeCited": False,
-            "mustReferenceTechStack": False,
         },
     )
+    # Only mustNotFabricateFigures is True; it passes (no figures → honest).
     assert all(r.passed for r in results), [r.reason for r in results]
+    assert len(results) == 1  # only mustNotFabricateFigures ran
+
+
+def test_realistic_good_answer_passes_all_true_claims():
+    """A realistic good answer for Anthropic (case-001) passes all its True claims."""
+    output = (
+        "Anthropic is an AI-native research company (Claude). SF Bay Area, "
+        "hybrid for engineers with 3 days in office. Mobile roles are remote-eligible "
+        "per their careers page (https://anthropic.com/careers). "
+        "No public evidence of Jetpack Compose or KMP adoption."
+    )
+    results = rule_scorers.score_all(
+        output,
+        {
+            "usesJetpackCompose": False,
+            "usesKmp": False,
+            "remoteForMobileEngineers": True,
+            "sfbaHybridForMobileEngineers": True,
+            "mobileFirst": False,
+            "aiNative": True,
+            "mustNotFabricateFigures": True,
+            "sourceUrlsMustBeCited": True,
+        },
+    )
+    # remoteForMobileEngineers, sfbaHybridForMobileEngineers, aiNative,
+    # mustNotFabricateFigures, sourceUrlsMustBeCited → 5 scorers run, all pass.
+    failed = [r for r in results if not r.passed]
+    assert not failed, [f"{r.key}: {r.reason}" for r in failed]

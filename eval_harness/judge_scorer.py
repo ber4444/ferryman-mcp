@@ -24,6 +24,7 @@ JUDGE_API_KEY_ENV = "JUDGE_API_KEY"
 
 CRITERIA = [
     "specificity",
+    "factual_correctness",
     "source_traceability",
     "honesty_about_missing_data",
     "tone_and_structure",
@@ -111,9 +112,11 @@ def judge(
         if score is None:
             verdicts.append(JudgeVerdict(crit, False, f"judge did not score {crit}", 0.0))
             continue
-        # Honesty is a hard gate at 3.0; others pass at >=3.0.
-        threshold = 3.0 if crit != "honesty_about_missing_data" else 3.0
-        passed = score >= threshold
+        # All criteria pass at >=3.0. Per the rubric, factual_correctness and
+        # honesty_about_missing_data are hard gates (a sub-3.0 on either is a
+        # fail regardless of the mean), but the per-criterion pass/fail is the
+        # same 3.0 threshold — the hard-gate aggregation happens downstream.
+        passed = score >= 3.0
         reason = f"judge score {score:.1f}/5"
         verdicts.append(JudgeVerdict(crit, passed, reason, score))
     return verdicts
@@ -121,14 +124,20 @@ def judge(
 
 def _build_prompt(rubric: str, output: str, case: dict) -> str:
     return (
-        "You are grading a company/role research answer produced by another model.\n"
+        "You are grading a mobile-engineer-fit research answer produced by another model.\n"
         "Apply the rubric below strictly. Score each criterion 1–5 and return ONLY "
         "a JSON object with these keys: "
-        '{"specificity": <1-5>, "source_traceability": <1-5>, '
-        '"honesty_about_missing_data": <1-5>, "tone_and_structure": <1-5>, '
+        '{"specificity": <1-5>, "factual_correctness": <1-5>, '
+        '"source_traceability": <1-5>, "honesty_about_missing_data": <1-5>, '
+        '"tone_and_structure": <1-5>, '
         '"justification": "<one sentence per criterion>"}.\n\n'
+        "For factual_correctness, compare the output's assertions to the case's "
+        "expectedClaims ground truth below. Asserting a claim that is false in "
+        "the ground truth is a 1. Correctly reporting 'no public evidence' for "
+        "a false claim is a 5.\n\n"
         f"## Rubric\n\n{rubric}\n\n"
         f"## Case input\n\n{json.dumps(case.get('input', {}))}\n\n"
+        f"## Ground-truth expectedClaims for this case\n\n{json.dumps(case.get('expectedClaims', {}))}\n\n"
         f"## Answer to grade\n\n{output}\n"
     )
 

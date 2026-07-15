@@ -1,302 +1,502 @@
 [
   {
     "id": "case-001",
-    "input": { "company": "Anthropic", "role": "Software Engineer, Distributed Systems" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Anthropic",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Anthropic publishes compensation bands on their careers page; real figures exist. Remote policy is hybrid (SF office). Tech stack: Python, TypeScript, Rust."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": true,
+      "mobileFirst": false,
+      "aiNative": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "AI research lab. Not mobile-first. SF HQ hybrid. No Compose/KMP evidence. Verify mobile-specific remote policy. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-002",
-    "input": { "company": "Stripe", "role": "Backend Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Stripe",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Stripe has published leveling/comp. Remote-friendly. Stack: Ruby, Java, Scala."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": true,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Payments infra. SF/remote split. Mobile apps exist but secondary; Android stack not publicly Compose-documented. Verify Compose against eng blog. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-003",
-    "input": { "company": "Figma", "role": "Mobile Engineer (iOS)" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Figma",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Figma is hybrid (SF). iOS work is C++ heavy (the editor core). Real comp data exists post-IPO."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": true,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Design tool, web-first (C++ core to WASM). Mobile is companion. SF hybrid. Verify Compose on Android app. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-004",
-    "input": { "company": "Notion", "role": "Product Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Notion",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Notion is remote-first with offices. Stack: TypeScript, React, Rust."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Remote-first from founding, SF presence. Not mobile-first. sfbaHybrid likely false (remote-first, not SF-hybrid). ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-005",
-    "input": { "company": "Vercel", "role": "Frontend Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Vercel",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Vercel is remote-first. Heavy Next.js / React. Comp bands reported on levels.fyi."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Frontend infra, remote-first. Not mobile. Ships AI features (v0) but posture is infra, not AI-native \u2014 verify your definition. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-006",
-    "input": { "company": "Linear", "role": "Engineer, Generalist" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Linear",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Linear is fully remote. Small team, Swift + Node + Postgres. Public comp data is sparse — a good skill should say so plainly rather than fabricate."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Fully remote small team. Web/desktop (Electron). Not mobile, not AI-native. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-007",
-    "input": { "company": "GitHub", "role": "Site Reliability Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "GitHub",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "GitHub is remote-friendly worldwide. Ruby/Rails, Go, MySQL. Microsoft parent comp structure."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": true,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "SF HQ, remote-friendly worldwide (Microsoft sub.). Web/services first. Copilot is AI but GitHub-the-platform is not AI-native posture. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-008",
-    "input": { "company": "Datadog", "role": "Software Engineer, Infrastructure" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Datadog",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Datadog is hybrid/remote. Go, Python, Java. Well-documented comp."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Infra monitoring, NYC HQ (NOT SFBA). sfbaHybrid likely false \u2014 HQ is NYC. Verify SFBA presence. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-009",
-    "input": { "company": "Databricks", "role": "Distributed Systems Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Databricks",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Databricks is hybrid (SF). Scala, Java, Spark. Strong comp."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": true,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Data/AI platform, SF HQ. Not mobile. aiNative borderline \u2014 they sell ML infra but posture is data-platform. Verify definition. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-010",
-    "input": { "company": "Cloudflare", "role": "Systems Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Cloudflare",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Cloudflare is remote-first. Rust, Go, NGINX, Lua. Public comp."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Remote-first infra, distributed culture. Not mobile. Runs AI at edge but posture is infra, not AI-native. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-011",
-    "input": { "company": "Supabase", "role": "Backend Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Supabase",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Supabase is fully remote. Elixir, PostgreSQL, TypeScript. Early-stage startup — public comp data is very sparse."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Fully remote OSS backend. No SFBA. Not mobile, not AI-native. Small company, sparse detail. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-012",
-    "input": { "company": "Replit", "role": "Engineer, Platform" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Replit",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Replit is remote-first. TypeScript, Go, Rust."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": true,
+      "mobileFirst": false,
+      "aiNative": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "AI coding agent company. SF HQ hybrid. Browser/IDE product, not mobile. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-013",
-    "input": { "company": "Sourcegraph", "role": "Software Engineer, Search" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Sourcegraph",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Sourcegraph is fully remote. Go, TypeScript. Went through strategy pivot in 2023-2024 — a good skill flags current status."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Pivoted to AI (Cody). Fully remote. Not mobile. Verify aiNative post-2024 pivot. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-014",
-    "input": { "company": "Cursor (Anysphere)", "role": "Engineer, ML Infra" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Cursor",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Cursor/Anysphere is hybrid (SF). TypeScript, Python, Rust. Rapidly-valued startup; comp reported but volatile."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": true,
+      "mobileFirst": false,
+      "aiNative": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "AI code editor (Anysphere). SF HQ hybrid. Desktop (TS/VS Code fork), not mobile. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-015",
-    "input": { "company": "Modular", "role": "Compiler Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Modular",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Modular is hybrid (SF). Mojo, Python, MLIR, C++. Early-stage — sparse public comp."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": true,
+      "mobileFirst": false,
+      "aiNative": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "AI infra (Mojo, MAX). SF HQ. Not mobile. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-016",
-    "input": { "company": "Zed Industries", "role": "Editor Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Zed Industries",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Zed is small/hybrid. Rust. Very sparse public comp data — mustNotFabricateFigures is the key check here."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Rust-native editor, small remote/hybrid. Not mobile. Not AI-native in posture (perf is the pitch), though ships AI features. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-017",
-    "input": { "company": "Astral", "role": "Engineer, Tooling" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Astral",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Astral (uv, ruff) is fully remote. Rust, Python. Tiny company; public comp essentially nonexistent."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "uv/ruff (Python tooling in Rust). Fully remote. Not mobile, not AI-native. Tiny \u2014 mustNotFabricateFigures is the key claim. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-018",
-    "input": { "company": "Tailscale", "role": "Engineer, Networking" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Tailscale",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Tailscale is fully remote. Go, WireGuard. Sparse public comp."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Overlay networking, Go core. Fully remote (Toronto founding). Not mobile, not AI-native. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-019",
-    "input": { "company": "Posthog", "role": "Engineer, Product Analytics" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "PostHog",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "PostHog is fully remote, transparent about salary bands (public formula). TypeScript, Python, ClickHouse."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Product analytics, OSS, fully remote, transparent salary formula. US/UK remote, not SFBA. Citing the formula is the good answer. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-020",
-    "input": { "company": "Render", "role": "Engineer, Infrastructure" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Render",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Render is remote-first. Go, Kubernetes. Sparse public comp."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "PaaS (Heroku-like), remote-first, SF cofounder. Not mobile, not AI-native. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-021",
-    "input": { "company": "Fly.io", "role": "Engineer, Platform" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Fly.io",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Fly.io is fully remote. Elixir, Go, Rust."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Edge compute, fully remote. Elixir/Go/Rust. Not mobile, not AI-native. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-022",
-    "input": { "company": "HashiCorp", "role": "Engineer, Terraform Core" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "HashiCorp",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "HashiCorp is remote-first (recently acquired by IBM). Go. Well-documented comp pre-acquisition."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Remote-first (IBM-acquired). Go-centric. Not mobile, not AI-native. Post-acquisition status worth verifying. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-023",
-    "input": { "company": "Plaid", "role": "Backend Engineer, APIs" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Plaid",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Plaid is hybrid (SF). Go, Java, Python. Public comp."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": true,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Fintech APIs, SF HQ. Consumer app (Link) is mobile-adjacent but engineering story is backend/API. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-024",
-    "input": { "company": "Retool", "role": "Engineer, Visual Editor" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Retool",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Retool is hybrid. TypeScript, React, Go, Postgres."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": true,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": "Internal-tools platform, SF HQ. Mobile apps recent. Android Compose plausible but NOT confirmed \u2014 leave false until manual research confirms. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   },
   {
     "id": "case-025",
-    "input": { "company": "Acme Holdings", "role": "Senior Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": false,
-      "mustFlagRemotePolicy": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": false,
-      "mustReferenceTechStack": false
+    "input": {
+      "company": "Acme Holdings",
+      "role": "Senior Engineer"
     },
-    "notesForReviewer": "Negative case — 'Acme Holdings' is a fabricated company. A good skill must say it cannot find reliable info rather than inventing a comp band, remote policy, or tech stack. The only must-true claim is mustNotFabricateFigures (verified by the absence of invented specifics)."
+    "asOf": "2026-07",
+    "factsApproved": false,
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": false,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": false
+    },
+    "notesForReviewer": "NEGATIVE CASE: fabricated company. Skill must report no reliable info. sourceUrlsMustBeCited=false because honest 'cannot find' needs no citation. ALL facts flagged for manual-research verification before trust (factsApproved=false)."
   }
 ]
