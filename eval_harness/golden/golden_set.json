@@ -3,7 +3,7 @@
     "id": "case-001",
     "input": {
       "company": "EarnIn",
-      "role": "Senior Engineer"
+      "role": "Senior Mobile Engineer (Android)"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -17,13 +17,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for EarnIn not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-002",
     "input": {
       "company": "Step",
-      "role": "Senior Engineer"
+      "role": "Senior Mobile Software Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -37,13 +37,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Step not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-003",
     "input": {
       "company": "Colossus Tech",
-      "role": "Senior Engineer"
+      "role": "Senior Software Engineer - Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -57,13 +57,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Colossus Tech not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-004",
     "input": {
       "company": "Hims & Hers",
-      "role": "Senior Engineer"
+      "role": "Staff Engineer, AI-Assisted Engineering Practices"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -73,17 +73,17 @@
       "remoteForMobileEngineers": false,
       "sfbaHybridForMobileEngineers": false,
       "mobileFirst": false,
-      "aiNative": false,
+      "aiNative": true,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Hims & Hers not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "Role title explicitly references AI-assisted engineering."
   },
   {
     "id": "case-005",
     "input": {
       "company": "Hightouch",
-      "role": "Senior Engineer"
+      "role": "Staff Engineer, AI Productivity"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -93,17 +93,17 @@
       "remoteForMobileEngineers": false,
       "sfbaHybridForMobileEngineers": false,
       "mobileFirst": false,
-      "aiNative": false,
+      "aiNative": true,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Hightouch not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "Role title explicitly references AI productivity."
   },
   {
     "id": "case-006",
     "input": {
       "company": "Fuse Energy",
-      "role": "Senior Engineer"
+      "role": "Senior Mobile Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -117,13 +117,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Fuse Energy not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-007",
     "input": {
       "company": "Tern",
-      "role": "Senior Engineer"
+      "role": "Senior Mobile Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -137,13 +137,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Tern not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-008",
     "input": {
       "company": "Runway",
-      "role": "Senior Engineer"
+      "role": "Member of Technical Staff, Mobile Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -153,17 +153,17 @@
       "remoteForMobileEngineers": false,
       "sfbaHybridForMobileEngineers": false,
       "mobileFirst": false,
-      "aiNative": false,
+      "aiNative": true,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Runway not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "AI video generation company."
   },
   {
     "id": "case-009",
     "input": {
       "company": "Tailscale",
-      "role": "Senior Engineer"
+      "role": "Mobile Platform Developer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -177,13 +177,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Tailscale not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-010",
     "input": {
       "company": "Owner.com",
-      "role": "Senior Engineer"
+      "role": "Senior Software Engineer, Mobile Platform (Guest App)"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -197,13 +197,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Owner.com not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-011",
     "input": {
       "company": "iRhythm",
-      "role": "Senior Engineer"
+      "role": "Staff Mobile Engineer (Android)"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -217,13 +217,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for iRhythm not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-012",
     "input": {
       "company": "Attentive",
-      "role": "Senior Engineer"
+      "role": "Staff SWE, Developer Experience"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -237,13 +237,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Attentive not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-013",
     "input": {
       "company": "Goods & Services",
-      "role": "Senior Engineer"
+      "role": "Lead Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -257,13 +257,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Goods & Services not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-014",
     "input": {
       "company": "Samsara",
-      "role": "Senior Engineer"
+      "role": "Staff Mobile Engineer - Mobile Platform"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -277,13 +277,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Samsara not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-015",
     "input": {
       "company": "Grove Collaborative",
-      "role": "Senior Engineer"
+      "role": "AI-First Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -293,17 +293,17 @@
       "remoteForMobileEngineers": false,
       "sfbaHybridForMobileEngineers": false,
       "mobileFirst": false,
-      "aiNative": false,
+      "aiNative": true,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Grove Collaborative not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "Role title explicitly says 'AI-First'."
   },
   {
     "id": "case-016",
     "input": {
       "company": "Salesforce",
-      "role": "Senior Engineer"
+      "role": "Staff Software Engineer, Android - Slack Productivity Mobile"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -317,13 +317,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Salesforce not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-017",
     "input": {
       "company": "Zillow",
-      "role": "Senior Engineer"
+      "role": "Senior Software Development Engineer, Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -337,13 +337,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Zillow not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-018",
     "input": {
       "company": "SpotOn",
-      "role": "Senior Engineer"
+      "role": "Staff Software Engineer (Android)"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -357,13 +357,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for SpotOn not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-019",
     "input": {
       "company": "Pinterest",
-      "role": "Senior Engineer"
+      "role": "Sr. Software Engineer, Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -377,13 +377,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Pinterest not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-020",
     "input": {
       "company": "Airwallex",
-      "role": "Senior Engineer"
+      "role": "Staff Mobile Engineer, Spend Foundation"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -397,13 +397,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Airwallex not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-021",
     "input": {
       "company": "Perchwell",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer II"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -417,13 +417,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Perchwell not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-022",
     "input": {
       "company": "Upstart",
-      "role": "Senior Engineer"
+      "role": "Principal Mobile Engineer, Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -437,13 +437,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Upstart not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-023",
     "input": {
       "company": "Cantina",
-      "role": "Senior Engineer"
+      "role": "Android Engineer (senior-staff levels)"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -453,17 +453,17 @@
       "remoteForMobileEngineers": false,
       "sfbaHybridForMobileEngineers": false,
       "mobileFirst": false,
-      "aiNative": false,
+      "aiNative": true,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Cantina not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "AI avatar/social company."
   },
   {
     "id": "case-024",
     "input": {
       "company": "tilt finance",
-      "role": "Senior Engineer"
+      "role": "Senior Mobile Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -477,13 +477,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for tilt finance not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-025",
     "input": {
       "company": "Sekai",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer, Native Platform"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -493,17 +493,17 @@
       "remoteForMobileEngineers": false,
       "sfbaHybridForMobileEngineers": false,
       "mobileFirst": false,
-      "aiNative": false,
+      "aiNative": true,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Sekai not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "AI storytelling company."
   },
   {
     "id": "case-026",
     "input": {
       "company": "Raptive",
-      "role": "Senior Engineer"
+      "role": "Sr. Mobile Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -517,13 +517,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Raptive not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-027",
     "input": {
       "company": "Walmart",
-      "role": "Senior Engineer"
+      "role": "Senior Software Engineer, Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -537,33 +537,33 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Walmart not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-028",
     "input": {
       "company": "Rocket",
-      "role": "Senior Engineer"
+      "role": "Hybrid Staff Software Mobile Engineer - Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
     "expectedClaims": {
       "usesJetpackCompose": false,
       "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
+      "remoteForMobileEngineers": true,
+      "sfbaHybridForMobileEngineers": true,
       "mobileFirst": false,
       "aiNative": false,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Rocket not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "Role title explicitly says 'Hybrid' \u2014 remote-eligible with SF Bay Area office expectation."
   },
   {
     "id": "case-029",
     "input": {
       "company": "Ford",
-      "role": "Senior Engineer"
+      "role": "Senior Software Development Engineer, Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -577,13 +577,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Ford not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-030",
     "input": {
       "company": "NinjaOne",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -597,13 +597,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for NinjaOne not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-031",
     "input": {
       "company": "Block",
-      "role": "Senior Engineer"
+      "role": "Staff Android Software Engineer, Cash App Consumer Platform"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -617,13 +617,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Block not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-032",
     "input": {
       "company": "Eight Sleep",
-      "role": "Senior Engineer"
+      "role": "Senior Software Engineer - Mobile (Android)"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -637,13 +637,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Eight Sleep not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-033",
     "input": {
       "company": "Wonderly",
-      "role": "Senior Engineer"
+      "role": "Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -657,13 +657,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Wonderly not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-034",
     "input": {
       "company": "DroneDeploy",
-      "role": "Senior Engineer"
+      "role": "Senior Software Engineer, Mobile"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -677,13 +677,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for DroneDeploy not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-035",
     "input": {
       "company": "Toast",
-      "role": "Senior Engineer"
+      "role": "Senior Software Engineer, Mobile DevOps"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -697,13 +697,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Toast not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-036",
     "input": {
       "company": "Canary Technologies",
-      "role": "Senior Engineer"
+      "role": "Senior Mobile SDK Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -717,13 +717,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Canary Technologies not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-037",
     "input": {
       "company": "Drivemode (Honda)",
-      "role": "Senior Engineer"
+      "role": "Staff Mobile Software Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -737,13 +737,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Drivemode (Honda) not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-038",
     "input": {
       "company": "TextNow",
-      "role": "Senior Engineer"
+      "role": "Tech Lead, Mobile Core Network Engineering"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -757,13 +757,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for TextNow not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-039",
     "input": {
       "company": "Reddit",
-      "role": "Senior Engineer"
+      "role": "Staff Android Engineer, Home Experience"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -777,13 +777,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Reddit not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-040",
     "input": {
       "company": "Ditto",
-      "role": "Senior Engineer"
+      "role": "Senior Software Engineer, Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -797,13 +797,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Ditto not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-041",
     "input": {
       "company": "Babylist",
-      "role": "Senior Engineer"
+      "role": "Senior Mobile Engineer, Health"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -817,13 +817,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Babylist not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-042",
     "input": {
       "company": "Amplitude",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -837,13 +837,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Amplitude not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-043",
     "input": {
       "company": "Oura",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -857,13 +857,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Oura not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "Company recently filed for IPO."
   },
   {
     "id": "case-044",
     "input": {
       "company": "Doximity",
-      "role": "Senior Engineer"
+      "role": "Senior Software Engineer, Android (Kotlin)"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -877,13 +877,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Doximity not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-045",
     "input": {
       "company": "Greenlight",
-      "role": "Senior Engineer"
+      "role": "Staff Android Systems Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -897,13 +897,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Greenlight not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-046",
     "input": {
       "company": "eBay",
-      "role": "Senior Engineer"
+      "role": "MTS1, Android Engineer, eBay Live"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -917,13 +917,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for eBay not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-047",
     "input": {
       "company": "Anthropic",
-      "role": "Senior Engineer"
+      "role": "Staff Software Engineer, Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -933,17 +933,17 @@
       "remoteForMobileEngineers": false,
       "sfbaHybridForMobileEngineers": false,
       "mobileFirst": false,
-      "aiNative": false,
+      "aiNative": true,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Anthropic not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "AI research company."
   },
   {
     "id": "case-048",
     "input": {
       "company": "Harvey",
-      "role": "Senior Engineer"
+      "role": "Staff Software Engineer, Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -953,17 +953,17 @@
       "remoteForMobileEngineers": false,
       "sfbaHybridForMobileEngineers": false,
       "mobileFirst": false,
-      "aiNative": false,
+      "aiNative": true,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Harvey not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "AI legal-tech company."
   },
   {
     "id": "case-049",
     "input": {
       "company": "Meta",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -977,13 +977,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Meta not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-050",
     "input": {
       "company": "Adobe",
-      "role": "Senior Engineer"
+      "role": "Senior Product Engineer \u2014 Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -997,13 +997,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Adobe not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-051",
     "input": {
       "company": "Thrive Market",
-      "role": "Senior Engineer"
+      "role": "Senior Software Engineer, Mobile"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1017,13 +1017,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Thrive Market not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-052",
     "input": {
       "company": "DraftKings",
-      "role": "Senior Engineer"
+      "role": "Lead Software Engineer, Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1037,13 +1037,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for DraftKings not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-053",
     "input": {
       "company": "OpenAI",
-      "role": "Senior Engineer"
+      "role": "Android Engineer, Growth"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1053,17 +1053,17 @@
       "remoteForMobileEngineers": false,
       "sfbaHybridForMobileEngineers": false,
       "mobileFirst": false,
-      "aiNative": false,
+      "aiNative": true,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for OpenAI not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "AI research company."
   },
   {
     "id": "case-054",
     "input": {
       "company": "SeatGeek",
-      "role": "Senior Engineer"
+      "role": "Senior Mobile Engineer, Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1077,13 +1077,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for SeatGeek not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-055",
     "input": {
       "company": "Life360",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1097,13 +1097,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Life360 not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-056",
     "input": {
       "company": "Stripe",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1111,19 +1111,19 @@
       "usesJetpackCompose": false,
       "usesKmp": false,
       "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": true,
       "mobileFirst": false,
       "aiNative": false,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Stripe not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "Company policy: all Android roles are in-office (SF HQ). Not remote-eligible."
   },
   {
     "id": "case-057",
     "input": {
       "company": "Classpass",
-      "role": "Senior Engineer"
+      "role": "Sr Software Engineer - Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1137,13 +1137,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Classpass not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-058",
     "input": {
       "company": "xAI",
-      "role": "Senior Engineer"
+      "role": "Mobile Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1153,17 +1153,17 @@
       "remoteForMobileEngineers": false,
       "sfbaHybridForMobileEngineers": false,
       "mobileFirst": false,
-      "aiNative": false,
+      "aiNative": true,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for xAI not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "AI company."
   },
   {
     "id": "case-059",
     "input": {
       "company": "Dayforce",
-      "role": "Senior Engineer"
+      "role": "Mobile Software Developer, Lead (Android)"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1177,13 +1177,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Dayforce not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-060",
     "input": {
       "company": "Dropbox",
-      "role": "Senior Engineer"
+      "role": "Android Software Engineer, Mobile Experience"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1197,13 +1197,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Dropbox not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-061",
     "input": {
       "company": "Trust Wallet",
-      "role": "Senior Engineer"
+      "role": "Senior Android / Kotlin Engineer (Web3 - Trading)"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1217,13 +1217,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Trust Wallet not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-062",
     "input": {
       "company": "Twilio",
-      "role": "Senior Engineer"
+      "role": "Android Engineer - P3 - Security + Identity"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1237,13 +1237,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Twilio not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-063",
     "input": {
       "company": "Netflix",
-      "role": "Senior Engineer"
+      "role": "Software Engineer 5 - Android & Backend, Games"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1257,13 +1257,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Netflix not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-064",
     "input": {
       "company": "Fanatics",
-      "role": "Senior Engineer"
+      "role": "Staff Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1277,13 +1277,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Fanatics not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-065",
     "input": {
       "company": "Airbnb",
-      "role": "Senior Engineer"
+      "role": "Staff Software Engineer, Android Platform Frameworks"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1297,13 +1297,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Airbnb not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-066",
     "input": {
       "company": "Yahoo",
-      "role": "Senior Engineer"
+      "role": "Senior Android Apps Engineer - Yahoo Mail"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1317,13 +1317,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Yahoo not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-067",
     "input": {
       "company": "Maven",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1337,13 +1337,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Maven not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-068",
     "input": {
       "company": "Thrive Global",
-      "role": "Senior Engineer"
+      "role": "Senior Software Engineer, Mobile"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1357,13 +1357,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Thrive Global not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-069",
     "input": {
       "company": "RevenueCat",
-      "role": "Senior Engineer"
+      "role": "Senior Android SDK Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1377,13 +1377,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for RevenueCat not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-070",
     "input": {
       "company": "Hook",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1397,13 +1397,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Hook not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-071",
     "input": {
       "company": "Tixr",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1417,13 +1417,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Tixr not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-072",
     "input": {
       "company": "Nestmed",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1437,13 +1437,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Nestmed not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-073",
     "input": {
       "company": "Robinhood",
-      "role": "Senior Engineer"
+      "role": "Senior Software Engineer, Android (US)"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1451,19 +1451,19 @@
       "usesJetpackCompose": false,
       "usesKmp": false,
       "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": true,
       "mobileFirst": false,
       "aiNative": false,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Robinhood not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "Company policy: strict return-to-office. SF HQ."
   },
   {
     "id": "case-074",
     "input": {
       "company": "WeightWatchers",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1477,13 +1477,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for WeightWatchers not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-075",
     "input": {
       "company": "Lenovo",
-      "role": "Senior Engineer"
+      "role": "Sr Engineer - AI Experiences"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1493,17 +1493,17 @@
       "remoteForMobileEngineers": false,
       "sfbaHybridForMobileEngineers": false,
       "mobileFirst": false,
-      "aiNative": false,
+      "aiNative": true,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Lenovo not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "Role title explicitly references AI experiences."
   },
   {
     "id": "case-076",
     "input": {
       "company": "Gusto",
-      "role": "Senior Engineer"
+      "role": "Staff Mobile Software Engineer, Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1517,13 +1517,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Gusto not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-077",
     "input": {
       "company": "Instacart",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1537,13 +1537,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Instacart not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-078",
     "input": {
       "company": "Ramp",
-      "role": "Senior Engineer"
+      "role": "Mobile Engineer, Android"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1557,13 +1557,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Ramp not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-079",
     "input": {
       "company": "XMTP Labs",
-      "role": "Senior Engineer"
+      "role": "Android Engineer (Convos)"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1577,13 +1577,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for XMTP Labs not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-080",
     "input": {
       "company": "Whatnot",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1591,19 +1591,19 @@
       "usesJetpackCompose": false,
       "usesKmp": false,
       "remoteForMobileEngineers": false,
-      "sfbaHybridForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": true,
       "mobileFirst": false,
       "aiNative": false,
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Whatnot not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "Company policy: requires living within 50 miles of SF. SF Bay Area."
   },
   {
     "id": "case-081",
     "input": {
       "company": "Fireblocks",
-      "role": "Senior Engineer"
+      "role": "Mobile Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1617,13 +1617,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Fireblocks not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-082",
     "input": {
       "company": "OpenSea",
-      "role": "Senior Engineer"
+      "role": "Staff Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1637,13 +1637,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for OpenSea not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-083",
     "input": {
       "company": "Hatch Sleep",
-      "role": "Senior Engineer"
+      "role": "Lead Software Engineer - Mobile"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1657,13 +1657,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Hatch Sleep not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-084",
     "input": {
       "company": "Franki",
-      "role": "Senior Engineer"
+      "role": "Staff Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1677,13 +1677,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Franki not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-085",
     "input": {
       "company": "Speechify",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1697,13 +1697,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Speechify not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   },
   {
     "id": "case-086",
     "input": {
       "company": "Speak",
-      "role": "Senior Engineer"
+      "role": "Senior Android Engineer"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1717,13 +1717,13 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Speak not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": "Company culture is in-person. Location not specified in source data."
   },
   {
     "id": "case-087",
     "input": {
       "company": "Zwift",
-      "role": "Senior Engineer"
+      "role": "Senior Software Engineer, Mobile"
     },
     "asOf": "2026-07",
     "factsApproved": false,
@@ -1737,6 +1737,6 @@
       "mustNotFabricateFigures": true,
       "sourceUrlsMustBeCited": true
     },
-    "notesForReviewer": "Ground-truth values for Zwift not yet researched \u2014 all six booleans default false. Set via manual research, then flip factsApproved to true."
+    "notesForReviewer": ""
   }
 ]
