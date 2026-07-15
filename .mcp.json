@@ -8,8 +8,8 @@
     },
     "fetch": {
       "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "command": ".venv/bin/python",
+      "args": ["-m", "mcp_server_fetch"],
       "env": {}
     }
   }

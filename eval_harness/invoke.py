@@ -21,6 +21,7 @@ import os
 import shutil
 import subprocess
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any
 
 DEFAULT_SKILL = "company-role-research"
@@ -152,9 +153,15 @@ def _invoke_subprocess(
     binary: str,
 ) -> InvocationResult:
     """Shell out to the installed ferry CLI's `run` command."""
+    # Resolve the binary: check PATH first, then the Gradle install location.
+    resolved = binary
     if shutil.which(binary) is None:
-        raise FileNotFoundError(f"ferry binary not found on PATH: {binary}")
-    cmd = [binary, "run", "--skill", skill, "--input", json.dumps(skill_input)]
+        gradle_path = Path(__file__).resolve().parent.parent / "build" / "install" / "ferry" / "bin" / "ferry"
+        if gradle_path.exists():
+            resolved = str(gradle_path)
+        else:
+            raise FileNotFoundError(f"ferry binary not found on PATH or at {gradle_path}")
+    cmd = [resolved, "run", "--skill", skill, "--input", json.dumps(skill_input)]
     if provider:
         cmd += ["--provider", provider]
     completed = subprocess.run(cmd, capture_output=True, text=True, timeout=120)

@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Eval harness for ferryman skills — rule-based and LLM-judge scorers over a human-authored golden set."
 requires-python = ">=3.11"
 license = { text = "Apache-2.0" }
-dependencies = []
+dependencies = ["mcp-server-fetch>=2026.7.10"]
 
 # Explicit package config — golden/ and judge/ are data dirs (JSON + Markdown),
 # not importable Python packages. Only eval_harness/ (with its __init__.py) is.
