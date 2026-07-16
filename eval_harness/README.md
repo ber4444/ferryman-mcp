@@ -109,9 +109,10 @@ per-provider aggregate:
 - **Pricing date** — when the per-token price was last verified against the
   live docs. Re-verify before trusting cost numbers older than a few weeks.
 
-**Why cost is labeled "est.":** the Kotlin providers don't yet parse `usage`
-from the provider response, so token counts are estimated (chars ÷ 4). When real
-`usage` data flows through `CompletionResult → SkillResult → InvokeResponse`,
-the same `pricing.json` formula computes real cost — only the token source
-changes. The latency number is already real.
+**Why cost is labeled "est.":** the Kotlin provider now parses the `usage`
+block and threads real token counts through `CompletionResult → SkillResult →
+InvokeResponse` (HTTP) / a `_meta` JSON line (subprocess) into `estimate_cost`,
+which uses them when present. Rows where the provider reported no `usage` (or
+runs from before this propagation landed) fall back to chars ÷ 4. The latency
+number is always real (wall-clock in the Python adapter).
 
