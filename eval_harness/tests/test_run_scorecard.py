@@ -1,7 +1,8 @@
 """
 Tests for the runner (run_scorecard.py): per-case exception isolation, provider
-ordering, and incremental writes. These are hermetic — no live ferry binary, no
-API keys — by monkeypatching run_one so it returns canned CaseResults or raises.
+ordering, incremental writes, and token-based cost estimation. These are
+hermetic — no live ferry binary, no API keys — by monkeypatching run_one so it
+returns canned CaseResults or raises.
 """
 from __future__ import annotations
 
@@ -10,6 +11,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
+from eval_harness import invoke as invoke_mod
 from eval_harness import run_scorecard
 from eval_harness.run_scorecard import CaseResult
 
@@ -86,3 +88,56 @@ def test_run_all_calls_on_provider_done_after_each_provider(monkeypatch):
 
     # After provider 1 (llama): 2 results. After provider 2 (zai): 4. After 3 (gemini): 6.
     assert snapshots == [2, 4, 6]
+
+
+# --- token-based cost estimation -------------------------------------------
+
+
+_PRICING = {
+    "zai-glm": {
+        "inputPricePerMillionTokens": 1.0,
+        "outputPricePerMillionTokens": 4.0,
+        "dateChecked": "2026-07-15",
+    },
+}
+
+
+def _invocation(*, input_tokens=None, output_tokens=None, input_chars=0, output_chars=0, provider="zai-glm"):
+    return invoke_mod.InvocationResult(
+        output="",
+        provider=provider,
+        model="m",
+        input_tokens=input_tokens,
+        output_tokens=output_tokens,
+        input_chars=input_chars,
+        output_chars=output_chars,
+    )
+
+
+def test_estimate_cost_uses_real_tokens_when_present():
+    """Real usage token counts produce an exact cost (no chars/4 estimate)."""
+    result = _invocation(input_tokens=1000, output_tokens=500, input_chars=99999, output_chars=99999)
+    cost = run_scorecard.estimate_cost(result, _PRICING)
+    # 1000 * 1.0/M + 500 * 4.0/M = 0.001 + 0.002 = 0.003
+    assert cost == 0.003
+
+
+def test_estimate_cost_falls_back_to_chars_when_tokens_absent():
+    """Without real tokens, cost is the chars/4 estimate."""
+    result = _invocation(input_chars=400, output_chars=800)  # -> 100 / 200 tokens
+    cost = run_scorecard.estimate_cost(result, _PRICING)
+    # 100 * 1.0/M + 200 * 4.0/M = 0.0001 + 0.0008 = 0.0009
+    assert cost == 0.0009
+
+
+def test_estimate_cost_returns_none_when_provider_unpriced():
+    """A provider absent from pricing.json has no cost."""
+    result = _invocation(provider="unpriced", input_tokens=10, output_tokens=10)
+    assert run_scorecard.estimate_cost(result, _PRICING) is None
+
+
+def test_estimate_cost_real_tokens_override_chars_even_if_both_set():
+    """When real tokens are present they win regardless of char counts."""
+    real = _invocation(input_tokens=10, output_tokens=10, input_chars=4000, output_chars=4000)
+    cost_real = run_scorecard.estimate_cost(real, _PRICING)
+    assert cost_real == 0.00005  # 10*1.0/M + 10*4.0/M = 0.00001 + 0.00004

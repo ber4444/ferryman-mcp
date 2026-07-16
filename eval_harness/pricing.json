@@ -2,23 +2,23 @@
   "_comment": "Recorded per-token pricing for providers the harness can score cost against. Per the z.ai/GLM addendum hard rule #1, every entry cites a sourceUrl and dateChecked — do not hardcode a price from memory, re-verify against the live docs before trusting it.",
   "providers": {
     "zai-glm": {
-      "model": "glm-5.2",
+      "model": "glm-5-turbo",
       "family": "glm",
-      "inputPricePerMillionTokens": 1.40,
-      "outputPricePerMillionTokens": 4.40,
-      "cachedInputPricePerMillionTokens": 0.26,
+      "inputPricePerMillionTokens": 1.20,
+      "outputPricePerMillionTokens": 4.00,
+      "cachedInputPricePerMillionTokens": 0.24,
       "cachedInputNote": "limited availability; harness uses the uncached input price by default",
-      "dateChecked": "2026-07-13",
+      "dateChecked": "2026-07-16",
       "sourceUrl": "https://docs.z.ai/guides/overview/pricing"
     },
     "gemini": {
-      "model": "gemini-3.5-flash",
+      "model": "gemini-3.1-flash-lite",
       "family": "gemini",
-      "inputPricePerMillionTokens": 0.30,
-      "outputPricePerMillionTokens": 2.50,
-      "cachedInputPricePerMillionTokens": 0.075,
+      "inputPricePerMillionTokens": 0.25,
+      "outputPricePerMillionTokens": 1.50,
+      "cachedInputPricePerMillionTokens": 0.025,
       "cachedInputNote": "context caching tier; harness uses the uncached input price by default",
-      "dateChecked": "2026-07-15",
+      "dateChecked": "2026-07-16",
       "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "hf-llama": {

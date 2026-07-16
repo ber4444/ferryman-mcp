@@ -219,6 +219,7 @@ private data class FunctionDef(
 @Serializable
 private data class ChatCompletionResponse(
     val choices: List<Choice> = emptyList(),
+    @SerialName("usage") val usage: Usage? = null,
 ) {
     fun toResult(): CompletionResult {
         val choice =
@@ -247,9 +248,21 @@ private data class ChatCompletionResponse(
             output = message.content ?: "",
             toolCalls = calls,
             finishReason = choice.finishReason,
+            inputTokens = usage?.promptTokens,
+            outputTokens = usage?.completionTokens,
         )
     }
 }
+
+/**
+ * The `usage` block every OpenAI-compatible provider returns. Carries the real
+ * prompt/completion token counts so cost is exact rather than a chars/4 estimate.
+ */
+@Serializable
+data class Usage(
+    @SerialName("prompt_tokens") val promptTokens: Int = 0,
+    @SerialName("completion_tokens") val completionTokens: Int = 0,
+)
 
 @Serializable
 private data class Choice(
