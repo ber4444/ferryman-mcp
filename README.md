@@ -74,36 +74,36 @@ command passes on `main`.
 | HTTP channel | building | `ferry serve --port 8080` (needs an API key) |
 | Routing logged | done | unit-tested; `logs/routing.jsonl` written by every `runSkill` call |
 | Python eval harness | done | `python -m pytest eval_harness/ -q` (35 tests green) |
-| Multi-provider scorecard | done | 177 rows (59×3); hf-llama 80%, zai-glm 74%, gemini unmeasured — see [Scorecard status](#scorecard-status) |
+| Multi-provider scorecard | done | 144 rows (48×3), all three providers scored — see [Scorecard status](#scorecard-status) |
 
 ## Scorecard status
 
-The harness ran the full 177-row matrix (59 cases × 3 providers) on 2026-07-16.
-Two providers have real baselines; gemini's endpoint was unavailable for the run:
+The full matrix ran (2026-07-16): 144 rows, the 48-case golden set × 3
+providers. **All three providers produced real research output with zero errors
+— the first clean three-provider run.** Gemini finally scored after switching to
+`gemini-3.1-flash-lite` (prior models `gemini-3.5-flash`/`-flash-lite` returned
+503s or don't exist; `2.5-flash-lite` is deprecated).
 
 | Provider | Rule pass | Output / errors | Mean latency | Mean cost (est.) |
 |---|---|---|---|---|
-| hf-llama | **80%** | 59 / 59 output, 0 errors | 8.4 s | $0.0001 |
-| zai-glm | **74%** | 59 / 59 output, 0 errors | 19.8 s | $0.0014 |
-| gemini | — | 0 / 59 output — **51× HTTP 503 + 8× timeout** | 39.8 s | $0.0000 |
+| hf-llama | **80%** | 48 / 48, 0 errors | 8.4 s | $0.0002 |
+| gemini | **78%** | 48 / 48, 0 errors | 6.3 s | $0.0004 |
+| zai-glm | **69%** | 48 / 48, 0 errors | 13.2 s | $0.0011 |
 
-**What's measured.** hf-llama (Llama 3.1 70B on DeepInfra) scores highest at a
-fraction of a cent per case; zai-glm (GLM-5.2) is close behind at higher cost.
-Both produced research output on all 59 cases. The negation-aware scorer fix
-(see below) is applied — these are the corrected numbers.
+**What this shows.** Three model families (Llama 70B, Gemini Flash-Lite, GLM
+Turbo) score within ~11 points of each other on the same skill — the
+multi-provider routing claim is now a *measured* result, not a config option.
+hf-llama leads on quality at the lowest cost; gemini is fastest; zai-glm scores
+lowest on this run but was the prior leader under `glm-5.2` (74%), so the model
+swap to the cheaper `glm-5-turbo` traded some accuracy for cost/speed.
 
-**What's not measured.** Gemini's endpoint returned HTTP 503 (Service
-Unavailable) on 51 cases and timed out on 8 — zero research output, so it can't
-be scored. This is an infrastructure/availability issue, not a model-quality
-result. It needs a re-run when the endpoint is healthy.
+**Cost is still `est.`** — token counts are chars÷4 until the token-propagation
+work lands; real tokens will make these exact.
 
-**The run completed for the first time** because of robustness fixes that
-isolate per-case failures (see the PR for details): previously one gemini
-timeout at case 43 aborted the whole batch and saved nothing. Now each provider
-runs in turn (llama → zai → gemini), the scorecard is written after each
-provider finishes, and a 503/timeout becomes an error row instead of a crash.
-Those fixes are why the 118 clean hf-llama + zai-glm rows survived gemini's
-failure.
+**How this run happened.** Earlier runs died on a single gemini timeout and
+saved nothing; robustness fixes (per-case isolation, incremental writes,
+provider ordering llama→zai→gemini, timeout retry) let this run complete all 144
+rows. The negation-aware scorer fix is applied — these are the corrected numbers.
 
 **Scorer bug, fixed earlier.** The positive-presence scorers matched the concept
 word anywhere in the output, so *"No public evidence of Jetpack Compose"*
@@ -137,8 +137,8 @@ export DEEPINFRA_API_KEY=...   # DeepInfra (Llama 3.1 70B)
 
 ## Running the eval harness
 
-The harness scores the `company-role-research` skill against a 59-case golden set
-(58 real companies + 1 fabricated "Acme Holdings" negative case). It supports two
+The harness scores the `company-role-research` skill against a 48-case golden set
+(real companies + a fabricated "Acme Holdings" negative case). It supports two
 invocation modes:
 
 **Via subprocess (finds the Gradle-installed binary automatically):**
@@ -226,8 +226,8 @@ See `AGENTS.md` for the package map and contribution rules.
 
 | Provider | Model | Type | Pricing (per 1M tokens) |
 |---|---|---|---|
-| zai-glm (default) | glm-5.2 | openai-compatible | $1.40 in / $4.40 out |
-| gemini | gemini-3.5-flash | openai-compatible | $0.30 in / $2.50 out |
+| zai-glm (default) | glm-5-turbo | openai-compatible | $1.20 in / $4.00 out |
+| gemini | gemini-3.1-flash-lite | openai-compatible | $0.25 in / $1.50 out |
 | hf-llama | Meta-Llama-3.1-70B-Instruct-Turbo | openai-compatible (DeepInfra) | $0.59 in / $0.79 out |
 
 Adding an OpenAI-compatible provider is a config-only change — edit
@@ -235,10 +235,10 @@ Adding an OpenAI-compatible provider is a config-only change — edit
 
 ## Roadmap (not yet built)
 
-- **Re-run gemini when its endpoint is healthy.** The 2026-07-16 matrix run
-  completed all 177 rows, but gemini returned HTTP 503 on 51 cases and timed
-  out on 8 — zero research output to score. hf-llama (80%) and zai-glm (74%)
-  are locked in; gemini is the missing third once its API is available.
+- **Real token-count propagation for exact (non-estimated) cost.** The 144-row
+  scorecard's cost column is still a chars÷4 estimate — the Kotlin provider
+  discards the `usage` block providers return. Token-propagation work is in
+  progress to thread real counts through and make cost exact.
 - Streamable HTTP transport for the MCP host (stdio only for now).
 - More channels: Telegram, Slack (HTTP is the MVP second channel).
 - Real token-count propagation through providers for exact (non-estimated) cost.

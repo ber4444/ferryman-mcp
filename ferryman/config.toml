@@ -14,7 +14,7 @@ type = "openai-compatible"
 # z.ai GLM Coding Plan endpoint — OpenAI-compatible.
 baseUrl = "https://api.z.ai/api/coding/paas/v4"
 # glm-5.2 is z.ai's flagship coding model; verify at docs.z.ai.
-model = "glm-5.2"
+model = "glm-5-turbo"
 apiKeyEnv = "ZAI_API_KEY"
 
 [providers.gemini]
@@ -22,9 +22,13 @@ type = "openai-compatible"
 # Google Gemini OpenAI-compatible endpoint. Base URL verified at
 # https://ai.google.dev/gemini-api/docs/openai (checked 2026-07-15).
 baseUrl = "https://generativelanguage.googleapis.com/v1beta/openai"
-# gemini-2.5-flash deprecated 2026-06; gemini-3.5-flash is the replacement.
-# Verify current model at https://ai.google.dev/gemini-api/docs/deprecations
-model = "gemini-3.5-flash"
+# gemini-3.1-flash-lite — the current-generation flash-lite tier. Stable (only
+# the Preview variant was shut down 2026-05-25), supports function calling, and
+# has a 10M TPM rate limit — the headroom that should prevent the 429s/503s hit
+# by earlier models (gemini-3.5-flash-lite doesn't exist; 2.5-flash-lite is
+# deprecated for new users per the API's own message, 2026-07-16).
+# Verify at https://ai.google.dev/gemini-api/docs/models
+model = "gemini-3.1-flash-lite"
 apiKeyEnv = "GEMINI_API_KEY"
 
 [providers.hf-llama]

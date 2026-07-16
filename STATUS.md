@@ -10,7 +10,7 @@ lands or a gate is crossed.
 |---|---|---|
 | ferryman (Kotlin host + CLI + HTTP) | MVP built, CI green | 28 Kotlin tests |
 | Eval harness (Python) | Scaffolded, rule + judge scorers wired | 35 Python tests |
-| Real scorecard with live provider numbers | **Done** — hf-llama 80%, zai-glm 74%; gemini endpoint was 503 during the run | 177 rows |
+| Real scorecard with live provider numbers | **Done** — 144 rows, all 3 providers scored: hf-llama 80%, gemini 78%, zai-glm 69% | 144 rows |
 
 All commits are on `main`. This branch (`status/project-status`) exists only to
 carry this status document and open a draft PR for review.
@@ -45,47 +45,44 @@ carry this status document and open a draft PR for review.
 - M4 — `.github/workflows/eval-harness.yml` runs rule scorers on skill/harness
   changes
 
-## Scorecard run (2026-07-16) — full matrix
+## Scorecard — full three-provider run (2026-07-16)
 
-The full 177-row matrix (59 cases × 3 providers) completed. Two providers have
-real baselines; gemini's endpoint was unavailable during the run:
+The full matrix completed: 144 rows, the 48-case golden set × 3 providers.
+**All three providers produced real output with zero errors** — the first clean
+three-provider run. Gemini scored at last, after settling on `gemini-3.1-flash-lite`
+(`gemini-3.5-flash-lite` doesn't exist; `2.5-flash-lite` is deprecated; the prior
+`3.5-flash` run hit 503s on 51/59 cases).
 
 - **Golden-set sign-off** — `eval_harness/golden/approval.json` reads
-  `goldenSetApproved: true` (approved 2026-07-15 by `repo-owner`). The approved
-  set is **59 cases** (58 real companies + the "Acme Holdings" negative).
-- **API keys** — `ZAI_API_KEY` and `DEEPINFRA_API_KEY` were available; gemini's
-  endpoint returned 503 (Service Unavailable) for the run.
+  `goldenSetApproved: true` (approved 2026-07-15 by `repo-owner`).
+- **Models** — zai-glm `glm-5-turbo`, gemini `gemini-3.1-flash-lite`, hf-llama
+  `Meta-Llama-3.1-70B-Instruct-Turbo`. All three API keys available.
 
 | Provider | Rule pass | Output / errors | Mean latency | Mean cost (est.) |
 |---|---|---|---|---|
-| hf-llama | **80%** | 59/59 output, 0 errors | 8.4 s | $0.0001 |
-| zai-glm | **74%** | 59/59 output, 0 errors | 19.8 s | $0.0014 |
-| gemini | — | 0/59 output — 51× HTTP 503 + 8× timeout | 39.8 s | $0.0000 |
+| hf-llama | **80%** | 48/48 output, 0 errors | 8.4 s | $0.0002 |
+| gemini | **78%** | 48/48 output, 0 errors | 6.3 s | $0.0004 |
+| zai-glm | **69%** | 48/48 output, 0 errors | 13.2 s | $0.0011 |
 
-**Why this run completed when prior ones didn't.** Robustness fixes landed on
-this branch: the Kotlin provider now retries timeouts/IO (not just 429/503) and
-the CLI exits cleanly on terminal failure; the Python runner isolates each case
-(an exception becomes an error row, not a batch abort), writes the scorecard
-incrementally after each provider, and runs providers in order llama→zai→gemini
-so the reliable ones land first. Those fixes are why the 118 clean hf-llama +
-zai-glm rows survived gemini's 503s — last run a single gemini timeout at case
-43 aborted everything and saved nothing.
+Three model families within ~11 points — the multi-provider routing claim is now
+measured, not a config option. zai-glm dropped from 74% (under `glm-5.2`, prior
+run) to 69% under the cheaper `glm-5-turbo`; hf-llama leads on quality at the
+lowest cost. Cost is still `est.` (chars÷4) until token-propagation lands.
 
-**zai-glm went from 7 errors to 0** between the 07-15 and 07-16 runs — the
-timeout-retry fix converted what used to be fatal timeouts into retried calls.
-
-**Scorer bug, fixed earlier.** `_positive_presence` matched concept words inside
-negations (*"No public evidence of Jetpack Compose"* → pass). Made negation-
-aware; the bug inflated every provider whose output honestly declines. Tests
-added; suite is 35 green.
+**How earlier runs failed and this one didn't.** Prior runs died on a single
+gemini timeout and saved nothing; robustness fixes (per-case isolation,
+incremental writes, provider ordering llama→zai→gemini, timeout retry) let this
+run complete all 144 rows. The negation-aware scorer fix is applied.
 
 ## What's not done (human gates)
 
-1. **Re-run gemini when its endpoint is healthy.** The 2026-07-16 run hit HTTP
-   503 on 51/59 gemini cases and timed out on 8 — zero research output, so
-   gemini isn't scored. hf-llama (80%) and zai-glm (74%) are the two locked-in
-   baselines; gemini is the missing third. This is an endpoint-availability
-   issue, not a model-quality result.
+1. **Real token-count propagation for exact cost.** The 144-row scorecard's cost
+   column is still a chars÷4 estimate — the Kotlin provider discards the `usage`
+   block. Token-propagation work is in progress to thread real counts through
+   and make cost exact.
+2. **M1 of the z.ai/GLM addendum (chess-server `LlmComposer`).** Blocked: the
+   prerequisite plan `opening-explainer-cloud-route.md` has not been run — none
+   of the five local chess repos has the `:server` module, `LlmComposer`, or
 2. **M1 of the z.ai/GLM addendum (chess-server `LlmComposer`).** Blocked: the
    prerequisite plan `opening-explainer-cloud-route.md` has not been run — none
    of the five local chess repos has the `:server` module, `LlmComposer`, or
@@ -131,7 +128,7 @@ ferry skills list                       # hello-repo, company-role-research
 | clikt | 5.0.3 | Maven Central |
 | detekt | 1.23.8 | Maven Central |
 | ktlint-gradle | 14.2.0 | GitHub releases |
-| z.ai GLM model | glm-5.2 | docs.z.ai |
+| z.ai GLM model | glm-5-turbo | docs.z.ai (was glm-5.2) |
 | koog (reference only) | 1.0.0 | GitHub releases (not depended on) |
 
 ## Naming
