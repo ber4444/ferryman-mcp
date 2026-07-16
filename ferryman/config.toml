@@ -13,7 +13,8 @@ default_provider = "zai-glm"
 type = "openai-compatible"
 # z.ai GLM Coding Plan endpoint — OpenAI-compatible.
 baseUrl = "https://api.z.ai/api/coding/paas/v4"
-# glm-5.2 is z.ai's flagship coding model; verify at docs.z.ai.
+# glm-5-turbo is the cheaper turbo tier; swapped from glm-5.2 (which scored
+# higher but costs more). Verify the current model at docs.z.ai.
 model = "glm-5-turbo"
 apiKeyEnv = "ZAI_API_KEY"
 

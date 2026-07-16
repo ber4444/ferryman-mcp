@@ -3,5 +3,5 @@
   "approvedBy": "repo-owner",
   "approvedDate": "2026-07-15",
   "schemaVersion": 3,
-  "notes": "The 87-company golden set with specific role titles and derived ground-truth claims is approved. usesJetpackCompose/usesKmp default false (unconfirmed — Android != Compose). remoteForMobileEngineers/sfbaHybridForMobileEngineers derived from role titles or stated company policies where available. Per-record factsApproved field removed — approval is at the set level."
+  "notes": "The 48-case golden set (47 real companies + 1 fabricated 'Acme Holdings' negative case) with specific role titles and derived ground-truth claims is approved. usesJetpackCompose/usesKmp default false (unconfirmed — Android != Compose). remoteForMobileEngineers/sfbaHybridForMobileEngineers derived from role titles or stated company policies where available. Per-record factsApproved field removed — approval is at the set level."
 }

@@ -38,8 +38,8 @@ carry this status document and open a draft PR for review.
 - M1 — `invoke.py` (http / subprocess / auto), `rule_scorers.py` (5 deterministic
   checks), `run_scorecard.py`
 - M2 — `--all-providers` reads `config.toml` via stdlib `tomllib`; latency measured
-  end-to-end; cost computed from `pricing.json` (GLM-5.2 $1.40/M in, $4.40/M out,
-  verified 2026-07-13); per-provider aggregate row in the scorecard
+  end-to-end; cost computed from `pricing.json` (glm-5-turbo $1.20/M in, $4.00/M out,
+  verified 2026-07-16); per-provider aggregate row in the scorecard
 - M3 — judge family-exclusion (GLM never grades GLM), `judge_variance()` consistency
   helper, 7 new tests
 - M4 — `.github/workflows/eval-harness.yml` runs rule scorers on skill/harness
