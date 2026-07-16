@@ -104,8 +104,8 @@ per-provider aggregate:
 - **Latency** — wall-clock of the whole skill invocation, measured in the
   Python adapter (`invoke.py`). Accurate end-to-end.
 - **Cost** — computed from `pricing.json`, which records verified per-token
-  prices with `dateChecked` and `sourceUrl`. GLM-5.2: $1.40/M input, $4.40/M
-  output (checked 2026-07-13 against `docs.z.ai/guides/overview/pricing`).
+  prices with `dateChecked` and `sourceUrl`. glm-5-turbo: $1.20/M input,
+  $4.00/M output (checked 2026-07-16 against `docs.z.ai/guides/overview/pricing`).
 - **Pricing date** — when the per-token price was last verified against the
   live docs. Re-verify before trusting cost numbers older than a few weeks.
 
