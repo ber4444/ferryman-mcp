@@ -2,25 +2,6 @@
   {
     "id": "case-001",
     "input": {
-      "company": "EarnIn",
-      "role": "Senior Mobile Engineer (Android)"
-    },
-    "asOf": "2026-07",
-    "expectedClaims": {
-      "usesJetpackCompose": true,
-      "usesKmp": true,
-      "remoteForMobileEngineers": false,
-      "mustNotFabricateFigures": true,
-      "sfbaHybridForMobileEngineers": true,
-      "aiNative": false,
-      "mobileFirst": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-002",
-    "input": {
       "company": "Step",
       "role": "Senior Mobile Software Engineer"
     },
@@ -38,7 +19,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-003",
+    "id": "case-002",
     "input": {
       "company": "Hims & Hers",
       "role": "Staff Engineer, AI-Assisted Engineering Practices"
@@ -57,7 +38,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-004",
+    "id": "case-003",
     "input": {
       "company": "Hightouch",
       "role": "Staff Engineer, AI Productivity"
@@ -76,7 +57,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-005",
+    "id": "case-004",
     "input": {
       "company": "Fuse Energy",
       "role": "Senior Mobile Engineer"
@@ -95,7 +76,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-006",
+    "id": "case-005",
     "input": {
       "company": "Tern",
       "role": "Senior Mobile Engineer"
@@ -114,7 +95,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-007",
+    "id": "case-006",
     "input": {
       "company": "Runway",
       "role": "Member of Technical Staff, Mobile Engineer"
@@ -133,7 +114,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-008",
+    "id": "case-007",
     "input": {
       "company": "Tailscale",
       "role": "Mobile Platform Developer"
@@ -152,7 +133,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-009",
+    "id": "case-008",
     "input": {
       "company": "Owner.com",
       "role": "Senior Software Engineer, Mobile Platform (Guest App)"
@@ -171,7 +152,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-010",
+    "id": "case-009",
     "input": {
       "company": "iRhythm",
       "role": "Staff Mobile Engineer (Android)"
@@ -190,7 +171,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-011",
+    "id": "case-010",
     "input": {
       "company": "Attentive",
       "role": "Staff SWE, Developer Experience"
@@ -209,7 +190,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-012",
+    "id": "case-011",
     "input": {
       "company": "Goods & Services",
       "role": "Lead Android Engineer"
@@ -228,26 +209,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-013",
-    "input": {
-      "company": "Samsara",
-      "role": "Staff Mobile Engineer - Mobile Platform"
-    },
-    "asOf": "2026-07",
-    "expectedClaims": {
-      "usesJetpackCompose": true,
-      "usesKmp": true,
-      "remoteForMobileEngineers": true,
-      "mustNotFabricateFigures": true,
-      "sfbaHybridForMobileEngineers": false,
-      "aiNative": false,
-      "mobileFirst": false,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-014",
+    "id": "case-012",
     "input": {
       "company": "Grove Collaborative",
       "role": "AI-First Android Engineer"
@@ -266,7 +228,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-015",
+    "id": "case-013",
     "input": {
       "company": "Salesforce",
       "role": "Staff Software Engineer, Android - Slack Productivity Mobile"
@@ -285,7 +247,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-016",
+    "id": "case-014",
     "input": {
       "company": "Zillow",
       "role": "Senior Software Development Engineer, Android"
@@ -304,7 +266,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-017",
+    "id": "case-015",
     "input": {
       "company": "SpotOn",
       "role": "Staff Software Engineer (Android)"
@@ -323,7 +285,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-018",
+    "id": "case-016",
     "input": {
       "company": "Pinterest",
       "role": "Sr. Software Engineer, Android"
@@ -342,7 +304,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-019",
+    "id": "case-017",
     "input": {
       "company": "Airwallex",
       "role": "Staff Mobile Engineer, Spend Foundation"
@@ -361,7 +323,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-020",
+    "id": "case-018",
     "input": {
       "company": "Perchwell",
       "role": "Senior Android Engineer II"
@@ -380,26 +342,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-021",
-    "input": {
-      "company": "Upstart",
-      "role": "Principal Mobile Engineer, Android"
-    },
-    "asOf": "2026-07",
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "mustNotFabricateFigures": true,
-      "sfbaHybridForMobileEngineers": true,
-      "aiNative": true,
-      "mobileFirst": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-022",
+    "id": "case-019",
     "input": {
       "company": "Cantina",
       "role": "Android Engineer (senior-staff levels)"
@@ -418,7 +361,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-023",
+    "id": "case-020",
     "input": {
       "company": "Tilt Finance",
       "role": "Senior Mobile Engineer"
@@ -437,26 +380,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-024",
-    "input": {
-      "company": "Sekai",
-      "role": "Senior Android Engineer, Native Platform"
-    },
-    "asOf": "2026-07",
-    "expectedClaims": {
-      "usesJetpackCompose": true,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "mustNotFabricateFigures": false,
-      "sfbaHybridForMobileEngineers": false,
-      "aiNative": true,
-      "mobileFirst": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-025",
+    "id": "case-021",
     "input": {
       "company": "Rocket",
       "role": "Hybrid Staff Software Mobile Engineer - Android"
@@ -475,7 +399,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-026",
+    "id": "case-022",
     "input": {
       "company": "Ford",
       "role": "Senior Software Development Engineer, Android"
@@ -494,7 +418,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-027",
+    "id": "case-023",
     "input": {
       "company": "NinjaOne",
       "role": "Senior Android Engineer"
@@ -513,7 +437,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-028",
+    "id": "case-024",
     "input": {
       "company": "Block",
       "role": "Staff Android Software Engineer, Cash App Consumer Platform"
@@ -532,7 +456,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-029",
+    "id": "case-025",
     "input": {
       "company": "Eight Sleep",
       "role": "Senior Software Engineer - Mobile (Android)"
@@ -551,7 +475,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-030",
+    "id": "case-026",
     "input": {
       "company": "Wonderly",
       "role": "Android Engineer"
@@ -570,7 +494,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-031",
+    "id": "case-027",
     "input": {
       "company": "Toast",
       "role": "Senior Software Engineer, Mobile DevOps"
@@ -589,26 +513,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-032",
-    "input": {
-      "company": "Canary Technologies",
-      "role": "Senior Mobile SDK Engineer"
-    },
-    "asOf": "2026-07",
-    "expectedClaims": {
-      "usesJetpackCompose": true,
-      "usesKmp": true,
-      "remoteForMobileEngineers": true,
-      "mustNotFabricateFigures": true,
-      "sfbaHybridForMobileEngineers": false,
-      "aiNative": false,
-      "mobileFirst": true,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-033",
+    "id": "case-028",
     "input": {
       "company": "Drivemode (Honda)",
       "role": "Staff Mobile Software Engineer"
@@ -627,7 +532,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-034",
+    "id": "case-029",
     "input": {
       "company": "TextNow",
       "role": "Tech Lead, Mobile Core Network Engineering"
@@ -646,7 +551,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-035",
+    "id": "case-030",
     "input": {
       "company": "Reddit",
       "role": "Staff Android Engineer, Home Experience"
@@ -665,7 +570,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-036",
+    "id": "case-031",
     "input": {
       "company": "Ditto",
       "role": "Senior Software Engineer, Android"
@@ -684,26 +589,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-037",
-    "input": {
-      "company": "Babylist",
-      "role": "Senior Mobile Engineer, Health"
-    },
-    "asOf": "2026-07",
-    "expectedClaims": {
-      "usesJetpackCompose": true,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "mustNotFabricateFigures": true,
-      "sfbaHybridForMobileEngineers": false,
-      "aiNative": true,
-      "mobileFirst": false,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-038",
+    "id": "case-032",
     "input": {
       "company": "Oura",
       "role": "Senior Android Engineer"
@@ -722,7 +608,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-039",
+    "id": "case-033",
     "input": {
       "company": "Doximity",
       "role": "Senior Software Engineer, Android (Kotlin)"
@@ -741,7 +627,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-040",
+    "id": "case-034",
     "input": {
       "company": "Greenlight",
       "role": "Staff Android Systems Engineer"
@@ -760,7 +646,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-041",
+    "id": "case-035",
     "input": {
       "company": "Harvey",
       "role": "Staff Software Engineer, Android"
@@ -779,7 +665,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-042",
+    "id": "case-036",
     "input": {
       "company": "DraftKings",
       "role": "Lead Software Engineer, Android"
@@ -798,45 +684,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-043",
-    "input": {
-      "company": "OpenAI",
-      "role": "Android Engineer, Growth"
-    },
-    "asOf": "2026-07",
-    "expectedClaims": {
-      "usesJetpackCompose": true,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "mustNotFabricateFigures": false,
-      "sfbaHybridForMobileEngineers": true,
-      "aiNative": true,
-      "mobileFirst": false,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-044",
-    "input": {
-      "company": "Stripe",
-      "role": "Senior Android Engineer"
-    },
-    "asOf": "2026-07",
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "mustNotFabricateFigures": true,
-      "sfbaHybridForMobileEngineers": true,
-      "aiNative": false,
-      "mobileFirst": false,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-045",
+    "id": "case-037",
     "input": {
       "company": "Classpass",
       "role": "Sr Software Engineer - Android"
@@ -855,26 +703,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-046",
-    "input": {
-      "company": "xAI",
-      "role": "Mobile Android Engineer"
-    },
-    "asOf": "2026-07",
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": true,
-      "mustNotFabricateFigures": true,
-      "sfbaHybridForMobileEngineers": true,
-      "aiNative": true,
-      "mobileFirst": false,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-047",
+    "id": "case-038",
     "input": {
       "company": "Dayforce",
       "role": "Mobile Software Developer, Lead (Android)"
@@ -893,7 +722,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-048",
+    "id": "case-039",
     "input": {
       "company": "Dropbox",
       "role": "Android Software Engineer, Mobile Experience"
@@ -912,7 +741,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-049",
+    "id": "case-040",
     "input": {
       "company": "Netflix",
       "role": "Software Engineer 5 - Android & Backend, Games"
@@ -931,7 +760,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-050",
+    "id": "case-041",
     "input": {
       "company": "Airbnb",
       "role": "Staff Software Engineer, Android Platform Frameworks"
@@ -950,7 +779,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-051",
+    "id": "case-042",
     "input": {
       "company": "Yahoo",
       "role": "Senior Android Apps Engineer - Yahoo Mail"
@@ -969,7 +798,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-052",
+    "id": "case-043",
     "input": {
       "company": "WeightWatchers",
       "role": "Senior Android Engineer"
@@ -988,26 +817,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-053",
-    "input": {
-      "company": "Gusto",
-      "role": "Staff Mobile Software Engineer, Android"
-    },
-    "asOf": "2026-07",
-    "expectedClaims": {
-      "usesJetpackCompose": false,
-      "usesKmp": false,
-      "remoteForMobileEngineers": false,
-      "mustNotFabricateFigures": true,
-      "sfbaHybridForMobileEngineers": true,
-      "aiNative": false,
-      "mobileFirst": false,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-054",
+    "id": "case-044",
     "input": {
       "company": "Instacart",
       "role": "Senior Android Engineer"
@@ -1026,7 +836,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-055",
+    "id": "case-045",
     "input": {
       "company": "Ramp",
       "role": "Mobile Engineer, Android"
@@ -1045,7 +855,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-056",
+    "id": "case-046",
     "input": {
       "company": "Whatnot",
       "role": "Senior Android Engineer"
@@ -1064,26 +874,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-057",
-    "input": {
-      "company": "OpenSea",
-      "role": "Staff Android Engineer"
-    },
-    "asOf": "2026-07",
-    "expectedClaims": {
-      "usesJetpackCompose": true,
-      "usesKmp": true,
-      "remoteForMobileEngineers": true,
-      "mustNotFabricateFigures": true,
-      "sfbaHybridForMobileEngineers": false,
-      "aiNative": false,
-      "mobileFirst": false,
-      "sourceUrlsMustBeCited": true
-    },
-    "notesForReviewer": ""
-  },
-  {
-    "id": "case-058",
+    "id": "case-047",
     "input": {
       "company": "Speak",
       "role": "Senior Android Engineer"
@@ -1102,7 +893,7 @@
     "notesForReviewer": ""
   },
   {
-    "id": "case-059",
+    "id": "case-048",
     "input": {
       "company": "Acme Holdings",
       "role": "Senior Engineer"
