@@ -1,7 +1,7 @@
 # ferryman eval scorecard
 
-Generated: 2026-07-16 09:51:32
-Cases: 118
+Generated: 2026-07-16 10:30:39
+Cases: 177
 
 ## Rule-scorer results
 
@@ -125,12 +125,72 @@ Cases: 118
 | case-057 | zai-glm | 20% | usesJetpackCompose, usesKmp, remoteForMobileEngineers, sourceUrlsMustBeCited | 18178 ms | $0.0002 |
 | case-058 | zai-glm | 100% | — | 15663 ms | $0.0022 |
 | case-059 | zai-glm | 50% | aiNative | 13206 ms | $0.0018 |
+| case-001 | gemini | 17% | usesJetpackCompose, usesKmp, sfbaHybridForMobileEngineers, mobileFirst, sourceUrlsMustBeCited | 120023 ms | $0.0000 |
+| case-002 | gemini | 25% | remoteForMobileEngineers, mobileFirst, sourceUrlsMustBeCited | 120019 ms | $0.0000 |
+| case-003 | gemini | 33% | remoteForMobileEngineers, sourceUrlsMustBeCited | 116492 ms | $0.0000 |
+| case-004 | gemini | 33% | remoteForMobileEngineers, sourceUrlsMustBeCited | 18113 ms | $0.0000 |
+| case-005 | gemini | 0% | remoteForMobileEngineers, sourceUrlsMustBeCited | 120023 ms | $0.0000 |
+| case-006 | gemini | 33% | remoteForMobileEngineers, sourceUrlsMustBeCited | 105582 ms | $0.0000 |
+| case-007 | gemini | 25% | remoteForMobileEngineers, aiNative, sourceUrlsMustBeCited | 18945 ms | $0.0000 |
+| case-008 | gemini | 33% | remoteForMobileEngineers, sourceUrlsMustBeCited | 18165 ms | $0.0000 |
+| case-009 | gemini | 25% | remoteForMobileEngineers, aiNative, sourceUrlsMustBeCited | 17505 ms | $0.0000 |
+| case-010 | gemini | 25% | usesJetpackCompose, remoteForMobileEngineers, sourceUrlsMustBeCited | 20538 ms | $0.0000 |
+| case-011 | gemini | 25% | remoteForMobileEngineers, mobileFirst, sourceUrlsMustBeCited | 18898 ms | $0.0000 |
+| case-012 | gemini | 20% | usesKmp, remoteForMobileEngineers, mobileFirst, sourceUrlsMustBeCited | 18783 ms | $0.0000 |
+| case-013 | gemini | 20% | usesJetpackCompose, usesKmp, remoteForMobileEngineers, sourceUrlsMustBeCited | 20309 ms | $0.0000 |
+| case-014 | gemini | 25% | usesJetpackCompose, remoteForMobileEngineers, sourceUrlsMustBeCited | 19009 ms | $0.0000 |
+| case-015 | gemini | 25% | usesJetpackCompose, sfbaHybridForMobileEngineers, sourceUrlsMustBeCited | 18512 ms | $0.0000 |
+| case-016 | gemini | 0% | remoteForMobileEngineers, sourceUrlsMustBeCited | 19406 ms | $0.0000 |
+| case-017 | gemini | 33% | remoteForMobileEngineers, sourceUrlsMustBeCited | 20062 ms | $0.0000 |
+| case-018 | gemini | 0% | sourceUrlsMustBeCited | 18354 ms | $0.0000 |
+| case-019 | gemini | 33% | sfbaHybridForMobileEngineers, sourceUrlsMustBeCited | 29324 ms | $0.0000 |
+| case-020 | gemini | 20% | usesJetpackCompose, remoteForMobileEngineers, mobileFirst, sourceUrlsMustBeCited | 20019 ms | $0.0000 |
+| case-021 | gemini | 17% | remoteForMobileEngineers, sfbaHybridForMobileEngineers, aiNative, mobileFirst, sourceUrlsMustBeCited | 20432 ms | $0.0000 |
+| case-022 | gemini | 12% | usesJetpackCompose, usesKmp, remoteForMobileEngineers, sfbaHybridForMobileEngineers, aiNative, mobileFirst, sourceUrlsMustBeCited | 22176 ms | $0.0000 |
+| case-023 | gemini | 0% | remoteForMobileEngineers, aiNative, mobileFirst, sourceUrlsMustBeCited | 18952 ms | $0.0000 |
+| case-024 | gemini | 0% | usesJetpackCompose, remoteForMobileEngineers, aiNative, mobileFirst, sourceUrlsMustBeCited | 26250 ms | $0.0000 |
+| case-025 | gemini | 33% | remoteForMobileEngineers, sourceUrlsMustBeCited | 25171 ms | $0.0000 |
+| case-026 | gemini | 50% | sourceUrlsMustBeCited | 18627 ms | $0.0000 |
+| case-027 | gemini | 33% | remoteForMobileEngineers, sourceUrlsMustBeCited | 40231 ms | $0.0000 |
+| case-028 | gemini | 17% | usesJetpackCompose, usesKmp, remoteForMobileEngineers, mobileFirst, sourceUrlsMustBeCited | 36752 ms | $0.0000 |
+| case-029 | gemini | 0% | remoteForMobileEngineers, sourceUrlsMustBeCited | 73498 ms | $0.0000 |
+| case-030 | gemini | 0% | remoteForMobileEngineers, aiNative, sourceUrlsMustBeCited | 18166 ms | $0.0000 |
+| case-031 | gemini | 33% | remoteForMobileEngineers, sourceUrlsMustBeCited | 20128 ms | $0.0000 |
+| case-032 | gemini | 17% | usesJetpackCompose, usesKmp, remoteForMobileEngineers, mobileFirst, sourceUrlsMustBeCited | 120017 ms | $0.0000 |
+| case-033 | gemini | 17% | usesJetpackCompose, usesKmp, sfbaHybridForMobileEngineers, mobileFirst, sourceUrlsMustBeCited | 120016 ms | $0.0000 |
+| case-034 | gemini | 17% | usesJetpackCompose, remoteForMobileEngineers, sfbaHybridForMobileEngineers, mobileFirst, sourceUrlsMustBeCited | 120024 ms | $0.0000 |
+| case-035 | gemini | 20% | usesJetpackCompose, remoteForMobileEngineers, sfbaHybridForMobileEngineers, sourceUrlsMustBeCited | 33881 ms | $0.0000 |
+| case-036 | gemini | 25% | remoteForMobileEngineers, sfbaHybridForMobileEngineers, sourceUrlsMustBeCited | 23619 ms | $0.0000 |
+| case-037 | gemini | 20% | usesJetpackCompose, remoteForMobileEngineers, aiNative, sourceUrlsMustBeCited | 120018 ms | $0.0000 |
+| case-038 | gemini | 33% | usesJetpackCompose, sourceUrlsMustBeCited | 86328 ms | $0.0000 |
+| case-039 | gemini | 33% | remoteForMobileEngineers, sourceUrlsMustBeCited | 19001 ms | $0.0000 |
+| case-040 | gemini | 33% | remoteForMobileEngineers, sourceUrlsMustBeCited | 21975 ms | $0.0000 |
+| case-041 | gemini | 20% | usesJetpackCompose, sfbaHybridForMobileEngineers, aiNative, sourceUrlsMustBeCited | 120015 ms | $0.0000 |
+| case-042 | gemini | 25% | usesJetpackCompose, remoteForMobileEngineers, sourceUrlsMustBeCited | 19014 ms | $0.0000 |
+| case-043 | gemini | 0% | usesJetpackCompose, sfbaHybridForMobileEngineers, aiNative, sourceUrlsMustBeCited | 47790 ms | $0.0000 |
+| case-044 | gemini | 33% | sfbaHybridForMobileEngineers, sourceUrlsMustBeCited | 18340 ms | $0.0000 |
+| case-045 | gemini | 0% | usesJetpackCompose, remoteForMobileEngineers, sourceUrlsMustBeCited | 17729 ms | $0.0000 |
+| case-046 | gemini | 20% | remoteForMobileEngineers, sfbaHybridForMobileEngineers, aiNative, sourceUrlsMustBeCited | 18606 ms | $0.0000 |
+| case-047 | gemini | 50% | sourceUrlsMustBeCited | 17848 ms | $0.0000 |
+| case-048 | gemini | 33% | remoteForMobileEngineers, sourceUrlsMustBeCited | 19310 ms | $0.0000 |
+| case-049 | gemini | 33% | remoteForMobileEngineers, sourceUrlsMustBeCited | 18637 ms | $0.0000 |
+| case-050 | gemini | 25% | usesJetpackCompose, remoteForMobileEngineers, sourceUrlsMustBeCited | 18000 ms | $0.0000 |
+| case-051 | gemini | 33% | remoteForMobileEngineers, sourceUrlsMustBeCited | 18419 ms | $0.0000 |
+| case-052 | gemini | 25% | usesJetpackCompose, remoteForMobileEngineers, sourceUrlsMustBeCited | 18065 ms | $0.0000 |
+| case-053 | gemini | 33% | sfbaHybridForMobileEngineers, sourceUrlsMustBeCited | 19230 ms | $0.0000 |
+| case-054 | gemini | 25% | usesJetpackCompose, remoteForMobileEngineers, sourceUrlsMustBeCited | 18731 ms | $0.0000 |
+| case-055 | gemini | 25% | usesJetpackCompose, remoteForMobileEngineers, sourceUrlsMustBeCited | 20078 ms | $0.0000 |
+| case-056 | gemini | 0% | sfbaHybridForMobileEngineers, sourceUrlsMustBeCited | 18113 ms | $0.0000 |
+| case-057 | gemini | 20% | usesJetpackCompose, usesKmp, remoteForMobileEngineers, sourceUrlsMustBeCited | 19146 ms | $0.0000 |
+| case-058 | gemini | 25% | usesJetpackCompose, sfbaHybridForMobileEngineers, sourceUrlsMustBeCited | 18820 ms | $0.0000 |
+| case-059 | gemini | 50% | aiNative | 18246 ms | $0.0000 |
 
-**Overall rule pass rate: 77%**
+**Overall rule pass rate: 59%**
 
 ## Per-provider summary
 
 | Provider | Cases | Mean pass rate | Mean latency | Mean cost (est.) | Pricing date |
 |---|---|---|---|---|---|
+| gemini | 59 | 23% | 39787 ms | $0.0000 | 2026-07-15 |
 | hf-llama | 59 | 80% | 8449 ms | $0.0001 | 2026-07-15 |
 | zai-glm | 59 | 74% | 19821 ms | $0.0014 | 2026-07-13 |

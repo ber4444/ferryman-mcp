@@ -9,8 +9,8 @@ lands or a gate is crossed.
 | Layer | State | Tests |
 |---|---|---|
 | ferryman (Kotlin host + CLI + HTTP) | MVP built, CI green | 28 Kotlin tests |
-| Eval harness (Python) | Scaffolded, rule + judge scorers wired | 31 Python tests |
-| Real scorecard with live provider numbers | **Partial** — zai-glm 66% + hf-llama 81% (fixed scorer); gemini re-run pending | 177 rows |
+| Eval harness (Python) | Scaffolded, rule + judge scorers wired | 35 Python tests |
+| Real scorecard with live provider numbers | **Done** — hf-llama 80%, zai-glm 74%; gemini endpoint was 503 during the run | 177 rows |
 
 All commits are on `main`. This branch (`status/project-status`) exists only to
 carry this status document and open a draft PR for review.
@@ -45,45 +45,47 @@ carry this status document and open a draft PR for review.
 - M4 — `.github/workflows/eval-harness.yml` runs rule scorers on skill/harness
   changes
 
-## First real scorecard run (2026-07-15)
+## Scorecard run (2026-07-16) — full matrix
 
-The human gates are crossed, and the harness has produced runs against live
-providers. A scorer bug was found during verification and **fixed**; two of three
-providers now have real baselines:
+The full 177-row matrix (59 cases × 3 providers) completed. Two providers have
+real baselines; gemini's endpoint was unavailable during the run:
 
 - **Golden-set sign-off** — `eval_harness/golden/approval.json` reads
   `goldenSetApproved: true` (approved 2026-07-15 by `repo-owner`). The approved
   set is **59 cases** (58 real companies + the "Acme Holdings" negative).
-- **API keys** — `ZAI_API_KEY` and `DEEPINFRA_API_KEY` were available; the
-  gemini key hit rate limits during its run.
+- **API keys** — `ZAI_API_KEY` and `DEEPINFRA_API_KEY` were available; gemini's
+  endpoint returned 503 (Service Unavailable) for the run.
 
-| Provider | Rule pass (fixed scorer) | Mean latency | Mean cost (est.) | Status |
+| Provider | Rule pass | Output / errors | Mean latency | Mean cost (est.) |
 |---|---|---|---|---|
-| zai-glm | **66%** | 29 s | $0.0014 | real baseline (6 timeouts + 1 `NoClassDefFoundError`) |
-| hf-llama | **81%** | 8.8 s | $0.0002 | real baseline (59/59 produced output) |
-| gemini | — | — | — | all 59 returned HTTP **429** — never measured, re-run pending |
+| hf-llama | **80%** | 59/59 output, 0 errors | 8.4 s | $0.0001 |
+| zai-glm | **74%** | 59/59 output, 0 errors | 19.8 s | $0.0014 |
+| gemini | — | 0/59 output — 51× HTTP 503 + 8× timeout | 39.8 s | $0.0000 |
 
-**Scorer bug, fixed.** `_positive_presence` matched concept words inside
+**Why this run completed when prior ones didn't.** Robustness fixes landed on
+this branch: the Kotlin provider now retries timeouts/IO (not just 429/503) and
+the CLI exits cleanly on terminal failure; the Python runner isolates each case
+(an exception becomes an error row, not a batch abort), writes the scorecard
+incrementally after each provider, and runs providers in order llama→zai→gemini
+so the reliable ones land first. Those fixes are why the 118 clean hf-llama +
+zai-glm rows survived gemini's 503s — last run a single gemini timeout at case
+43 aborted everything and saved nothing.
+
+**zai-glm went from 7 errors to 0** between the 07-15 and 07-16 runs — the
+timeout-retry fix converted what used to be fatal timeouts into retried calls.
+
+**Scorer bug, fixed earlier.** `_positive_presence` matched concept words inside
 negations (*"No public evidence of Jetpack Compose"* → pass). Made negation-
-aware: a match preceded by "no evidence of…" no longer counts. Re-scored from
-raw JSON: hf-llama 94%→81% (38 false passes removed), zai-glm 69%→66% (9
-removed). The bug punished the more-honest model hardest — llama's frequent
-"no public evidence of…" declines were counted as affirmations. Tests added
-(`test_positive_presence_fails_when_mentioned_only_in_a_negation`,
-`test_positive_presence_passes_when_mentioned_both_affirmed_and_negated`);
-suite is 31 green.
-
-The `scorecard.md` gemini "23%" is a separate artifact — rule scorers matching
-incidental tokens in 429 error text against a provider that produced no output.
+aware; the bug inflated every provider whose output honestly declines. Tests
+added; suite is 35 green.
 
 ## What's not done (human gates)
 
-1. **Complete the matrix.** Scorer is fixed and zai-glm (66%) + hf-llama (81%)
-   are re-scored. Remaining: re-run gemini under a non-rate-limited key (its
-   first run hit HTTP 429 on all 59 cases), then merge all three providers into
-   one multi-provider `scorecard.json` — the runner currently overwrites the
-   file on each invocation, so a merge mode (or a per-provider split + combine
-   script) is needed for a single file of record.
+1. **Re-run gemini when its endpoint is healthy.** The 2026-07-16 run hit HTTP
+   503 on 51/59 gemini cases and timed out on 8 — zero research output, so
+   gemini isn't scored. hf-llama (80%) and zai-glm (74%) are the two locked-in
+   baselines; gemini is the missing third. This is an endpoint-availability
+   issue, not a model-quality result.
 2. **M1 of the z.ai/GLM addendum (chess-server `LlmComposer`).** Blocked: the
    prerequisite plan `opening-explainer-cloud-route.md` has not been run — none
    of the five local chess repos has the `:server` module, `LlmComposer`, or

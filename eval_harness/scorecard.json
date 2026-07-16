@@ -4136,5 +4136,2074 @@
     "error": null,
     "latency_ms": 13206,
     "estimated_cost_usd": 0.001776
+  },
+  {
+    "id": "case-001",
+    "input": {
+      "company": "EarnIn",
+      "role": "Senior Mobile Engineer (Android)"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "usesKmp",
+        "passed": false,
+        "reason": "ground truth says Kotlin Multiplatform=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mobileFirst",
+        "passed": false,
+        "reason": "ground truth says mobile-first=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "ferry subprocess timed out after 120s (cmd: /Users/presence/AndroidStudioProjects/openclaw/build/install/ferry/bin/ferry run --skill company-role-research --input {\"company\": \"EarnIn\", \"role\": \"Senior Mobile Engineer (Android)\"} --provider gemini)",
+    "latency_ms": 120023,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-002",
+    "input": {
+      "company": "Step",
+      "role": "Senior Mobile Software Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "mobileFirst",
+        "passed": false,
+        "reason": "ground truth says mobile-first=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "ferry subprocess timed out after 120s (cmd: /Users/presence/AndroidStudioProjects/openclaw/build/install/ferry/bin/ferry run --skill company-role-research --input {\"company\": \"Step\", \"role\": \"Senior Mobile Software Engineer\"} --provider gemini)",
+    "latency_ms": 120019,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-003",
+    "input": {
+      "company": "Hims & Hers",
+      "role": "Staff Engineer, AI-Assisted Engineering Practices"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\n[ferryman] iteration 0: 1 tool calls, output=\n[ferryman]   tool: fetch.fetch args={\"url\":\"https://html.duckduckgo.com/html/?q=Hims+%26+Hers+%22Staff+Engineer%2C+AI-Assisted+Engineering+Practices%22\"}\n[ferryman]   result: 174 chars, error=false\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 116492,
+    "estimated_cost_usd": 7e-06
+  },
+  {
+    "id": "case-004",
+    "input": {
+      "company": "Hightouch",
+      "role": "Staff Engineer, AI Productivity"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18113,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-005",
+    "input": {
+      "company": "Fuse Energy",
+      "role": "Senior Mobile Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "ferry subprocess timed out after 120s (cmd: /Users/presence/AndroidStudioProjects/openclaw/build/install/ferry/bin/ferry run --skill company-role-research --input {\"company\": \"Fuse Energy\", \"role\": \"Senior Mobile Engineer\"} --provider gemini)",
+    "latency_ms": 120023,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-006",
+    "input": {
+      "company": "Tern",
+      "role": "Senior Mobile Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 105582,
+    "estimated_cost_usd": 4e-06
+  },
+  {
+    "id": "case-007",
+    "input": {
+      "company": "Runway",
+      "role": "Member of Technical Staff, Mobile Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "aiNative",
+        "passed": false,
+        "reason": "ground truth says AI-native=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18945,
+    "estimated_cost_usd": 6e-06
+  },
+  {
+    "id": "case-008",
+    "input": {
+      "company": "Tailscale",
+      "role": "Mobile Platform Developer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18165,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-009",
+    "input": {
+      "company": "Owner.com",
+      "role": "Senior Software Engineer, Mobile Platform (Guest App)"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "aiNative",
+        "passed": false,
+        "reason": "ground truth says AI-native=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 17505,
+    "estimated_cost_usd": 7e-06
+  },
+  {
+    "id": "case-010",
+    "input": {
+      "company": "iRhythm",
+      "role": "Staff Mobile Engineer (Android)"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 20538,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-011",
+    "input": {
+      "company": "Attentive",
+      "role": "Staff SWE, Developer Experience"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "mobileFirst",
+        "passed": false,
+        "reason": "ground truth says mobile-first=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18898,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-012",
+    "input": {
+      "company": "Goods & Services",
+      "role": "Lead Android Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesKmp",
+        "passed": false,
+        "reason": "ground truth says Kotlin Multiplatform=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "mobileFirst",
+        "passed": false,
+        "reason": "ground truth says mobile-first=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18783,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-013",
+    "input": {
+      "company": "Samsara",
+      "role": "Staff Mobile Engineer - Mobile Platform"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "usesKmp",
+        "passed": false,
+        "reason": "ground truth says Kotlin Multiplatform=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 20309,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-014",
+    "input": {
+      "company": "Grove Collaborative",
+      "role": "AI-First Android Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 19009,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-015",
+    "input": {
+      "company": "Salesforce",
+      "role": "Staff Software Engineer, Android - Slack Productivity Mobile"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18512,
+    "estimated_cost_usd": 7e-06
+  },
+  {
+    "id": "case-016",
+    "input": {
+      "company": "Zillow",
+      "role": "Senior Software Development Engineer, Android"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 19406,
+    "estimated_cost_usd": 6e-06
+  },
+  {
+    "id": "case-017",
+    "input": {
+      "company": "SpotOn",
+      "role": "Staff Software Engineer (Android)"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 20062,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-018",
+    "input": {
+      "company": "Pinterest",
+      "role": "Sr. Software Engineer, Android"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18354,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-019",
+    "input": {
+      "company": "Airwallex",
+      "role": "Staff Mobile Engineer, Spend Foundation"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 29324,
+    "estimated_cost_usd": 6e-06
+  },
+  {
+    "id": "case-020",
+    "input": {
+      "company": "Perchwell",
+      "role": "Senior Android Engineer II"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "mobileFirst",
+        "passed": false,
+        "reason": "ground truth says mobile-first=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 20019,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-021",
+    "input": {
+      "company": "Upstart",
+      "role": "Principal Mobile Engineer, Android"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "aiNative",
+        "passed": false,
+        "reason": "ground truth says AI-native=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mobileFirst",
+        "passed": false,
+        "reason": "ground truth says mobile-first=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 20432,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-022",
+    "input": {
+      "company": "Cantina",
+      "role": "Android Engineer (senior-staff levels)"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "usesKmp",
+        "passed": false,
+        "reason": "ground truth says Kotlin Multiplatform=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "aiNative",
+        "passed": false,
+        "reason": "ground truth says AI-native=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mobileFirst",
+        "passed": false,
+        "reason": "ground truth says mobile-first=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 22176,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-023",
+    "input": {
+      "company": "Tilt Finance",
+      "role": "Senior Mobile Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "aiNative",
+        "passed": false,
+        "reason": "ground truth says AI-native=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mobileFirst",
+        "passed": false,
+        "reason": "ground truth says mobile-first=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18952,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-024",
+    "input": {
+      "company": "Sekai",
+      "role": "Senior Android Engineer, Native Platform"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "aiNative",
+        "passed": false,
+        "reason": "ground truth says AI-native=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mobileFirst",
+        "passed": false,
+        "reason": "ground truth says mobile-first=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 26250,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-025",
+    "input": {
+      "company": "Rocket",
+      "role": "Hybrid Staff Software Mobile Engineer - Android"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 25171,
+    "estimated_cost_usd": 6e-06
+  },
+  {
+    "id": "case-026",
+    "input": {
+      "company": "Ford",
+      "role": "Senior Software Development Engineer, Android"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18627,
+    "estimated_cost_usd": 6e-06
+  },
+  {
+    "id": "case-027",
+    "input": {
+      "company": "NinjaOne",
+      "role": "Senior Android Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 40231,
+    "estimated_cost_usd": 4e-06
+  },
+  {
+    "id": "case-028",
+    "input": {
+      "company": "Block",
+      "role": "Staff Android Software Engineer, Cash App Consumer Platform"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "usesKmp",
+        "passed": false,
+        "reason": "ground truth says Kotlin Multiplatform=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "mobileFirst",
+        "passed": false,
+        "reason": "ground truth says mobile-first=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 36752,
+    "estimated_cost_usd": 7e-06
+  },
+  {
+    "id": "case-029",
+    "input": {
+      "company": "Eight Sleep",
+      "role": "Senior Software Engineer - Mobile (Android)"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 73498,
+    "estimated_cost_usd": 6e-06
+  },
+  {
+    "id": "case-030",
+    "input": {
+      "company": "Wonderly",
+      "role": "Android Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "aiNative",
+        "passed": false,
+        "reason": "ground truth says AI-native=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18166,
+    "estimated_cost_usd": 4e-06
+  },
+  {
+    "id": "case-031",
+    "input": {
+      "company": "Toast",
+      "role": "Senior Software Engineer, Mobile DevOps"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 20128,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-032",
+    "input": {
+      "company": "Canary Technologies",
+      "role": "Senior Mobile SDK Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "usesKmp",
+        "passed": false,
+        "reason": "ground truth says Kotlin Multiplatform=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "mobileFirst",
+        "passed": false,
+        "reason": "ground truth says mobile-first=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "ferry subprocess timed out after 120s (cmd: /Users/presence/AndroidStudioProjects/openclaw/build/install/ferry/bin/ferry run --skill company-role-research --input {\"company\": \"Canary Technologies\", \"role\": \"Senior Mobile SDK Engineer\"} --provider gemini)",
+    "latency_ms": 120017,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-033",
+    "input": {
+      "company": "Drivemode (Honda)",
+      "role": "Staff Mobile Software Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "usesKmp",
+        "passed": false,
+        "reason": "ground truth says Kotlin Multiplatform=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mobileFirst",
+        "passed": false,
+        "reason": "ground truth says mobile-first=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "ferry subprocess timed out after 120s (cmd: /Users/presence/AndroidStudioProjects/openclaw/build/install/ferry/bin/ferry run --skill company-role-research --input {\"company\": \"Drivemode (Honda)\", \"role\": \"Staff Mobile Software Engineer\"} --provider gemini)",
+    "latency_ms": 120016,
+    "estimated_cost_usd": 6e-06
+  },
+  {
+    "id": "case-034",
+    "input": {
+      "company": "TextNow",
+      "role": "Tech Lead, Mobile Core Network Engineering"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mobileFirst",
+        "passed": false,
+        "reason": "ground truth says mobile-first=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "ferry subprocess timed out after 120s (cmd: /Users/presence/AndroidStudioProjects/openclaw/build/install/ferry/bin/ferry run --skill company-role-research --input {\"company\": \"TextNow\", \"role\": \"Tech Lead, Mobile Core Network Engineering\"} --provider gemini)",
+    "latency_ms": 120024,
+    "estimated_cost_usd": 6e-06
+  },
+  {
+    "id": "case-035",
+    "input": {
+      "company": "Reddit",
+      "role": "Staff Android Engineer, Home Experience"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 33881,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-036",
+    "input": {
+      "company": "Ditto",
+      "role": "Senior Software Engineer, Android"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 23619,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-037",
+    "input": {
+      "company": "Babylist",
+      "role": "Senior Mobile Engineer, Health"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "aiNative",
+        "passed": false,
+        "reason": "ground truth says AI-native=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "ferry subprocess timed out after 120s (cmd: /Users/presence/AndroidStudioProjects/openclaw/build/install/ferry/bin/ferry run --skill company-role-research --input {\"company\": \"Babylist\", \"role\": \"Senior Mobile Engineer, Health\"} --provider gemini)",
+    "latency_ms": 120018,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-038",
+    "input": {
+      "company": "Oura",
+      "role": "Senior Android Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\n[ferryman] iteration 0: 1 tool calls, output=\n[ferryman]   tool: fetch.fetch args={\"url\":\"https://html.duckduckgo.com/html/?q=Oura+careers+Android+Senior\"}\n[ferryman]   result: 130 chars, error=false\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 86328,
+    "estimated_cost_usd": 4e-06
+  },
+  {
+    "id": "case-039",
+    "input": {
+      "company": "Doximity",
+      "role": "Senior Software Engineer, Android (Kotlin)"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 19001,
+    "estimated_cost_usd": 6e-06
+  },
+  {
+    "id": "case-040",
+    "input": {
+      "company": "Greenlight",
+      "role": "Staff Android Systems Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 21975,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-041",
+    "input": {
+      "company": "Harvey",
+      "role": "Staff Software Engineer, Android"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "aiNative",
+        "passed": false,
+        "reason": "ground truth says AI-native=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "ferry subprocess timed out after 120s (cmd: /Users/presence/AndroidStudioProjects/openclaw/build/install/ferry/bin/ferry run --skill company-role-research --input {\"company\": \"Harvey\", \"role\": \"Staff Software Engineer, Android\"} --provider gemini)",
+    "latency_ms": 120015,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-042",
+    "input": {
+      "company": "DraftKings",
+      "role": "Lead Software Engineer, Android"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 19014,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-043",
+    "input": {
+      "company": "OpenAI",
+      "role": "Android Engineer, Growth"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "aiNative",
+        "passed": false,
+        "reason": "ground truth says AI-native=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 47790,
+    "estimated_cost_usd": 4e-06
+  },
+  {
+    "id": "case-044",
+    "input": {
+      "company": "Stripe",
+      "role": "Senior Android Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18340,
+    "estimated_cost_usd": 4e-06
+  },
+  {
+    "id": "case-045",
+    "input": {
+      "company": "Classpass",
+      "role": "Sr Software Engineer - Android"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 17729,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-046",
+    "input": {
+      "company": "xAI",
+      "role": "Mobile Android Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "aiNative",
+        "passed": false,
+        "reason": "ground truth says AI-native=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18606,
+    "estimated_cost_usd": 4e-06
+  },
+  {
+    "id": "case-047",
+    "input": {
+      "company": "Dayforce",
+      "role": "Mobile Software Developer, Lead (Android)"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 17848,
+    "estimated_cost_usd": 6e-06
+  },
+  {
+    "id": "case-048",
+    "input": {
+      "company": "Dropbox",
+      "role": "Android Software Engineer, Mobile Experience"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 19310,
+    "estimated_cost_usd": 6e-06
+  },
+  {
+    "id": "case-049",
+    "input": {
+      "company": "Netflix",
+      "role": "Software Engineer 5 - Android & Backend, Games"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18637,
+    "estimated_cost_usd": 6e-06
+  },
+  {
+    "id": "case-050",
+    "input": {
+      "company": "Airbnb",
+      "role": "Staff Software Engineer, Android Platform Frameworks"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18000,
+    "estimated_cost_usd": 6e-06
+  },
+  {
+    "id": "case-051",
+    "input": {
+      "company": "Yahoo",
+      "role": "Senior Android Apps Engineer - Yahoo Mail"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18419,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-052",
+    "input": {
+      "company": "WeightWatchers",
+      "role": "Senior Android Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18065,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-053",
+    "input": {
+      "company": "Gusto",
+      "role": "Staff Mobile Software Engineer, Android"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 19230,
+    "estimated_cost_usd": 5e-06
+  },
+  {
+    "id": "case-054",
+    "input": {
+      "company": "Instacart",
+      "role": "Senior Android Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18731,
+    "estimated_cost_usd": 4e-06
+  },
+  {
+    "id": "case-055",
+    "input": {
+      "company": "Ramp",
+      "role": "Mobile Engineer, Android"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 20078,
+    "estimated_cost_usd": 4e-06
+  },
+  {
+    "id": "case-056",
+    "input": {
+      "company": "Whatnot",
+      "role": "Senior Android Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18113,
+    "estimated_cost_usd": 4e-06
+  },
+  {
+    "id": "case-057",
+    "input": {
+      "company": "OpenSea",
+      "role": "Staff Android Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "usesKmp",
+        "passed": false,
+        "reason": "ground truth says Kotlin Multiplatform=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "remoteForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says remote work=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 19146,
+    "estimated_cost_usd": 4e-06
+  },
+  {
+    "id": "case-058",
+    "input": {
+      "company": "Speak",
+      "role": "Senior Android Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "usesJetpackCompose",
+        "passed": false,
+        "reason": "ground truth says Jetpack Compose=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      },
+      {
+        "key": "sfbaHybridForMobileEngineers",
+        "passed": false,
+        "reason": "ground truth says SF Bay Area hybrid=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "sourceUrlsMustBeCited",
+        "passed": false,
+        "reason": "no URL or citation marker found in the output"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18820,
+    "estimated_cost_usd": 4e-06
+  },
+  {
+    "id": "case-059",
+    "input": {
+      "company": "Acme Holdings",
+      "role": "Senior Engineer"
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "aiNative",
+        "passed": false,
+        "reason": "ground truth says AI-native=true but output never affirms it (only absent or mentioned inside a negation)"
+      },
+      {
+        "key": "mustNotFabricateFigures",
+        "passed": true,
+        "reason": "no precise dollar figures stated (acceptable: the skill may decline to guess)"
+      }
+    ],
+    "judge_scores": [],
+    "error": "SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nferry: Provider 'gemini' returned 503 Service Unavailable: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n]",
+    "latency_ms": 18246,
+    "estimated_cost_usd": 4e-06
   }
 ]
