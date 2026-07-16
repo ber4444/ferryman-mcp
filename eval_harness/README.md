@@ -75,7 +75,10 @@ No placeholder rows, no fabricated deltas — that is the plan's hard rule.
 ## Invocation modes
 
 - `--mode http` (default for `auto`): POSTs to a running `ferry serve` instance
-  at `FERRY_HTTP_URL` (default `http://localhost:8080`).
+  at `FERRY_HTTP_URL` (default `http://localhost:8080`). Requires `FERRY_HTTP_TOKEN`
+  (the server's inbound bearer-token auth); the harness sends it as
+  `Authorization: Bearer $FERRY_HTTP_TOKEN`. Without it the server rejects every
+  request with 401, so `auto` mode falls back to subprocess.
 - `--mode subprocess`: shells out to the installed `ferry` binary.
 - `--mode auto`: tries HTTP, falls back to subprocess.
 
