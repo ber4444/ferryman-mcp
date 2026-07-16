@@ -66,8 +66,34 @@ command passes on `main`.
 | Fit summary | done | `ferry run company-role-research --input '{"company":"...","role":"..."}'` |
 | HTTP channel | building | `ferry serve --port 8080` (needs an API key) |
 | Routing logged | done | unit-tested; `logs/routing.jsonl` written by every `runSkill` call |
-| Python eval harness | building | `python -m pytest eval_harness/ -q` (29 tests green; scorecard needs a live provider) |
-| Multi-provider scorecard | building | `python eval_harness/run_scorecard.py --all-providers` (needs API keys + ferry binary) |
+| Python eval harness | done | `python -m pytest eval_harness/ -q` (31 tests green) |
+| Multi-provider scorecard | partial | zai-glm 66% + hf-llama 81% (fixed scorer); gemini re-run pending — see [Scorecard status](#scorecard-status) |
+
+## Scorecard status
+
+The harness has run against live providers (2026-07-15). After fixing a scorer
+bug (see below), two of three providers have real baselines; gemini is not yet
+measured:
+
+| Provider | Rule pass (fixed scorer) | Mean latency | Mean cost (est.) | Status |
+|---|---|---|---|---|
+| zai-glm | **66%** | 29 s | $0.0014 | real baseline (59 cases incl. 7 errors) |
+| hf-llama | **81%** | 8.8 s | $0.0002 | real baseline (59/59 produced output) |
+| gemini | — | — | — | all 59 returned HTTP **429** (rate limited) — re-run pending |
+
+**Scorer bug, now fixed.** The positive-presence scorers matched the concept
+word anywhere in the output, so *"No public evidence of Jetpack Compose"*
+counted as a pass for `usesJetpackCompose`. This inflated every provider whose
+output honestly declines. `_positive_presence` is now negation-aware (a match
+preceded by "no evidence of…" no longer counts); the numbers above are
+re-scored from raw JSON with the fix. Impact: hf-llama 94%→81% (38 false
+passes removed), zai-glm 69%→66% (9 removed). The bug punished the *more*
+honest model hardest — llama's frequent "no public evidence of…" declines were
+being counted as affirmations.
+
+gemini's recorded "23%" is a separate artifact: rule scorers matching incidental
+tokens in 429 error text against a provider that emitted no output. It needs a
+re-run under a non-rate-limited key before it belongs in the matrix.
 
 ## Quickstart
 
@@ -190,8 +216,10 @@ Adding an OpenAI-compatible provider is a config-only change — edit
 
 ## Roadmap (not yet built)
 
-- First real multi-provider scorecard run (needs API keys exported — the harness
-  and skill are ready, the scoring just hasn't been run against live providers).
+- **Complete the matrix.** Scorer is fixed and zai-glm (66%) + hf-llama (81%)
+  are re-scored. Remaining: re-run gemini under a non-rate-limited key (its run
+  hit HTTP 429 on all 59 cases), then merge all three into one multi-provider
+  `scorecard.json` (the runner currently overwrites on each run).
 - Streamable HTTP transport for the MCP host (stdio only for now).
 - More channels: Telegram, Slack (HTTP is the MVP second channel).
 - Real token-count propagation through providers for exact (non-estimated) cost.

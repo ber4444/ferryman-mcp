@@ -31,6 +31,29 @@ def test_uses_jetpack_compose_fails_when_absent():
     assert not result.passed
 
 
+def test_positive_presence_fails_when_mentioned_only_in_a_negation():
+    """An honest decline must not count as a pass.
+
+    The skill often writes 'No public evidence of Jetpack Compose adoption.'
+    when ground truth is negative. Matching the literal term inside that
+    negation inflates the pass rate — this is the inflation bug caught while
+    verifying the hf-llama scorecard run.
+    """
+    output = "No public evidence of Jetpack Compose adoption. They use Kotlin."
+    result = rule_scorers.score_uses_jetpack_compose(output, {})
+    assert not result.passed, result.reason
+
+
+def test_positive_presence_passes_when_mentioned_both_affirmed_and_negated():
+    """If the term is affirmed anywhere, that's a real mention even if also negated."""
+    output = (
+        "Their Android app uses Jetpack Compose. "
+        "No public evidence of Kotlin Multiplatform adoption."
+    )
+    assert rule_scorers.score_uses_jetpack_compose(output, {}).passed
+    assert not rule_scorers.score_uses_kmp(output, {}).passed
+
+
 def test_uses_kmp_passes_when_mentioned():
     output = "The shared logic is Kotlin Multiplatform (KMP)."
     result = rule_scorers.score_uses_kmp(output, {})

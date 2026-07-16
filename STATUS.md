@@ -9,8 +9,8 @@ lands or a gate is crossed.
 | Layer | State | Tests |
 |---|---|---|
 | ferryman (Kotlin host + CLI + HTTP) | MVP built, CI green | 28 Kotlin tests |
-| Eval harness (Python) | Scaffolded, rule + judge scorers wired | 22 Python tests |
-| Real scorecard with live provider numbers | **Not yet** — blocked on human gates | — |
+| Eval harness (Python) | Scaffolded, rule + judge scorers wired | 31 Python tests |
+| Real scorecard with live provider numbers | **Partial** — zai-glm 66% + hf-llama 81% (fixed scorer); gemini re-run pending | 177 rows |
 
 All commits are on `main`. This branch (`status/project-status`) exists only to
 carry this status document and open a draft PR for review.
@@ -45,20 +45,46 @@ carry this status document and open a draft PR for review.
 - M4 — `.github/workflows/eval-harness.yml` runs rule scorers on skill/harness
   changes
 
+## First real scorecard run (2026-07-15)
+
+The human gates are crossed, and the harness has produced runs against live
+providers. A scorer bug was found during verification and **fixed**; two of three
+providers now have real baselines:
+
+- **Golden-set sign-off** — `eval_harness/golden/approval.json` reads
+  `goldenSetApproved: true` (approved 2026-07-15 by `repo-owner`). The approved
+  set is **59 cases** (58 real companies + the "Acme Holdings" negative).
+- **API keys** — `ZAI_API_KEY` and `DEEPINFRA_API_KEY` were available; the
+  gemini key hit rate limits during its run.
+
+| Provider | Rule pass (fixed scorer) | Mean latency | Mean cost (est.) | Status |
+|---|---|---|---|---|
+| zai-glm | **66%** | 29 s | $0.0014 | real baseline (6 timeouts + 1 `NoClassDefFoundError`) |
+| hf-llama | **81%** | 8.8 s | $0.0002 | real baseline (59/59 produced output) |
+| gemini | — | — | — | all 59 returned HTTP **429** — never measured, re-run pending |
+
+**Scorer bug, fixed.** `_positive_presence` matched concept words inside
+negations (*"No public evidence of Jetpack Compose"* → pass). Made negation-
+aware: a match preceded by "no evidence of…" no longer counts. Re-scored from
+raw JSON: hf-llama 94%→81% (38 false passes removed), zai-glm 69%→66% (9
+removed). The bug punished the more-honest model hardest — llama's frequent
+"no public evidence of…" declines were counted as affirmations. Tests added
+(`test_positive_presence_fails_when_mentioned_only_in_a_negation`,
+`test_positive_presence_passes_when_mentioned_both_affirmed_and_negated`);
+suite is 31 green.
+
+The `scorecard.md` gemini "23%" is a separate artifact — rule scorers matching
+incidental tokens in 429 error text against a provider that produced no output.
+
 ## What's not done (human gates)
 
-These are blocking and not mine to resolve. No scorecard with real numbers can
-exist until they are crossed:
-
-1. **Golden-set sign-off.** `eval_harness/golden/approval.json` has
-   `goldenSetApproved: false`. Until a human reviews the 25 cases and flips it,
-   every scorecard is provisional. This is the plan's "single most important
-   quality control."
-2. **API keys.** `ANTHROPIC_API_KEY` and `ZAI_API_KEY` are not set in this
-   environment. Without them, `ferry run` / `ferry serve` cannot call a real
-   provider, and `run_scorecard.py` cannot produce real numbers. `JUDGE_API_KEY`
-   is likewise unset, blocking the judge layer.
-3. **M1 of the z.ai/GLM addendum (chess-server `LlmComposer`).** Blocked: the
+1. **Complete the matrix.** Scorer is fixed and zai-glm (66%) + hf-llama (81%)
+   are re-scored. Remaining: re-run gemini under a non-rate-limited key (its
+   first run hit HTTP 429 on all 59 cases), then merge all three providers into
+   one multi-provider `scorecard.json` — the runner currently overwrites the
+   file on each invocation, so a merge mode (or a per-provider split + combine
+   script) is needed for a single file of record.
+2. **M1 of the z.ai/GLM addendum (chess-server `LlmComposer`).** Blocked: the
    prerequisite plan `opening-explainer-cloud-route.md` has not been run — none
    of the five local chess repos has the `:server` module, `LlmComposer`, or
    `TemplateComposer`. Recorded in `docs/plans/zai-glm-provider-addendum.md`.
@@ -85,10 +111,10 @@ exist until they are crossed:
 ## Verification commands
 
 ```bash
-python -m pytest eval_harness/ -q      # 22 passed
+python -m pytest eval_harness/ -q      # 31 passed
 ./gradlew build                         # BUILD SUCCESSFUL (28 tests, ktlint, detekt)
-ferry providers list                    # anthropic + zai-glm as JSON
-ferry skills list                       # hello-repo
+ferry providers list                    # zai-glm, gemini, hf-llama as JSON
+ferry skills list                       # hello-repo, company-role-research
 ```
 
 ## Dependency versions (all verified against primary sources)

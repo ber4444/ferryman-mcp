@@ -186,12 +186,41 @@ def score_ai_native(output: str, case_input: dict[str, str]) -> ScoreResult:
     )
 
 
+# Phrases indicating the concept is being *denied*, not affirmed. A match
+# preceded (within ~60 chars) by one of these is a false positive — e.g.
+# "No public evidence of Jetpack Compose" must not count as adopting Compose.
+# Found while verifying the hf-llama scorecard run: the unfixed scorer inflated
+# every provider that honestly reports "no evidence of <concept>".
+_NEGATION_MARKERS = re.compile(
+    r"(?:no\s+public\s+evidence|no\s+evidence|not\s+(?:explicitly)?\s*(?:adopt|use|mention|find|"
+    r"clear|sure|confirm|state|show|indicate|find\s+evidence)"
+    r"|could\s?n['']?t\s+(?:find|locate)|there\s+is\s+no|no\s+reliable\s+public\s+data"
+    r"|no\s+information\s+(?:found|about)|lack(?:s|ing)?\s+(?:of\s+)?(?:evidence|mention|public)"
+    r"|absence\s+of|neither.{0,40}\bnor\b)",
+    re.IGNORECASE,
+)
+
+_NEGATION_WINDOW = 60  # chars before the match to scan for a negation marker
+
+
 def _positive_presence(key: str, output: str, patterns: list[str], label: str) -> ScoreResult:
-    """Shared positive-presence check: fail if the concept is absent (ground truth is true)."""
+    """Shared positive-presence check: fail if the concept is only mentioned to be *denied*.
+
+    A match counts as an affirmation only if at least one occurrence is NOT
+    preceded (within _NEGATION_WINDOW chars) by a negation marker. This stops
+    "No public evidence of Jetpack Compose" from passing the Compose check.
+    """
     for pattern in patterns:
-        if re.search(pattern, output, re.IGNORECASE):
-            return ScoreResult(key, True, f"matched {label} signal /{pattern}/")
-    return ScoreResult(key, False, f"ground truth says {label}=true but output never mentions it")
+        for m in re.finditer(pattern, output, re.IGNORECASE):
+            preceding = output[max(0, m.start() - _NEGATION_WINDOW) : m.start()]
+            if not _NEGATION_MARKERS.search(preceding):
+                return ScoreResult(key, True, f"matched {label} signal /{pattern}/")
+    return ScoreResult(
+        key,
+        False,
+        f"ground truth says {label}=true but output never affirms it "
+        f"(only absent or mentioned inside a negation)",
+    )
 
 
 def _has_nearby_citation(output: str, offset: int, window: int = 200) -> bool:
