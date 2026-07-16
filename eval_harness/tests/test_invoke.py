@@ -117,6 +117,9 @@ def test_invoke_http_reads_tokens_from_response_body(monkeypatch):
 
     fake_error = types.ModuleType("urllib.error")
     fake_error.URLError = URLError
+    # _invoke_http also catches HTTPError (for the 401 / non-2xx path). Provide
+    # a stub so the function's `except urllib.error.HTTPError` resolves.
+    fake_error.HTTPError = type("HTTPError", (Exception,), {})
 
     import urllib
 
@@ -130,6 +133,7 @@ def test_invoke_http_reads_tokens_from_response_body(monkeypatch):
         skill="company-role-research",
         provider=None,
         http_url="http://localhost:8080",
+        http_token="test-token",
     )
 
     assert result.output == "answer"

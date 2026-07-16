@@ -7,6 +7,7 @@ Two invocation modes, selected at runtime:
   * "http" (default): POSTs to a running `ferry serve` HTTP channel. This is
     the programmatic entry point the eval-harness contract guarantees — both
     CLI and HTTP hit the same Orchestrator.runSkill, so HTTP is representative.
+    Requires FERRY_HTTP_TOKEN (the server's inbound bearer-token auth).
   * "subprocess": shells out to the installed `ferry run` CLI. Used when no
     server is running (e.g. CI without a long-lived process).
 
@@ -27,6 +28,11 @@ from typing import Any
 DEFAULT_SKILL = "company-role-research"
 DEFAULT_HTTP_URL = os.environ.get("FERRY_HTTP_URL", "http://localhost:8080")
 DEFAULT_BINARY = os.environ.get("FERRY_BINARY", "ferry")
+# Bearer token the HTTP channel requires on POST /invoke (inbound auth). Set by
+# `ferry serve`'s --api-key / FERRY_HTTP_TOKEN; read here so the harness clears
+# the server's auth gate without any extra wiring. None only works if the server
+# was started without auth — which current `ferry serve` refuses to do.
+DEFAULT_HTTP_TOKEN = os.environ.get("FERRY_HTTP_TOKEN")
 
 
 @dataclass
@@ -63,6 +69,7 @@ def invoke(
     mode: str = "auto",
     http_url: str = DEFAULT_HTTP_URL,
     binary: str = DEFAULT_BINARY,
+    http_token: str | None = DEFAULT_HTTP_TOKEN,
 ) -> InvocationResult:
     """
     Invoke a ferryman skill and return its raw output.
@@ -74,6 +81,8 @@ def invoke(
         mode: "http" | "subprocess" | "auto" (auto tries http then falls back to subprocess).
         http_url: base URL of a running `ferry serve` instance.
         binary: name/path of the installed ferry CLI for subprocess mode.
+        http_token: bearer token the HTTP channel requires (FERRY_HTTP_TOKEN).
+            Ignored in subprocess mode.
 
     Returns:
         InvocationResult with the skill's output text and routing metadata.
@@ -81,7 +90,7 @@ def invoke(
     import time
 
     started = time.monotonic()
-    result = _dispatch(skill_input, skill, provider, mode, http_url, binary)
+    result = _dispatch(skill_input, skill, provider, mode, http_url, binary, http_token)
     result.latency_ms = int((time.monotonic() - started) * 1000)
     # Record char counts so the scorecard can estimate cost. The input payload
     # is what we sent (serialized); the output is what came back.
@@ -97,11 +106,12 @@ def _dispatch(
     mode: str,
     http_url: str,
     binary: str,
+    http_token: str | None,
 ) -> InvocationResult:
     """Select and run the invocation mode. Timed by the caller."""
     if mode == "auto":
         try:
-            return _invoke_http(skill_input, skill, provider, http_url)
+            return _invoke_http(skill_input, skill, provider, http_url, http_token)
         except (ConnectionError, RuntimeError) as http_err:
             try:
                 return _invoke_subprocess(skill_input, skill, provider, binary)
@@ -111,7 +121,7 @@ def _dispatch(
                     f"available. HTTP error: {http_err}; subprocess error: {e}.",
                 ) from e
     elif mode == "http":
-        return _invoke_http(skill_input, skill, provider, http_url)
+        return _invoke_http(skill_input, skill, provider, http_url, http_token)
     elif mode == "subprocess":
         return _invoke_subprocess(skill_input, skill, provider, binary)
     raise ValueError(f"unknown mode: {mode!r} (expected 'http', 'subprocess', or 'auto')")
@@ -122,12 +132,18 @@ def _invoke_http(
     skill: str,
     provider: str | None,
     http_url: str,
+    http_token: str | None,
 ) -> InvocationResult:
     """POST to the HTTP channel's /invoke endpoint."""
     # urllib is stdlib — no dependency required for the default adapter.
     import urllib.error
     import urllib.request
 
+    if not http_token:
+        raise ConnectionError(
+            "ferry HTTP channel requires FERRY_HTTP_TOKEN but it is not set "
+            "(the server rejects unauthenticated requests). Export it or use --mode subprocess.",
+        )
     payload = {"skill": skill, "input": json.dumps(skill_input)}
     if provider:
         payload["provider"] = provider
@@ -135,12 +151,25 @@ def _invoke_http(
     req = urllib.request.Request(
         f"{http_url.rstrip('/')}/invoke",
         data=data,
-        headers={"Content-Type": "application/json"},
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {http_token}",
+        },
         method="POST",
     )
     try:
         with urllib.request.urlopen(req, timeout=120) as resp:
             body = json.loads(resp.read().decode())
+    except urllib.error.HTTPError as e:
+        # A 401 here means the token we sent was wrong (not that the server is
+        # unreachable) — surface that distinctly so auto-mode falls back to
+        # subprocess rather than treating auth failure as a transient blip.
+        if e.code == 401:
+            raise ConnectionError(
+                f"ferry HTTP channel rejected the bearer token (401 at {http_url}). "
+                "Check FERRY_HTTP_TOKEN matches the server's --api-key.",
+            ) from e
+        raise ConnectionError(f"ferry HTTP channel error {e.code} at {http_url}: {e.reason}") from e
     except urllib.error.URLError as e:
         raise ConnectionError(f"ferry HTTP channel not reachable at {http_url}: {e}") from e
     return InvocationResult(

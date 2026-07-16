@@ -172,13 +172,32 @@ class RunCommand : CoreCliktCommand(name = "run") {
     }
 }
 
-/** `ferry serve --port 8080` — HTTP channel sharing the same orchestrator. */
+/**
+ * `ferry serve --port 8080` — HTTP channel sharing the same orchestrator.
+ *
+ * Requires a bearer-token secret for inbound auth: pass `--api-key`, or export
+ * `FERRY_HTTP_TOKEN`. Without either the command errors out rather than starting
+ * an unauthenticated server. `--api-key` takes precedence over the env var when
+ * both are set.
+ */
 class ServeCommand : CoreCliktCommand(name = "serve") {
     override fun help(context: Context): String = "Run the HTTP channel"
 
     private val port by option("--port").int().default(8080)
+    private val apiKeyOption by option("--api-key")
 
     override fun run() {
-        runBlocking { HttpServer(AppContext().orchestrator(), port).start() }
+        // Read the token explicitly via System.getenv — the same path
+        // ProviderRegistry uses — rather than Clikt's envvar= option param, so
+        // the resolution is identical to how outbound provider keys are read.
+        val apiToken =
+            apiKeyOption ?: System.getenv("FERRY_HTTP_TOKEN")
+                ?: run {
+                    System.err.println(
+                        "ferry serve requires an inbound auth token: pass --api-key or export FERRY_HTTP_TOKEN.",
+                    )
+                    kotlin.system.exitProcess(1)
+                }
+        runBlocking { HttpServer(AppContext().orchestrator(), port, apiToken).start() }
     }
 }

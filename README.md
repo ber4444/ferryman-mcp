@@ -18,7 +18,8 @@ gateway — a portfolio piece, not a product.
 > not expose itself **as** an MCP server — you cannot point an LLM's MCP config
 > at it and discover tools. An LLM reaches ferryman through its own channels
 > instead: shell out to `ferry run <skill>`, or `POST /invoke` against
-> `ferry serve`. (Exposing ferryman-as-server is a real gap, not a config flag.)
+> `ferry serve` (which requires a bearer token — `FERRY_HTTP_TOKEN` — to keep
+> the endpoint from being an open relay onto your provider credits).
 
 ## Get a fit summary for a role
 
@@ -65,15 +66,15 @@ command passes on `main`.
 
 | Capability | Status | Proof command |
 |---|---|---|
-| Build, lint, test | done | `./gradlew build` (28 Kotlin tests, ktlint, detekt) |
+| Build, lint, test | done | `./gradlew build` (33 Kotlin tests, ktlint, detekt) |
 | CLI launcher | done | `./gradlew installDist` → `build/install/ferry/bin/ferry` |
 | Provider routing (3 providers) | done | `ferry providers list` — zai-glm, gemini, hf-llama |
 | Skills enumerable | done | `ferry skills list` — company-role-research, hello-repo |
 | MCP host aggregates tools | done | `ferry tools list` — filesystem + fetch MCP servers |
 | Fit summary | done | `ferry run company-role-research --input '{"company":"...","role":"..."}'` |
-| HTTP channel | building | `ferry serve --port 8080` (needs an API key) |
+| HTTP channel | done | `FERRY_HTTP_TOKEN=... ferry serve --port 8080` (bearer-token auth on `/invoke`) |
 | Routing logged | done | unit-tested; `logs/routing.jsonl` written by every `runSkill` call |
-| Python eval harness | done | `python -m pytest eval_harness/ -q` (35 tests green) |
+| Python eval harness | done | `python -m pytest eval_harness/ -q` (45 tests green) |
 | Multi-provider scorecard | done | 144 rows (48×3), all three providers scored — see [Scorecard status](#scorecard-status) |
 
 ## Scorecard status
@@ -154,10 +155,12 @@ python eval_harness/run_scorecard.py --all-providers
 **Via HTTP (start the server first, then point the harness at it):**
 
 ```bash
-# Terminal 1 — start the ferry HTTP channel
+# Terminal 1 — start the ferry HTTP channel (token is mandatory inbound auth)
+export FERRY_HTTP_TOKEN=...
 ./build/install/ferry/bin/ferry serve --port 8080 &
 
-# Terminal 2 — run the scorecard (auto-detects HTTP, falls back to subprocess)
+# Terminal 2 — run the scorecard (auto-detects HTTP, falls back to subprocess).
+# The harness reads FERRY_HTTP_TOKEN and sends it as the bearer token.
 python eval_harness/run_scorecard.py --all-providers
 ```
 
