@@ -16,6 +16,10 @@ import dev.openclaw.ferryman.orchestrator.Orchestrator
 import dev.openclaw.ferryman.providers.ProviderRegistry
 import dev.openclaw.ferryman.skills.SkillLoader
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.buildJsonObject
 import java.nio.file.Path
 import java.nio.file.Paths
 
@@ -142,7 +146,29 @@ class RunCommand : CoreCliktCommand(name = "run") {
                 System.err.println("ferry: ${e.message}")
                 kotlin.system.exitProcess(1)
             }
+        // Print a JSON metadata line to stdout FIRST, then the output text. This
+        // lets invoke.py's subprocess path read the first line as structured
+        // metadata (provider/model/tokens) and treat the rest as the answer.
+        echo(metaLine(result))
         echo(result.output)
+    }
+
+    /**
+     * Serialise routing metadata as a single `{"_meta":{...}}` JSON line for the
+     * subprocess channel. Token counts are emitted only when the provider
+     * reported real usage; absent keys stay null so the harness can fall back.
+     */
+    private fun metaLine(result: dev.openclaw.ferryman.orchestrator.SkillResult): String {
+        val json = Json { encodeDefaults = true }
+        val meta =
+            buildJsonObject {
+                put("provider", JsonPrimitive(result.provider))
+                put("model", JsonPrimitive(result.model))
+                result.inputTokens?.let { put("inputTokens", JsonPrimitive(it)) }
+                result.outputTokens?.let { put("outputTokens", JsonPrimitive(it)) }
+            }
+        val wrapper = buildJsonObject { put("_meta", meta) }
+        return json.encodeToString(JsonObject.serializer(), wrapper)
     }
 }
 

@@ -24,6 +24,22 @@ data class SkillResult(
     val provider: String,
     val model: String,
     val toolCalls: List<String>,
+    // Real token counts summed across all provider turns (the tool-call loop
+    // can call the provider several times). Null when the provider returns no
+    // usage data — the scorecard then falls back to a chars/4 estimate.
+    val inputTokens: Int? = null,
+    val outputTokens: Int? = null,
+)
+
+/**
+ * Internal result of the model↔tool loop: the final answer text plus the real
+ * token counts summed across every provider turn. Rolled into [SkillResult] by
+ * [Orchestrator.runSkill].
+ */
+private data class LoopOutcome(
+    val output: String,
+    val inputTokens: Int?,
+    val outputTokens: Int?,
 )
 
 /**
@@ -75,12 +91,14 @@ class Orchestrator(
         var error: String? = null
         try {
             return ConnectedHost.use(host.connect()) { connected ->
-                val output = runLoop(skill.body, input, provider, connected, toolCallsMade)
+                val outcome = runLoop(skill.body, input, provider, connected, toolCallsMade)
                 SkillResult(
-                    output = output,
+                    output = outcome.output,
                     provider = provider.id,
                     model = provider.model,
                     toolCalls = toolCallsMade.toList(),
+                    inputTokens = outcome.inputTokens,
+                    outputTokens = outcome.outputTokens,
                 )
             }
         } catch (e: Throwable) {
@@ -105,7 +123,8 @@ class Orchestrator(
 
     /**
      * The model↔tool loop. Terminates when the model returns a final answer or
-     * when [MAX_ITERATIONS] is reached.
+     * when [MAX_ITERATIONS] is reached. Returns the final answer text plus the
+     * real token counts summed across every provider turn.
      */
     private suspend fun runLoop(
         system: String,
@@ -113,7 +132,7 @@ class Orchestrator(
         provider: LlmProvider,
         connected: ConnectedHost,
         toolCallsMade: MutableList<String>,
-    ): String {
+    ): LoopOutcome {
         val tools =
             connected.tools.map {
                 ToolDescriptor(
@@ -123,6 +142,10 @@ class Orchestrator(
                 )
             }
         val conversation = mutableListOf<ConversationMessage>()
+        // Sum real token counts across turns. Stays null if the provider never
+        // reports usage (e.g. Anthropic) so the scorecard can fall back.
+        var inputTokens: Int? = null
+        var outputTokens: Int? = null
         repeat(MAX_ITERATIONS) { iteration ->
             val response =
                 provider.complete(
@@ -133,6 +156,8 @@ class Orchestrator(
                         conversation = conversation.toList(),
                     ),
                 )
+            inputTokens = sumTokens(inputTokens, response.inputTokens)
+            outputTokens = sumTokens(outputTokens, response.outputTokens)
             // Debug: log each turn to stderr so we can see what the model is doing.
             System.err.println(
                 "[ferryman] iteration $iteration: ${response.toolCalls.size} tool calls, output=${response.output.take(100)}",
@@ -141,7 +166,7 @@ class Orchestrator(
                 System.err.println("[ferryman]   tool: ${call.name} args=${call.argumentsJson.take(200)}")
             }
             if (response.toolCalls.isEmpty()) {
-                return response.output
+                return LoopOutcome(response.output, inputTokens, outputTokens)
             }
             // Record the assistant's tool-call turn in the conversation history.
             conversation.add(
@@ -156,7 +181,23 @@ class Orchestrator(
                 conversation.add(ConversationMessage.ToolResult(toolResult))
             }
         }
-        return "Reached tool-call limit ($MAX_ITERATIONS) without a final answer."
+        return LoopOutcome(
+            "Reached tool-call limit ($MAX_ITERATIONS) without a final answer.",
+            inputTokens,
+            outputTokens,
+        )
+    }
+
+    /**
+     * Accumulate per-turn token counts. Once any turn reports a count, the
+     * running total becomes non-null; null turns contribute nothing.
+     */
+    private fun sumTokens(
+        running: Int?,
+        turn: Int?,
+    ): Int? {
+        if (running == null && turn == null) return null
+        return (running ?: 0) + (turn ?: 0)
     }
 
     /**

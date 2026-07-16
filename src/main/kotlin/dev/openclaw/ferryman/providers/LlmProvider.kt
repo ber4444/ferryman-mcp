@@ -71,6 +71,11 @@ data class CompletionResult(
     val output: String,
     val toolCalls: List<ToolCall> = emptyList(),
     val finishReason: String = "stop",
+    // Real token counts from the provider's `usage` block. Null when the
+    // provider didn't return usage (e.g. Anthropic) — callers fall back to a
+    // char estimate. Summed across tool-call turns by the orchestrator.
+    val inputTokens: Int? = null,
+    val outputTokens: Int? = null,
 )
 
 /**

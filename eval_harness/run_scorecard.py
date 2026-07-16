@@ -107,23 +107,35 @@ def load_pricing() -> dict:
         return {}
 
 
-# Rough chars-per-token factor for cost estimation. English prose averages ~4
-# chars/token across modern tokenizers. This is an ESTIMATE — see README for why
-# real cost arrives only once `usage` data propagates through the Kotlin side.
+# Rough chars-per-token factor for the fallback cost estimate. Used only when a
+# provider returns no `usage` block (or an error row). English prose averages ~4
+# chars/token across modern tokenizers — an ESTIMATE, never exact.
 _CHARS_PER_TOKEN = 4.0
 
 
 def estimate_cost(result: invoke_mod.InvocationResult, pricing: dict) -> float | None:
     """
-    Estimate USD cost from recorded pricing + char-count token estimate.
-    Returns None if the provider isn't in pricing.json. Clearly an estimate
-    until real `usage` token counts flow through the providers.
+    Compute USD cost from recorded pricing + token counts.
+
+    Uses the real prompt/completion token counts threaded through from the
+    provider's ``usage`` block when present (exact cost). Falls back to the
+    chars/4 estimate only when those counts are absent — e.g. a provider that
+    reports no usage, or an error row with no invocation data. Returns None if
+    the provider isn't listed in pricing.json.
     """
     entry = pricing.get(result.provider)
     if entry is None:
         return None
-    input_tokens = result.input_chars / _CHARS_PER_TOKEN
-    output_tokens = result.output_chars / _CHARS_PER_TOKEN
+    input_tokens = (
+        result.input_tokens
+        if result.input_tokens is not None
+        else result.input_chars / _CHARS_PER_TOKEN
+    )
+    output_tokens = (
+        result.output_tokens
+        if result.output_tokens is not None
+        else result.output_chars / _CHARS_PER_TOKEN
+    )
     cost = (
         input_tokens * entry.get("inputPricePerMillionTokens", 0.0)
         + output_tokens * entry.get("outputPricePerMillionTokens", 0.0)

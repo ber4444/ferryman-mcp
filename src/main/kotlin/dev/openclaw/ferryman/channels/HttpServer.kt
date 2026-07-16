@@ -15,6 +15,7 @@ import io.ktor.server.response.respondText
 import io.ktor.server.routing.get
 import io.ktor.server.routing.post
 import io.ktor.server.routing.routing
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
@@ -44,6 +45,10 @@ private data class InvokeResponse(
     val provider: String,
     val model: String,
     val toolCalls: List<String>,
+    // Real token counts from the provider's usage block, summed across turns.
+    // Optional (default null) so older callers and error rows still deserialize.
+    @SerialName("inputTokens") val inputTokens: Int? = null,
+    @SerialName("outputTokens") val outputTokens: Int? = null,
 )
 
 private fun Application.module(orchestrator: Orchestrator) {
@@ -64,6 +69,8 @@ private fun Application.module(orchestrator: Orchestrator) {
                     provider = result.provider,
                     model = result.model,
                     toolCalls = result.toolCalls,
+                    inputTokens = result.inputTokens,
+                    outputTokens = result.outputTokens,
                 ),
             )
         }
