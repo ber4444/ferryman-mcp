@@ -31,7 +31,7 @@ orientation — with sources cited.
 git clone https://github.com/ber4444/ferryman-mcp && cd ferryman-mcp
 ./gradlew build && ./gradlew installDist
 
-export ZAI_API_KEY=...        # or GEMINI_API_KEY=...
+export ZAI_API_KEY=...        # or GEMINI_API_KEY=... or DEEPINFRA_API_KEY=...
 
 ./build/install/ferry/bin/ferry run company-role-research \
   --input '{"company":"EarnIn","role":"Senior Mobile Engineer (Android)"}'
@@ -121,9 +121,10 @@ git clone https://github.com/ber4444/ferryman-mcp && cd ferryman-mcp
 ./gradlew build
 ./gradlew installDist
 
-# Set at least one provider key (both are optional, but you need one to run a skill)
-export ZAI_API_KEY=...        # z.ai GLM (default provider)
-export GEMINI_API_KEY=...     # Google Gemini
+# Set at least one provider key (all optional, but you need one to run a skill)
+export ZAI_API_KEY=...         # z.ai GLM (default provider)
+export GEMINI_API_KEY=...      # Google Gemini
+export DEEPINFRA_API_KEY=...   # DeepInfra (Llama 3.1 70B)
 
 # List configured providers and skills
 ./build/install/ferry/bin/ferry providers list
@@ -175,8 +176,9 @@ JUDGE_API_KEY=... python eval_harness/run_scorecard.py --all-providers --judge
   (`pip install -e .` pulls it in as a dependency). Run `ferry tools list` to
   verify both servers start cleanly.
 - **`No provider available for skill`** — no API key is set for any provider.
-  Export at least `ZAI_API_KEY` or `GEMINI_API_KEY`, then check with
-  `ferry providers list` (look for `"apiKeySet": true`).
+  Export at least one of `ZAI_API_KEY`, `GEMINI_API_KEY`, or
+  `DEEPINFRA_API_KEY`, then check with `ferry providers list` (look for
+  `"apiKeySet": true`).
 - **`Reached tool-call limit`** — the model looped without converging. Ensure
   the fetch MCP server is running (check `ferry tools list`).
 - **`Neither HTTP channel nor ferry binary available`** — the harness couldn't
@@ -202,9 +204,9 @@ flowchart LR
 - **Orchestrator** (`orchestrator/`) — `runSkill(name, input)`: loads the skill,
   selects a provider, runs the model↔tool loop, writes a routing log line.
 - **Providers** (`providers/`) — `LlmProvider` with `OpenAiCompatibleProvider`
-  (covers z.ai GLM, Gemini, Hugging Face, OpenRouter, Ollama, vLLM, …). All
-  configured providers route through the same abstraction. Retries 429/503
-  with backoff (up to 3 attempts).
+  (covers z.ai GLM, Gemini, DeepInfra, OpenRouter, Ollama, vLLM, …). All
+  configured providers route through the same abstraction. Retries 429/503,
+  timeouts, and connection errors with backoff (up to 3 attempts).
 - **MCP host** (`host/`) — connects stdio servers, aggregates tools into a
   namespaced registry (`<server>.<tool>`). Two servers configured: filesystem
   (`@modelcontextprotocol/server-filesystem`) and fetch (`mcp-server-fetch`).
