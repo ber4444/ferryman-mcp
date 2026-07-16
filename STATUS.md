@@ -24,7 +24,9 @@ carry this status document and open a draft PR for review.
   ktlint + detekt, GitHub Actions CI
 - M1 — MCP host: reads `.mcp.json`, spawns stdio servers via
   `StdioClientTransport`, initialize handshake, `tools/list`, namespaced
-  `<server>.<tool>` registry
+  `<server>.<tool>` registry. Streamable HTTP transport
+  (`StreamableHttpClientTransport`) added later — `http` / `streamable-http`
+  entries are parsed in `McpConfigParser` and resolved alongside stdio.
 - M2 — `LlmProvider` interface + `AnthropicProvider` + `OpenAiCompatibleProvider`
   (z.ai GLM `glm-5.2`), TOML config, `providers list`, `RoutingLogger`
 - M3 — `SkillLoader` scanning `skills/*/SKILL.md`, `Orchestrator.runSkill(name, input)`

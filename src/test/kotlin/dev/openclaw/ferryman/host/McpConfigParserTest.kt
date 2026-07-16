@@ -38,19 +38,80 @@ class McpConfigParserTest {
     }
 
     @Test
-    fun `non-stdio servers are skipped not crashed`() {
+    fun `parses an http server with url and headers`() {
         val json =
             """
             {
               "mcpServers": {
-                "http": {"type": "sse", "url": "http://x"},
+                "remote": {
+                  "type": "http",
+                  "url": "https://x/mcp",
+                  "headers": { "Authorization": "Bearer t" }
+                }
+              }
+            }
+            """.trimIndent()
+        val specs = McpConfigParser.parse(json)
+        assertEquals(1, specs.size)
+        val spec = specs.first() as ServerSpec.Http
+        assertEquals("remote", spec.name)
+        assertEquals("https://x/mcp", spec.url)
+        assertEquals("Bearer t", spec.headers["Authorization"])
+    }
+
+    @Test
+    fun `http type accepted via streamable-http alias`() {
+        val json =
+            """
+            {
+              "mcpServers": {
+                "remote": {
+                  "type": "streamable-http",
+                  "url": "https://x/mcp"
+                }
+              }
+            }
+            """.trimIndent()
+        val specs = McpConfigParser.parse(json)
+        assertEquals(1, specs.size)
+        val spec = specs.first() as ServerSpec.Http
+        assertEquals("remote", spec.name)
+        assertEquals("https://x/mcp", spec.url)
+        assertTrue(spec.headers.isEmpty())
+    }
+
+    @Test
+    fun `http server without url is skipped not crashed`() {
+        val json =
+            """
+            {
+              "mcpServers": {
+                "remote": { "type": "http" },
+                "local": { "command": "echo" }
+              }
+            }
+            """.trimIndent()
+        // The malformed http entry is dropped; the stdio entry survives.
+        val specs = McpConfigParser.parse(json)
+        assertTrue(specs.any { it.name == "local" })
+        assertTrue(specs.none { it.name == "remote" })
+    }
+
+    @Test
+    fun `unsupported server types are skipped not crashed`() {
+        val json =
+            """
+            {
+              "mcpServers": {
+                "ws": {"type": "websocket", "url": "ws://x"},
                 "stdio": {"command": "echo"}
               }
             }
             """.trimIndent()
-        // Only the stdio entry survives.
+        // Only the stdio entry survives; the unknown type is skipped, not thrown on.
         val specs = McpConfigParser.parse(json)
         assertTrue(specs.any { it.name == "stdio" })
+        assertTrue(specs.none { it.name == "ws" })
     }
 
     @Test

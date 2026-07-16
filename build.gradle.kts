@@ -39,6 +39,7 @@ dependencies {
     implementation("io.ktor:ktor-server-cio:3.4.3")
     implementation("io.ktor:ktor-server-content-negotiation:3.4.3")
     testImplementation("io.ktor:ktor-server-test-host:3.4.3")
+    testImplementation("io.ktor:ktor-server-sse:3.4.3")
     testImplementation("io.ktor:ktor-client-mock:3.4.3")
 
     // Serialization + coroutines. Versions verified on Maven Central.
