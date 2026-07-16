@@ -210,9 +210,24 @@ flowchart LR
   configured providers route through the same abstraction. Retries 429/503,
   timeouts, and connection errors with backoff (up to 3 attempts). Parses the
   `usage` block so token counts (and thus cost) are real, not estimated.
-- **MCP host** (`host/`) — connects stdio servers, aggregates tools into a
-  namespaced registry (`<server>.<tool>`). Two servers configured: filesystem
+- **MCP host** (`host/`) — connects stdio **and** Streamable HTTP servers,
+  aggregates tools into a namespaced registry (`<server>.<tool>`). Transport is
+  pluggable via `ServerSpec`; aggregation and dispatch are transport-agnostic.
+  Two servers configured: filesystem
   (`@modelcontextprotocol/server-filesystem`) and fetch (`mcp-server-fetch`).
+  HTTP servers are configured the same way — see `.mcp.json` below.
+  ```json
+  {
+    "mcpServers": {
+      "remote": {
+        "type": "http",
+        "url": "https://example.com/mcp",
+        "headers": { "Authorization": "Bearer TOKEN" }
+      }
+    }
+  }
+  ```
+  (`"type": "streamable-http"` is accepted as an alias.)
 - **Skills** (`skills/`) — scans `skills/*/SKILL.md` (Agent Skills open
   standard). Two skills: `company-role-research` (fit summaries + eval target)
   and `hello-repo` (repo summarizer).
@@ -242,7 +257,9 @@ Adding an OpenAI-compatible provider is a config-only change — edit
   provider now parses `usage`), but the current scorecard's cost column is still
   chars÷4 because that run used the pre-propagation binary. The next run reports
   real cost.
-- Streamable HTTP transport for the MCP host (stdio only for now).
+- Streamable HTTP transport for the MCP host — **done**; both stdio and HTTP
+  servers are now connectable. Remaining: cover the legacy HTTP+SSE transport
+  if real-world servers still need it.
 - More channels: Telegram, Slack (HTTP is the MVP second channel).
 
 ## License

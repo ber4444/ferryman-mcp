@@ -10,11 +10,13 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
 /**
- * Parses Claude Code's `.mcp.json` format. Only stdio servers are supported by the
- * MVP — the spec's `command`, `args`, and `env` keys map directly onto [ServerSpec.Stdio].
+ * Parses Claude Code's `.mcp.json` format. Both stdio and Streamable HTTP
+ * servers are supported: stdio entries map onto [ServerSpec.Stdio], and
+ * `http` / `streamable-http` entries map onto [ServerSpec.Http].
  *
- * Recognised shape (a subset of Claude Code's format; non-stdio entries are skipped
- * with a warning so a mixed config file does not crash the host):
+ * Recognised shapes (a subset of Claude Code's format; entries with an
+ * unknown type are skipped with a warning so a mixed config file does not
+ * crash the host):
  *
  * ```json
  * {
@@ -23,6 +25,11 @@ import kotlinx.serialization.json.jsonPrimitive
  *       "command": "npx",
  *       "args": ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"],
  *       "env": { "FOO": "bar" }
+ *     },
+ *     "remote": {
+ *       "type": "http",
+ *       "url": "https://example.com/mcp",
+ *       "headers": { "Authorization": "Bearer TOKEN" }
  *     }
  *   }
  * }
@@ -44,10 +51,20 @@ object McpConfigParser {
     ): ServerSpec? {
         val obj = element as? JsonObject ?: return null
         val type = obj["type"]?.jsonPrimitive?.contentOrNull ?: "stdio"
-        if (type != "stdio") {
-            System.err.println("[ferryman] skipping server '$name': type '$type' not supported (stdio only)")
-            return null
+        return when (type) {
+            "stdio" -> parseStdio(name, obj)
+            "http", "streamable-http" -> parseHttp(name, obj)
+            else -> {
+                System.err.println("[ferryman] skipping server '$name': type '$type' not supported (stdio and http only)")
+                null
+            }
         }
+    }
+
+    private fun parseStdio(
+        name: String,
+        obj: JsonObject,
+    ): ServerSpec? {
         val command =
             obj["command"]?.jsonPrimitive?.contentOrNull
                 ?: run {
@@ -58,9 +75,27 @@ object McpConfigParser {
         val env = obj["env"]?.asEnvMap().orEmpty()
         return ServerSpec.Stdio(name, command, args, env)
     }
+
+    private fun parseHttp(
+        name: String,
+        obj: JsonObject,
+    ): ServerSpec? {
+        val url =
+            obj["url"]?.jsonPrimitive?.contentOrNull
+                ?: run {
+                    System.err.println("[ferryman] skipping server '$name': missing 'url'")
+                    return null
+                }
+        val headers = obj["headers"]?.asHeadersMap().orEmpty()
+        return ServerSpec.Http(name, url, headers)
+    }
 }
 
 private fun JsonElement.asListOfStrings(): List<String>? = (this as? JsonArray)?.mapNotNull { (it as? JsonPrimitive)?.contentOrNull }
 
-private fun JsonElement.asEnvMap(): Map<String, String>? =
+private fun JsonElement.asEnvMap(): Map<String, String>? = asStringMap()
+
+private fun JsonElement.asHeadersMap(): Map<String, String>? = asStringMap()
+
+private fun JsonElement.asStringMap(): Map<String, String>? =
     (this as? JsonObject)?.entries?.associate { (k, v) -> k to (v.jsonPrimitive.contentOrNull ?: "") }
