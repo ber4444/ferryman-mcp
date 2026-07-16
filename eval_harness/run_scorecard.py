@@ -253,7 +253,7 @@ def _render_markdown(results: list[CaseResult], *, use_judge: bool) -> str:
         "",
         "## Rule-scorer results",
         "",
-        "| Case | Provider | Pass rate | Failed checks | Latency | Cost (est.) |",
+        "| Case | Provider | Pass rate | Failed checks | Latency | Cost |",
         "|---|---|---|---|---|---|",
     ]
     for r in results:
@@ -271,7 +271,7 @@ def _render_markdown(results: list[CaseResult], *, use_judge: bool) -> str:
     lines.append("")
     lines.append("## Per-provider summary")
     lines.append("")
-    lines.append("| Provider | Cases | Mean pass rate | Mean latency | Mean cost (est.) | Pricing date |")
+    lines.append("| Provider | Cases | Mean pass rate | Mean latency | Mean cost | Pricing date |")
     lines.append("|---|---|---|---|---|---|")
     for provider_id in sorted({r.provider for r in results}):
         prov_results = [r for r in results if r.provider == provider_id]

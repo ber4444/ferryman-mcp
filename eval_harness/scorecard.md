@@ -5,7 +5,7 @@ Cases: 144
 
 ## Rule-scorer results
 
-| Case | Provider | Pass rate | Failed checks | Latency | Cost (est.) |
+| Case | Provider | Pass rate | Failed checks | Latency | Cost |
 |---|---|---|---|---|---|
 | case-001 | hf-llama | 100% | — | 7528 ms | $0.0001 |
 | case-002 | hf-llama | 100% | — | 7943 ms | $0.0001 |
@@ -156,7 +156,7 @@ Cases: 144
 
 ## Per-provider summary
 
-| Provider | Cases | Mean pass rate | Mean latency | Mean cost (est.) | Pricing date |
+| Provider | Cases | Mean pass rate | Mean latency | Mean cost | Pricing date |
 |---|---|---|---|---|---|
 | gemini | 48 | 76% | 6029 ms | $0.0004 | 2026-07-16 |
 | hf-llama | 48 | 82% | 10382 ms | $0.0002 | 2026-07-15 |
