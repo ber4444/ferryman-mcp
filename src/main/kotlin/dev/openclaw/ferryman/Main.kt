@@ -9,6 +9,7 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.types.int
 import dev.openclaw.ferryman.channels.HttpServer
+import dev.openclaw.ferryman.channels.TelegramBot
 import dev.openclaw.ferryman.config.ConfigLoader
 import dev.openclaw.ferryman.host.McpHost
 import dev.openclaw.ferryman.logging.RoutingLogger
@@ -27,6 +28,7 @@ fun main(args: Array<String>) =
             ToolsCommand().subcommands(ToolsListCommand()),
             RunCommand(),
             ServeCommand(),
+            TelegramBotCommand(),
         ).main(args)
 
 /**
@@ -154,5 +156,35 @@ class ServeCommand : CoreCliktCommand(name = "serve") {
 
     override fun run() {
         runBlocking { HttpServer(AppContext().orchestrator(), port).start() }
+    }
+}
+
+/**
+ * `ferry telegram` — Telegram channel sharing the same orchestrator.
+ *
+ * Reads `TELEGRAM_BOT_TOKEN` from the environment and long-polls the Bot API.
+ * Create a bot with @BotFather to get the token. Runs until interrupted.
+ */
+class TelegramBotCommand : CoreCliktCommand(name = "telegram") {
+    override fun help(context: Context): String = "Run the Telegram bot channel"
+
+    override fun run() {
+        val token = System.getenv("TELEGRAM_BOT_TOKEN")
+        if (token.isNullOrBlank()) {
+            System.err.println(
+                "TELEGRAM_BOT_TOKEN not set. Create a bot with @BotFather and export the token.",
+            )
+            kotlin.system.exitProcess(1)
+        }
+        val app = AppContext()
+        val bot =
+            TelegramBot(
+                token = token,
+                orchestrator = app.orchestrator(),
+                skills = SkillLoader(app.skillsPath),
+                providers = app.providers,
+            )
+        echo("Telegram bot running. Send a message to your bot.")
+        runBlocking { bot.start() }
     }
 }
