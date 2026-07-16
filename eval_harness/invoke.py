@@ -164,7 +164,17 @@ def _invoke_subprocess(
     cmd = [resolved, "run", "--skill", skill, "--input", json.dumps(skill_input)]
     if provider:
         cmd += ["--provider", provider]
-    completed = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    try:
+        completed = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    except subprocess.TimeoutExpired:
+        # A hung ferry process used to crash the whole eval batch. Record it
+        # as a per-case error so the runner's loop continues to the next case.
+        return InvocationResult(
+            output="",
+            provider=provider or "unknown",
+            model="unknown",
+            error=f"ferry subprocess timed out after 120s (cmd: {' '.join(cmd)})",
+        )
     if completed.returncode != 0:
         return InvocationResult(
             output="",

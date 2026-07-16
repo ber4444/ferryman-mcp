@@ -13,6 +13,13 @@ exposes skills (the [Agent Skills](https://agentskills.io) open standard) over
 multiple channels (CLI and HTTP). It is a small, honest, well-architected
 gateway — a portfolio piece, not a product.
 
+> **Host, not server.** ferryman is an MCP *host*: it connects **to** MCP
+> servers (filesystem, fetch) as a client and aggregates their tools. It does
+> not expose itself **as** an MCP server — you cannot point an LLM's MCP config
+> at it and discover tools. An LLM reaches ferryman through its own channels
+> instead: shell out to `ferry run <skill>`, or `POST /invoke` against
+> `ferry serve`. (Exposing ferryman-as-server is a real gap, not a config flag.)
+
 ## Get a fit summary for a role
 
 The primary use case: research a company's engineering fit for a mobile-engineer

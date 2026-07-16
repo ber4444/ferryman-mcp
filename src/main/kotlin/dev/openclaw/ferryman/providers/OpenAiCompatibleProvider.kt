@@ -3,6 +3,7 @@ package dev.openclaw.ferryman.providers
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.HttpRequestTimeoutException
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.header
 import io.ktor.client.request.post
@@ -43,11 +44,27 @@ class OpenAiCompatibleProvider(
         val maxRetries = 3
         var lastError: String? = null
         repeat(maxRetries) { attempt ->
+            // Network/timeout failures (request timeout, connection reset) are
+            // treated the same as a retryable 429/503: record, back off, retry.
+            // Without this catch a single slow provider call killed the whole
+            // eval batch — the subprocess exited non-zero mid-run.
             val httpResponse =
-                client.post("${baseUrl.trimEnd('/')}/chat/completions") {
-                    header("Authorization", "Bearer $apiKey")
-                    contentType(ContentType.Application.Json)
-                    setBody(payload)
+                try {
+                    client.post("${baseUrl.trimEnd('/')}/chat/completions") {
+                        header("Authorization", "Bearer $apiKey")
+                        contentType(ContentType.Application.Json)
+                        setBody(payload)
+                    }
+                } catch (e: HttpRequestTimeoutException) {
+                    lastError = "Provider '$id' request timed out: ${e.message}"
+                    if (attempt == maxRetries - 1) throw RuntimeException(lastError)
+                    kotlinx.coroutines.delay((attempt + 1) * 5000L)
+                    return@repeat
+                } catch (e: java.io.IOException) {
+                    lastError = "Provider '$id' I/O error: ${e.message}"
+                    if (attempt == maxRetries - 1) throw RuntimeException(lastError)
+                    kotlinx.coroutines.delay((attempt + 1) * 5000L)
+                    return@repeat
                 }
             if (httpResponse.status.isSuccess()) {
                 val response: ChatCompletionResponse = httpResponse.body()

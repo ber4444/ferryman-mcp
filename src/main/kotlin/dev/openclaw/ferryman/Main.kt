@@ -130,7 +130,18 @@ class RunCommand : CoreCliktCommand(name = "run") {
     private val provider by option("--provider")
 
     override fun run() {
-        val result = runBlocking { AppContext().orchestrator().runSkill(skill, input, provider) }
+        // A provider failure (timeout, exhausted 429 retries) throws from
+        // runSkill. Without this catch ferry dumped a full stack trace and the
+        // eval harness captured the whole trace as the case's error string.
+        // Print a clean one-liner to stderr and exit non-zero instead — the
+        // harness maps a non-zero exit to a per-case error and keeps going.
+        val result =
+            try {
+                runBlocking { AppContext().orchestrator().runSkill(skill, input, provider) }
+            } catch (e: RuntimeException) {
+                System.err.println("ferry: ${e.message}")
+                kotlin.system.exitProcess(1)
+            }
         echo(result.output)
     }
 }
