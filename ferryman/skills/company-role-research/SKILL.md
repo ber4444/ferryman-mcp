@@ -21,6 +21,22 @@ The user message is a JSON object with two string fields:
 
 Parse `company` and `role` from this JSON. They tell you what to research.
 
+## Remembered context
+
+The system prompt may include a **User preferences (remembered)** section and a
+**Prior research on \<company\> (remembered)** section. These come from
+ferryman's persistent memory (`memory/`, seeded on first use).
+
+- If prior research on this company is present, **reference and build on it**:
+  note what has changed, confirm or correct earlier findings, and avoid
+  repeating the same fetch. You do not need to re-derive facts already
+  established.
+- The user-preferences section states what the candidate cares about (Compose,
+  KMP, remote, SF Bay Area, AI-native, mobile-first). Align your assessment to
+  these priorities.
+
+If neither section is present, proceed normally — this is a first run.
+
 ## Research process
 
 1. Call the **fetch** tool exactly ONCE to get the company's careers page or

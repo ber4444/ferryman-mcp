@@ -26,6 +26,11 @@ Thumbs.db
 logs/
 ferryman/logs/
 
+# Persistent agent memory — per-user runtime state, not source.
+# Leading slash anchors this to the repo root so it does NOT match the
+# `src/.../ferryman/memory/` Kotlin package directory.
+/memory/
+
 # Python (eval harness)
 __pycache__/
 *.pyc
