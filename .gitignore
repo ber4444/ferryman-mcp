@@ -37,5 +37,8 @@ eval_harness/.braintrust/
 # Python build output
 *.egg-info/
 
+# promptfoo local cache / eval results (from `npx promptfoo eval`)
+.promptfoo/
+
 # ZCode session artifacts
 .zcode/

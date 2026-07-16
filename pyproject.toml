@@ -19,10 +19,13 @@ packages = ["eval_harness"]
 eval_harness = ["golden/*.json", "rubric.md"]
 
 [project.optional-dependencies]
-# promptfoo: chosen as the default scorer backend — fully self-hosted, no account,
-# local model invocation. Install only what you need; the harness degrades
-# gracefully if optional deps are absent (see invoke.py).
-promptfoo = ["promptfoo>=0.105"]
+# promptfoo: the ALTERNATIVE runner (the primary runner is run_scorecard.py, what
+# CI runs). The PyPI `promptfoo` package is a thin wrapper that shells out to the
+# Node CLI (`npx promptfoo`), so it still requires Node.js 20+. If you already
+# have Node.js, prefer `npx promptfoo@latest` directly (no pip install needed).
+# NOTE: promptfoo's real versioning is on npm (0.105+); the PyPI wrapper tops out
+# at 0.1.4, so we pin the wrapper, not the npm version.
+promptfoo = ["promptfoo>=0.1.4"]
 # braintrust: the alternative backend, chosen if you want hosted dataset versioning
 # and experiment comparison. Requires a BRAINTRUST_API_KEY.
 braintrust = ["braintrust>=0.0.150"]

@@ -1,0 +1,144 @@
+# promptfoo eval for the ferryman company-role-research skill.
+#
+# IMPORTANT — read this before trusting any number this config produces.
+# promptfoo is positioned here as an ALTERNATIVE runner. The primary scorer CI
+# actually runs is eval_harness/run_scorecard.py. This config exists for richer
+# dashboards and side-by-side provider comparison. See eval_harness/README.md.
+#
+# SEMANTIC LIMITATION (do not paper over this):
+#   The company-role-research skill is written to drive a `fetch` MCP tool —
+#   ferryman gives the model that tool and runs a tool-call loop. promptfoo CANNOT
+#   replicate that loop: it sends the prompt as a plain OpenAI chat completion and
+#   scores the model's reply. The model is therefore answering from PARAMETRIC
+#   KNOWLEDGE ONLY (no live web fetch). Outputs here are NOT comparable 1:1 to a
+#   full ferryman pipeline run that `run_scorecard.py` scores. A provider that
+#   looks great here can still fail in ferryman (bad tool use) and vice versa.
+#   This config tests the *prompt as a direct LLM call*, not ferryman's pipeline.
+#
+# ---
+# Providers: three `openai` providers, one per entry in ferryman/config.toml.
+# Each points at an OpenAI-compatible base URL with its own model + API key env.
+#
+# Cost units: promptfoo's `config.cost` / `inputCost` / `outputCost` are
+# PER-TOKEN (USD per single token), NOT per-million. This is verifiable in the
+# promptfoo source: the OpenAI billing module stores its built-in model table as
+# `perMillion(price)` (= price / 1e6), and `calculateTextCost` computes
+# `tokens * cost` where `cost` is read directly from `config.inputCost ?? cost ?? rates.input`.
+# Because the config override replaces the (already-per-million-divided) rate
+# as-is, a config override must carry the same per-token unit. The values below
+# are therefore `pricing.json`'s `*PricePerMillionTokens` divided by 1_000_000.
+# Source prices and their dateChecked live in eval_harness/pricing.json.
+# ---
+#
+# Run:
+#   npx promptfoo@latest eval -c promptfooconfig.yaml
+#   npx promptfoo@latest view        # open the local dashboard
+#
+# API keys are read from the environment (same names as ferryman/config.toml):
+#   ZAI_API_KEY, GEMINI_API_KEY, DEEPINFRA_API_KEY
+# See .env.example. A provider whose key is unset will fail at call time; restrict
+# to the providers you have keys for with `npx promptfoo@latest eval -p zai-glm`.
+
+description: |
+  ferryman company-role-research skill scored by promptfoo against the 48-case
+  golden set, using the same eval_harness/rule_scorers.py scorers that
+  run_scorecard.py uses. Alternative runner — not what CI runs.
+
+# Reuse the deterministic scorers instead of reimplementing them. promptfoo's
+# `python` assert calls get_assert(), which imports score_all from rule_scorers.
+prompts:
+  - label: company-role-research
+    raw: |
+      You are a company-research agent for a mobile-engineer candidate. Your job
+      is to research a specific company and report whether it is a good fit for
+      someone whose profile is Android (Jetpack Compose), Kotlin Multiplatform,
+      mobile-first, and AI-native — and what the company's remote / SF Bay Area
+      posture is.
+
+      The user message is a JSON object with two string fields:
+      {"company": "{{company}}", "role": "{{role}}"}
+
+      NOTE: You do NOT have a web-fetch tool in this context. Answer from your own
+      knowledge of the company. If you cannot find reliable data for a dimension,
+      say "no reliable public data found" for that dimension — do not fabricate.
+
+      Produce your answer as plain text with these bold sections — the exact bold
+      terms are what the evaluation checks for:
+
+      **Tech stack:** Does the company use Jetpack Compose for Android? Kotlin
+      Multiplatform (KMP)? Say so, or "no public evidence of Jetpack Compose / KMP
+      adoption" — do not guess.
+      **Remote policy:** Is the company remote-friendly or distributed for mobile
+      engineers? Or in-office / return-to-office?
+      **SF Bay Area:** SF Bay Area / San Francisco / hybrid presence, or elsewhere?
+      **AI posture:** Is the company AI-native or AI-first (core product is AI)?
+      **Mobile-first:** Is the company mobile-first / mobile-native (mobile is the
+      primary product surface)?
+      **Sources:** List any URLs you cite.
+
+      Sourcing rules:
+      - If you state a dollar figure (compensation, funding), it MUST have a
+        citation. Uncited dollar figures are a hard failure.
+      - Keep it under 300 words.
+
+providers:
+  # promptfoo resolves a provider by the PREFIX of its `id` (e.g. `openai:` → the
+  # OpenAI-compatible client). The model is then read from `config.model` (or the
+  # part after `openai:`). `label` is what the dashboard shows. `apiKeyEnvar` is
+  # the NAME of the env var (same names as ferryman/config.toml) — never inline a key.
+  # Cost values are PER-TOKEN USD (per-million price / 1e6) — see the cost-units
+  # note at the top of this file.
+
+  # --- zai-glm: z.ai GLM, glm-5-turbo (config.toml default provider) ---
+  # pricing.json: $1.20 / $4.00 per 1M tokens (input/output), dateChecked 2026-07-16.
+  - id: openai:chat:glm-5-turbo
+    label: zai-glm (glm-5-turbo)
+    config:
+      baseUrl: https://api.z.ai/api/coding/paas/v4
+      apiKeyEnvar: ZAI_API_KEY
+      model: glm-5-turbo
+      inputCost: 0.0000012
+      outputCost: 0.000004
+
+  # --- gemini: Google Gemini OpenAI-compatible endpoint, gemini-3.1-flash-lite ---
+  # pricing.json: $0.25 / $1.50 per 1M tokens, dateChecked 2026-07-16.
+  - id: openai:chat:gemini-3.1-flash-lite
+    label: gemini (gemini-3.1-flash-lite)
+    config:
+      baseUrl: https://generativelanguage.googleapis.com/v1beta/openai
+      apiKeyEnvar: GEMINI_API_KEY
+      model: gemini-3.1-flash-lite
+      inputCost: 0.00000025
+      outputCost: 0.0000015
+
+  # --- hf-llama: DeepInfra direct, Meta-Llama-3.1-70B-Instruct-Turbo ---
+  # pricing.json: $0.59 / $0.79 per 1M tokens, dateChecked 2026-07-15.
+  - id: openai:chat:meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo
+    label: hf-llama (Meta-Llama-3.1-70B-Instruct-Turbo)
+    config:
+      baseUrl: https://api.deepinfra.com/v1/openai
+      apiKeyEnvar: DEEPINFRA_API_KEY
+      model: meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo
+      inputCost: 0.00000059
+      outputCost: 0.00000079
+
+# Tests: generated from eval_harness/golden/golden_set.json (48 cases). Each test
+# bakes its golden case's expectedClaims into vars; the single python assert
+# delegates to eval_harness/rule_scorers.py:score_all via the bridge below.
+# Regenerate / inspect with: python -m eval_harness.promptfoo_tests
+tests:
+  - path: file://eval_harness/promptfoo_tests.py:generate_tests
+
+# Every test shares one assertion: call the existing scorers, fail if any
+# applicable scorer returns passed=False. This is NOT a reimplementation —
+# promptfoo_assert.py imports score_all from eval_harness.rule_scorers.
+# (Defined here as a default so the generator's per-test assert can stay a one-liner;
+# the generator also sets the same assert per test, which takes precedence.)
+defaultTest:
+  options:
+    # The skill prompt is long and the model answers from parametric knowledge
+    # (no fetch tool), so allow generous latency and a long reply.
+    timeoutMs: 60000
+  assert:
+    - type: python
+      value: file://eval_harness/promptfoo_assert.py:get_assert

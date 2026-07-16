@@ -9,13 +9,51 @@ Scores a ferryman skill against a human-authored golden set. Two scorer layers:
   can't check (specificity, source-traceability, honesty, tone). Calls a
   *different* provider than the one being evaluated.
 
-## Tooling choice: promptfoo-default, Braintrust-optional
+## Tooling: run_scorecard.py is primary; promptfoo is an alternative runner
 
-**Default: promptfoo.** Chosen because it is fully self-hosted, needs no
-account, and runs locally against any OpenAI-compatible endpoint — which is
-exactly ferryman's provider model. Install it with `pip install -e .[promptfoo]`.
+**Primary: `run_scorecard.py`.** This is what CI runs. It is the hand-written
+runner that drives ferryman's full skill pipeline (HTTP/subprocess invocation of
+the skill, with the `fetch` MCP tool-call loop) and scores it with the rule +
+judge scorers below. Its output — `scorecard.md` / `scorecard.json` — is the
+scorecard of record.
 
-**Alternative: Braintrust.** If you want hosted dataset versioning and
+**Alternative runner: promptfoo.** For richer dashboards and side-by-side
+provider comparison, `promptfooconfig.yaml` (at the repo root) wires the same
+48-case golden set and the *same* `rule_scorers.py` into
+[promptfoo](https://www.promptfoo.dev). Install it with
+`pip install -e '.[promptfoo]'` (or just use `npx promptfoo@latest` — no install
+needed) and run:
+
+```bash
+# all three providers configured in ferryman/config.toml
+ZAI_API_KEY=... GEMINI_API_KEY=... DEEPINFRA_API_KEY=... \
+  npx promptfoo@latest eval -c promptfooconfig.yaml
+
+npx promptfoo@latest view     # open the local dashboard
+```
+
+**The scorer layer is shared, not duplicated.** promptfoo's `python` assertion
+(`eval_harness/promptfoo_assert.py`) imports `score_all` from
+`rule_scorers.py` — the exact functions `run_scorecard.py` uses. One source of
+truth; only the runner differs.
+
+### IMPORTANT semantic limitation of the promptfoo runner
+
+The company-role-research skill is written to drive a `fetch` MCP tool — ferryman
+hands the model that tool and runs a tool-call loop. **promptfoo cannot replicate
+that loop.** It sends the skill prompt as a plain OpenAI chat completion and
+scores the model's direct reply. The model answers from **parametric knowledge
+only** (no live web fetch). Therefore:
+
+- Outputs from `promptfoo eval` are **not comparable 1:1** to a full ferryman
+  pipeline run that `run_scorecard.py` scores.
+- A provider that looks strong in promptfoo can still fail in ferryman (bad tool
+  use) and vice versa.
+- promptfoo tests the *prompt as a direct LLM call*, not ferryman's full
+  skill-with-tools pipeline. Use it for prompt/model comparison and dashboarding,
+  not as a replacement for the CI scorecard.
+
+**Alternative backend: Braintrust.** If you want hosted dataset versioning and
 experiment comparison, `pip install -e .[braintrust]` and set `BRAINTRUST_API_KEY`.
 The scorer layer is backend-agnostic; only the runner adapts.
 
@@ -40,7 +78,7 @@ and scorers are skill-agnostic and re-point with one config change.
 
 ## The golden set and the human-review gate
 
-`golden/golden_set.json` holds 25 cases (24 real companies + 1 deliberate
+`golden/golden_set.json` holds 48 cases (47 real companies + 1 deliberate
 negative: "Acme Holdings"). Each case's `expectedClaims` is a map of checkable
 assertions, not prose answers.
 
