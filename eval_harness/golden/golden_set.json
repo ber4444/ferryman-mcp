@@ -1,302 +1,914 @@
 [
   {
     "id": "case-001",
-    "input": { "company": "Anthropic", "role": "Software Engineer, Distributed Systems" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Step",
+      "role": "Senior Mobile Software Engineer"
     },
-    "notesForReviewer": "Anthropic publishes compensation bands on their careers page; real figures exist. Remote policy is hybrid (SF office). Tech stack: Python, TypeScript, Rust."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-002",
-    "input": { "company": "Stripe", "role": "Backend Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Hims & Hers",
+      "role": "Staff Engineer, AI-Assisted Engineering Practices"
     },
-    "notesForReviewer": "Stripe has published leveling/comp. Remote-friendly. Stack: Ruby, Java, Scala."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-003",
-    "input": { "company": "Figma", "role": "Mobile Engineer (iOS)" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Hightouch",
+      "role": "Staff Engineer, AI Productivity"
     },
-    "notesForReviewer": "Figma is hybrid (SF). iOS work is C++ heavy (the editor core). Real comp data exists post-IPO."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-004",
-    "input": { "company": "Notion", "role": "Product Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Fuse Energy",
+      "role": "Senior Mobile Engineer"
     },
-    "notesForReviewer": "Notion is remote-first with offices. Stack: TypeScript, React, Rust."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": false,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-005",
-    "input": { "company": "Vercel", "role": "Frontend Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Tern",
+      "role": "Senior Mobile Engineer"
     },
-    "notesForReviewer": "Vercel is remote-first. Heavy Next.js / React. Comp bands reported on levels.fyi."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-006",
-    "input": { "company": "Linear", "role": "Engineer, Generalist" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Runway",
+      "role": "Member of Technical Staff, Mobile Engineer"
     },
-    "notesForReviewer": "Linear is fully remote. Small team, Swift + Node + Postgres. Public comp data is sparse — a good skill should say so plainly rather than fabricate."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": true,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-007",
-    "input": { "company": "GitHub", "role": "Site Reliability Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Tailscale",
+      "role": "Mobile Platform Developer"
     },
-    "notesForReviewer": "GitHub is remote-friendly worldwide. Ruby/Rails, Go, MySQL. Microsoft parent comp structure."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-008",
-    "input": { "company": "Datadog", "role": "Software Engineer, Infrastructure" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Owner.com",
+      "role": "Senior Software Engineer, Mobile Platform (Guest App)"
     },
-    "notesForReviewer": "Datadog is hybrid/remote. Go, Python, Java. Well-documented comp."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": true,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-009",
-    "input": { "company": "Databricks", "role": "Distributed Systems Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "iRhythm",
+      "role": "Staff Mobile Engineer (Android)"
     },
-    "notesForReviewer": "Databricks is hybrid (SF). Scala, Java, Spark. Strong comp."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-010",
-    "input": { "company": "Cloudflare", "role": "Systems Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Attentive",
+      "role": "Staff SWE, Developer Experience"
     },
-    "notesForReviewer": "Cloudflare is remote-first. Rust, Go, NGINX, Lua. Public comp."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-011",
-    "input": { "company": "Supabase", "role": "Backend Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Goods & Services",
+      "role": "Lead Android Engineer"
     },
-    "notesForReviewer": "Supabase is fully remote. Elixir, PostgreSQL, TypeScript. Early-stage startup — public comp data is very sparse."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": true,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-012",
-    "input": { "company": "Replit", "role": "Engineer, Platform" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Grove Collaborative",
+      "role": "AI-First Android Engineer"
     },
-    "notesForReviewer": "Replit is remote-first. TypeScript, Go, Rust."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-013",
-    "input": { "company": "Sourcegraph", "role": "Software Engineer, Search" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Salesforce",
+      "role": "Staff Software Engineer, Android - Slack Productivity Mobile"
     },
-    "notesForReviewer": "Sourcegraph is fully remote. Go, TypeScript. Went through strategy pivot in 2023-2024 — a good skill flags current status."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-014",
-    "input": { "company": "Cursor (Anysphere)", "role": "Engineer, ML Infra" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Zillow",
+      "role": "Senior Software Development Engineer, Android"
     },
-    "notesForReviewer": "Cursor/Anysphere is hybrid (SF). TypeScript, Python, Rust. Rapidly-valued startup; comp reported but volatile."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": false,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-015",
-    "input": { "company": "Modular", "role": "Compiler Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "SpotOn",
+      "role": "Staff Software Engineer (Android)"
     },
-    "notesForReviewer": "Modular is hybrid (SF). Mojo, Python, MLIR, C++. Early-stage — sparse public comp."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-016",
-    "input": { "company": "Zed Industries", "role": "Editor Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Pinterest",
+      "role": "Sr. Software Engineer, Android"
     },
-    "notesForReviewer": "Zed is small/hybrid. Rust. Very sparse public comp data — mustNotFabricateFigures is the key check here."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "mustNotFabricateFigures": false,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-017",
-    "input": { "company": "Astral", "role": "Engineer, Tooling" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Airwallex",
+      "role": "Staff Mobile Engineer, Spend Foundation"
     },
-    "notesForReviewer": "Astral (uv, ruff) is fully remote. Rust, Python. Tiny company; public comp essentially nonexistent."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-018",
-    "input": { "company": "Tailscale", "role": "Engineer, Networking" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Perchwell",
+      "role": "Senior Android Engineer II"
     },
-    "notesForReviewer": "Tailscale is fully remote. Go, WireGuard. Sparse public comp."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-019",
-    "input": { "company": "Posthog", "role": "Engineer, Product Analytics" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Cantina",
+      "role": "Android Engineer (senior-staff levels)"
     },
-    "notesForReviewer": "PostHog is fully remote, transparent about salary bands (public formula). TypeScript, Python, ClickHouse."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": true,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": true,
+      "mobileFirst": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-020",
-    "input": { "company": "Render", "role": "Engineer, Infrastructure" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Tilt Finance",
+      "role": "Senior Mobile Engineer"
     },
-    "notesForReviewer": "Render is remote-first. Go, Kubernetes. Sparse public comp."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": false,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": true,
+      "mobileFirst": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-021",
-    "input": { "company": "Fly.io", "role": "Engineer, Platform" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Rocket",
+      "role": "Hybrid Staff Software Mobile Engineer - Android"
     },
-    "notesForReviewer": "Fly.io is fully remote. Elixir, Go, Rust."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-022",
-    "input": { "company": "HashiCorp", "role": "Engineer, Terraform Core" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Ford",
+      "role": "Senior Software Development Engineer, Android"
     },
-    "notesForReviewer": "HashiCorp is remote-first (recently acquired by IBM). Go. Well-documented comp pre-acquisition."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-023",
-    "input": { "company": "Plaid", "role": "Backend Engineer, APIs" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "NinjaOne",
+      "role": "Senior Android Engineer"
     },
-    "notesForReviewer": "Plaid is hybrid (SF). Go, Java, Python. Public comp."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-024",
-    "input": { "company": "Retool", "role": "Engineer, Visual Editor" },
-    "expectedClaims": {
-      "mustMentionCompBand": true,
-      "mustFlagRemotePolicy": true,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": true,
-      "mustReferenceTechStack": true
+    "input": {
+      "company": "Block",
+      "role": "Staff Android Software Engineer, Cash App Consumer Platform"
     },
-    "notesForReviewer": "Retool is hybrid. TypeScript, React, Go, Postgres."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": true,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
   },
   {
     "id": "case-025",
-    "input": { "company": "Acme Holdings", "role": "Senior Engineer" },
-    "expectedClaims": {
-      "mustMentionCompBand": false,
-      "mustFlagRemotePolicy": false,
-      "mustNotFabricateFigures": true,
-      "sourceUrlsMustBeCited": false,
-      "mustReferenceTechStack": false
+    "input": {
+      "company": "Eight Sleep",
+      "role": "Senior Software Engineer - Mobile (Android)"
     },
-    "notesForReviewer": "Negative case — 'Acme Holdings' is a fabricated company. A good skill must say it cannot find reliable info rather than inventing a comp band, remote policy, or tech stack. The only must-true claim is mustNotFabricateFigures (verified by the absence of invented specifics)."
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": false,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-026",
+    "input": {
+      "company": "Wonderly",
+      "role": "Android Engineer"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": false,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": true,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-027",
+    "input": {
+      "company": "Toast",
+      "role": "Senior Software Engineer, Mobile DevOps"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-028",
+    "input": {
+      "company": "Drivemode (Honda)",
+      "role": "Staff Mobile Software Engineer"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": true,
+      "remoteForMobileEngineers": false,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-029",
+    "input": {
+      "company": "TextNow",
+      "role": "Tech Lead, Mobile Core Network Engineering"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": true,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-030",
+    "input": {
+      "company": "Reddit",
+      "role": "Staff Android Engineer, Home Experience"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-031",
+    "input": {
+      "company": "Ditto",
+      "role": "Senior Software Engineer, Android"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-032",
+    "input": {
+      "company": "Oura",
+      "role": "Senior Android Engineer"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-033",
+    "input": {
+      "company": "Doximity",
+      "role": "Senior Software Engineer, Android (Kotlin)"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-034",
+    "input": {
+      "company": "Greenlight",
+      "role": "Staff Android Systems Engineer"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-035",
+    "input": {
+      "company": "Harvey",
+      "role": "Staff Software Engineer, Android"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": true,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-036",
+    "input": {
+      "company": "DraftKings",
+      "role": "Lead Software Engineer, Android"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-037",
+    "input": {
+      "company": "Classpass",
+      "role": "Sr Software Engineer - Android"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": false,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-038",
+    "input": {
+      "company": "Dayforce",
+      "role": "Mobile Software Developer, Lead (Android)"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-039",
+    "input": {
+      "company": "Dropbox",
+      "role": "Android Software Engineer, Mobile Experience"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-040",
+    "input": {
+      "company": "Netflix",
+      "role": "Software Engineer 5 - Android & Backend, Games"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-041",
+    "input": {
+      "company": "Airbnb",
+      "role": "Staff Software Engineer, Android Platform Frameworks"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-042",
+    "input": {
+      "company": "Yahoo",
+      "role": "Senior Android Apps Engineer - Yahoo Mail"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-043",
+    "input": {
+      "company": "WeightWatchers",
+      "role": "Senior Android Engineer"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-044",
+    "input": {
+      "company": "Instacart",
+      "role": "Senior Android Engineer"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-045",
+    "input": {
+      "company": "Ramp",
+      "role": "Mobile Engineer, Android"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": true,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": false,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-046",
+    "input": {
+      "company": "Whatnot",
+      "role": "Senior Android Engineer"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "mustNotFabricateFigures": false,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-047",
+    "input": {
+      "company": "Speak",
+      "role": "Senior Android Engineer"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": true,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "mustNotFabricateFigures": true,
+      "sfbaHybridForMobileEngineers": true,
+      "aiNative": false,
+      "mobileFirst": false,
+      "sourceUrlsMustBeCited": true
+    },
+    "notesForReviewer": ""
+  },
+  {
+    "id": "case-048",
+    "input": {
+      "company": "Acme Holdings",
+      "role": "Senior Engineer"
+    },
+    "asOf": "2026-07",
+    "expectedClaims": {
+      "usesJetpackCompose": false,
+      "usesKmp": false,
+      "remoteForMobileEngineers": false,
+      "sfbaHybridForMobileEngineers": false,
+      "mobileFirst": false,
+      "aiNative": true,
+      "mustNotFabricateFigures": true,
+      "sourceUrlsMustBeCited": false
+    },
+    "notesForReviewer": "Negative case \u2014 'Acme Holdings' is a fabricated company. A good skill must say it cannot find reliable info rather than inventing a comp band, remote policy, or tech stack. The only must-true claim is mustNotFabricateFigures (verified by the absence of invented specifics)."
   }
 ]

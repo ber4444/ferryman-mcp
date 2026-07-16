@@ -23,6 +23,7 @@ import sys
 import time
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
+from typing import Callable
 
 # Support running both as `python -m eval_harness.run_scorecard` and `python run_scorecard.py`.
 if __package__ in (None, ""):
@@ -81,6 +82,19 @@ def enumerate_providers() -> list[str]:
         return ["zai-glm", "anthropic"]
 
 
+# When running --all-providers, run the most reliable first so an interrupted
+# run still leaves the good providers' results on disk (incremental writes
+# fire after each provider). Gemini is last because it rate-limits hardest.
+# Providers not listed here sort after the known ones, preserving config order.
+_PROVIDER_RUN_ORDER = ["hf-llama", "zai-glm", "gemini"]
+
+
+def order_providers(providers: list[str]) -> list[str]:
+    """Sort providers into the preferred run order; unknowns keep relative order at the end."""
+    rank = {p: i for i, p in enumerate(_PROVIDER_RUN_ORDER)}
+    return sorted(providers, key=lambda p: rank.get(p, len(_PROVIDER_RUN_ORDER)))
+
+
 PRICING_PATH = Path(__file__).resolve().parent / "pricing.json"
 
 
@@ -93,23 +107,35 @@ def load_pricing() -> dict:
         return {}
 
 
-# Rough chars-per-token factor for cost estimation. English prose averages ~4
-# chars/token across modern tokenizers. This is an ESTIMATE — see README for why
-# real cost arrives only once `usage` data propagates through the Kotlin side.
+# Rough chars-per-token factor for the fallback cost estimate. Used only when a
+# provider returns no `usage` block (or an error row). English prose averages ~4
+# chars/token across modern tokenizers — an ESTIMATE, never exact.
 _CHARS_PER_TOKEN = 4.0
 
 
 def estimate_cost(result: invoke_mod.InvocationResult, pricing: dict) -> float | None:
     """
-    Estimate USD cost from recorded pricing + char-count token estimate.
-    Returns None if the provider isn't in pricing.json. Clearly an estimate
-    until real `usage` token counts flow through the providers.
+    Compute USD cost from recorded pricing + token counts.
+
+    Uses the real prompt/completion token counts threaded through from the
+    provider's ``usage`` block when present (exact cost). Falls back to the
+    chars/4 estimate only when those counts are absent — e.g. a provider that
+    reports no usage, or an error row with no invocation data. Returns None if
+    the provider isn't listed in pricing.json.
     """
     entry = pricing.get(result.provider)
     if entry is None:
         return None
-    input_tokens = result.input_chars / _CHARS_PER_TOKEN
-    output_tokens = result.output_chars / _CHARS_PER_TOKEN
+    input_tokens = (
+        result.input_tokens
+        if result.input_tokens is not None
+        else result.input_chars / _CHARS_PER_TOKEN
+    )
+    output_tokens = (
+        result.output_tokens
+        if result.output_tokens is not None
+        else result.output_chars / _CHARS_PER_TOKEN
+    )
     cost = (
         input_tokens * entry.get("inputPricePerMillionTokens", 0.0)
         + output_tokens * entry.get("outputPricePerMillionTokens", 0.0)
@@ -142,22 +168,54 @@ def run_one(case: dict, provider: str | None, mode: str) -> CaseResult:
     )
 
 
+# Inter-call delay (seconds) to stay under per-provider rate limits, e.g.
+# Gemini's ~1 req/s free tier. Defaults to off so reliable providers aren't
+# slowed; set FERRY_THROTTLE_SECONDS=1.0 for a rate-limited provider.
+_THROTTLE_SECONDS = float(os.environ.get("FERRY_THROTTLE_SECONDS", "0") or 0)
+
+
 def run_all(
     golden: list[dict],
     *,
     providers: list[str | None],
     mode: str,
     use_judge: bool = False,
+    on_provider_done: "Callable[[list[CaseResult]], None] | None" = None,
 ) -> list[CaseResult]:
-    """Run the full golden set across the given providers."""
+    """Run the full golden set across the given providers.
+
+    Each case is isolated: an exception (timeout, connection error) records a
+    CaseResult with ``error`` set and the loop continues — one flaky provider
+    can no longer abort the whole batch. After each provider finishes,
+    [on_provider_done] (if given) is called with the accumulated results so a
+    partial scorecard is always on disk if the run is interrupted later.
+    """
     results: list[CaseResult] = []
     for provider in providers:
         for case in golden:
             print(f"  [{provider or 'default'}] {case['id']}...", flush=True)
-            case_result = run_one(case, provider, mode)
+            # Per-case isolation: a thrown exception becomes an error CaseResult,
+            # not a batch abort. Follows the harness's own _judge_if_available
+            # convention (broad except, record, continue).
+            try:
+                case_result = run_one(case, provider, mode)
+            except Exception as e:  # noqa: BLE001 — one case must not kill the batch
+                case_result = CaseResult(
+                    id=case["id"],
+                    input=case.get("input", {}),
+                    provider=provider or "unknown",
+                    model="unknown",
+                    output="",
+                    error=f"{type(e).__name__}: {e}",
+                )
             if use_judge:
                 case_result.judge_scores = _judge_if_available(case_result, case)
             results.append(case_result)
+            if _THROTTLE_SECONDS > 0:
+                time.sleep(_THROTTLE_SECONDS)
+        # Incremental save: write whatever's accumulated after each provider.
+        if on_provider_done is not None:
+            on_provider_done(results)
     return results
 
 
@@ -262,15 +320,26 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Loaded {len(golden)} golden cases from {args.golden}")
 
     if args.all_providers:
-        providers: list[str | None] = enumerate_providers()
+        providers: list[str | None] = order_providers(enumerate_providers())
         print(f"--all-providers: running against {providers}")
     elif args.provider:
         providers = [args.provider]
     else:
         providers = [None]
 
+    # Incremental save: after each provider finishes, write the scorecard so
+    # an interrupted run (a later provider timing out) keeps earlier results.
+    def save_so_far(so_far: list[CaseResult]) -> None:
+        write_scorecard(so_far, use_judge=args.judge)
+
     print(f"Running golden set (mode={args.mode}, judge={args.judge})...")
-    results = run_all(golden, providers=providers, mode=args.mode, use_judge=args.judge)
+    results = run_all(
+        golden,
+        providers=providers,
+        mode=args.mode,
+        use_judge=args.judge,
+        on_provider_done=save_so_far if args.all_providers else None,
+    )
     write_scorecard(results, use_judge=args.judge)
     return 0
 

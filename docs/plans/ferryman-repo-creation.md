@@ -1,4 +1,4 @@
-# Research findings + Plan: OpenClaw repo creation
+# Research findings + Plan: ferryman repo creation
 
 ## Research findings (evidence summary)
 
@@ -8,7 +8,7 @@
 
 **Skills format — adopt the Agent Skills / `SKILL.md` open standard, kept distinct from `AGENTS.md`.** Anthropic published Agent Skills as an open standard on **December 18, 2025** (spec at agentskills.io): a skill is a directory containing a `SKILL.md` whose YAML frontmatter requires `name` and `description`, followed by a Markdown body. It is agent-agnostic (Gabor's stated preference), Claude-Code-compatible, and machine-enumerable — scan `skills/*/SKILL.md`, parse frontmatter. This is a different concern from `AGENTS.md`, which guides agents working *on* the repo (contributed to the Linux Foundation's Agentic AI Foundation, announced December 9, 2025, alongside MCP and Goose). The plan uses both.
 
-**Naming collision — severe. Rename before the first public commit.** "OpenClaw" is Peter Steinberger's local-first personal AI agent (openclaw.ai). Its scale is decisive: Steinberger's own GitHub profile lists it as "🦞 OpenClaw (381k+ stars) — the AI that actually does things," and its homepage cites Y Combinator calling it "the most-starred software repo on GitHub in under 5 months, with 346k+ stars." It occupies almost exactly Gabor's stated problem space: a local-first gateway, model-agnostic provider routing, `SKILL.md` skills, multi-channel I/O (Telegram/Slack/WhatsApp), and MCP integration. A separate well-known project, `pjasicek/OpenClaw`, is a Captain Claw game reimplementation. Shipping a portfolio piece called "OpenClaw" that is an MCP host with skills and multi-channel I/O would read as derivative, be un-Googleable, and invite direct comparison with a ~381k-star project. Keep "OpenClaw" only as the internal working title; pick a distinct public name before the repo goes public.
+**Naming collision — severe. Rename before the first public commit.** "ferryman" is Peter Steinberger's local-first personal AI agent (openclaw.ai). Its scale is decisive: Steinberger's own GitHub profile lists it as "🦞 ferryman (381k+ stars) — the AI that actually does things," and its homepage cites Y Combinator calling it "the most-starred software repo on GitHub in under 5 months, with 346k+ stars." It occupies almost exactly Gabor's stated problem space: a local-first gateway, model-agnostic provider routing, `SKILL.md` skills, multi-channel I/O (Telegram/Slack/WhatsApp), and MCP integration. A separate well-known project, `pjasicek/ferryman`, is a Captain Claw game reimplementation. Shipping a portfolio piece called "ferryman" that is an MCP host with skills and multi-channel I/O would read as derivative, be un-Googleable, and invite direct comparison with a ~381k-star project. Keep "ferryman" only as the internal working title; pick a distinct public name before the repo goes public.
 
 **Public vs private — public from day one, scaffolding-first, but don't link it from the résumé until a skill runs end to end.** Hiring managers reward visible momentum, green CI from the first commit, and an honest history. The real risk is a résumé linking to an empty or broken repo. The fix is sequencing, not secrecy: land green CI and an honest README in M0, and gate the résumé link on M3 (a skill executing end to end).
 
@@ -16,9 +16,9 @@
 
 ---
 
-# Plan: OpenClaw (working title — rename before publish)
+# Plan: ferryman (working title — rename before publish)
 
-**Target:** a new GitHub repository, `github.com/<owner>/<renamed-openclaw>` — does not exist yet. No repo, no code.
+**Target:** a new GitHub repository, `github.com/<owner>/<renamed-ferryman>` — does not exist yet. No repo, no code.
 
 ## Context for the agent
 
@@ -26,17 +26,17 @@ This plan creates the repository for a local-first orchestration layer above Cla
 
 Two sibling plans depend on what this plan builds:
 
-- `openclaw-eval-harness-plan.md` runs **after** this repo exists. It assumes skills are locatable, provider-routing config is readable and enumerable, there is a programmatic entry point to invoke a skill, and a Python `eval_harness/` package will be layered on top. This plan satisfies that contract and names exactly where each assumption lands (see **Hard rules** and **M2/M3**).
+- `eval-harness.md` runs **after** this repo exists. It assumes skills are locatable, provider-routing config is readable and enumerable, there is a programmatic entry point to invoke a skill, and a Python `eval_harness/` package will be layered on top. This plan satisfies that contract and names exactly where each assumption lands (see **Hard rules** and **M2/M3**).
 - A z.ai/GLM provider addendum plan depends on the provider abstraction from **M2** already existing. GLM is not special-cased in code; it is an `OpenAiCompatibleProvider` entry in config.
 
-The MVP is ruthlessly small — a Kotlin CLI application, 1–2 weeks of work, not a product. Do not rebuild OpenClaw-the-famous-agent. Build a small, honest, well-architected gateway that demonstrates the four capabilities end to end.
+The MVP is ruthlessly small — a Kotlin CLI application, 1–2 weeks of work, not a product. Do not rebuild ferryman-the-famous-agent. Build a small, honest, well-architected gateway that demonstrates the four capabilities end to end.
 
 **Language decision (already made, do not relitigate):** Kotlin, because the official MCP Kotlin SDK supports building clients/hosts and Kotlin is the portfolio's whole point. If the SDK proves unusable at execution time, stop and escalate to the human rather than silently switching to TypeScript.
 
 ## Hard rules
 
 - **Never claim a feature that is not built.** The README and any article describe only what has landed on `main` with green CI. Every capability in the README maps to a runnable command in the **Success command** section. A "roadmap" section may list intent, clearly marked as not-yet-built.
-- **Never keep the name "OpenClaw" in anything public.** It collides with a ~381k-star AI agent (openclaw.ai) and a well-known game reimplementation. "OpenClaw" survives only as the internal working title in planning docs. The public name is chosen in M0 before the first push. This is a blocking gate.
+- **Never keep the name "ferryman" in anything public.** It collides with a ~381k-star AI agent (openclaw.ai) and a well-known game reimplementation. "ferryman" survives only as the internal working title in planning docs. The public name is chosen in M0 before the first push. This is a blocking gate.
 - **Never put secrets in the repo.** API keys live in environment variables only. Config files reference env var *names*, never values. `.gitignore` excludes `.env`, and a committed `.env.example` documents required variables with placeholders.
 - **Never let a milestone land red.** Every milestone ends with green CI on `main`. If CI cannot be made green, the milestone is not done.
 - **Never invent an agent-specific skill format.** Skills use the Agent Skills open standard: a directory `skills/<name>/` containing a `SKILL.md` with YAML frontmatter (`name`, `description` required). Agent-agnostic, Claude-Code-compatible, machine-enumerable. This is the eval-harness contract for skill discovery.
@@ -65,7 +65,7 @@ curl -s -X POST localhost:8080/invoke -d '{"skill":"hello-repo","input":"summari
 ## M0 — Naming, publish decision, and scaffolding
 
 **Human steps (agents must not do these):**
-1. **Pick the public name.** "OpenClaw" is out. Run coordinate checks — GitHub org/repo availability, Maven `groupId`, npm, PyPI, and a plain web search — before committing. Candidate working names to check (pick or replace): **`skald`** (a Norse court poet who orchestrates and recites — evokes orchestration), **`quartermaster`** / short `qm` (dispenses tools and provisions to a crew — maps to tool aggregation + provider routing), **`ferryman`** / `ferry` (the gateway/crossing metaphor — "the gateway, not the IDE"). Default: keep the working title only in planning docs; the repo, package namespace, and README use the chosen name.
+1. **Pick the public name.** "ferryman" is out. Run coordinate checks — GitHub org/repo availability, Maven `groupId`, npm, PyPI, and a plain web search — before committing. Candidate working names to check (pick or replace): **`skald`** (a Norse court poet who orchestrates and recites — evokes orchestration), **`quartermaster`** / short `qm` (dispenses tools and provisions to a crew — maps to tool aggregation + provider routing), **`ferryman`** / `ferry` (the gateway/crossing metaphor — "the gateway, not the IDE"). Default: keep the working title only in planning docs; the repo, package namespace, and README use the chosen name.
 2. **Create the empty GitHub repository** under the chosen name. Public. Add a description and topics (`mcp`, `mcp-host`, `kotlin`, `ai-agents`, `claude-code`). Enable branch protection requiring green CI on `main`.
 3. **Provision nothing else yet** — no API keys needed until M2.
 

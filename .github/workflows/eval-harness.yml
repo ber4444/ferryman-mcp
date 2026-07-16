@@ -29,6 +29,10 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install harness (dev deps)
-        run: pip install -e eval_harness[dev]
+        # Package metadata (pyproject.toml) lives at the repo root, not inside
+        # eval_harness/ — install from "." with the dev extra. (Earlier form
+        # `pip install -e eval_harness[dev]` failed: "does not appear to be a
+        # Python project".)
+        run: pip install -e '.[dev]'
       - name: Run rule-scorer tests
         run: python -m pytest eval_harness/ -q

@@ -6,7 +6,7 @@ executes — those are data, this file is build/contribution rules.
 
 ## Quick facts
 
-- **Name:** ferryman (working title: OpenClaw — see Naming below). Binary: `ferry`.
+- **Name:** ferryman (working title: ferryman — see Naming below). Binary: `ferry`.
 - **What it is:** a local-first MCP host with pluggable skills, multi-provider
   routing, and multi-channel I/O. Sits one level above Claude Code — the gateway,
   not the IDE.
@@ -27,7 +27,7 @@ ferry serve --port 8080         # HTTP channel sharing the same orchestrator
 
 CI: `.github/workflows/ci.yml` runs `./gradlew build` on push/PR to `main`.
 
-## Package map (`ferryman/src/main/kotlin/dev/openclaw/ferryman/`)
+## Package map (`src/main/kotlin/dev/openclaw/ferryman/`)
 
 | Package | Responsibility |
 |---|---|
@@ -73,9 +73,9 @@ nothing sensitive.
 
 ## Naming
 
-The public name is **ferryman** (binary `ferry`). "OpenClaw" survives only as
+The public name is **ferryman** (binary `ferry`). "ferryman" survives only as
 the internal working title in these planning docs — it collides with a ~381k-star
-AI agent (openclaw.ai) and a game reimplementation. Never use "OpenClaw" in
+AI agent (openclaw.ai) and a game reimplementation. Never use "ferryman" in
 anything user-facing: README, package namespace, CLI help, git remote name.
 
 ## Adding a provider

@@ -6,20 +6,38 @@ import dev.openclaw.ferryman.config.ProviderConfig
  * A request to an LLM. [system] + [user] are the prompt parts built by the
  * orchestrator from the skill body and the caller's input. [tools] is the host's
  * aggregated tool registry serialised as OpenAI-style function schemas so any
- * provider can read them. [toolResults] carries results from a previous
- * tool-call turn when the orchestrator runs the completion loop.
+ * provider can read them. [conversation] carries the full multi-turn history
+ * (assistant tool-call turns + tool results) so the provider can reconstruct
+ * the correct message sequence for APIs that require it (OpenAI, Gemini).
  */
 data class CompletionRequest(
     val system: String,
     val user: String,
     val tools: List<ToolDescriptor> = emptyList(),
-    val toolResults: List<ToolResult> = emptyList(),
+    val conversation: List<ConversationMessage> = emptyList(),
 )
+
+/**
+ * One turn in the conversation history. The orchestrator builds this as the
+ * tool-call loop runs so providers can serialize the full message chain.
+ */
+sealed class ConversationMessage {
+    /** An assistant turn that requested tool calls (no final text answer yet). */
+    data class AssistantToolCall(
+        val toolCalls: List<ToolCall>,
+    ) : ConversationMessage()
+
+    /** A tool result returned to the model after dispatch. */
+    data class ToolResult(
+        val result: dev.openclaw.ferryman.providers.ToolResult,
+    ) : ConversationMessage()
+}
 
 /** A tool the model may call, described in provider-neutral terms. */
 data class ToolDescriptor(
     val name: String,
     val description: String,
+    val parametersJson: String = "{\"type\":\"object\",\"properties\":{}}",
 )
 
 /** A previously-dispatched tool call's result, fed back into the next turn. */
@@ -35,6 +53,13 @@ data class ToolCall(
     val id: String,
     val name: String,
     val argumentsJson: String,
+    /**
+     * The raw JSON object of this tool call as returned by the provider.
+     * Preserved verbatim so provider-specific fields (e.g. Gemini's
+     * `thought_signature`) survive the round-trip when the conversation
+     * history is sent back.
+     */
+    val rawJson: String? = null,
 )
 
 /**
@@ -46,6 +71,11 @@ data class CompletionResult(
     val output: String,
     val toolCalls: List<ToolCall> = emptyList(),
     val finishReason: String = "stop",
+    // Real token counts from the provider's `usage` block. Null when the
+    // provider didn't return usage (e.g. Anthropic) — callers fall back to a
+    // char estimate. Summed across tool-call turns by the orchestrator.
+    val inputTokens: Int? = null,
+    val outputTokens: Int? = null,
 )
 
 /**

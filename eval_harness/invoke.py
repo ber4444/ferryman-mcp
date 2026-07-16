@@ -21,6 +21,7 @@ import os
 import shutil
 import subprocess
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any
 
 DEFAULT_SKILL = "company-role-research"
@@ -38,9 +39,14 @@ class InvocationResult:
     tool_calls: list[str] = field(default_factory=list)
     latency_ms: int | None = None
     error: str | None = None
-    # Character counts of the input payload and output text. Used to estimate
-    # token counts (and thus cost) until real `usage` data flows through the
-    # Kotlin providers → SkillResult → InvokeResponse. Marked estimated downstream.
+    # Real token counts from the provider's `usage` block, threaded through the
+    # Kotlin side (SkillResult → channel). When present, cost is exact; when
+    # None (provider reported no usage, or an error row), the scorecard falls
+    # back to the chars/4 estimate.
+    input_tokens: int | None = None
+    output_tokens: int | None = None
+    # Character counts of the input payload and output text. Used only as the
+    # fallback token estimate when real `usage` data is absent.
     input_chars: int = 0
     output_chars: int = 0
 
@@ -142,6 +148,8 @@ def _invoke_http(
         provider=body.get("provider", "unknown"),
         model=body.get("model", "unknown"),
         tool_calls=body.get("toolCalls", []),
+        input_tokens=body.get("inputTokens"),
+        output_tokens=body.get("outputTokens"),
     )
 
 
@@ -152,12 +160,28 @@ def _invoke_subprocess(
     binary: str,
 ) -> InvocationResult:
     """Shell out to the installed ferry CLI's `run` command."""
+    # Resolve the binary: check PATH first, then the Gradle install location.
+    resolved = binary
     if shutil.which(binary) is None:
-        raise FileNotFoundError(f"ferry binary not found on PATH: {binary}")
-    cmd = [binary, "run", "--skill", skill, "--input", json.dumps(skill_input)]
+        gradle_path = Path(__file__).resolve().parent.parent / "build" / "install" / "ferry" / "bin" / "ferry"
+        if gradle_path.exists():
+            resolved = str(gradle_path)
+        else:
+            raise FileNotFoundError(f"ferry binary not found on PATH or at {gradle_path}")
+    cmd = [resolved, "run", "--skill", skill, "--input", json.dumps(skill_input)]
     if provider:
         cmd += ["--provider", provider]
-    completed = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    try:
+        completed = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    except subprocess.TimeoutExpired:
+        # A hung ferry process used to crash the whole eval batch. Record it
+        # as a per-case error so the runner's loop continues to the next case.
+        return InvocationResult(
+            output="",
+            provider=provider or "unknown",
+            model="unknown",
+            error=f"ferry subprocess timed out after 120s (cmd: {' '.join(cmd)})",
+        )
     if completed.returncode != 0:
         return InvocationResult(
             output="",
@@ -165,9 +189,56 @@ def _invoke_subprocess(
             model="unknown",
             error=completed.stderr.strip() or f"ferry exited {completed.returncode}",
         )
-    # The CLI prints the output text; routing metadata is in logs/routing.jsonl.
+    # The CLI prints a `{"_meta":{...}}` JSON line to stdout first (provider,
+    # model, token counts), then the answer text. Split them off so we carry
+    # real token counts instead of a chars/4 estimate. If the first line isn't
+    # a _meta line (old binary / unexpected output) we fall back to treating the
+    # whole stdout as output, matching the pre-metadata behaviour.
+    return _parse_subprocess_output(completed.stdout, provider)
+
+
+def _parse_subprocess_output(
+    stdout: str,
+    provider: str | None,
+) -> InvocationResult:
+    """
+    Split ferry CLI stdout into routing metadata and the answer text.
+
+    The CLI emits a leading ``{"_meta":{...}}`` JSON line carrying provider,
+    model and real token counts, followed by the answer text. When the leading
+    line isn't a _meta payload (older binary, or a non-JSON line) the whole
+    stdout is treated as the answer so we degrade gracefully.
+    """
+    newline = stdout.find("\n")
+    first_line = stdout if newline == -1 else stdout[:newline]
+    rest = "" if newline == -1 else stdout[newline + 1 :]
+    meta = _maybe_meta(first_line)
+    if meta is None:
+        # No metadata line — treat the entire stdout as output (legacy path).
+        return InvocationResult(
+            output=stdout.strip(),
+            provider=provider or "unknown",
+            model="unknown",
+        )
+    meta_obj = meta["_meta"]
     return InvocationResult(
-        output=completed.stdout.strip(),
-        provider=provider or "unknown",
-        model="unknown",
+        output=rest.strip(),
+        provider=meta_obj.get("provider", provider or "unknown"),
+        model=meta_obj.get("model", "unknown"),
+        input_tokens=meta_obj.get("inputTokens"),
+        output_tokens=meta_obj.get("outputTokens"),
     )
+
+
+def _maybe_meta(line: str) -> dict[str, Any] | None:
+    """Return the parsed _meta object if ``line`` is a ``{"_meta":{...}}`` JSON line."""
+    stripped = line.strip()
+    if not stripped.startswith("{"):
+        return None
+    try:
+        parsed = json.loads(stripped)
+    except json.JSONDecodeError:
+        return None
+    if not isinstance(parsed, dict) or not isinstance(parsed.get("_meta"), dict):
+        return None
+    return parsed

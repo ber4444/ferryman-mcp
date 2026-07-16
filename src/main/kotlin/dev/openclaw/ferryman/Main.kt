@@ -16,6 +16,10 @@ import dev.openclaw.ferryman.orchestrator.Orchestrator
 import dev.openclaw.ferryman.providers.ProviderRegistry
 import dev.openclaw.ferryman.skills.SkillLoader
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.buildJsonObject
 import java.nio.file.Path
 import java.nio.file.Paths
 
@@ -121,16 +125,50 @@ class ToolsListCommand : CoreCliktCommand(name = "list") {
     }
 }
 
-/** `ferry run --skill <name> --input "..."` — run a skill end to end. */
+/** `ferry run --skill <name> --input "..." [--provider <id>]` — run a skill end to end. */
 class RunCommand : CoreCliktCommand(name = "run") {
     override fun help(context: Context): String = "Run a skill end to end"
 
     private val skill by option("--skill").required()
     private val input by option("--input").required()
+    private val provider by option("--provider")
 
     override fun run() {
-        val result = runBlocking { AppContext().orchestrator().runSkill(skill, input) }
+        // A provider failure (timeout, exhausted 429 retries) throws from
+        // runSkill. Without this catch ferry dumped a full stack trace and the
+        // eval harness captured the whole trace as the case's error string.
+        // Print a clean one-liner to stderr and exit non-zero instead — the
+        // harness maps a non-zero exit to a per-case error and keeps going.
+        val result =
+            try {
+                runBlocking { AppContext().orchestrator().runSkill(skill, input, provider) }
+            } catch (e: RuntimeException) {
+                System.err.println("ferry: ${e.message}")
+                kotlin.system.exitProcess(1)
+            }
+        // Print a JSON metadata line to stdout FIRST, then the output text. This
+        // lets invoke.py's subprocess path read the first line as structured
+        // metadata (provider/model/tokens) and treat the rest as the answer.
+        echo(metaLine(result))
         echo(result.output)
+    }
+
+    /**
+     * Serialise routing metadata as a single `{"_meta":{...}}` JSON line for the
+     * subprocess channel. Token counts are emitted only when the provider
+     * reported real usage; absent keys stay null so the harness can fall back.
+     */
+    private fun metaLine(result: dev.openclaw.ferryman.orchestrator.SkillResult): String {
+        val json = Json { encodeDefaults = true }
+        val meta =
+            buildJsonObject {
+                put("provider", JsonPrimitive(result.provider))
+                put("model", JsonPrimitive(result.model))
+                result.inputTokens?.let { put("inputTokens", JsonPrimitive(it)) }
+                result.outputTokens?.let { put("outputTokens", JsonPrimitive(it)) }
+            }
+        val wrapper = buildJsonObject { put("_meta", meta) }
+        return json.encodeToString(JsonObject.serializer(), wrapper)
     }
 }
 

@@ -9,19 +9,34 @@
 
 default_provider = "zai-glm"
 
-[providers.anthropic]
-type = "anthropic"
-baseUrl = "https://api.anthropic.com/v1"
-# Verify the current Claude model id against Anthropic's docs before relying on it.
-model = "claude-sonnet-4-5"
-apiKeyEnv = "ANTHROPIC_API_KEY"
-
 [providers.zai-glm]
 type = "openai-compatible"
-# z.ai GLM Coding Plan endpoint — OpenAI-compatible. Credits expire 2026-07-19;
-# after that, repoint baseUrl/model to Ollama/vLLM/OpenRouter/Together/Fireworks
-# with no code change (the whole point of the provider abstraction).
+# z.ai GLM Coding Plan endpoint — OpenAI-compatible.
 baseUrl = "https://api.z.ai/api/coding/paas/v4"
-# glm-5.2 is z.ai's flagship coding model at time of writing; verify at docs.z.ai.
-model = "glm-5.2"
+# glm-5.2 is z.ai's flagship coding model; verify at docs.z.ai.
+model = "glm-5-turbo"
 apiKeyEnv = "ZAI_API_KEY"
+
+[providers.gemini]
+type = "openai-compatible"
+# Google Gemini OpenAI-compatible endpoint. Base URL verified at
+# https://ai.google.dev/gemini-api/docs/openai (checked 2026-07-15).
+baseUrl = "https://generativelanguage.googleapis.com/v1beta/openai"
+# gemini-3.1-flash-lite — the current-generation flash-lite tier. Stable (only
+# the Preview variant was shut down 2026-05-25), supports function calling, and
+# has a 10M TPM rate limit — the headroom that should prevent the 429s/503s hit
+# by earlier models (gemini-3.5-flash-lite doesn't exist; 2.5-flash-lite is
+# deprecated for new users per the API's own message, 2026-07-16).
+# Verify at https://ai.google.dev/gemini-api/docs/models
+model = "gemini-3.1-flash-lite"
+apiKeyEnv = "GEMINI_API_KEY"
+
+[providers.hf-llama]
+type = "openai-compatible"
+# DeepInfra direct — OpenAI-compatible.
+# Verified at https://deepinfra.com/docs (2026-07-15).
+baseUrl = "https://api.deepinfra.com/v1/openai"
+# Llama 3.1 70B — handles function calling reliably (8B was too small, emitted
+# fake tool-call syntax as text). $0.59/$0.79 per 1M tokens on DeepInfra.
+model = "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo"
+apiKeyEnv = "DEEPINFRA_API_KEY"

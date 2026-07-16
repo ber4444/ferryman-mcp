@@ -3,13 +3,18 @@ package dev.openclaw.ferryman.providers
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.HttpRequestTimeoutException
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.header
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
+import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
+import io.ktor.http.isSuccess
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -36,14 +41,45 @@ class OpenAiCompatibleProvider(
 ) : LlmProvider {
     override suspend fun complete(request: CompletionRequest): CompletionResult {
         val payload = buildChatRequest(request)
-        val response: ChatCompletionResponse =
-            client
-                .post("${baseUrl.trimEnd('/')}/chat/completions") {
-                    header("Authorization", "Bearer $apiKey")
-                    contentType(ContentType.Application.Json)
-                    setBody(payload)
-                }.body()
-        return response.toResult()
+        val maxRetries = 3
+        var lastError: String? = null
+        repeat(maxRetries) { attempt ->
+            // Network/timeout failures (request timeout, connection reset) are
+            // treated the same as a retryable 429/503: record, back off, retry.
+            // Without this catch a single slow provider call killed the whole
+            // eval batch — the subprocess exited non-zero mid-run.
+            val httpResponse =
+                try {
+                    client.post("${baseUrl.trimEnd('/')}/chat/completions") {
+                        header("Authorization", "Bearer $apiKey")
+                        contentType(ContentType.Application.Json)
+                        setBody(payload)
+                    }
+                } catch (e: HttpRequestTimeoutException) {
+                    lastError = "Provider '$id' request timed out: ${e.message}"
+                    if (attempt == maxRetries - 1) throw RuntimeException(lastError)
+                    kotlinx.coroutines.delay((attempt + 1) * 5000L)
+                    return@repeat
+                } catch (e: java.io.IOException) {
+                    lastError = "Provider '$id' I/O error: ${e.message}"
+                    if (attempt == maxRetries - 1) throw RuntimeException(lastError)
+                    kotlinx.coroutines.delay((attempt + 1) * 5000L)
+                    return@repeat
+                }
+            if (httpResponse.status.isSuccess()) {
+                val response: ChatCompletionResponse = httpResponse.body()
+                return response.toResult()
+            }
+            val errorBody = httpResponse.bodyAsText()
+            lastError = "Provider '$id' returned ${httpResponse.status}: ${errorBody.take(500)}"
+            // Retry on 429 (rate limit) and 503 (overloaded) with backoff.
+            val retryable = httpResponse.status.value == 429 || httpResponse.status.value == 503
+            if (!retryable || attempt == maxRetries - 1) {
+                throw RuntimeException(lastError)
+            }
+            kotlinx.coroutines.delay((attempt + 1) * 5000L)
+        }
+        throw RuntimeException(lastError ?: "exhausted retries")
     }
 
     private fun buildChatRequest(request: CompletionRequest): ChatCompletionRequest {
@@ -51,26 +87,68 @@ class OpenAiCompatibleProvider(
             buildList {
                 add(ChatMessage(role = "system", content = request.system))
                 add(ChatMessage(role = "user", content = request.user))
-                // Prior tool results are fed back as tool messages so the model can continue.
-                for (result in request.toolResults) {
-                    add(
-                        ChatMessage(
-                            role = "tool",
-                            content = result.content,
-                            toolCallId = result.callId,
-                        ),
-                    )
+                // Reconstruct the full conversation: assistant tool-call turns
+                // interleaved with tool results. This is required by the OpenAI API —
+                // orphan tool messages without a preceding assistant tool_call cause
+                // the model to loop indefinitely.
+                for (msg in request.conversation) {
+                    when (msg) {
+                        is ConversationMessage.AssistantToolCall -> {
+                            // Embed the raw JSON from the model's original response
+                            // so provider-specific fields like Gemini's
+                            // thought_signature survive the round-trip verbatim.
+                            val rawElements =
+                                msg.toolCalls.map { call ->
+                                    if (call.rawJson != null) {
+                                        Json.parseToJsonElement(call.rawJson)
+                                    } else {
+                                        JsonObject(
+                                            mapOf(
+                                                "id" to JsonPrimitive(call.id),
+                                                "type" to JsonPrimitive("function"),
+                                                "function" to
+                                                    JsonObject(
+                                                        mapOf(
+                                                            "name" to JsonPrimitive(call.name.replace('.', '_')),
+                                                            "arguments" to JsonPrimitive(call.argumentsJson),
+                                                        ),
+                                                    ),
+                                            ),
+                                        )
+                                    }
+                                }
+                            add(
+                                ChatMessage(
+                                    role = "assistant",
+                                    content = "",
+                                    toolCalls = rawElements,
+                                ),
+                            )
+                        }
+                        is ConversationMessage.ToolResult -> {
+                            add(
+                                ChatMessage(
+                                    role = "tool",
+                                    content = msg.result.content,
+                                    toolCallId = msg.result.callId,
+                                ),
+                            )
+                        }
+                    }
                 }
             }
         val tools =
             request.tools.map { descriptor ->
                 ToolDef(
-                    type = "function",
                     function =
                         FunctionDef(
-                            name = descriptor.name,
+                            // OpenAI function names must match ^[a-zA-Z0-9_-]+$.
+                            name = descriptor.name.replace('.', '_'),
                             description = descriptor.description,
-                            parameters = JsonObject(mapOf("type" to JsonPrimitive("object"))),
+                            // Use the real input schema from the MCP server so the
+                            // model knows what arguments to supply.
+                            parameters =
+                                Json.parseToJsonElement(descriptor.parametersJson),
                         ),
                 )
             }
@@ -92,16 +170,23 @@ class OpenAiCompatibleProvider(
                         },
                     )
                 }
+                // LLM completions with tool calls can take 30-60s per turn.
+                // The CIO default is too short for that.
+                engine {
+                    requestTimeout = 120_000
+                }
             }
     }
 }
 
+@OptIn(ExperimentalSerializationApi::class)
 @Serializable
 private data class ChatCompletionRequest(
     val model: String,
     val messages: List<ChatMessage>,
     val tools: List<ToolDef>? = null,
     @SerialName("tool_choice") val toolChoice: String? = null,
+    @EncodeDefault @SerialName("max_tokens") val maxTokens: Int = 2048,
 )
 
 @Serializable
@@ -109,12 +194,18 @@ private data class ChatMessage(
     val role: String,
     val content: String,
     @SerialName("tool_call_id") val toolCallId: String? = null,
-    @SerialName("tool_calls") val toolCalls: List<ToolCallSpec>? = null,
+    // Raw JsonElements so provider-specific fields (Gemini's thought_signature)
+    // survive serialization round-trips.
+    @SerialName("tool_calls") val toolCalls: List<
+        @Serializable(with = RawJsonElementSerializer::class)
+        JsonElement,
+    >? = null,
 )
 
+@OptIn(ExperimentalSerializationApi::class)
 @Serializable
 private data class ToolDef(
-    val type: String,
+    @EncodeDefault val type: String = "function",
     val function: FunctionDef,
 )
 
@@ -126,21 +217,9 @@ private data class FunctionDef(
 )
 
 @Serializable
-private data class ToolCallSpec(
-    val id: String,
-    val type: String = "function",
-    val function: FunctionCall,
-)
-
-@Serializable
-private data class FunctionCall(
-    val name: String,
-    val arguments: String,
-)
-
-@Serializable
 private data class ChatCompletionResponse(
     val choices: List<Choice> = emptyList(),
+    @SerialName("usage") val usage: Usage? = null,
 ) {
     fun toResult(): CompletionResult {
         val choice =
@@ -148,16 +227,42 @@ private data class ChatCompletionResponse(
                 ?: return CompletionResult(output = "", finishReason = "empty")
         val message = choice.message
         val calls =
-            message.toolCalls.orEmpty().map {
-                ToolCall(id = it.id, name = it.function.name, argumentsJson = it.function.arguments)
+            message.toolCalls.orEmpty().map { rawElement ->
+                // Parse the known fields from the raw JSON element, but preserve
+                // the full object as rawJson so provider-specific fields (e.g.
+                // Gemini's thought_signature) survive the round-trip.
+                val obj = rawElement as? JsonObject
+                val id = obj?.get("id")?.let { (it as? kotlinx.serialization.json.JsonPrimitive)?.content } ?: ""
+                val func = obj?.get("function") as? JsonObject
+                val wireName = func?.get("name")?.let { (it as? kotlinx.serialization.json.JsonPrimitive)?.content } ?: ""
+                val namespaced = wireName.replaceFirst('_', '.')
+                val args = func?.get("arguments")?.let { (it as? kotlinx.serialization.json.JsonPrimitive)?.content } ?: "{}"
+                ToolCall(
+                    id = id,
+                    name = namespaced,
+                    argumentsJson = args,
+                    rawJson = rawElement.toString(),
+                )
             }
         return CompletionResult(
             output = message.content ?: "",
             toolCalls = calls,
             finishReason = choice.finishReason,
+            inputTokens = usage?.promptTokens,
+            outputTokens = usage?.completionTokens,
         )
     }
 }
+
+/**
+ * The `usage` block every OpenAI-compatible provider returns. Carries the real
+ * prompt/completion token counts so cost is exact rather than a chars/4 estimate.
+ */
+@Serializable
+data class Usage(
+    @SerialName("prompt_tokens") val promptTokens: Int = 0,
+    @SerialName("completion_tokens") val completionTokens: Int = 0,
+)
 
 @Serializable
 private data class Choice(
@@ -169,5 +274,38 @@ private data class Choice(
 private data class ResponseMessage(
     val role: String = "assistant",
     val content: String? = null,
-    @SerialName("tool_calls") val toolCalls: List<ToolCallSpec>? = null,
+    // Store tool_calls as raw JsonElements so provider-specific fields like
+    // Gemini's thought_signature survive deserialization and can be echoed
+    // back in the next request.
+    @SerialName("tool_calls") val toolCalls: List<
+        @Serializable(with = RawJsonElementSerializer::class)
+        JsonElement,
+    >? = null,
 )
+
+/**
+ * Pass-through serializer for [JsonElement] — reads and writes the raw JSON
+ * tree without loss, so provider-specific fields (e.g. Gemini's
+ * thought_signature inside tool call objects) survive serialization.
+ */
+private object RawJsonElementSerializer :
+    kotlinx.serialization.KSerializer<JsonElement> {
+    override val descriptor =
+        kotlinx.serialization.json.JsonElement
+            .serializer()
+            .descriptor
+
+    override fun serialize(
+        encoder: kotlinx.serialization.encoding.Encoder,
+        value: JsonElement,
+    ) {
+        kotlinx.serialization.json.JsonElement
+            .serializer()
+            .serialize(encoder, value)
+    }
+
+    override fun deserialize(decoder: kotlinx.serialization.encoding.Decoder): JsonElement =
+        kotlinx.serialization.json.JsonElement
+            .serializer()
+            .deserialize(decoder)
+}

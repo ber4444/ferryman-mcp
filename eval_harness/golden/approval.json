@@ -1,6 +1,7 @@
 {
-  "goldenSetApproved": false,
-  "approvedBy": null,
-  "approvedDate": null,
-  "notes": "Set goldenSetApproved to true after human review of golden_set.json. Until then, scorecards are provisional. See eval_harness/README.md."
+  "goldenSetApproved": true,
+  "approvedBy": "repo-owner",
+  "approvedDate": "2026-07-15",
+  "schemaVersion": 3,
+  "notes": "The 87-company golden set with specific role titles and derived ground-truth claims is approved. usesJetpackCompose/usesKmp default false (unconfirmed — Android != Compose). remoteForMobileEngineers/sfbaHybridForMobileEngineers derived from role titles or stated company policies where available. Per-record factsApproved field removed — approval is at the set level."
 }
