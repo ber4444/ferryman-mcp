@@ -181,8 +181,11 @@ _TAG_CONCEPTS: dict[str, list[str]] = {
     "capture": ["capture", "take", "win"],
     "check": ["check"],
     "checkmate": ["checkmate", "mate"],
-    "castle-kingside": ["castle", "kingside", "king-side", "o-o"],
-    "castle-queenside": ["castle", "queenside", "queen-side", "o-o-o"],
+    # Note: bare "kingside"/"queenside" are deliberately NOT keywords — they
+    # name board halves ("the queenside pawns") and false-positive as castling.
+    # "castle" as a bare word is chess-specific enough to keep as an indicator.
+    "castle-kingside": ["castle", "o-o", "castles kingside", "castled kingside"],
+    "castle-queenside": ["castle", "o-o-o", "castles queenside", "castled queenside"],
     "promotion": ["promot"],
     "material-swing": ["win material", "wins material", "winning material", "gains material", "gaining material", "up material"],
     "develops": ["develop", "activ"],
@@ -224,14 +227,21 @@ def _check_faithfulness(output: str, tags: set[str]) -> ScoreResult:
     # `check` concept would fire on every "checkmate" mention. Use a word-
     # boundary match: "check" not followed by "mate". (checkmate has its own
     # concept entry and is matched normally.)
-    _CHECK_NOT_MATE = re.compile(r"\bcheck(?!mate)")
+    #
+    # Also exclude the clearest verb usages — "check if/whether" (the model
+    # deliberating "check if the king is safe" is not the chess concept of
+    # giving check). We don't try to catch every verb form; the <think>-stripping
+    # upstream removes most, and the chess concept is far more common than the
+    # verb in a delivered Move Coach answer, so this errs toward catching real
+    # inventions at the cost of rare verb false-positives.
+    _CHECK_CHESS = re.compile(r"\bcheck(?!mate| if\b| whether\b)")
 
     def mentions(tag: str) -> bool:
         concepts = _TAG_CONCEPTS.get(tag, [])
         if not concepts:
             return False
         if tag == "check":
-            return bool(_CHECK_NOT_MATE.search(lowered))
+            return bool(_CHECK_CHESS.search(lowered))
         return any(c in lowered for c in concepts)
 
     # 1. Coverage: each supplied tag's concept should be mentioned.
