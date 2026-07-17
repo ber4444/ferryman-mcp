@@ -186,14 +186,11 @@ def test_score_for_case_unknown_format_surfaces():
 # case is a position with a known tag set; the test output either covers those
 # tags faithfully, omits them, or invents a high-stakes concept the tags don't
 # support.
-
-import chess as _chess  # noqa: E402
-
-_HAS_CHESS = True
-try:
-    _chess.Board()  # noqa: F841
-except ImportError:  # pragma: no cover
-    _HAS_CHESS = False
+#
+# These tests require python-chess (the optional [chess] extra) to build real
+# FEN cases. Skip the whole section gracefully when it's absent rather than
+# failing collection — CI runs without the [chess] extra installed.
+_chess = pytest.importorskip("chess")
 
 
 def _real_tactics_case(fen: str, answer: str) -> dict:
@@ -221,7 +218,6 @@ _DEVELOPS_CASE = _real_tactics_case(
 )
 
 
-@pytest.mark.skipif(not _HAS_CHESS, reason="python-chess not installed")
 def test_faithfulness_passes_when_explanation_covers_supplied_tags():
     # e4: tags are {center-control, pawn-push, opening}. Coverage checks the
     # first two (opening is a phase marker, not coverage-gated). This output
@@ -233,7 +229,6 @@ def test_faithfulness_passes_when_explanation_covers_supplied_tags():
     assert r.passed and r.key == "reasonFaithfulness"
 
 
-@pytest.mark.skipif(not _HAS_CHESS, reason="python-chess not installed")
 def test_faithfulness_fails_when_explanation_omits_supplied_tag():
     # e4: this output covers center but not the pawn-push concept
     # ("space"/"advance"/"push"), so coverage fails on pawn-push.
@@ -245,7 +240,6 @@ def test_faithfulness_fails_when_explanation_omits_supplied_tag():
     assert "pawn-push" in r.reason
 
 
-@pytest.mark.skipif(not _HAS_CHESS, reason="python-chess not installed")
 def test_faithfulness_catches_the_attacks_the_king_invention():
     # The roadmap's named failure mode: tags say {develops, opening} (a quiet
     # developing move), but the model writes "attacks the enemy king" — asserts
@@ -260,7 +254,6 @@ def test_faithfulness_catches_the_attacks_the_king_invention():
     assert "unsupported concept" in r.reason
 
 
-@pytest.mark.skipif(not _HAS_CHESS, reason="python-chess not installed")
 def test_faithfulness_catches_invented_check():
     # The tags derive to {develops, opening} — no check. Claiming "gives check"
     # is an unsupported invention.
@@ -271,7 +264,6 @@ def test_faithfulness_catches_invented_check():
     assert not r.passed and "check" in r.reason
 
 
-@pytest.mark.skipif(not _HAS_CHESS, reason="python-chess not installed")
 def test_faithfulness_passes_on_scholar_mate_with_honest_explanation():
     # Qxf7# genuinely captures, mates, and wins material — an explanation that
     # says so is faithful to all four derived tags.
@@ -283,7 +275,6 @@ def test_faithfulness_passes_on_scholar_mate_with_honest_explanation():
     assert r.passed
 
 
-@pytest.mark.skipif(not _HAS_CHESS, reason="python-chess not installed")
 def test_faithfulness_fails_when_mate_claimed_but_not_mate():
     # ChessQA case-001: Qf7-f8+ is a check, NOT checkmate (tags include `check`
     # but not `checkmate`). The output honestly covers the check, then falsely
