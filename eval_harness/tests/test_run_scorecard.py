@@ -32,7 +32,7 @@ def _stub_result(case_id: str, provider: str) -> CaseResult:
 def test_run_all_continues_when_one_case_raises(monkeypatch):
     """An exception from run_one must not abort the batch — it becomes an error CaseResult."""
 
-    def flaky_run_one(case, provider, mode):
+    def flaky_run_one(case, provider, mode, spec=None):
         if case["id"] == "case-002":
             raise RuntimeError("simulated timeout")
         return _stub_result(case["id"], provider or "unknown")
@@ -70,7 +70,7 @@ def test_order_providers_appends_unknowns():
 
 def test_run_all_calls_on_provider_done_after_each_provider(monkeypatch):
     """The incremental-save callback fires once per provider with accumulated results."""
-    monkeypatch.setattr(run_scorecard, "run_one", lambda c, p, m: _stub_result(c["id"], p or "unknown"))
+    monkeypatch.setattr(run_scorecard, "run_one", lambda c, p, m, spec=None: _stub_result(c["id"], p or "unknown"))
     monkeypatch.setattr(run_scorecard, "_THROTTLE_SECONDS", 0.0)
 
     golden = [{"id": "case-001"}, {"id": "case-002"}]
@@ -141,3 +141,41 @@ def test_estimate_cost_real_tokens_override_chars_even_if_both_set():
     real = _invocation(input_tokens=10, output_tokens=10, input_chars=4000, output_chars=4000)
     cost_real = run_scorecard.estimate_cost(real, _PRICING)
     assert cost_real == 0.00005  # 10*1.0/M + 10*4.0/M = 0.00001 + 0.00004
+
+
+# --- multi-skill harness (--skill / SkillSpec) -----------------------------
+
+
+def test_get_skill_spec_default_is_company_research():
+    """No skill name resolves to company-role-research (backward compat)."""
+    spec = run_scorecard.get_skill_spec(None)
+    assert spec.name == "company-role-research"
+    assert spec.skill_id == "company-role-research"
+
+
+def test_get_skill_spec_chess_resolves_separate_outputs():
+    """The chess spec has its own golden set, scorer, and scorecard paths."""
+    spec = run_scorecard.get_skill_spec("chess-opening-coach")
+    assert spec.skill_id == "chess-opening-coach"
+    assert spec.golden_path.name == "chess_golden.json"
+    assert spec.scorecard_md.name == "scorecard-chess.md"
+    assert spec.rubric_path is not None and spec.rubric_path.name == "rubric-chess.md"
+
+
+def test_run_one_passes_skill_id_to_invoke(monkeypatch):
+    """run_one must invoke the skill named by the spec, not the hardcoded default."""
+    captured: dict[str, str] = {}
+
+    def fake_invoke(skill_input, *, skill="", provider=None, mode="auto", **kw):
+        captured["skill"] = skill
+        return invoke_mod.InvocationResult(output="FINAL ANSWER: e2e4", provider="x", model="m")
+
+    monkeypatch.setattr(invoke_mod, "invoke", fake_invoke)
+    case = {
+        "id": "t1",
+        "input": {"fen": "..."},
+        "correctAnswer": "e2e4",
+        "answerFormat": "uci",
+    }
+    run_scorecard.run_one(case, provider=None, mode="subprocess", spec=run_scorecard.get_skill_spec("chess-opening-coach"))
+    assert captured["skill"] == "chess-opening-coach"

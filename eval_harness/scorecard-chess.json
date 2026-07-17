@@ -1,0 +1,3122 @@
+[
+  {
+    "id": "short_tactics_rating_beginner_0081",
+    "input": {
+      "fen": "3r3k/p4Qpp/8/1P2p3/1B6/P2rb1P1/1q5P/5R1K w - - 1 33",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4392,\"outputTokens\":81}}\nThe position is complex, but White is slightly better due to their bishop pair and better pawn structure. The question asks for the best move for the side to move, which is White.\n\nA key idea here is to use the bishop pair to put pressure on Black's position. One way to do this is to develop the dark-squared bishop to a more active square.\n\nFINAL ANSWER: g3",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'g3' != expected 'f7f8'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 5675,
+    "estimated_cost_usd": 0.000128
+  },
+  {
+    "id": "short_tactics_rating_beginner_0014",
+    "input": {
+      "fen": "r2r2k1/p2Q1pbp/1p2p1p1/7n/2B5/4B2P/Pq3PP1/2RR2K1 w - - 2 24",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4399,\"outputTokens\":93}}\nFrom the given FEN, it's clear that White is to move. In this position, the key idea is to address the potential threat of Black's pawn on d4 and develop the pieces further. A strong move for White would be to develop the knight and put pressure on the d4 pawn.\n\nThe best move for White is to play `Nh3`, developing the knight and preparing to potentially attack the d4 pawn.\n\nFINAL ANSWER: Nh3",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'nh3' != expected 'd7d8'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 7557,
+    "estimated_cost_usd": 0.000136
+  },
+  {
+    "id": "short_tactics_rating_beginner_0003",
+    "input": {
+      "fen": "6rk/pn5p/1p1p4/3Pp3/qPP1QpP1/3B1P2/2r5/3K1R2 w - - 0 41",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4396,\"outputTokens\":172}}\nTo find the best move for the side to move, we need to analyze the position.\n\nThe position is:\n\n6rk/pn5p/1p1p4/3Pp3/qPP1QpP1/3B1P2/2r5/3K1R2 w - - 0 41\n\nWhite is to move. The key idea here is to attack Black's king, which is somewhat exposed.\n\nOne possible move is Qg4, attacking Black's king and putting pressure on the position.\n\nHowever, a stronger move is Qh5, which attacks Black's king and also prepares to develop other pieces.\n\nBut the best move is actually Bg5, which attacks Black's king, prepares to develop other pieces, and also puts pressure on Black's position.\n\nFINAL ANSWER: Bg5",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'bg5' != expected 'e4h7'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 35325,
+    "estimated_cost_usd": 0.000175
+  },
+  {
+    "id": "short_tactics_rating_beginner_0094",
+    "input": {
+      "fen": "r3k2r/ppp2ppp/2qpbn2/8/3QP3/N1PBP3/PP4PP/R3K2R w KQkq - 2 12",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4394,\"outputTokens\":129}}\nTo determine the best move for the side to move, we first identify that White is to move, as indicated by the \"w\" in the FEN's active-color field.\n\nThe position shows a complex scenario with several pieces developed. However, a key tactical opportunity arises from the weakness of Black's position, particularly the potential to put pressure on Black's queen and the possibility of attacking Black's king.\n\nThe strongest move for White is to play Qg4, attacking Black's queen and putting pressure on the kingside. This move also prepares to potentially open lines on the kingside for further attack.\n\nFINAL ANSWER: Qg4",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'qg4' != expected 'd3b5'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 61220,
+    "estimated_cost_usd": 0.00018
+  },
+  {
+    "id": "short_tactics_rating_beginner_0035",
+    "input": {
+      "fen": "r5k1/1p3qpp/p2p1n2/2pP4/P1P1Q3/4P2P/1P4P1/R4RK1 b - - 0 24",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4398,\"outputTokens\":134}}\nThis position is complex, with both sides having developed their pieces and controlling key squares. Black is to move. A key concept here is king safety, as both kings are somewhat exposed.\n\nBlack's king is more vulnerable due to the absence of kingside pieces and the half-open f-file, which White could potentially use to launch a kingside attack. Therefore, Black's priority should be to safeguard their king.\n\nThe best move for Black is to play...g6, preparing to develop the kingside pieces and potentially creating counterplay on the queenside. This move also slightly reduces the kingside weaknesses and prepares to develop other pieces.\n\nFINAL ANSWER: g6",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'g6' != expected 'f6e4'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 52532,
+    "estimated_cost_usd": 0.000189
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0031",
+    "input": {
+      "fen": "r2qkr2/4b1pp/p3Qp2/1p6/3P4/1BP2P2/P5PP/RN3nK1 w q - 1 21",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4394,\"outputTokens\":235}}\nThe current position is a complex one, with both sides having developed their pieces and controlling key squares. White has a strong presence in the center with their pawns on e4 and d4, and their pieces are well-developed and coordinated. Black's position is more compact, with their pieces developed and ready to launch a counterattack.\n\nThe key idea here is to find a move that improves White's position while also addressing the potential threats from Black. One possible move is to play f4, which would attack Black's position on the kingside and prepare to develop the rest of White's pieces. This move would also put pressure on Black's pawn on f7, which could become a weakness if not properly supported.\n\nAnother option is to play Qg4, which would put pressure on Black's position on the queenside and prepare to launch a potential attack on the kingside. This move would also develop White's queen and put it in a strong position to influence the rest of the board.\n\nHowever, the best move for White is likely f4, as it addresses the potential threats from Black while also improving White's position.\n\nFINAL ANSWER: f4",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'f4' != expected 'e6c6'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 12696,
+    "estimated_cost_usd": 0.000281
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0028",
+    "input": {
+      "fen": "r4r1k/1pp2p1p/p1pb4/3q4/3P2R1/5Q2/PP3PPP/2R3K1 w - - 2 19",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4396,\"outputTokens\":48}}\nThe side to move is White. In this position, the strongest move is to attack the Black queen with the rook on d3, putting pressure on the Black position and potentially gaining a strategic advantage.\n\nFINAL ANSWER: Rd3",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'rd3' != expected 'f3f6'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3994,
+    "estimated_cost_usd": 0.000101
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0017",
+    "input": {
+      "fen": "7k/1pq4p/1p3R2/3pn3/7Q/1P5P/6PK/r4B2 w - - 5 37",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4388,\"outputTokens\":85}}\nThis position is a tactics/best-move task. \n\nThe side to move is White, as indicated by the FEN's active-color field (\"w\"). \n\nThe key idea here is to checkmate Black or gain a decisive material advantage. \n\nIn this position, the best move for White is Qg7#. This move checkmates Black and is the strongest move available. \n\nFINAL ANSWER: Qg7#",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'qg7#' != expected 'f6f8'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 28064,
+    "estimated_cost_usd": 0.000124
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0094",
+    "input": {
+      "fen": "4n3/p1b2k2/1p6/2p1pP2/P1P5/4KB2/2PB4/8 w - - 1 41",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4390,\"outputTokens\":114}}\nIn this position, White is to move. The key idea is to attack Black's position and create threats. \n\nOne potential move is to play Kd3, attacking Black's knight on g4 and preparing to develop other pieces. However, this move does not address the weakness on f4.\n\nA stronger move is to play f5, attacking Black's pawn on f7 and opening up the f-file for the rook to potentially use later. This move also puts pressure on Black's position and prepares to develop other pieces.\n\nFINAL ANSWER: f5",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'f5' != expected 'f3h5'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 4606,
+    "estimated_cost_usd": 0.000154
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0013",
+    "input": {
+      "fen": "R4nk1/2R1Q3/3p1qpb/2pP3p/2P4P/2rB2P1/1r3PK1/4N3 b - - 2 38",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4400,\"outputTokens\":126}}\nThis position is quite complex, with many pieces on the board and pawns on both sides. The side to move is Black.\n\nBlack is in a difficult situation, as their king is under attack and their pieces are not well-coordinated. However, they have a chance to counter-attack on the queenside.\n\nThe key idea is to play a move that will challenge White's control of the queenside and prepare to develop the rest of Black's pieces.\n\nThe best move for Black is to play Qe7, attacking the White queen and preparing to develop the rest of the pieces.\n\nFINAL ANSWER: Qe7",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'qe7' != expected 'f6f2'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 4545,
+    "estimated_cost_usd": 0.000168
+  },
+  {
+    "id": "short_tactics_rating_advanced_0086",
+    "input": {
+      "fen": "2r5/p4rk1/6p1/7p/2q2p2/1R5P/P4bPN/2QR3K w - - 0 29",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4390,\"outputTokens\":78}}\nIn this position, White is to move. The key idea is to attack Black's queen with our rook, putting pressure on Black's position.\n\nWhite's rook on d1 can attack Black's queen on d5, which is not well-supported by other Black pieces. This move also prepares to potentially develop other pieces and control the d-file.\n\nFINAL ANSWER: Rd1",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'rd1' != expected 'c1b2'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 4873,
+    "estimated_cost_usd": 0.000123
+  },
+  {
+    "id": "short_tactics_rating_advanced_0094",
+    "input": {
+      "fen": "2r4k/6Np/8/3PQ3/1P1K4/4pP2/2Rnq1P1/8 b - - 4 50",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4392,\"outputTokens\":155}}\nThe current position is:\n\n2r4k/6Np/8/3PQ3/1P1K4/4pP2/2Rnq1P1/8 b - - 4 50\n\nIt's Black's turn to move. The key idea here is to look for a move that attacks White's position and gains a strategic advantage.\n\nOne potential move is...Nh4, attacking White's pawn on f3 and preparing to develop the rest of Black's pieces.\n\nHowever, a stronger move is...Qe4, which attacks White's pawn on e3 and puts pressure on the kingside. This move also develops Black's queen and prepares to potentially attack White's king.\n\nFINAL ANSWER: Qe4",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'qe4' != expected 'd2b3'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 8086,
+    "estimated_cost_usd": 0.00016
+  },
+  {
+    "id": "short_tactics_rating_advanced_0069",
+    "input": {
+      "fen": "8/1p6/p2k3p/3Pp1p1/1P2P2r/5K1R/1P4P1/8 b - - 3 41",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4393,\"outputTokens\":60}}\nBlack is to move in this position.\n\nThe key idea here is to **improve piece placement** and put pressure on White's position. The best move is to play `Rd2`, which develops the rook and prepares to potentially attack White's king.\n\nFINAL ANSWER: Rd2",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'rd2' != expected 'g5g4'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3377,
+    "estimated_cost_usd": 0.000106
+  },
+  {
+    "id": "short_tactics_rating_advanced_0011",
+    "input": {
+      "fen": "r4rk1/p3Rp2/4p2Q/4p3/3p2P1/8/q2NnB1P/5R1K b - - 0 24",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4393,\"outputTokens\":159}}\nTo find the best move for Black, let's analyze the position.\n\nFirst, notice that Black's king is not castled and is somewhat exposed, with the f-file open and the possibility of White's rook entering the position. However, Black's pieces are well-developed, with both knights and the bishop on g4 putting pressure on White's position.\n\nThe key idea here is to take advantage of White's somewhat weakened kingside and create threats against the king. One way to do this is to play a move that attacks White's position and prepares to develop the rest of Black's pieces.\n\nConsidering these factors, the strongest move for Black is to play Nf4, attacking White's queen and preparing to develop the rest of the pieces.\n\nFINAL ANSWER: Nf4",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'nf4' != expected 'a2d5'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 6827,
+    "estimated_cost_usd": 0.000202
+  },
+  {
+    "id": "short_tactics_rating_advanced_0075",
+    "input": {
+      "fen": "2r3k1/1Q3ppp/p2rp3/1p2P3/1P3P2/PB4P1/1BP4q/2KR4 b - - 0 25",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4397,\"outputTokens\":156}}\nAnalyzing the position...\n\nThe side to move is Black. I need to find the strongest move for Black. Looking at the position, I notice that Black's king is in a relatively safe position, but Black's queen is under attack by White's bishop on b4. I also see that Black's rook on f8 is not well-supported and could be attacked by White's queen on d3.\n\nConsidering these factors, I think the best move for Black is to move the queen to a safe square and prepare to develop the rest of the pieces. A good move would be to play...Qe7, which moves the queen out of the way of the bishop on b4 and prepares to develop the rest of the pieces.\n\nFINAL ANSWER: Qe7",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'qe7' != expected 'd6d1'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 5565,
+    "estimated_cost_usd": 0.000187
+  },
+  {
+    "id": "short_tactics_rating_expert_0054",
+    "input": {
+      "fen": "rnQ2bnr/p1p1kppp/2b5/3pP3/8/1P3qP1/P1PP3P/RNB1KB2 w Q - 0 11",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4396,\"outputTokens\":235}}\n**Step-by-step reasoning:**\n\nIn this position, White is to move. The key idea is to identify the strongest move by looking for forced tactics and improving the position.\n\nFirst, let's analyze the position:\n\n* White has a queen and bishop on the queenside, while Black has a queen and bishop on the kingside.\n* The queenside pawns are somewhat weakened, but White has a strong pawn on e5.\n* Black's king is somewhat exposed, but not in immediate danger.\n\n**Tactical considerations:**\n\n* White can play Qd5, attacking Black's queen and potentially gaining a tempo.\n* Alternatively, White can play Qc4, putting pressure on Black's position and preparing to develop other pieces.\n\n**Positional considerations:**\n\n* Developing the kingside pieces (e.g., Nf3, Bc1) would be beneficial for White.\n* Improving the pawn structure (e.g., d4) could also be beneficial.\n\n**Best move:**\n\nConsidering the tactical and positional factors, the best move for White is Qd5, attacking Black's queen and gaining a tempo.\n\nFINAL ANSWER: Qd5",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'qd5' != expected 'c1a3'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 8090,
+    "estimated_cost_usd": 0.00026
+  },
+  {
+    "id": "short_tactics_rating_expert_0004",
+    "input": {
+      "fen": "r2kr3/pp3ppp/2P2n2/8/3q2b1/3B2P1/PPP2QKP/RNB4R b - - 4 16",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4393,\"outputTokens\":175}}\nTo find the best move for Black, we need to analyze the position and look for the strongest move. \n\nThe position is complex, but we can see that Black's queen is quite active and is putting pressure on White's position. Black also has a pawn on d5, which is controlling the center and giving Black more space to maneuver. \n\nHowever, White's pawn on d4 is also controlling the center and is somewhat weakening Black's pawn on d5. Additionally, White's bishop on c3 is putting pressure on Black's knight on f6. \n\nConsidering these factors, a good move for Black would be to play...Na5, attacking White's bishop and preparing to develop the rest of Black's pieces. This move also helps to control the b5 square, which could be an important spot in the future. \n\nFINAL ANSWER: Na5",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'na5' != expected 'g4h3'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 6653,
+    "estimated_cost_usd": 0.000211
+  },
+  {
+    "id": "short_tactics_rating_expert_0003",
+    "input": {
+      "fen": "8/8/3n3p/3k3P/4BK2/8/8/8 b - - 0 53",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4379,\"outputTokens\":126}}\nThe current position is:\n\n8/8/3n3p/3k3P/4BK2/8/8/8 b - - 0 53\n\nBlack is to move.\n\nIn this position, Black's knight on d6 is under attack from the bishop on c4. To save the knight and improve the position, Black can play a tactical move.\n\nThe key idea is to use the knight to attack the bishop and prepare to develop other pieces.\n\nThe strongest move is... Nc4, attacking the bishop and preparing to develop the queenside pieces.\n\nFINAL ANSWER: d6c4",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'd6c4' != expected 'd6e4'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 4813,
+    "estimated_cost_usd": 0.000143
+  },
+  {
+    "id": "short_tactics_rating_expert_0011",
+    "input": {
+      "fen": "r1b1k3/pp1n4/1q1pp1p1/2p1n1B1/4P3/2bP3Q/PPP2PP1/1R1K2N1 w q - 0 15",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4405,\"outputTokens\":154}}\nIn this position, White is to move. The key idea here is to address the potential weakness on the kingside and prepare for potential attacks from Black.\n\nNotice that Black's queen is quite active on the queenside, and the knight on f6 is well-placed to potentially jump to g4 or h5, putting pressure on White's position. Additionally, Black's bishop on g4 is pinning White's knight on f3, which could become a weakness if not addressed.\n\nConsidering these factors, a good move for White would be to play Bg5, attacking Black's knight on f6 and preparing to develop other pieces. This move also has the effect of slightly weakening Black's control over the kingside.\n\nFINAL ANSWER: Bg5",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'bg5' != expected 'h3e6'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 6311,
+    "estimated_cost_usd": 0.000194
+  },
+  {
+    "id": "short_tactics_rating_expert_0027",
+    "input": {
+      "fen": "r5k1/1pp1Q1bp/3p1n2/5p2/3P4/5P2/qBP3PP/2KR3R b - - 0 22",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4394,\"outputTokens\":200}}\nAnalyzing the given FEN position: `r5k1/1pp1Q1bp/3p1n2/5p2/3P4/5P2/qBP3PP/2KR3R b - - 0 22`\n\nThe side to move is Black.\n\nKey idea: Black should address the immediate threat of White's queen on the board, specifically the potential attack on the Black king.\n\nReasoning step-by-step:\n\n1. The queen on d3 exerts pressure on the Black position, particularly on the d-file, which is semi-open.\n2. To counter this, Black can play `Qe7`, developing the queen and supporting the d5-pawn while preparing to potentially challenge White's queen on the d-file.\n3. Additionally, playing `Qe7` helps connect the Black rooks and places the queen in a relatively safe position, away from potential attacks by White's pieces.\n\nFINAL ANSWER: Qe7",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'qe7' != expected 'a8e8'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 7408,
+    "estimated_cost_usd": 0.000201
+  },
+  {
+    "id": "position_judgement_advantage_0029",
+    "input": {
+      "fen": "r2qnrk1/bp1b4/p1ppn2p/2P1ppp1/1PN5/P2P2P1/1B1NPPBP/2RQ1RK1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4405,\"outputTokens\":177}}\nThis position is from the Ruy Lopez opening, and Black is to move. To estimate the Stockfish evaluation, let's analyze the position.\n\nBlack's position is slightly weakened due to the pawn on d6, which is somewhat isolated and can become a target for White's pieces. However, Black has a solid pawn structure and well-developed pieces, which provides a good foundation for counterplay.\n\nOn the other hand, White's position is somewhat disorganized, with the bishop on c4 not being particularly effective and the pawn on e4 being somewhat weak. However, White's pieces are generally well-developed, and the knight on d4 is putting pressure on Black's position.\n\nConsidering these factors, I would estimate that the position is roughly equal, with a slight edge to White due to the weakness of Black's pawn on d6.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": true,
+        "reason": "band 200 matches expected 200"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 8297,
+    "estimated_cost_usd": 0.000227
+  },
+  {
+    "id": "position_judgement_advantage_0064",
+    "input": {
+      "fen": "6k1/p3q1np/2p1b1p1/2Pp1p2/6Pr/1P1N1PQ1/P3B2P/4R2K b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4402,\"outputTokens\":166}}\nBased on the given FEN position, I'll assess the position and estimate the Stockfish evaluation.\n\nThe position is quite complex, with both sides having developed pieces and pawns. However, Black has a few weaknesses, such as the isolated pawn on e6 and the somewhat weakened kingside structure. On the other hand, White has a strong pawn center and well-developed pieces, which gives them a slight advantage.\n\nConsidering the concepts of central control, development, king safety, and pawn tension, I would estimate the Stockfish evaluation to be around 200 centipawns in favor of White. This is because White's central control and development give them a slight edge, while Black's weaknesses on the kingside and the isolated pawn on e6 make it harder for them to equalize.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": true,
+        "reason": "band 200 matches expected 200"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 5761,
+    "estimated_cost_usd": 0.000218
+  },
+  {
+    "id": "position_judgement_advantage_0077",
+    "input": {
+      "fen": "6r1/3kpn2/p5p1/4p2p/2p1N2P/2K1R3/PPP2PP1/8 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4394,\"outputTokens\":254}}\nTo estimate the Stockfish evaluation in centipawns from White's perspective, let's analyze the position step by step:\n\n1. **Material Balance**: The material balance is roughly equal, with both sides having similar material, but White has a knight on the board which could be advantageous in the long run.\n\n2. **Pawn Structure**: The pawn structure shows that Black has more pawns on the queenside, which could be slightly advantageous in controlling the center and queenside space. However, the presence of White's knight on the queenside could balance this out.\n\n3. **Piece Development**: Both sides have relatively underdeveloped pieces, but White's knight is developed and active, which gives them a slight edge in controlling key squares.\n\n4. **King Safety**: The kings are relatively safe, with no immediate threats. However, White's king is slightly more secure due to their better pawn structure on the kingside.\n\n5. **Control of the Center**: The center is relatively open, but White's knight on the queenside and their pawn on e4 give them slight control over the center.\n\nGiven these factors, I would estimate the Stockfish evaluation to be slightly in White's favor, but not by a large margin.\n\nFINAL ANSWER: 100",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '100' != expected '200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 8977,
+    "estimated_cost_usd": 0.000302
+  },
+  {
+    "id": "position_judgement_advantage_0003",
+    "input": {
+      "fen": "2rqr1k1/p1pp1pp1/1p5p/1Q5n/3P4/2N2P1P/P1B2P2/R3R1K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4402,\"outputTokens\":120}}\nIn this position, Black is slightly better due to their strong pawn center and better piece development. The queen on d5 is particularly strong, putting pressure on White's position and controlling key squares. Additionally, Black's knights are well-developed and attacking White's position, while White's knights are still in their starting positions. However, White's bishop on c4 is somewhat active and could potentially put pressure on Black's position.\n\nConsidering these factors, I would estimate the Stockfish evaluation to be around -200 centipawns, indicating a slight advantage for Black.\n\nFINAL ANSWER: -200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '-200' != expected '200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 4509,
+    "estimated_cost_usd": 0.000184
+  },
+  {
+    "id": "position_judgement_disadvantage_0071",
+    "input": {
+      "fen": "r1bq1bkr/ppp3pp/2n5/3pp1N1/8/5N2/PPPP1PPP/R1BQK2R w KQ -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4397,\"outputTokens\":149}}\nThe position shows White having a strong knight on e5, attacking Black's pawn on d6. This knight is well-supported by the bishop on c4 and the queen on d2. Black's position is somewhat weakened by the absence of the dark-squared bishop, which would normally help defend the kingside.\n\nHowever, Black's pawn structure is solid, and there are no immediate threats to the king. The kingside pieces are also somewhat developed, with the knight on f6 and the bishop on g4.\n\nConsidering these factors, the position seems to be slightly better for White due to the strong knight on e5. However, the advantage is not overwhelming, and Black has a solid defensive position.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '-200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 5842,
+    "estimated_cost_usd": 0.000197
+  },
+  {
+    "id": "position_judgement_disadvantage_0025",
+    "input": {
+      "fen": "8/3b1k2/1p2Np2/p2Pp1p1/P3P2P/6P1/5K2/8 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4393,\"outputTokens\":138}}\nBased on the position, I notice that White has a strong pawn center with pawns on d4 and e4, which gives them good control over the central squares. Additionally, White's pieces are well-developed, with the knights and bishops on active squares.\n\nOn the other hand, Black's position is somewhat weakened by the pawn on c6, which is somewhat isolated and can be attacked by White's pawns. Black's pieces are also not as well-developed as White's, with the queen and rooks still on their starting squares.\n\nConsidering these factors, I estimate that White has a slight advantage, around 200 centipawns.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '-200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 5727,
+    "estimated_cost_usd": 0.000182
+  },
+  {
+    "id": "position_judgement_disadvantage_0091",
+    "input": {
+      "fen": "1r1q1rk1/3bppbp/3p2p1/3Bn3/3NP3/5P2/1PPQ1BPP/1K1R3R b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4401,\"outputTokens\":92}}\nThe position is complex, with both sides having developed pieces and pawns on the board. However, White has a strong bishop pair, with the bishop on c4 putting pressure on Black's position. Black's knight on d5 is somewhat isolated, and White's knight on c3 is well-supported by pawns.\n\nConsidering the bishop pair and the somewhat isolated knight, I estimate the position to be slightly better for White.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '-200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3995,
+    "estimated_cost_usd": 0.000146
+  },
+  {
+    "id": "position_judgement_disadvantage_0083",
+    "input": {
+      "fen": "r3qrk1/p1p2ppp/2P2n2/8/1b4b1/2N2P2/PPP1B1PP/R1BQK2R b KQ -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4402,\"outputTokens\":159}}\nIn this position, Black is to move. The key idea is that Black's pieces are more actively developed, and White's pawn structure is somewhat weakened.\n\nBlack's knight on g6 is well-placed, attacking White's bishop on c4, and Black's bishop on g4 is putting pressure on White's position. Additionally, Black's queenside pawns are more flexible, allowing for potential counterplay on the queenside.\n\nOn the other hand, White's pawn on d4 is somewhat isolated, and the pawn on e3 is not well-supported. White's pieces are also not as actively developed as Black's, with the knight on f3 being somewhat passive.\n\nConsidering these factors, I estimate that Black has a slight advantage in this position.\n\nFINAL ANSWER: -200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": true,
+        "reason": "band -200 matches expected -200"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 6555,
+    "estimated_cost_usd": 0.000204
+  },
+  {
+    "id": "position_judgement_losing_0089",
+    "input": {
+      "fen": "r4r1k/pb2pP1p/2q3p1/2pNb1B1/7Q/6PP/PP4B1/R5K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4397,\"outputTokens\":163}}\nBased on the FEN, Black is to move, but we need to assess the position from White's perspective. \n\nThe key idea here is that White has a strong initiative, with a powerful bishop pair and a strong pawn center. Black's position is somewhat weakened by the pawn on b5, which can become a target for White's pieces. Additionally, White's queen is actively placed on the d-file, putting pressure on Black's position.\n\nHowever, Black's position is not without counterplay. The knight on b6 is well-placed, and Black has the potential to launch a pawn storm on the queenside. \n\nOverall, I would estimate that White has a slight advantage, but Black's counterplay makes it difficult to assess the exact centipawn value.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '-400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 4686,
+    "estimated_cost_usd": 0.000206
+  },
+  {
+    "id": "position_judgement_losing_0069",
+    "input": {
+      "fen": "2rq1rk1/p3p2p/3p2p1/1p3nNP/1pb2P2/6P1/P4P2/2RQR1K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4400,\"outputTokens\":148}}\nThe given FEN shows a position where Black is to move. To estimate the Stockfish evaluation, I will assess the position from White's perspective in centipawns.\n\nThe key idea in this position is that White has a significant advantage in pawn structure and piece development. White's pawns are well-organized and controlling key central squares, while Black's pawns are somewhat disjointed and not as effectively supporting the pieces. Additionally, White's pieces are more actively developed, with the knights and bishops in good positions to exert influence on the board.\n\nConsidering these factors, I would estimate the Stockfish evaluation to be around 200 centipawns in White's favor, indicating a significant advantage for White.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '-400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 5852,
+    "estimated_cost_usd": 0.00021
+  },
+  {
+    "id": "position_judgement_losing_0053",
+    "input": {
+      "fen": "r1b1kb1r/pp1p1ppp/2n2n2/8/1q3B2/2PBP3/P3NPPP/R2QK2R b KQkq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4402,\"outputTokens\":117}}\nThis position is from the Ruy Lopez opening, a popular choice among chess players. The current position shows that Black has developed their knights and bishops, while White has developed their knights, bishops, and queen. Black's pawn structure is slightly weakened on the queenside, but they have a strong pawn center.\n\nHowever, White's position is more solid, with a strong pawn center and well-developed pieces. White's bishop on c4 is also putting pressure on Black's position. Considering these factors, I estimate that White has a slight advantage.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '-400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 4410,
+    "estimated_cost_usd": 0.000176
+  },
+  {
+    "id": "position_judgement_losing_0028",
+    "input": {
+      "fen": "r3r2k/5Qp1/p7/1p1bq3/1P6/P7/6PP/4RRK1 w - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4390,\"outputTokens\":82}}\nThis position is a Queen versus Rook and minor pieces endgame.\n\nThe key idea here is that White has a significant material advantage, with a queen and two rooks versus Black's queen and two minor pieces. However, Black's pieces are somewhat coordinated, and White's king is slightly exposed.\n\nDespite these factors, White's material advantage should give them a decisive edge.\n\nFINAL ANSWER: 400",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '400' != expected '-400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 4394,
+    "estimated_cost_usd": 0.000138
+  },
+  {
+    "id": "position_judgement_neutral_0057",
+    "input": {
+      "fen": "1rb2rk1/pnb2pp1/2p4p/3np3/1PP1N2q/3P3N/P2BBPPP/R2Q1RK1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4398,\"outputTokens\":208}}\n**Assessment:** The position is roughly balanced with slight Black advantages. Black has a solid pawn center and better control of the d-file with their rook on d8. However, White has a strong knight on d4, putting pressure on Black's position.\n\n**Key idea:** The knight on d4 is the main threat to Black's position, but Black's control of the d-file and solid pawn center counterbalance this threat.\n\n**Positional factors:**\n\n* Black's pawn center is solid, with pawns on d5 and e5 controlling key central squares.\n* Black's rook on d8 is well-placed, putting pressure on White's position and preparing to potentially use the d-file.\n* White's knight on d4 is a strong piece, putting pressure on Black's position and potentially preparing to jump to a strong square.\n\n**Conclusion:** Given the balanced nature of the position and the counterplay Black has, the Stockfish evaluation is likely to be close to zero.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": true,
+        "reason": "band 0 matches expected 0"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 6759,
+    "estimated_cost_usd": 0.000246
+  },
+  {
+    "id": "position_judgement_neutral_0075",
+    "input": {
+      "fen": "rnbqkb1r/1p3p2/p2p2p1/3Pp1Pp/7P/2N5/PPP2P2/R1BQKB1R b KQkq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4404,\"outputTokens\":202}}\nThe FEN given is `rnbqkb1r/1p3p2/p2p2p1/3Pp1Pp/7P/2N5/PPP2P2/R1BQKB1R b KQkq -`. This position is from the Black side.\n\nIn this position, Black's pawn structure is somewhat weakened, with pawns on c6 and e6, which can become targets for White's pieces. Additionally, Black's pieces are not as actively developed as White's, which could give White an advantage in terms of mobility and control of the center.\n\nHowever, Black has a strong pawn center and the potential to develop the rest of the pieces quickly. \n\nConsidering the current state of the position, it seems that White has a slight advantage due to Black's slightly weakened pawn structure and less active piece development. Therefore, the Stockfish evaluation from White's perspective would likely be a small positive value.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '0'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 4920,
+    "estimated_cost_usd": 0.000221
+  },
+  {
+    "id": "position_judgement_neutral_0035",
+    "input": {
+      "fen": "rnbqk2r/ppp1ppbp/3p1np1/8/2PPP3/2N2N2/PP3PPP/R1BQKB1R b KQkq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4400,\"outputTokens\":133}}\nBased on the provided FEN, we can see that it's Black's turn to move. To estimate the Stockfish evaluation, let's analyze the position:\n\nBlack has developed their knights and bishops, while White has developed only their knights. Black's pawn structure is slightly weakened on the queenside, but they have a strong pawn center. White's pawn center is also strong, but they have a weakness on the kingside with the pawn on f4 being somewhat exposed.\n\nConsidering these factors, the position seems to be roughly equal. However, Black's slight developmental advantage and White's kingside weakness give Black a slight edge.\n\nFINAL ANSWER: -200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '-200' != expected '0'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 5014,
+    "estimated_cost_usd": 0.000189
+  },
+  {
+    "id": "position_judgement_neutral_0000",
+    "input": {
+      "fen": "rnbq1rk1/ppp1ppbp/3p1np1/8/2PP1B2/2N1PN2/PP3PPP/R2QKB1R b KQ -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4399,\"outputTokens\":168}}\nThe current position is a complex one, with both sides having developed some pieces and controlling key central squares. However, White has a slight advantage in terms of pawn structure and piece development.\n\nWhite's pawn on d4 is well-supported and controls the central square, while Black's pawn on d5 is somewhat isolated. Additionally, White's bishop on c4 is developed and putting pressure on Black's position, while Black's bishop on g4 is not as well-supported.\n\nOn the other hand, Black's knight on f6 is well-developed and attacking White's pawn on d4, while White's knight on b1 is not yet developed.\n\nConsidering these factors, I would estimate the Stockfish evaluation to be around 200 centipawns in White's favor, indicating a slight advantage for White.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '0'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 5943,
+    "estimated_cost_usd": 0.000218
+  },
+  {
+    "id": "position_judgement_winning_0097",
+    "input": {
+      "fen": "4r1k1/5p1R/pp3PpQ/2pbr3/3p4/2P5/P5PP/2B3K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4394,\"outputTokens\":137}}\nThe position is complex, but let's break it down. Black's king is somewhat exposed, and the pawn on g6 is weak. White's rook on f7 is powerful, and the queen on f5 is well-supported. Black's bishop on g4 is somewhat active, but it's not clear if it can make a significant impact.\n\nConsidering the above factors, White has a slight advantage. The key idea is that White's rook on f7 is a strong piece that puts pressure on Black's position. Black's weaknesses, such as the exposed king and the weak pawn on g6, also contribute to White's advantage.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 5118,
+    "estimated_cost_usd": 0.000173
+  },
+  {
+    "id": "position_judgement_winning_0020",
+    "input": {
+      "fen": "2r3k1/p2nbppp/Q1P1pn2/4qb2/8/2N1B1P1/PP2PP1P/R4RK1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4397,\"outputTokens\":228}}\nThe current position shows a complex and dynamic struggle between White and Black. The key idea is that Black's position is somewhat weakened by the potential attack on the queenside, but White's position is also somewhat exposed due to the lack of pawn protection on the kingside.\n\nThe queenside attack by White, particularly with the queens on the board, puts pressure on Black's position. However, Black's pieces are well-developed and coordinated, which helps to counterbalance the attack.\n\nConsidering the concept of central control, White has a slight advantage with the pawns on e4 and d4, but Black's counterplay on the queenside limits White's overall control.\n\nGiven the development of both sides, Black's king safety is somewhat compromised due to the open lines on the kingside, but White's king is also not entirely safe.\n\nAssessing the position from White's perspective, it seems that White has a slight advantage due to the potential attack on the queenside and the control of the center. However, Black's counterplay and well-developed pieces prevent White from having a decisive advantage.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 6862,
+    "estimated_cost_usd": 0.000284
+  },
+  {
+    "id": "position_judgement_winning_0089",
+    "input": {
+      "fen": "r1b1kn1r/1pp1qpp1/1n6/p3p2p/P2PP3/1QPBBN1P/5PP1/R4RK1 w kq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4400,\"outputTokens\":187}}\nThe position on the board indicates that White has a strong initiative, with a pawn on e5 that puts pressure on Black's position. Additionally, White's pieces are well-developed, with the queen and bishop on c4 and d3, respectively, exerting influence on the board. Black's position, on the other hand, is somewhat disorganized, with the queen and bishop on d7 and e7, respectively, being somewhat passive.\n\nHowever, Black's pawn structure is solid, with no obvious weaknesses. Furthermore, Black has a strong knight on f6 that could potentially become a powerful piece if it reaches the d5 square.\n\nTaking these factors into account, I would estimate the Stockfish evaluation to be around 200 centipawns in favor of White. This reflects White's strong initiative and better piece development, but also acknowledges Black's solid pawn structure and potential for counterplay.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 5319,
+    "estimated_cost_usd": 0.000239
+  },
+  {
+    "id": "position_judgement_winning_0054",
+    "input": {
+      "fen": "4k3/8/5p1p/4n1p1/4R3/7P/5PP1/6K1 w - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "hf-llama",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"hf-llama\",\"model\":\"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo\",\"inputTokens\":4388,\"outputTokens\":129}}\nIn this position, White has a significant advantage due to the strong pawn structure and piece placement. The rook on d5 controls the open d-file, putting pressure on Black's position. Additionally, the pawn on f4 is well-supported and could potentially become a strong passed pawn.\n\nHowever, Black's knight on g6 is actively placed and could potentially attack White's pawns. Moreover, the kingside pawns are somewhat weakened, which could become a target for Black's counterplay.\n\nConsidering these factors, I estimate the Stockfish evaluation to be around 200 centipawns in favor of White.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 12801,
+    "estimated_cost_usd": 0.00018
+  },
+  {
+    "id": "short_tactics_rating_beginner_0081",
+    "input": {
+      "fen": "3r3k/p4Qpp/8/1P2p3/1B6/P2rb1P1/1q5P/5R1K w - - 1 33",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3360,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 50696,
+    "estimated_cost_usd": 0.000202
+  },
+  {
+    "id": "short_tactics_rating_beginner_0014",
+    "input": {
+      "fen": "r2r2k1/p2Q1pbp/1p2p1p1/7n/2B5/4B2P/Pq3PP1/2RR2K1 w - - 2 24",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3367,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 72223,
+    "estimated_cost_usd": 0.000205
+  },
+  {
+    "id": "short_tactics_rating_beginner_0003",
+    "input": {
+      "fen": "6rk/pn5p/1p1p4/3Pp3/qPP1QpP1/3B1P2/2r5/3K1R2 w - - 0 41",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3364,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 70212,
+    "estimated_cost_usd": 0.000204
+  },
+  {
+    "id": "short_tactics_rating_beginner_0094",
+    "input": {
+      "fen": "r3k2r/ppp2ppp/2qpbn2/8/3QP3/N1PBP3/PP4PP/R3K2R w KQkq - 2 12",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 73754,
+    "estimated_cost_usd": 0.000205
+  },
+  {
+    "id": "short_tactics_rating_beginner_0035",
+    "input": {
+      "fen": "r5k1/1p3qpp/p2p1n2/2pP4/P1P1Q3/4P2P/1P4P1/R4RK1 b - - 0 24",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": "ferry subprocess timed out after 120s (cmd: /Users/presence/AndroidStudioProjects/ferryman/build/install/ferry/bin/ferry run --skill chess-opening-coach --input {\"fen\": \"r5k1/1p3qpp/p2p1n2/2pP4/P1P1Q3/4P2P/1P4P1/R4RK1 b - - 0 24\", \"question\": \"Find the best move for the side to move.\"} --provider zai-glm)",
+    "latency_ms": 120017,
+    "estimated_cost_usd": 3.7e-05
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0031",
+    "input": {
+      "fen": "r2qkr2/4b1pp/p3Qp2/1p6/3P4/1BP2P2/P5PP/RN3nK1 w q - 1 21",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 76036,
+    "estimated_cost_usd": 0.000204
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0028",
+    "input": {
+      "fen": "r4r1k/1pp2p1p/p1pb4/3q4/3P2R1/5Q2/PP3PPP/2R3K1 w - - 2 19",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3364,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 70833,
+    "estimated_cost_usd": 0.000204
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0017",
+    "input": {
+      "fen": "7k/1pq4p/1p3R2/3pn3/7Q/1P5P/6PK/r4B2 w - - 5 37",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3356,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 60164,
+    "estimated_cost_usd": 0.000201
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0094",
+    "input": {
+      "fen": "4n3/p1b2k2/1p6/2p1pP2/P1P5/4KB2/2PB4/8 w - - 1 41",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3358,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 64144,
+    "estimated_cost_usd": 0.000202
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0013",
+    "input": {
+      "fen": "R4nk1/2R1Q3/3p1qpb/2pP3p/2P4P/2rB2P1/1r3PK1/4N3 b - - 2 38",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3368,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 81717,
+    "estimated_cost_usd": 0.000205
+  },
+  {
+    "id": "short_tactics_rating_advanced_0086",
+    "input": {
+      "fen": "2r5/p4rk1/6p1/7p/2q2p2/1R5P/P4bPN/2QR3K w - - 0 29",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3358,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 112129,
+    "estimated_cost_usd": 0.000202
+  },
+  {
+    "id": "short_tactics_rating_advanced_0094",
+    "input": {
+      "fen": "2r4k/6Np/8/3PQ3/1P1K4/4pP2/2Rnq1P1/8 b - - 4 50",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3360,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 76805,
+    "estimated_cost_usd": 0.000201
+  },
+  {
+    "id": "short_tactics_rating_advanced_0069",
+    "input": {
+      "fen": "8/1p6/p2k3p/3Pp1p1/1P2P2r/5K1R/1P4P1/8 b - - 3 41",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3361,\"outputTokens\":1402}}\n**Step-by-step reasoning:**\n\nBlack's rook on h4 sits directly in front of White's rook on h3 on the same file. Black can simply capture: **Rh4xh3+**. This wins an entire rook and simultaneously delivers check to White's king on f3 (both pieces lie on the 3rd rank). After the king is forced to move (e.g., Ke2, Ke3, or Kg4), Black remains up a full rook with a clearly winning position. There is no superior tactical alternative \u2014 this capture is both the simplest and strongest continuation.\n\nFINAL ANSWER: h4h3",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'h4h3' != expected 'g5g4'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 63795,
+    "estimated_cost_usd": 0.000715
+  },
+  {
+    "id": "short_tactics_rating_advanced_0011",
+    "input": {
+      "fen": "r4rk1/p3Rp2/4p2Q/4p3/3p2P1/8/q2NnB1P/5R1K b - - 0 24",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3361,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 76284,
+    "estimated_cost_usd": 0.000203
+  },
+  {
+    "id": "short_tactics_rating_advanced_0075",
+    "input": {
+      "fen": "2r3k1/1Q3ppp/p2rp3/1p2P3/1P3P2/PB4P1/1BP4q/2KR4 b - - 0 25",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3365,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 57038,
+    "estimated_cost_usd": 0.000205
+  },
+  {
+    "id": "short_tactics_rating_expert_0054",
+    "input": {
+      "fen": "rnQ2bnr/p1p1kppp/2b5/3pP3/8/1P3qP1/P1PP3P/RNB1KB2 w Q - 0 11",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": "ferry subprocess timed out after 120s (cmd: /Users/presence/AndroidStudioProjects/ferryman/build/install/ferry/bin/ferry run --skill chess-opening-coach --input {\"fen\": \"rnQ2bnr/p1p1kppp/2b5/3pP3/8/1P3qP1/P1PP3P/RNB1KB2 w Q - 0 11\", \"question\": \"Find the best move for the side to move.\"} --provider zai-glm)",
+    "latency_ms": 120017,
+    "estimated_cost_usd": 3.8e-05
+  },
+  {
+    "id": "short_tactics_rating_expert_0004",
+    "input": {
+      "fen": "r2kr3/pp3ppp/2P2n2/8/3q2b1/3B2P1/PPP2QKP/RNB4R b - - 4 16",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3361,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 18826,
+    "estimated_cost_usd": 0.000204
+  },
+  {
+    "id": "short_tactics_rating_expert_0003",
+    "input": {
+      "fen": "8/8/3n3p/3k3P/4BK2/8/8/8 b - - 0 53",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3347,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 18853,
+    "estimated_cost_usd": 0.000198
+  },
+  {
+    "id": "short_tactics_rating_expert_0011",
+    "input": {
+      "fen": "r1b1k3/pp1n4/1q1pp1p1/2p1n1B1/4P3/2bP3Q/PPP2PP1/1R1K2N1 w q - 0 15",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3373,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 20825,
+    "estimated_cost_usd": 0.000207
+  },
+  {
+    "id": "short_tactics_rating_expert_0027",
+    "input": {
+      "fen": "r5k1/1pp1Q1bp/3p1n2/5p2/3P4/5P2/qBP3PP/2KR3R b - - 0 22",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 18943,
+    "estimated_cost_usd": 0.000204
+  },
+  {
+    "id": "position_judgement_advantage_0029",
+    "input": {
+      "fen": "r2qnrk1/bp1b4/p1ppn2p/2P1ppp1/1PN5/P2P2P1/1B1NPPBP/2RQ1RK1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3373,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 18429,
+    "estimated_cost_usd": 0.000215
+  },
+  {
+    "id": "position_judgement_advantage_0064",
+    "input": {
+      "fen": "6k1/p3q1np/2p1b1p1/2Pp1p2/6Pr/1P1N1PQ1/P3B2P/4R2K b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3370,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 16522,
+    "estimated_cost_usd": 0.000212
+  },
+  {
+    "id": "position_judgement_advantage_0077",
+    "input": {
+      "fen": "6r1/3kpn2/p5p1/4p2p/2p1N2P/2K1R3/PPP2PP1/8 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":921}}\nLet me analyze the position from White's perspective.\n\n**Pawn count:** White has 6 pawns (a2, b2, c2, f2, g2, h4) vs. Black's 4 (a6, e7, g6, h5) \u2014 White is up two pawns.\n\n**Piece activity:** White's knight on e4 is a monster \u2014 centrally placed, impossible to challenge by Black's knight on f7, and supporting the kingside pawn advance. The rook on e3 is active and controls the open e-file. By contrast, Black's rook on g8 is passive.\n\n**Pawn structure:** White has a connected queenside pawn majority (a2, b2, c2) against Black's isolated a6. On the kingside, h4 vs. h5 and g2 vs. g6 are symmetric but White's extra f-pawn gives further material superiority.\n\n**King safety:** Both kings are reasonably safe, but White's king on c3 is well-placed to support the queenside pawn advance.\n\nWhite enjoys a clean two-pawn advantage with all pieces active and Black has no real counterplay. This is a decisive advantage.\n\nFINAL ANSWER: 400",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '400' != expected '200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 13367,
+    "estimated_cost_usd": 0.001144
+  },
+  {
+    "id": "position_judgement_advantage_0003",
+    "input": {
+      "fen": "2rqr1k1/p1pp1pp1/1p5p/1Q5n/3P4/2N2P1P/P1B2P2/R3R1K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3370,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 15264,
+    "estimated_cost_usd": 0.000213
+  },
+  {
+    "id": "position_judgement_disadvantage_0071",
+    "input": {
+      "fen": "r1bq1bkr/ppp3pp/2n5/3pp1N1/8/5N2/PPPP1PPP/R1BQK2R w KQ -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3365,\"outputTokens\":1895}}\nLet me reconstruct the position from the FEN.\n\n**White:** King e1, Queen d1, Rooks a1/h1, Bishop c1, Knights f3 & g5, Pawns a2/b2/c2/d2/f2/g2/h2. Castling: KQ available.\n**Black:** King g8, Queen d8, Rooks a8/h8, Bishops c8 & f8, Knight c6, Pawns a7/b7/c7/d5/e5/g7/h7. No castling rights.\n\n**Key factors:**\n\n1. **Monster knight on g5:** The knight on g5 is powerfully placed, eyeing f7, h7, and e6. It creates immediate threats, especially against the vulnerable f7 pawn.\n2. **King safety disparity:** Black's king sits on g8 with **no castling rights** \u2014 a significant long-term liability. White retains both castling options and can reach safety at will.\n3. **Development lead:** White has both knights actively developed; Black has only one. Black's bishops (c8, f8) and queen remain on their starting squares.\n4. **Black's center:** Black holds d5 and e5, which is a solid point in their favor, providing stability and central control.\n\nThe combination of the aggressively placed knight, White's ability to castle, and Black's permanent inability to castle gives White a clear and lasting advantage. Black's center provides some compensation but doesn't offset the structural and safety issues. White is better, but not yet winning \u2014 Black has defensive resources.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '-200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 15258,
+    "estimated_cost_usd": 0.0015
+  },
+  {
+    "id": "position_judgement_disadvantage_0025",
+    "input": {
+      "fen": "8/3b1k2/1p2Np2/p2Pp1p1/P3P2P/6P1/5K2/8 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3361,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 16906,
+    "estimated_cost_usd": 0.000209
+  },
+  {
+    "id": "position_judgement_disadvantage_0091",
+    "input": {
+      "fen": "1r1q1rk1/3bppbp/3p2p1/3Bn3/3NP3/5P2/1PPQ1BPP/1K1R3R b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3369,\"outputTokens\":1238}}\nThe position features White's pieces on ideal squares. The bishop on d5 is a dominant outpost, firmly supported by the e4 pawn and difficult for Black to challenge. The knight on d4 is equally well-placed, eyeing f5, b5, and c6. Together these two minor pieces give White strong central control and pressure on the queenside.\n\nBlack's knight on e5 is active but the d6 pawn is a structural weakness \u2014 it lacks adjacent pawns for support and can become a target. Black's bishop on g7 is somewhat passive behind the g6/h7 pawn chain. Both rooks are developed and kings are castled, so king safety is roughly equal.\n\nWhite holds a clear but not overwhelming advantage driven by the superior minor piece placement (Bd5 + Nd4) and the structural vulnerability of Black's d6 pawn. White enjoys more space and better piece coordination.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '-200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 10327,
+    "estimated_cost_usd": 0.001062
+  },
+  {
+    "id": "position_judgement_disadvantage_0083",
+    "input": {
+      "fen": "r3qrk1/p1p2ppp/2P2n2/8/1b4b1/2N2P2/PPP1B1PP/R1BQK2R b KQ -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3370,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 15975,
+    "estimated_cost_usd": 0.000213
+  },
+  {
+    "id": "position_judgement_losing_0089",
+    "input": {
+      "fen": "r4r1k/pb2pP1p/2q3p1/2pNb1B1/7Q/6PP/PP4B1/R5K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3365,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 16477,
+    "estimated_cost_usd": 0.000211
+  },
+  {
+    "id": "position_judgement_losing_0069",
+    "input": {
+      "fen": "2rq1rk1/p3p2p/3p2p1/1p3nNP/1pb2P2/6P1/P4P2/2RQR1K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3368,\"outputTokens\":1790}}\nLet me reconstruct the position from the FEN.\n\n**Material count:**\n- White: K, Q, 2R, N, 5P (a2, e4, f2, g3, h5) \u2014 missing both bishops and 3 pawns.\n- Black: K, Q, 2R, N, B, 7P (a7, b5, b4, d6, e7, g6, h7).\n\nBlack is ahead by **a full bishop and two pawns** \u2014 roughly +5 points of material (about \u2212500 cp from White's view).\n\n**Positional factors:**\n- Black's bishop on c4 is very active, reaching deep into White's camp. The knight on f5 is an excellent outpost. Black's king is safely castled on g8.\n- White's knight on g5 is active but isolated in attack; the rooks on c1 and e1 are decently placed but White lacks bishops entirely, which hurts in an open position.\n- The pawn structure favors Black: Black's chain (b5-b4, d6, e7, g6-h7) is solid, while White's queenside is barren (only a2) and the h5/g5 pawn structure is somewhat awkward.\n\nBlack's material edge of ~500 cp, combined with a generally superior piece placement and structure, clearly favors Black. The closest band is \u2212400.\n\nFINAL ANSWER: -400",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": true,
+        "reason": "band -400 matches expected -400"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 13673,
+    "estimated_cost_usd": 0.001226
+  },
+  {
+    "id": "position_judgement_losing_0053",
+    "input": {
+      "fen": "r1b1kb1r/pp1p1ppp/2n2n2/8/1q3B2/2PBP3/P3NPPP/R2QK2R b KQkq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3370,\"outputTokens\":1792}}\nLet me analyze the position step by step.\n\n**Material:** Even \u2014 both sides have 6 pawns and all pieces remain on the board. Each side is missing two pawns that were exchanged or advanced.\n\n**White's setup:** King still on e1 (uncastled), bishops actively placed on d3 and f4 (good diagonals), knight on e2 (somewhat passive but flexible), queen on d1 (not yet active). Pawns on c3 and e3 create a solid but modest center.\n\n**Black's setup:** King on e8 (also uncastled), knights developed on c6 and f6 \u2014 both excellent classical squares. Queen is actively placed on b4, pressuring White's queenside and eyeing b2. Bishops on c8 and f8 remain undeveloped.\n\n**Key factors:** Neither side has castled, but White's king is marginally more exposed since the e-file could open. Black's queen on b4 is the most active piece on the board. However, White's two bishops are well-placed and give good control of central diagonals. Black's development edge (two active knights vs. one passive knight) is offset by the undeveloped bishops.\n\nThis is a balanced position with no significant structural or tactical advantage for either side.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '0' != expected '-400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 12558,
+    "estimated_cost_usd": 0.001357
+  },
+  {
+    "id": "position_judgement_losing_0028",
+    "input": {
+      "fen": "r3r2k/5Qp1/p7/1p1bq3/1P6/P7/6PP/4RRK1 w - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3358,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 14440,
+    "estimated_cost_usd": 0.000208
+  },
+  {
+    "id": "position_judgement_neutral_0057",
+    "input": {
+      "fen": "1rb2rk1/pnb2pp1/2p4p/3np3/1PP1N2q/3P3N/P2BBPPP/R2Q1RK1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3366,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 41164,
+    "estimated_cost_usd": 0.000214
+  },
+  {
+    "id": "position_judgement_neutral_0075",
+    "input": {
+      "fen": "rnbqkb1r/1p3p2/p2p2p1/3Pp1Pp/7P/2N5/PPP2P2/R1BQKB1R b KQkq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3372,\"outputTokens\":1556}}\nLet me reconstruct the position:\n\n- **White**: King e1 (uncastled), Queen d1, Rooks a1/h1, Bishops c1/f1, Knight c3, Pawns a2, b2, c2, d5, f2, g4, h4.\n- **Black**: King e8 (uncastled), Queen d8, Rooks a8/h8, Bishops c8/f8, Knights b8/g8, Pawns a6, b7, d6, e5, f5, g6, h6.\n\n**Key factors:**\n\n1. **Material**: Equal (7 pawns, 2 knights, 2 bishops, queen, 2 rooks each).\n\n2. **Pawn structure**: White's d5 pawn is a space-gaining asset, but it's isolated and can become a target. The g4\u2013h4 pawns are overextended and create kingside light-square weaknesses around White's uncastled king. Black's structure (a6, b7, d6, e5, f5, g6, h6) is very solid and cohesive with a strong central presence.\n\n3. **Development**: Neither side has developed meaningfully \u2014 White's pieces are on starting squares except Nc3; Black's pieces are all home. Both kings are uncastled.\n\n4. **Central control**: Black's e5 pawn supported by d6 gives good central footing. White's d5 pawn is a counterweight but lacks immediate piece support.\n\nThe g4\u2013h4 advance is slightly weakening, and with both sides needing significant development, the position is quite balanced. White's space edge from d5 is offset by the loose kingside pawns and overall underdevelopment.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": true,
+        "reason": "band 0 matches expected 0"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 20276,
+    "estimated_cost_usd": 0.001468
+  },
+  {
+    "id": "position_judgement_neutral_0035",
+    "input": {
+      "fen": "rnbqk2r/ppp1ppbp/3p1np1/8/2PPP3/2N2N2/PP3PPP/R1BQKB1R b KQkq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3368,\"outputTokens\":1658}}\nLooking at this position:\n\n**Position overview:** White has established a strong three-pawn center with c4, d4, and e4, supported by knights on c3 and f3. Black has adopted a Modern/Pirc-style setup with \u2026d6, \u2026g6, \u2026Bg7, and \u2026Nf6, keeping the e7 pawn back.\n\n**Key factors:**\n- **Central control:** White's three connected central pawns dominate the board and give a real space advantage. Black's pieces are a bit cramped behind the d6/e7 pawn structure.\n- **Development:** Both sides are roughly equally developed \u2014 two knights each, though White's bishops are still on their starting squares (but so is Black's Bc8). Neither side has castled yet.\n- **Pawn tension:** White's center is imposing but not yet challenged. Black may aim for \u2026d5 or \u2026e5 breaks later, but for now White enjoys a comfortable spatial edge.\n\nThe position is still in the opening phase, but White's firm central grip and space advantage give a modest but real edge. Not overwhelming, as Black has a solid setup and typical counter-chances in this structure.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '0'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 27822,
+    "estimated_cost_usd": 0.001263
+  },
+  {
+    "id": "position_judgement_neutral_0000",
+    "input": {
+      "fen": "rnbq1rk1/ppp1ppbp/3p1np1/8/2PP1B2/2N1PN2/PP3PPP/R2QKB1R b KQ -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3367,\"outputTokens\":1009}}\n**Position Analysis:**\n\nWhite has established a powerful classical pawn center (c4, d4, e4) and developed three pieces actively (Nc3, Nf3, Bf4). Black has a solid fianchetto structure with Bg7 and a castled king, but two pieces remain undeveloped: Nb8 and Bc8. White's pieces enjoy more space and better coordination, and White can still castle to improve king safety. Black's position is structurally sound but passive, with d6/e7 pawns conceding central space.\n\nWhite has a clear but moderate advantage \u2014 strong center, better development, more active piece placement \u2014 though Black's king is safe and the pawn structure is intact.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '0'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 17025,
+    "estimated_cost_usd": 0.000867
+  },
+  {
+    "id": "position_judgement_winning_0097",
+    "input": {
+      "fen": "4r1k1/5p1R/pp3PpQ/2pbr3/3p4/2P5/P5PP/2B3K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 24270,
+    "estimated_cost_usd": 0.00021
+  },
+  {
+    "id": "position_judgement_winning_0020",
+    "input": {
+      "fen": "2r3k1/p2nbppp/Q1P1pn2/4qb2/8/2N1B1P1/PP2PP1P/R4RK1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3365,\"outputTokens\":1684}}\nLooking at this position, Black has a commanding setup. The queen on e5, bishop on f5, and knight on g6 form a powerful attacking battery aimed directly at White's castled king on g1. The knight on d7 and bishop on e7 provide additional support, and Black enjoys the bishop pair advantage.\n\nWhite's queen on a6 is badly misplaced \u2014 far from the kingside where it's needed for defense. The passed c6-pawn is an asset but doesn't compensate for White's coordination problems. The knight on c3 and bishop on e3 are passive by comparison, and White's kingside pawn structure (f2, g3, h2) has weaknesses the bishop on f5 can exploit.\n\nBlack's pieces are overwhelmingly more active and coordinate beautifully against the king. While White retains two rooks and the c6-pawn as long-term resources, the immediate and medium-term pressure on the kingside gives Black a clear and significant advantage.\n\nFINAL ANSWER: -200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '-200' != expected '400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 23759,
+    "estimated_cost_usd": 0.001125
+  },
+  {
+    "id": "position_judgement_winning_0089",
+    "input": {
+      "fen": "r1b1kn1r/1pp1qpp1/1n6/p3p2p/P2PP3/1QPBBN1P/5PP1/R4RK1 w kq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3368,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 28134,
+    "estimated_cost_usd": 0.000214
+  },
+  {
+    "id": "position_judgement_winning_0054",
+    "input": {
+      "fen": "4k3/8/5p1p/4n1p1/4R3/7P/5PP1/6K1 w - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3356,\"outputTokens\":763}}\nThe position is a rook vs. knight endgame. White has a rook on e4 and three pawns (f2, g2, h3); Black has a knight on e5, three pawns (f6, g5, h6), and the king on e8.\n\nMaterial advantage clearly favors White: a rook is significantly stronger than a knight, especially in an endgame where its ability to control open files, penetrate to the 7th rank, and support passed pawns is decisive. The knight, while centralized on e5, cannot match the rook's scope and activity. White's king is safely placed on g1, and the rook can immediately create pressure by invading along the e-file or targeting the kingside pawns. Black's pawn structure is also somewhat vulnerable (e.g., isolated f6, doubled pawns possibilities), giving White additional converting chances.\n\nThe rook-vs-knight advantage with roughly equal pawns typically evaluates around +200 centipawns \u2014 White is better but not yet crushing.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 17947,
+    "estimated_cost_usd": 0.001122
+  },
+  {
+    "id": "short_tactics_rating_beginner_0081",
+    "input": {
+      "fen": "3r3k/p4Qpp/8/1P2p3/1B6/P2rb1P1/1q5P/5R1K w - - 1 33",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2909,\"outputTokens\":262}}\nThe position is `3r3k/p4Qpp/8/1P2p3/1B6/P2rb1P1/1q5P/5R1K w - - 1 33`. It is White's turn to move.\n\nWhite's queen is on f7, attacking the f8 rook and the h7 pawn. Black's king is restricted on the back rank. White has a strong bishop on b4. Black's threat includes the queen on b2, but White's king is relatively safe for the moment.\n\nThe most critical feature is the back-rank weakness of the black king. The queen on f7 is currently eyes-on for the bishop on b4. If White plays `f7f8+`, Black is forced to capture with the rook (`d8f8`). Then White plays `f1f8#`. This is a classic back-rank mate pattern.\n\n1. `f7f8+`\n2. `d8f8`\n3. `f1f8#`\n\nThis is a forced mate in two moves. No other move provides such a concrete advantage or ends the game immediately.\n\nFINAL ANSWER: f7f8",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": false,
+        "reason": "output contains forbidden phrase 'forced mate' (engine-provenance or unsupported-certainty claim)"
+      },
+      {
+        "key": "exactMove",
+        "passed": true,
+        "reason": "move f7f8 matches expected f7f8"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3362,
+    "estimated_cost_usd": 0.000364
+  },
+  {
+    "id": "short_tactics_rating_beginner_0014",
+    "input": {
+      "fen": "r2r2k1/p2Q1pbp/1p2p1p1/7n/2B5/4B2P/Pq3PP1/2RR2K1 w - - 2 24",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2916,\"outputTokens\":373}}\nThe current position is `r2r2k1/p2Q1pbp/1p2p1p1/7n/2B5/4B2P/Pq3PP1/2RR2K1 w - - 2 24`. It is White's turn to move.\n\n**Analysis:**\n1.  **Material:** Material is equal.\n2.  **Tactics:** White's queen is currently on d7, eyeing the d8-rook. Black's queen is on b2, attacking the rook on c1.\n3.  **Threats:** Black is threatening to capture the rook on c1 (`...Qxc1`). White's queen on d7 is also hanging if the d8-rook moves or if it is captured, though it is currently protected by the bishop on c4.\n4.  **Candidate Moves:**\n    *   `Qxd8+`: This is a forcing move. After `24. Qxd8+`, Black must respond with `...Rxd8` or `...Bf8`. If `24. Qxd8+ Rxd8 25. Rxd8+ Bf8 26. Bh6`, White threatens mate on the back rank. This is a very strong sequence that wins material or forces a mating attack.\n    *   `Qc7`: Retreating the queen. This ignores the pressure on the c1-rook and allows Black to consolidate.\n    *   `Bd4`: Trying to block or challenge, but this is inferior to the forcing exchange.\n\nThe sequence `Qxd8+` is clearly the best move as it forces a favorable sequence of trades leading to a decisive advantage for White.\n\nFINAL ANSWER: d7d8",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": true,
+        "reason": "move d7d8 matches expected d7d8"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3837,
+    "estimated_cost_usd": 0.000503
+  },
+  {
+    "id": "short_tactics_rating_beginner_0003",
+    "input": {
+      "fen": "6rk/pn5p/1p1p4/3Pp3/qPP1QpP1/3B1P2/2r5/3K1R2 w - - 0 41",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2911,\"outputTokens\":332}}\nThe position is `6rk/pn5p/1p1p4/3Pp3/qPP1QpP1/3B1P2/2r5/3K1R2 w - - 0 41`. White is to move.\n\n**Analysis:**\n1.  **King Safety/Threats:** White's king is on d1 and is currently being targeted by the black rook on c2 and the queen on a4. The black rook on c2 is a major threat.\n2.  **Immediate Tactics:** White is under immense pressure. The black queen is attacking the b4 pawn and the c4 pawn. The black rook on c2 is attacking d2 (which is empty) and applying pressure on the d-file.\n3.  **Candidate Moves:**\n    *   `Bxc2`: This is the most logical candidate, as it removes the dangerous rook on c2. After `Bxc2`, Black will likely respond with `Qxc2+` or `...Qxa4`.\n    *   `Rh1`: A passive defensive move.\n    *   `Kd2`: Walking into further trouble.\n\nEvaluating `Bxc2`:\nIf White plays `Bxc2`, they eliminate the immediate nuisance of the rook. Black will likely follow up with `Qxc2+` (if forced) or `...Qxa4`. However, White has no better way to alleviate the pressure on their king. Removing the primary attacking piece is the most principled approach in this tactical situation.\n\nFINAL ANSWER: Bxc2",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'bxc2' != expected 'e4h7'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3234,
+    "estimated_cost_usd": 0.000488
+  },
+  {
+    "id": "short_tactics_rating_beginner_0094",
+    "input": {
+      "fen": "r3k2r/ppp2ppp/2qpbn2/8/3QP3/N1PBP3/PP4PP/R3K2R w KQkq - 2 12",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2907,\"outputTokens\":327}}\nThe position is `r3k2r/ppp2ppp/2qpbn2/8/3QP3/N1PBP3/PP4PP/R3K2R w KQkq - 2 12`. It is White's turn to move.\n\n**Analysis:**\n1.  **Development and Safety:** Both sides have completed basic development. White's king is still in the center, and Black's king is also in the center. Both sides have castling rights.\n2.  **King Safety:** White should prioritize getting the king to safety. Castling kingside (`O-O`) is the most natural move, completing the development of the rook and removing the king from the center file.\n3.  **Positional Factors:** The center is relatively stable. White's queen is well-placed on d4, putting pressure on Black's structure. Black's queen on c6 is active.\n4.  **Candidate Moves:**\n    *   `O-O`: This is the most logical move. It secures the king, connects the rooks, and prepares to transition into the middlegame.\n    *   `Nc2`: A prophylactic or repositioning move, but castling takes precedence.\n    *   `b4`: Expands on the queenside, but slightly weakens the position and delays king safety.\n\n`O-O` is the most principled and strongest move here, as it prioritizes long-term safety and coordination over immediate, premature activity.\n\nFINAL ANSWER: e1g1",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'e1g1' != expected 'd3b5'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3402,
+    "estimated_cost_usd": 0.00052
+  },
+  {
+    "id": "short_tactics_rating_beginner_0035",
+    "input": {
+      "fen": "r5k1/1p3qpp/p2p1n2/2pP4/P1P1Q3/4P2P/1P4P1/R4RK1 b - - 0 24",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2916,\"outputTokens\":318}}\nThe position is `r5k1/1p3qpp/p2p1n2/2pP4/P1P1Q3/4P2P/1P4P1/R4RK1 b - - 0 24`. It is Black's turn to move.\n\n**Analysis:**\n1.  **Material:** Material is equal.\n2.  **Safety:** White's king is somewhat exposed due to the pawn structure, but Black's king is also in a standard endgame/middlegame position.\n3.  **Key features:** White has a centralized queen on e4, which is currently attacking the knight on f6. Black needs to address this threat.\n4.  **Tactics/Candidate moves:**\n    *   `fxe4`: This is a natural, forced move. Capturing the white queen simplifies the position and removes the immediate threat. White will likely recapture with `fxe4`.\n    *   `Qe8`: This moves the queen out of danger but is more passive.\n    *   `Kh8`: A prophylactic move, but it ignores the threat to the knight.\n\n**Evaluation:**\nCapturing the queen with `fxe4` is the most logical and strongest response. It removes White's most active piece and leads to a balanced endgame where Black maintains control over the position. After `fxe4`, the material remains equal, and Black has a solid structure.\n\nFINAL ANSWER: f6e4",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": true,
+        "reason": "move f6e4 matches expected f6e4"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3048,
+    "estimated_cost_usd": 0.000487
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0031",
+    "input": {
+      "fen": "r2qkr2/4b1pp/p3Qp2/1p6/3P4/1BP2P2/P5PP/RN3nK1 w q - 1 21",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2911,\"outputTokens\":303}}\nThe position is `r2qkr2/4b1pp/p3Qp2/1p6/3P4/1BP2P2/P5PP/RN3nK1 w q - 1 21`. It is White's turn to move.\n\nThe White queen is currently on e6, attacking the f6-pawn and controlling key diagonals. Black's king is still in the center, and Black has a knight on f1 that is threatening the White king and potentially pinning or forcing White to react.\n\nLooking at the board, White has a crushing attacking opportunity. The move `Qc6+` delivers a check that forces Black to respond. If `...Kf7` is played, `Qxd5+` or other follow-ups maintain the pressure. More importantly, the position feels ripe for a mating attack given the exposed nature of the Black king. However, simply removing the threats or improving the position is key. \n\nWait, check the board again. `Qc6+` is a forced move that picks up the rook on a8 or leads to a devastating attack. If `...Ke7` or `...Kf7`, the black king is pinned to the rook or forced into further danger. `Qc6+` forces `Kf7` (as `Ke7` loses the rook to the queen anyway), leading to a winning position.\n\nFINAL ANSWER: c6e6",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'c6e6' != expected 'e6c6'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3341,
+    "estimated_cost_usd": 0.000469
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0028",
+    "input": {
+      "fen": "r4r1k/1pp2p1p/p1pb4/3q4/3P2R1/5Q2/PP3PPP/2R3K1 w - - 2 19",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2912,\"outputTokens\":398}}\nThe position is `r4r1k/1pp2p1p/p1pb4/3q4/3P2R1/5Q2/PP3PPP/2R3K1 w - - 2 19`.\n\nWhite to move. The white queen on f3 is under attack by the black queen on d5. White's rook on g4 is active, and Black's king position is somewhat airy.\n\n1.  **Analyze the threat**: The queen on f3 is attacked. If the queen moves, Black might consolidate.\n2.  **Tactical opportunities**:\n    *   The move `Qf6` looks very strong. It attacks the bishop on d6 and prepares for potential back-rank threats against the king on h8.\n    *   If `Qf6`, Black's bishop on d6 is attacked. If the bishop moves (e.g., `Bf5` or `Be7`), or if Black tries to defend with `f6` or `f5`, White maintains pressure.\n    *   Let's check `Qf6`: \n        *   If `19. Qf6+`, then `19... Kg8` is forced (if `19... Kh7` then `20. Qg7#`).\n        *   After `19. Qf6+ Kg8`, White has created a strong initiative.\n    *   Consider alternative: `Qxd5`. This leads to `19... cxd5`. The endgame is roughly equal, but White loses the attacking initiative.\n    *   The tactical motif here is the mating threat on g7 and the exposure of the black king.\n\n`Qf6` is the most aggressive and best move, forcing the king to g8 and creating a long-term initiative.\n\nFINAL ANSWER: f3f6",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": true,
+        "reason": "move f3f6 matches expected f3f6"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 4393,
+    "estimated_cost_usd": 0.000531
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0017",
+    "input": {
+      "fen": "7k/1pq4p/1p3R2/3pn3/7Q/1P5P/6PK/r4B2 w - - 5 37",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2904,\"outputTokens\":366}}\nThe position is `7k/1pq4p/1p3R2/3pn3/7Q/1P5P/6PK/r4B2 w - - 5 37`. It is White's turn to move.\n\n**Analysis:**\n1. **Material:** White has a Rook, Queen, and Bishop against Black's Rook, Queen, and Knight. White has a significant material advantage in terms of activity and potential threats.\n2. **King Safety:** The Black king is tucked away on h8 but feels somewhat vulnerable given the active White pieces.\n3. **Tactics:**\n   - White's Rook on f6 is attacking the Knight on e5 and exerting pressure on the f-file.\n   - The Queen on h4 is well-positioned to eye the kingside.\n   - Notice the Knight on e5 is pinned to the Black Queen on c7 (if the Rook on f6 were to capture it, but it's currently defended by the Queen). Wait, actually, let's look closer. The Rook on f6 threatens the e5 Knight. The Knight is defended by the Queen on c7.\n   - The Bishop on f1 is currently undeveloped/passive but eyes the long diagonal.\n   - Consider **Rf8+**. If `37. Rf8+ Kg7 38. Qf6#`. This is a forced mate.\n   - Let's verify: 37. Rf8+ Kg7. Then 38. Qf6#. Black has no way to block the check or capture the Rook on f8 with the king.\n\nThe move `Rf8+` forces mate in two.\n\nFINAL ANSWER: f6f8",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": false,
+        "reason": "output contains forbidden phrase 'forced mate' (engine-provenance or unsupported-certainty claim)"
+      },
+      {
+        "key": "exactMove",
+        "passed": true,
+        "reason": "move f6f8 matches expected f6f8"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3593,
+    "estimated_cost_usd": 0.000515
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0094",
+    "input": {
+      "fen": "4n3/p1b2k2/1p6/2p1pP2/P1P5/4KB2/2PB4/8 w - - 1 41",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2907,\"outputTokens\":245}}\nThe position is an endgame where White has a bishop pair and a slight spatial advantage. White's pawn on f5 is a strong asset, restricting Black's king and pieces. Black's king is currently active, but the bishop on f3 is well-placed to control key squares and support the pawn structure.\n\nAnalyzing the candidate moves:\n1. **Ke4**: This move centralizes the king, which is a fundamental goal in endgames. It restricts the black king further and prepares to support the f5 pawn or potentially maneuver towards the queenside.\n2. **Be2**: A waiting move or prophylactic measure, but less active than centralizing the king.\n3. **Bd1**: Shifting the bishop to a more defensive or alternative diagonal, but it loses some of the pressure exerted by the f3 bishop.\n\nCentralizing the king with `Ke4` is the most principled and effective approach. It strengthens White's control over the center, prepares for potential breakthroughs, and maintains the pressure on Black's position. There are no immediate tactical blunders or forced wins, so positional consolidation through king activity is the correct path.\n\nFINAL ANSWER: e3e4",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'e3e4' != expected 'f3h5'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3074,
+    "estimated_cost_usd": 0.000493
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0013",
+    "input": {
+      "fen": "R4nk1/2R1Q3/3p1qpb/2pP3p/2P4P/2rB2P1/1r3PK1/4N3 b - - 2 38",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2915,\"outputTokens\":323}}\nThe current FEN is `R4nk1/2R1Q3/3p1qpb/2pP3p/2P4P/2rB2P1/1r3PK1/4N3 b - - 2 38`. It is Black's turn to move.\n\n**Analysis:**\n1.  **Material:** Black is currently down a full rook (White's c7 and a8 are active, while Black has a rook on c3 and b2).\n2.  **King Safety:** Black's king on g8 is somewhat restricted but currently safe. White's queen on e7 is very threatening, especially in conjunction with the rook on c7.\n3.  **Threats:** White is threatening `Qxf6` or `Qxf8#`.\n4.  **Tactics:** Black has a powerful resource: `...Rxf2+`.\n    *   If `38... Rxf2+`, White has two main options:\n        *   `39. Kxf2`: Then `39... Qxf2#` is checkmate.\n        *   `39. Kh3`: Then `39... Qf5+ 40. g4 Qxg4#`.\n    *   The move `38... Rxf2+` forces a win because White's king is exposed and Black's pieces coordinate perfectly to deliver mate.\n\nBlack must play this forced sequence to win immediately.\n\nFINAL ANSWER: f6f2",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": true,
+        "reason": "move f6f2 matches expected f6f2"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3258,
+    "estimated_cost_usd": 0.000415
+  },
+  {
+    "id": "short_tactics_rating_advanced_0086",
+    "input": {
+      "fen": "2r5/p4rk1/6p1/7p/2q2p2/1R5P/P4bPN/2QR3K w - - 0 29",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2907,\"outputTokens\":299}}\nThe position is `2r5/p4rk1/6p1/7p/2q2p2/1R5P/P4bPN/2QR3K w - - 0 29`. It is White's turn to move.\n\n**Analysis:**\n1.  **Material:** White has a Rook, a Queen, and a Knight. Black has a Queen, two Rooks, and a Bishop. Material is roughly equal, though Black's pieces are very active.\n2.  **Threats:** Black's pieces are exerting significant pressure on the kingside and the center. The Bishop on `f2` is annoying.\n3.  **Candidate Moves:** White's Queen is currently on `c1`, defending the back rank and potentially interacting with the `c4` Queen. \n    *   `Rxc4` (taking the Queen) is a legal and necessary move here, as Black's Queen on `c4` is attacking White's Queen on `c1`. If White does not capture, White loses the Queen.\n4.  **Tactics:** After `Rxc4`, Black will likely recapture `Rxc4`. The exchange simplifies the position. The tactical justification is mandatory: White must remove the attacker.\n\nWhite's best path is to trade Queens to alleviate the pressure and maintain material balance.\n\nFINAL ANSWER: b3c3",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'b3c3' != expected 'c1b2'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2984,
+    "estimated_cost_usd": 0.000456
+  },
+  {
+    "id": "short_tactics_rating_advanced_0094",
+    "input": {
+      "fen": "2r4k/6Np/8/3PQ3/1P1K4/4pP2/2Rnq1P1/8 b - - 4 50",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2904,\"outputTokens\":418}}\nThe position is `2r4k/6Np/8/3PQ3/1P1K4/4pP2/2Rnq1P1/8 b - - 4 50`. It is Black's turn to move.\n\n**Analysis:**\n1. **Material:** White has a Queen and Knight for a Rook, two Bishops, and a pawn. Black has a Queen, Rook, and a very dangerous passed pawn on e3.\n2. **King Safety:** The White king is dangerously exposed on d4.\n3. **Tactical Threats:**\n   - Black's queen is on e1. The e3-pawn is a thorn.\n   - White's king on d4 is susceptible to checks.\n   - If Black plays `...Kg8`, it might be safer, but there is a crushing sequence involving the discovered checks or direct attacks.\n   - Look at `...Qxc2`. If `50... Qxc2`, White's king is still open.\n   - Actually, consider `...Kg8`. Is there an immediate win?\n   - Wait, look at the position again: `...Kg8` threatens the knight on g7 or just moves the king.\n   - What about `...Qxc2`? `51. Rxc2 Rxc2`. White is down material.\n   - Is there a checkmate? `...Qxe5+`? `51. Kxe5 Rxc2`. Black is winning.\n   - Check the legality: Black's move `Qxe5+` is legal. It removes the active White queen.\n\nAfter `Qxe5+`, White must respond. If `51. Kxe5`, then `51... Rxc2` wins easily. If `51. Qxe5`, it's not possible since the white queen is on e5. So `Qxe5+` captures the queen.\n\nFINAL ANSWER: d2e5",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'd2e5' != expected 'd2b3'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3317,
+    "estimated_cost_usd": 0.000539
+  },
+  {
+    "id": "short_tactics_rating_advanced_0069",
+    "input": {
+      "fen": "8/1p6/p2k3p/3Pp1p1/1P2P2r/5K1R/1P4P1/8 b - - 3 41",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2908,\"outputTokens\":332}}\nThe position is an endgame where Black has a king and pawn advantage, but White's king is active, and the pawns are locked. Black to move.\n\nThe critical factor here is the activity of the kings and the status of the rooks. White's rook on h3 is currently pinning the black pawn on h6 against the rook on h4. If Black moves the rook, they lose the h6 pawn. However, the black king is already centralized.\n\nLet's look at Black's options:\n1. **...Rf4+**: This is a strong forcing move. If 41... Rf4+ 42. Ke3 (or Kg3), Black forces the white king away or improves the rook position. If 42. Ke3, then 42... Rg4 drives the white king back or forces White to defend the g2 pawn.\n2. **...Rh4**: Simply moving the rook to h4 is redundant as the rook is already there. Wait, the FEN shows the rook on h4, and the move `41... Rf4+` is available.\n\nAfter 41... Rf4+ 42. Ke3 (or Ke2/Kg3), Black improves the position by forcing the white king to a slightly less active square and maintaining the pressure on the white kingside structure. White's rook is somewhat passive on h3.\n\nThe move 41... Rf4+ improves the position significantly by forcing the white king to move, potentially creating weaknesses.\n\nFINAL ANSWER: 41... Rf4+",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move '41...rf4+' != expected 'g5g4'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2848,
+    "estimated_cost_usd": 0.000528
+  },
+  {
+    "id": "short_tactics_rating_advanced_0011",
+    "input": {
+      "fen": "r4rk1/p3Rp2/4p2Q/4p3/3p2P1/8/q2NnB1P/5R1K b - - 0 24",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2910,\"outputTokens\":309}}\nThe current position is `r4rk1/p3Rp2/4p2Q/4p3/3p2P1/8/q2NnB1P/5R1K b - - 0 24`. It is Black's turn to move.\n\n**Analysis:**\n1. **Threats:** White has a very dangerous battery with the Queen on h6 and potential support for a mating attack. Black's King is relatively safe for the moment, but White's attack is brewing.\n2. **Tactics:** Black has a powerful resource. The knight on e2 is currently attacking the white Queen on h6. Black can play `Nf4`, which simultaneously attacks the Queen and threatens `Nh3+` or other discoveries.\n3. **Candidate moves:**\n   * `Nf4`: Attacks the Queen on h6, forces White to respond to the threat.\n   * `Qd5`: Defends, but passive.\n4. **Evaluation:** `Nf4` is the most forcing and active move. It immediately challenges White's Queen, which is the cornerstone of their attacking potential. If White moves the Queen (e.g., to g5 or f6), Black gains time to consolidate or counter-attack.\n\n`Nf4` forces the Queen away from its aggressive post and puts the knight in a strong, centralized position where it exerts significant pressure.\n\nFINAL ANSWER: e2f4",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'e2f4' != expected 'a2d5'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2821,
+    "estimated_cost_usd": 0.00048
+  },
+  {
+    "id": "short_tactics_rating_advanced_0075",
+    "input": {
+      "fen": "2r3k1/1Q3ppp/p2rp3/1p2P3/1P3P2/PB4P1/1BP4q/2KR4 b - - 0 25",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2912,\"outputTokens\":436}}\nThe position is `2r3k1/1Q3ppp/p2rp3/1p2P3/1P3P2/PB4P1/1BP4q/2KR4 b - - 0 25`. It is Black's turn to move.\n\n**Analysis:**\n1. **Material:** Black is currently down a pawn but has a very active queen on h2 and threats involving the back rank or pieces.\n2. **Tactical Threats:** White's king on c1 is somewhat exposed. Black's queen on h2 is attacking the white king's defenses (specifically pinning or exerting pressure). \n3. **Candidate Moves:**\n    - `c8d8`: This challenges the d-file, putting pressure on White's rook, but it doesn't immediately force a win.\n    - `rcc6`: This threatens the queen on b7 and prepares to double rooks or defend.\n    - `h2g2`: This is a very strong move. It attacks the bishop on b2 and threatens to penetrate further.\n    - `d6d1+`: This is a forceful check. After `1. Kxd1`, Black can play `2. Qxc2` or `2. Qxg3`, creating significant complications. If `2. Rxd1`, then `Qxc2+` is very strong.\n\nChecking `d6d1+`: \nIf `25... d6d1+`, White has two main options:\n- `26. Bxd1`: Black continues with `26... Qxc2+ 27. Bxc2 Rxc2+`. This leads to a massive attack and likely winning material or a decisive advantage.\n- `26. Kxd1`: Black plays `26... Qxc2+ 27. Ke1 Qxb2`. Black wins material and maintains a strong attack.\n\nThe move `d6d1+` is a forced sequence that wins material and exploits the back-rank weakness.\n\nFINAL ANSWER: d6d1+",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'd6d1+' != expected 'd6d1'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3495,
+    "estimated_cost_usd": 0.000585
+  },
+  {
+    "id": "short_tactics_rating_expert_0054",
+    "input": {
+      "fen": "rnQ2bnr/p1p1kppp/2b5/3pP3/8/1P3qP1/P1PP3P/RNB1KB2 w Q - 0 11",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2911,\"outputTokens\":310}}\nThe current position is highly critical for White. White's queen is currently on c8, deep in Black's territory, and is attacked by the Black rook on a8. Additionally, Black threatens mate in one with ...f3-f2#. \n\nAnalyzing White's options:\n1. White is in check from the Black queen on f3.\n2. The white king has very few squares. The squares e2 and d1 are currently occupied, and moving to e2 allows the queen to continue checking or for the bishop on c6 to influence the board.\n3. Crucially, White must address the check. Since the white queen is attacked by the rook on a8, retreating the queen or capturing a piece might be considered, but the immediate threat is the checkmate on f2.\n4. If White plays `f2e2`, the king escapes the immediate threat of the queen check, but the position remains precarious. However, the most forcing and logical response to escape the check while maintaining some semblance of defense is to move the king.\n5. `d2d3` is illegal as the king is in check.\n6. `f1e2` blocks the check and develops the bishop.\n\nAfter `f1e2`, White blocks the queen's attack. If Black continues with `...f3xe2`, White can recapture with `d2xe2`. This trades material and relieves the immediate pressure.\n\nFINAL ANSWER: f1e2",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'f1e2' != expected 'c1a3'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3316,
+    "estimated_cost_usd": 0.000536
+  },
+  {
+    "id": "short_tactics_rating_expert_0004",
+    "input": {
+      "fen": "r2kr3/pp3ppp/2P2n2/8/3q2b1/3B2P1/PPP2QKP/RNB4R b - - 4 16",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2908,\"outputTokens\":495}}\nThe position is `r2kr3/pp3ppp/2P2n2/8/3q2b1/3B2P1/PPP2QKP/RNB4R b - - 4 16`. It is Black's turn to move.\n\n**Analysis:**\n1.  **Material:** Black has a queen, two rooks, two bishops, and a knight. White has a queen, two rooks, one bishop, and two knights. Black is currently down a pawn in terms of total pieces, but White's king is quite exposed.\n2.  **Threats:** Black's queen on `d4` is under attack by the white queen on `f2`.\n3.  **Tactics:** Black has a powerful tactical sequence. The white king on `g2` is vulnerable. \n    *   If Black moves the queen to `d5`, they maintain central pressure and avoid immediate capture.\n    *   Consider `Qxf2+`. After `Kxf2`, the white king is somewhat more active, but Black has removed the opponent's queen.\n    *   Look for direct threats: `Qd5` is solid, but `Qxf2+` is a forced sequence that simplifies the position while keeping the initiative.\n    *   Let's re-examine `Qd5`. If `Qd5`, the queen is safe and continues to control the board. However, `Qxf2+` forces `Kxf2` and simplifies.\n    *   Wait, is there a better move? `Bh3+` is a devastating check. If `16... Bh3+`, White must respond. If `17. Kxh3`, then `Qd7+` or `Qxf2`. This looks much stronger than a simple queen trade. `Bh3+` exploits the weak light squares around the white king.\n\nLet's verify `16... Bh3+`:\n- If `17. Kxh3`, then `Qxf2`. Black is now winning decisively.\n- If `17. Kg1`, Black can follow up with `Qxf2+` or continue the attack.\n\nThe move `Bh3+` is a powerful tactical shot that forces a win of the white queen.\n\nFINAL ANSWER: d4h3",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'd4h3' != expected 'g4h3'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3318,
+    "estimated_cost_usd": 0.000658
+  },
+  {
+    "id": "short_tactics_rating_expert_0003",
+    "input": {
+      "fen": "8/8/3n3p/3k3P/4BK2/8/8/8 b - - 0 53",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2894,\"outputTokens\":333}}\nThe position is `8/8/3n3p/3k3P/4BK2/8/8/8 b - - 0 53`. It is Black's turn to move.\n\n1.  **Analyze the material and position:**\n    *   Black has a King on d5 and a Knight on d6.\n    *   White has a King on f4 and a Bishop on e4.\n    *   Pawns are at h6 (Black) and h5 (White).\n    *   White's Bishop on e4 is currently attacking the Black King on d5.\n\n2.  **Evaluate forced moves:**\n    *   Because Black is in check, the King must move or the Bishop must be captured.\n    *   The King can move to c5, e6, or c6.\n    *   The Bishop on e4 can be captured by the Knight (`d6xe4`).\n\n3.  **Analyze candidate moves:**\n    *   `d6xe4`: This captures the Bishop, leaving a King and Knight vs. King endgame. This is a dead draw, as a lone Knight cannot force checkmate against a lone King.\n    *   Moving the King: If the King moves, White might still have winning chances, or the position might remain drawn, but capturing the attacking piece simplifies the position immediately to a draw.\n\n4.  **Conclusion:** Capturing the Bishop is the most direct and safest way to handle the check, leading to an immediate theoretical draw.\n\nFINAL ANSWER: d6e4",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": true,
+        "reason": "move d6e4 matches expected d6e4"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2906,
+    "estimated_cost_usd": 0.0005
+  },
+  {
+    "id": "short_tactics_rating_expert_0011",
+    "input": {
+      "fen": "r1b1k3/pp1n4/1q1pp1p1/2p1n1B1/4P3/2bP3Q/PPP2PP1/1R1K2N1 w q - 0 15",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2920,\"outputTokens\":303}}\nThe current position shows White has a strong initiative, especially with the queen on h3 and the bishop on g5 exerting pressure. Black's king is still in the center, and its development is somewhat cramped.\n\nKey observations:\n1. White has a significant attacking presence on the kingside.\n2. The black queen is currently on b6, and the bishop on c3 is annoying.\n3. The knight on n7 (likely meant as d7 or f7, but based on the FEN `r1b1k3/pp1n4/1q1pp1p1/2p1n1B1/4P3/2bP3Q/PPP2PP1/1R1K2N1`, the piece is on d7) is somewhat passive.\n4. White's queen on h3 is eyeing h7 or creating general instability.\n5. `Qh8+` seems very tempting. If `15. Qh8+`, Black is forced to respond. If `15... Nf8` or `Kf7`, White continues the attack. After `15. Qh8+ Nf8`, White has `Bh6`, pinning or attacking the knight, and the coordination is very strong.\n\nChecking alternatives, `Qh8+` forces the king or knight to move and immediately exploits the uncastled king, leading to a winning attack.\n\nFINAL ANSWER: h3h8",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'h3h8' != expected 'h3e6'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3088,
+    "estimated_cost_usd": 0.000447
+  },
+  {
+    "id": "short_tactics_rating_expert_0027",
+    "input": {
+      "fen": "r5k1/1pp1Q1bp/3p1n2/5p2/3P4/5P2/qBP3PP/2KR3R b - - 0 22",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2910,\"outputTokens\":416}}\nThe position is `r5k1/1pp1Q1bp/3p1n2/5p2/3P4/5P2/qBP3PP/2KR3R b - - 0 22`. It is Black's turn to move.\n\n**Analysis:**\n1. **Material:** White has a Queen for a Bishop and a Pawn, but Black's pieces are well-coordinated.\n2. **Threats:** White's Queen on e7 is active, and the threat of Rd3-g3 or other maneuvers is looming. Black's Queen on a2 is pinning the b2-bishop to the White king (if the rook were on c1, but here it's on c1, so the Queen is annoying).\n3. **Black's Candidates:**\n   - `f5-f4`: Attacks the e3 pawn/weakens White's structure.\n   - `Bh6`: Challenges the diagonal.\n   - `Nd5`: Repositioning the knight to a central square.\n   - `Qxb2+`: This is a critical tactical candidate. If `Kxb2`, then `...Bh6+`. If `Kc2` (forced after `Kxb2`), `...Re8` traps the White Queen.\n\nLet's look at `...Qxb2+`.\nIf `Kxb2 Bh6+`. Now if `Kc2` or `Kb1`, White faces immediate loss of material or checkmate threats. Wait, if `Kxb2 Bh6+ Kb1`, the rook on h1 is hanging or the King is exposed. Actually, `...Qxb2+` is very strong because it forces White's King into the open or trades the Queen favorably. Given Black's pressure, `Qxb2+` is the most forcing and best move to capitalize on the weak back rank and exposed white king.\n\nFINAL ANSWER: a2b2",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'a2b2' != expected 'a8e8'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 4064,
+    "estimated_cost_usd": 0.00054
+  },
+  {
+    "id": "position_judgement_advantage_0029",
+    "input": {
+      "fen": "r2qnrk1/bp1b4/p1ppn2p/2P1ppp1/1PN5/P2P2P1/1B1NPPBP/2RQ1RK1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2920,\"outputTokens\":142}}\nThe position is roughly equal, though Black has a solid structure and good control over the center. White has some space on the queenside, but Black's pieces are well-coordinated. Black's pawn structure (c6, e6, f5, g5) is robust, and the light-squared bishop on b7 exerts pressure along the long diagonal. White has developed reasonably, with the knight on c4 being a strong piece, but there are no immediate tactical threats or significant imbalances that heavily favor either side. The position is a typical middlegame structure where both sides have adequate defensive resources and prospects for expansion. Therefore, the evaluation is near zero.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '0' != expected '200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2514,
+    "estimated_cost_usd": 0.000326
+  },
+  {
+    "id": "position_judgement_advantage_0064",
+    "input": {
+      "fen": "6k1/p3q1np/2p1b1p1/2Pp1p2/6Pr/1P1N1PQ1/P3B2P/4R2K b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2917,\"outputTokens\":161}}\nIn this position, Black has a solid structure and good control over the center. The engines generally favor Black in positions where White's kingside structure is slightly compromised and Black's pieces are well-coordinated, particularly with the pressure on g4. White's pieces (the knight on d3, the bishop on e2, and the rooks) are defensively oriented, and the queen on g3 is somewhat exposed. Black's control of the d5 square and the activity of the queen on e7 combined with the kingside structure gives Black a clear advantage. Given the imbalances and the lack of immediate tactical compensation for White's slightly disjointed piece placement, an evaluation of -200 is appropriate, reflecting that Black is better.\n\nFINAL ANSWER: -200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '-200' != expected '200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2544,
+    "estimated_cost_usd": 0.000354
+  },
+  {
+    "id": "position_judgement_advantage_0077",
+    "input": {
+      "fen": "6r1/3kpn2/p5p1/4p2p/2p1N2P/2K1R3/PPP2PP1/8 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2910,\"outputTokens\":338}}\nThe position is `6r1/3kpn2/p5p1/4p2p/2p1N2P/2K1R3/PPP2PP1/8 b - -`. It is Black's turn to move.\n\nAnalyzing the position:\n1. **Material:** Both sides have a rook, a knight, and six pawns. Material is equal.\n2. **King Safety:** Black's king is somewhat exposed on d7, but White's king is also relatively exposed on c3, sitting in the center with pawns nearby.\n3. **Piece Activity:** White's knight on e4 is very strong, centralizing effectively and pressuring key squares. White's rook on e3 is active. Black's rook on g8 has a semi-open file but is not currently causing immediate threats.\n4. **Pawn Structure:** Both sides have a somewhat compromised pawn structure. Black has a pawn on c4, which restricts White, but White has a solid setup around their king.\n5. **Positional Assessment:** While the position is complex, White's superior piece coordination (specifically the dominant knight on e4) gives them a slight structural and positional advantage. Black's king position is slightly more awkward than White's. However, there are no immediate winning tactics for either side. The position is close to equality, with a slight edge for White.\n\nGiven the balanced material and the slightly better piece coordination for White, the position is roughly equal, perhaps slightly favoring White. 0 is the most appropriate evaluation.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '0' != expected '200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3274,
+    "estimated_cost_usd": 0.00058
+  },
+  {
+    "id": "position_judgement_advantage_0003",
+    "input": {
+      "fen": "2rqr1k1/p1pp1pp1/1p5p/1Q5n/3P4/2N2P1P/P1B2P2/R3R1K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2920,\"outputTokens\":275}}\nThe position is `2rqr1k1/p1pp1pp1/1p5p/1Q5n/3P4/2N2P1P/P1B2P2/R3R1K1 b - -`.\n\n**Reasoning:**\n1.  **Material:** The material is balanced.\n2.  **King Safety:** Both kings are relatively safe for the time being, with White having slightly better pawn cover on the kingside.\n3.  **Piece Activity:** White's queen is active on b5, and the bishops are reasonably placed. Black's knight on h5 is somewhat displaced, although it eyes key central squares.\n4.  **Structure:** The pawn structure is stable. White controls the center well with d4 and has space. The rook on e1 is well-placed, and the pressure on the e-file is a factor.\n5.  **Assessment:** White appears to have a slight structural and developmental advantage due to better control of the center and more harmonious piece placement. Black's pieces, particularly the knight on h5, feel slightly uncoordinated. White is slightly better, but the position is not overwhelming. A evaluation around +200 is a reasonable assessment of the advantage.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": true,
+        "reason": "band 200 matches expected 200"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3388,
+    "estimated_cost_usd": 0.000456
+  },
+  {
+    "id": "position_judgement_disadvantage_0071",
+    "input": {
+      "fen": "r1bq1bkr/ppp3pp/2n5/3pp1N1/8/5N2/PPPP1PPP/R1BQK2R w KQ -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2909,\"outputTokens\":224}}\nThe position is `r1bq1bkr/ppp3pp/2n5/3pp1N1/8/5N2/PPPP1PPP/R1BQK2R w KQ -`.\n\nWhite has developed the knights aggressively to f3 and g5, putting pressure on f7. Black's kingside is somewhat cramped with the bishop on f8 and rook on h8, but Black controls the center with pawns on d5 and e5. \n\nWhile White has active pieces, the knight on g5 is currently unsupported and could be challenged by moves like h6. More importantly, Black\u2019s center control and solid pawn structure provide good stability. The position is roughly balanced as both sides have logical development, but White's premature aggression doesn't yield a tangible material or positional advantage. White has yet to castle and needs to secure the kingside, while Black is ready to challenge White's central pieces.\n\nGiven the balanced nature of the development and the compensation both sides possess, the evaluation is close to equal.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '0' != expected '-200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2900,
+    "estimated_cost_usd": 0.000419
+  },
+  {
+    "id": "position_judgement_disadvantage_0025",
+    "input": {
+      "fen": "8/3b1k2/1p2Np2/p2Pp1p1/P3P2P/6P1/5K2/8 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2908,\"outputTokens\":219}}\nThe position features a complex pawn structure. White has a significant outpost for the knight on e6, which exerts pressure on the d7-bishop and constrains Black's king. \n\nWhile the material is equal, White's pieces are more harmoniously placed for this specific pawn structure. The pawn tension on the kingside (h4/g3 vs g5) offers White some potential to create imbalances, but Black's king is currently tucked away. The d7-bishop is somewhat passive, restricted by White's central pawn chain.\n\nHowever, the position is quite closed, and Black has a solid defensive setup despite the pressure from the e6-knight. There is no immediate breakthrough for either side. Given the symmetry of the pawn structure on the queenside and the stability of the kingside, the position is roughly equal, though White might have a slight, persistent edge due to the active knight.\n\nAssessing the position as balanced with a slight edge for White, the most appropriate centipawn band is 0.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '0' != expected '-200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3234,
+    "estimated_cost_usd": 0.000446
+  },
+  {
+    "id": "position_judgement_disadvantage_0091",
+    "input": {
+      "fen": "1r1q1rk1/3bppbp/3p2p1/3Bn3/3NP3/5P2/1PPQ1BPP/1K1R3R b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2916,\"outputTokens\":199}}\nThe position is roughly equal, with a slight advantage for White due to better piece coordination and central control.\n\nBlack has a solid structure and good piece placement, especially with the knight on e5. However, White\u2019s pieces, particularly the bishops on d5 and f2, are well-positioned, exerting influence over key diagonals and squares in the center. White's pawn structure (f3, e4, d4) is stable and controls significant territory.\n\nThe game is characterized by a maneuvering phase. White has better space and slightly more active piece placement, but Black\u2019s position is robust with no immediate tactical weaknesses. The tension is maintained, and neither side has a significant structural advantage or a clear path to exploit. While White holds a slight initiative due to more active piece prospects and better control of the center, the material balance is even, and the position remains highly balanced.\n\nConsidering these factors, the position is assessed as equal.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '0' != expected '-200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2752,
+    "estimated_cost_usd": 0.000449
+  },
+  {
+    "id": "position_judgement_disadvantage_0083",
+    "input": {
+      "fen": "r3qrk1/p1p2ppp/2P2n2/8/1b4b1/2N2P2/PPP1B1PP/R1BQK2R b KQ -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2916,\"outputTokens\":296}}\nThe position is `r3qrk1/p1p2ppp/2P2n2/8/1b4b1/2N2P2/PPP1B1PP/R1BQK2R b KQ -`.\n\n**Analysis:**\n1. **Material:** White has an extra pawn on c6.\n2. **King Safety:** White's king is still in the center, and Black has a pin on the c3-knight (f3 pawn) by the g4 bishop. Black is well-developed and ready to castle. White's development is slightly awkward due to the pressure on the pinned knight.\n3. **Black's Threats:** Black has active pieces. The bishop on b4 and the bishop on g4 are exerting pressure. The c6 pawn is an annoying thorn, but it is somewhat isolated and can be a target.\n4. **Assessment:** While White is nominally up material (one pawn), the lack of development and the exposed king give Black significant compensation. The pin on the f3 pawn significantly restricts White's defensive options. Black's pieces are more harmoniously placed. The position feels roughly equal or perhaps slightly favoring Black due to the initiative, but with the material balance in mind, it is very close to a neutral assessment.\n\nGiven the dynamic compensation Black possesses for the pawn, an evaluation near 0 is appropriate.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '0' != expected '-200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2913,
+    "estimated_cost_usd": 0.000503
+  },
+  {
+    "id": "position_judgement_losing_0089",
+    "input": {
+      "fen": "r4r1k/pb2pP1p/2q3p1/2pNb1B1/7Q/6PP/PP4B1/R5K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2913,\"outputTokens\":170}}\nThe position is highly imbalanced. White has a dangerous passed pawn on f7, which acts as a thorn in Black's position, disrupting coordination and restricting the king. White's pieces\u2014specifically the knight on d5 and the bishop on g5\u2014are extremely active and exert significant pressure on the center and the kingside.\n\nBlack's king is somewhat exposed, and while Black has some piece activity (e.g., the bishop on e5 and queen on c6), White's attacking potential is much more direct. The advanced pawn on f7 significantly limits Black's defensive resources. The material is roughly equal, but the positional dominance of White's pieces combined with the crushing passed pawn gives White a decisive advantage. The position is well beyond equality and heavily favors White.\n\nFINAL ANSWER: 400",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '400' != expected '-400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2526,
+    "estimated_cost_usd": 0.000372
+  },
+  {
+    "id": "position_judgement_losing_0069",
+    "input": {
+      "fen": "2rq1rk1/p3p2p/3p2p1/1p3nNP/1pb2P2/6P1/P4P2/2RQR1K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2917,\"outputTokens\":226}}\nThe position shows White with an aggressive setup on the kingside, notably the knight on g5 and the pawn on f4. Black has a solid structure with a fianchettoed bishop on g7 and a well-placed knight on f5.\n\nKey factors:\n1. **Material balance**: Material is equal.\n2. **King Safety**: Both kings are relatively safe, though White's kingside presence could become threatening.\n3. **Pawn Structure**: Black's position is sturdy. While White has a space advantage on the kingside, Black's pieces (especially the bishop on c4 and knight on f5) are very active and create counterplay against White's center and queenside.\n4. **Dynamics**: White's immediate threats are manageable. Black's control of key squares and the pressure against the white center balance White's attacking potential.\n\nThe position is fairly balanced, with neither side having a decisive advantage. The activity of Black's pieces compensates for White's space. Therefore, the evaluation is near equality.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '0' != expected '-400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2762,
+    "estimated_cost_usd": 0.000446
+  },
+  {
+    "id": "position_judgement_losing_0053",
+    "input": {
+      "fen": "r1b1kb1r/pp1p1ppp/2n2n2/8/1q3B2/2PBP3/P3NPPP/R2QK2R b KQkq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2915,\"outputTokens\":293}}\nThe position provided is `r1b1kb1r/pp1p1ppp/2n2n2/8/1q3B2/2PBP3/P3NPPP/R2QK2R b KQkq -`.\n\n1.  **Material**: Equal material.\n2.  **King Safety**: White is ready to castle kingside. Black's king is still in the center, but the center is somewhat open.\n3.  **Development**: White has developed the light-squared bishop to f4 and the dark-squared bishop to d3, with a knight on e2. Black has knights on c6 and f6 and the queen on b4.\n4.  **Positional Assessment**: White has played `c3`, which was a response to Black's queen check on `b4`. White is solid. Black's queen on `b4` is somewhat exposed, though it controls key diagonals. White's development is logical and sturdy. Black has not yet castled and their pieces are reasonably placed, but White has a slight edge in structural compactness and ease of development. There is no immediate tactic winning material for either side, but White's position feels slightly more comfortable due to central control and immediate castling readiness.\n\nGiven the balance, the position is slightly better for White, but quite close to equal.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '-400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2974,
+    "estimated_cost_usd": 0.000487
+  },
+  {
+    "id": "position_judgement_losing_0028",
+    "input": {
+      "fen": "r3r2k/5Qp1/p7/1p1bq3/1P6/P7/6PP/4RRK1 w - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2906,\"outputTokens\":383}}\nThe position is `r3r2k/5Qp1/p7/1p1bq3/1P6/P7/6PP/4RRK1 w - -`.\n\n**Reasoning:**\n1.  **Material:** White has a Queen and two Rooks for Black's Queen, two Rooks, and a Bishop. White is technically down material (a Bishop).\n2.  **King Safety:** Black's king is somewhat exposed on h8. White's king is safe.\n3.  **Threats:** White's Queen is currently attacking the Black Rook on e8 and the Bishop on d5. However, the move `Qxe8+` looks very strong.\n    *   If `Qxe8+`, Black must respond with `Qxe8` (forced, as `Rxe8` is not possible).\n    *   After `Qxe8+ Qxe8`, White follows up with `Rxe8+`.\n    *   Black will be forced to play `Rxe8`.\n    *   The resulting endgame involves White's Rook against Black's Rook and Bishop.\n4.  **Positional Assessment:** White has a clear tactical advantage. The sequence `Qxe8+ Qxe8 Rxe8+ Rxe8` leads to a simplified endgame where White's activity and simplification favor them, although material is equal. However, looking at the immediate tactical state, White has immediate threats against Black's back rank and pieces.\n5.  **Evaluation:** The position is effectively winning for White due to the forced capture on e8 and subsequent simplification that leaves White with a very active position, or simply White being up in material pressure. Given the tactical clarity, an advantage of +200 is appropriate.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '-400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3269,
+    "estimated_cost_usd": 0.000585
+  },
+  {
+    "id": "position_judgement_neutral_0057",
+    "input": {
+      "fen": "1rb2rk1/pnb2pp1/2p4p/3np3/1PP1N2q/3P3N/P2BBPPP/R2Q1RK1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2916,\"outputTokens\":199}}\nThe position is roughly balanced, with both sides having active pieces and clear plans. Black has a strong knight on d5, supported by the c6 pawn and potentially the b7 pawn, and the queen on h4 is well-placed for a kingside attack. White has a solid pawn structure, with good central control via the b4-d3 pawn chain.\n\nWhite's pieces are reasonably developed: the knight on e4 is strong, and the bishops on d2 and e2 are ready to support the defense or coordinate an attack. The king safety for both sides is acceptable, though Black's kingside might be slightly compromised if White can launch an initiative. Given the symmetry of the imbalance and the lack of an immediate, forcing tactical breakthrough for either side, the position is nearly equal. A slight edge might exist for either side depending on the next few moves, but a balanced evaluation is the most accurate reflection of the current state.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": true,
+        "reason": "band 0 matches expected 0"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2475,
+    "estimated_cost_usd": 0.000423
+  },
+  {
+    "id": "position_judgement_neutral_0075",
+    "input": {
+      "fen": "rnbqkb1r/1p3p2/p2p2p1/3Pp1Pp/7P/2N5/PPP2P2/R1BQKB1R b KQkq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2915,\"outputTokens\":198}}\nThe position is roughly equal, though White has a slightly more comfortable space advantage due to the central pawns and the kingside structure.\n\n1.  **Central Structure:** The pawn structure is somewhat locked in the center with 3... e5 and 4. d5, which limits the mobility of the minor pieces.\n2.  **Kingside:** The g5 pawn creates some tension, but the position is relatively closed.\n3.  **Development:** Both sides are still developing, although White has the d5/c3 setup.\n4.  **Balance:** The position does not present an immediate breakthrough for either side. Black's kingside pawn structure is solid, and White's center is firm. Neither side has a clear, overwhelming advantage; the position remains highly strategic and maneuver-oriented rather than tactically forced at this moment.\n\nGiven the balance of space and development, the assessment is near parity.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": true,
+        "reason": "band 0 matches expected 0"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3669,
+    "estimated_cost_usd": 0.000408
+  },
+  {
+    "id": "position_judgement_neutral_0035",
+    "input": {
+      "fen": "rnbqk2r/ppp1ppbp/3p1np1/8/2PPP3/2N2N2/PP3PPP/R1BQKB1R b KQkq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2911,\"outputTokens\":168}}\nThe position is a standard King's Indian Defense setup. White has established a strong, classical center with pawns on c4, d4, and e4. Black has a solid structure and is preparing to fianchetto the bishop on g7.\n\nWhite's space advantage in the center is significant, and their development is natural and harmonious (knights on f3 and c3). Black's position is compact and theoretically sound, aiming for counterplay against White's center later in the game. Both sides have followed standard opening principles, and the position is well-balanced. There are no immediate tactical weaknesses or blunders, and the development is largely symmetrical in spirit. White maintains a slight edge due to the space advantage, but it is well within the realm of an equal position.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": true,
+        "reason": "band 0 matches expected 0"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2552,
+    "estimated_cost_usd": 0.00037
+  },
+  {
+    "id": "position_judgement_neutral_0000",
+    "input": {
+      "fen": "rnbq1rk1/ppp1ppbp/3p1np1/8/2PP1B2/2N1PN2/PP3PPP/R2QKB1R b KQ -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2914,\"outputTokens\":168}}\nThe position is a standard KID-style structure where White has occupied the center with pawns on c4 and d4 and developed pieces to f4, c3, and f3. Black has a solid setup with a fianchettoed bishop on g7. \n\nWhite's development is classical and solid. The bishop on f4 is well-placed, and the knight on f3 controls key squares. Black's position is also very sound; the kingside is castled and the structure is flexible. There are no immediate tactical threats or blunders. Both sides have adhered to opening principles. White holds a slight spatial advantage due to the central pawns, which typically translates to a small but persistent edge in such structures. This is a very standard, balanced, and roughly equal position.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": true,
+        "reason": "band 0 matches expected 0"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2771,
+    "estimated_cost_usd": 0.000354
+  },
+  {
+    "id": "position_judgement_winning_0097",
+    "input": {
+      "fen": "4r1k1/5p1R/pp3PpQ/2pbr3/3p4/2P5/P5PP/2B3K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2910,\"outputTokens\":145}}\nThe position features a direct threat of checkmate against the black king. White's queen and rook are heavily focused on the kingside, with the queen on h6 and the rook on h7 creating an immediate battery. Black's king is restricted, and there are no immediate defensive resources for Black to stop the mate on g7 or h8. White has overwhelming attacking pressure and forced mate prospects. Even if Black were to move, there are no meaningful counter-attacks to compensate for the imminent collapse of the kingside.\n\nGiven the overwhelming material and positional advantage, with an imminent checkmate, this is a winning position for White, equivalent to a decisive material advantage.\n\nFINAL ANSWER: 400",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": false,
+        "reason": "output contains forbidden phrase 'forced mate' (engine-provenance or unsupported-certainty claim)"
+      },
+      {
+        "key": "evalBand",
+        "passed": true,
+        "reason": "band 400 matches expected 400"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2758,
+    "estimated_cost_usd": 0.000339
+  },
+  {
+    "id": "position_judgement_winning_0020",
+    "input": {
+      "fen": "2r3k1/p2nbppp/Q1P1pn2/4qb2/8/2N1B1P1/PP2PP1P/R4RK1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2914,\"outputTokens\":295}}\nThe position is `2r3k1/p2nbppp/Q1P1pn2/4qb2/8/2N1B1P1/PP2PP1P/R4RK1 b - -`.\n\n**Positional Analysis:**\n1.  **Material:** White has a strong passed pawn on c6, which is a significant thorn in Black's camp. Material is currently equal.\n2.  **King Safety:** Both kings are relatively safe for the moment, though White's back rank and g3-pawn structure are solid.\n3.  **Piece Activity:** White's Queen on a6 is very active, pressuring the queenside. The c6-pawn is a major disruption. Black has well-placed pieces (the bishop on f5 and queen on e5), but Black is struggling to neutralize the pressure created by White's advanced c-pawn and the bishop on e3.\n4.  **Structure:** White's pawn on c6 restricts Black's development and mobility. Black's pieces are somewhat coordinated, but the pressure from the c6-pawn and the control White exerts over the center and queenside gives White a tangible advantage.\n\nThe position is clearly better for White due to the advanced passed pawn and central space, making a small edge for White the most accurate assessment.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3079,
+    "estimated_cost_usd": 0.000478
+  },
+  {
+    "id": "position_judgement_winning_0089",
+    "input": {
+      "fen": "r1b1kn1r/1pp1qpp1/1n6/p3p2p/P2PP3/1QPBBN1P/5PP1/R4RK1 w kq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2917,\"outputTokens\":178}}\nThe position is roughly balanced, with both sides having sound structures and reasonable development. White has a central presence with pawns on d4 and e4, which is a solid foundation. Black's knight on b6 and dark-squared bishop on c8 are slightly passive but solid. Both kings are reasonably safe, and the pawn structure is relatively stable, though the h5 pawn adds a slight dynamic element to the kingside.\n\nWhite enjoys a space advantage in the center, and Black has a solid defensive setup. Neither side has a glaring weakness or an immediate tactical opportunity. The position is a standard middlegame structure where maneuvering is required to build an advantage. There are no immediate threats, and White's slight initiative in space is countered by Black's compact and safe position. Therefore, the assessment is that the position is essentially equal.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '0' != expected '400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 2661,
+    "estimated_cost_usd": 0.000405
+  },
+  {
+    "id": "position_judgement_winning_0054",
+    "input": {
+      "fen": "4k3/8/5p1p/4n1p1/4R3/7P/5PP1/6K1 w - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "gemini",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2903,\"outputTokens\":265}}\nThe position is an endgame where material is equal. White has a rook and pawns, while Black has a king, knight, and pawns.\n\n1.  **Material:** Both sides have equal material.\n2.  **King Safety:** Both kings are relatively safe at this stage, though Black's king is somewhat restricted.\n3.  **Piece Activity:** White's rook on e4 is active, putting pressure on the e5-knight and controlling the e-file. Black's knight on e5 is well-placed, central, and exerts influence.\n4.  **Pawn Structure:** Black has pawns on f6, h6, and g5, which create some weaknesses. White's pawns on f2, g2, and h3 are solid.\n5.  **Assessment:** The position is quite balanced. While White has a well-placed rook, Black's knight is an excellent defensive and centralizing piece. There are no immediate forced wins or major imbalances that give either side a significant advantage. The game is likely to lead to a draw with accurate play.\n\nGiven the balance between White's active rook and Black's solid knight and pawn structure, the evaluation is close to equal.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '0' != expected '400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 3271,
+    "estimated_cost_usd": 0.00047
+  }
+]

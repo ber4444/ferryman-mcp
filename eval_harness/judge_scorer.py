@@ -72,6 +72,7 @@ def judge(
     case: dict,
     *,
     evaluated_model: str | None = None,
+    rubric_path: Path | None = None,
 ) -> list[JudgeVerdict]:
     """
     Score one skill output across all rubric criteria. Raises if the judge
@@ -80,6 +81,9 @@ def judge(
     If [evaluated_model] is provided, enforces the family-exclusion rule: a
     judge never grades its own family (GLM doesn't judge GLM, Claude doesn't
     judge Claude). Raises [JudgeFamilyConflict] on a collision.
+
+    [rubric_path] overrides the default company-research rubric so a different
+    skill (e.g. chess) is judged against its own rubric. Defaults to RUBRIC_PATH.
 
     Honesty (criterion 3) is a hard fail below 3.0 regardless of the mean —
     inventing data is the failure mode this harness exists to catch.
@@ -101,7 +105,7 @@ def judge(
                 "a judge never grades its own family",
             )
 
-    rubric = RUBRIC_PATH.read_text()
+    rubric = (rubric_path or RUBRIC_PATH).read_text()
     prompt = _build_prompt(rubric, output, case)
     raw = _call_judge(prompt, api_key)
     scores = _parse_verdicts(raw)

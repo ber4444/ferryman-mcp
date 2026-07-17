@@ -38,6 +38,45 @@ The harness invokes whatever skill name is configured (default
 harness runs against `hello-repo` to prove the loop end-to-end — the golden set
 and scorers are skill-agnostic and re-point with one config change.
 
+## Multi-skill harness (`--skill`)
+
+The harness scores more than one skill. Each skill has a `SkillSpec` in
+`run_scorecard.py` binding its golden set, scorer callable, scorecard output
+paths, and judge rubric. `--skill <name>` selects which to run:
+
+```bash
+python eval_harness/run_scorecard.py --skill chess-opening-coach --all-providers
+```
+
+Adding a skill is: add a `SKILL.md`, a golden set, a scorer module, and one
+`SkillSpec` entry — the runner, incremental-save, multi-provider matrix, and
+judge layer are all skill-agnostic. The default (no `--skill`) is still
+`company-role-research`, so existing CI/scripts are unchanged.
+
+### chess-opening-coach
+
+A chess position-evaluation skill, scored against an **objective exact-match**
+golden set — a stricter floor than company-research's positive-presence checks.
+
+- **Golden set:** `golden/chess_golden.json` — a vendored subset of
+  [ChessQA](https://github.com/CSSLab/chessqa-benchmark) (CSSLab, MIT; see
+  `golden/CHESS_GOLDEN_LICENSE.txt`). 40 stratified cases: 20 Short Tactics
+  (UCI best-move, beginner→expert) + 20 Position Judgment (centipawn-band).
+- **Scorers (`chess_scorers.py`):** extract the `FINAL ANSWER:` line (ChessQA's
+  contract, ported verbatim) and exact-match it — UCI normalization for tactics,
+  string match for eval bands. A forbidden-phrase gate (ported from the chess
+  app's `MoveCoachResponseValidator`) fails engine-depth/ELO/unsupported-certainty
+  claims.
+- **Judge:** the existing family-excluded judge against `rubric-chess.md`
+  (coaching-explanation quality — distinct from the objective floor).
+
+**Honesty note.** The ChessQA subset is a *bootstrap* set: templated and
+objective, runnable today. It is not the engine-grounded canonical set — that
+is a specced follow-on in
+[`docs/plans/chess-lichess-curation.md`](../docs/plans/chess-lichess-curation.md)
+(not yet built). No scorecard numbers are committed until a real run produces
+them.
+
 ## The golden set and the human-review gate
 
 `golden/golden_set.json` holds 25 cases (24 real companies + 1 deliberate
