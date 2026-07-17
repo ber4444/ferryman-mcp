@@ -73,6 +73,32 @@ def test_parse_subprocess_output_provider_override_when_meta_omits_it():
     assert result.output_tokens == 5
 
 
+def test_parse_subprocess_output_skips_leading_log_banner():
+    """The JVM logger prints a banner to stdout AHEAD of the _meta line; parsing
+    must skip leading noise lines rather than only checking the first line.
+
+    Regression: the first-line-only check left model='unknown', lost real token
+    counts (cost fell back to chars/4), and leaked the banner + _meta JSON into
+    the graded answer — and silently disabled the judge's family-exclusion,
+    which is gated on model != 'unknown'."""
+    stdout = (
+        "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n"
+        '{"_meta":{"provider":"hf-llama","model":"meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",'
+        '"inputTokens":4392,"outputTokens":89}}\n'
+        "reasoning...\nFINAL ANSWER: e2e4"
+    )
+    result = invoke_mod._parse_subprocess_output(stdout, provider=None)
+
+    assert result.provider == "hf-llama"
+    assert result.model == "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo"
+    assert result.input_tokens == 4392
+    assert result.output_tokens == 89
+    # Neither the banner nor the _meta line may leak into the scored answer.
+    assert result.output == "reasoning...\nFINAL ANSWER: e2e4"
+    assert "kotlin-logging" not in result.output
+    assert "_meta" not in result.output
+
+
 # --- HTTP path token reading ------------------------------------------------
 
 

@@ -274,7 +274,20 @@ def run_all(
                     error=f"{type(e).__name__}: {e}",
                 )
             if use_judge:
-                case_result.judge_scores = _judge_if_available(case_result, case, spec=spec)
+                # Don't judge a case that errored: its output is empty, so the
+                # judge would burn an API call and record scores that look like
+                # model-quality failures when the real failure is infra. The
+                # error is already captured on case_result.error.
+                if case_result.error:
+                    case_result.judge_scores = [
+                        {
+                            "key": "_judge",
+                            "passed": False,
+                            "reason": f"skipped — case errored: {case_result.error}",
+                        }
+                    ]
+                else:
+                    case_result.judge_scores = _judge_if_available(case_result, case, spec=spec)
             results.append(case_result)
             if _THROTTLE_SECONDS > 0:
                 time.sleep(_THROTTLE_SECONDS)

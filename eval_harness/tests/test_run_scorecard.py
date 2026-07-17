@@ -179,3 +179,35 @@ def test_run_one_passes_skill_id_to_invoke(monkeypatch):
     }
     run_scorecard.run_one(case, provider=None, mode="subprocess", spec=run_scorecard.get_skill_spec("chess-opening-coach"))
     assert captured["skill"] == "chess-opening-coach"
+
+
+# --- judge is skipped on errored cases -------------------------------------
+
+
+def test_run_all_skips_judge_on_errored_case(monkeypatch):
+    """A case that errors must not be sent to the judge (empty output, wasted call)."""
+
+    def flaky_run_one(case, provider, mode, spec=None):
+        if case["id"] == "case-err":
+            raise RuntimeError("simulated timeout")
+        return _stub_result(case["id"], provider or "unknown")
+
+    monkeypatch.setattr(run_scorecard, "run_one", flaky_run_one)
+    monkeypatch.setattr(run_scorecard, "_THROTTLE_SECONDS", 0.0)
+
+    # If the judge were called for the errored case, this would raise.
+    def boom_judge(case_result, case, spec=None):
+        assert case_result.error is None, "judge must never see an errored case"
+        return [{"key": "specificity", "passed": True, "reason": "ok"}]
+
+    monkeypatch.setattr(run_scorecard, "_judge_if_available", boom_judge)
+
+    golden = [{"id": "case-ok"}, {"id": "case-err"}]
+    results = run_scorecard.run_all(golden, providers=["zai-glm"], mode="subprocess", use_judge=True)
+
+    ok, err = results[0], results[1]
+    assert ok.judge_scores and ok.judge_scores[0]["key"] == "specificity"
+    # Errored case got a skip marker, not a real judge verdict.
+    assert err.error and err.judge_scores == [
+        {"key": "_judge", "passed": False, "reason": f"skipped — case errored: {err.error}"}
+    ]
