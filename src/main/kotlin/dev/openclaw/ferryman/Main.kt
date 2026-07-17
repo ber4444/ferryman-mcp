@@ -4,6 +4,8 @@ import com.github.ajalt.clikt.core.Context
 import com.github.ajalt.clikt.core.CoreCliktCommand
 import com.github.ajalt.clikt.core.main
 import com.github.ajalt.clikt.core.subcommands
+import com.github.ajalt.clikt.parameters.arguments.argument
+import com.github.ajalt.clikt.parameters.arguments.multiple
 import com.github.ajalt.clikt.parameters.options.default
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
@@ -12,6 +14,8 @@ import dev.openclaw.ferryman.channels.HttpServer
 import dev.openclaw.ferryman.config.ConfigLoader
 import dev.openclaw.ferryman.host.McpHost
 import dev.openclaw.ferryman.logging.RoutingLogger
+import dev.openclaw.ferryman.memory.MemoryStore
+import dev.openclaw.ferryman.memory.memoriesToJson
 import dev.openclaw.ferryman.orchestrator.Orchestrator
 import dev.openclaw.ferryman.providers.ProviderRegistry
 import dev.openclaw.ferryman.skills.SkillLoader
@@ -29,6 +33,12 @@ fun main(args: Array<String>) =
             ProvidersCommand().subcommands(ProvidersListCommand()),
             SkillsCommand().subcommands(SkillsListCommand()),
             ToolsCommand().subcommands(ToolsListCommand()),
+            MemoryCommand().subcommands(
+                MemoryListCommand(),
+                MemorySaveCommand(),
+                MemoryForgetCommand(),
+                MemorySearchCommand(),
+            ),
             RunCommand(),
             ServeCommand(),
         ).main(args)
@@ -58,10 +68,12 @@ class AppContext(
     val skillsPath: Path = Paths.get("ferryman", "skills"),
     val mcpConfigPath: Path = Paths.get(".mcp.json"),
     val logPath: Path = Paths.get("logs", "routing.jsonl"),
+    val memoryPath: Path = Paths.get("memory"),
 ) {
     val config by lazy { ConfigLoader.load(configPath) }
     val providers by lazy { ProviderRegistry.fromConfig(config) }
     val logger by lazy { RoutingLogger(logPath) }
+    val memoryStore by lazy { MemoryStore(memoryPath) }
 
     fun mcpHost(): McpHost = McpHost.fromConfig(mcpConfigPath)
 
@@ -71,6 +83,7 @@ class AppContext(
             host = mcpHost(),
             providers = providers,
             logger = logger,
+            memory = memoryStore,
         )
 }
 
@@ -122,6 +135,61 @@ class ToolsListCommand : CoreCliktCommand(name = "list") {
     override fun run() {
         val json = runBlocking { AppContext().mcpHost().describeTools() }
         echo(json)
+    }
+}
+
+/** `ferry memory ...` — inspect and manage persistent agent memory. */
+class MemoryCommand : GroupCommand("memory", "Persistent agent memory across skill runs")
+
+/** `ferry memory list` — print every stored memory as a JSON array. */
+class MemoryListCommand : CoreCliktCommand(name = "list") {
+    override fun help(context: Context): String = "List all stored memories as JSON"
+
+    override fun run() {
+        val store = AppContext().memoryStore
+        echo(memoriesToJson(store.all()))
+    }
+}
+
+/** `ferry memory save --category <cat> --key <key> --content "..."` — store a memory. */
+class MemorySaveCommand : CoreCliktCommand(name = "save") {
+    override fun help(context: Context): String = "Save a memory (category, key, content)"
+
+    private val category by option("--category").required()
+    private val key by option("--key").required()
+    private val content by option("--content").required()
+
+    override fun run() {
+        val store = AppContext().memoryStore
+        store.save(category, key, content)
+        val saved = store.load(category, key)
+        echo(memoriesToJson(listOfNotNull(saved)))
+    }
+}
+
+/** `ferry memory forget --category <cat> --key <key>` — delete a memory. */
+class MemoryForgetCommand : CoreCliktCommand(name = "forget") {
+    override fun help(context: Context): String = "Delete a memory (category, key)"
+
+    private val category by option("--category").required()
+    private val key by option("--key").required()
+
+    override fun run() {
+        val removed = AppContext().memoryStore.forget(category, key)
+        echo("""{"category":"$category","key":"$key","forgotten":$removed}""")
+    }
+}
+
+/** `ferry memory search "query"` — keyword search across all memories. */
+class MemorySearchCommand : CoreCliktCommand(name = "search") {
+    override fun help(context: Context): String = "Search memories by keyword (case-insensitive)"
+
+    // Positional so `ferry memory search "EarnIn"` works as documented.
+    private val query by argument().multiple()
+
+    override fun run() {
+        val store = AppContext().memoryStore
+        echo(memoriesToJson(store.search(query.joinToString(" "))))
     }
 }
 

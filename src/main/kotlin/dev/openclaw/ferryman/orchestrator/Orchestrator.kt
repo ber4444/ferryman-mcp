@@ -4,6 +4,7 @@ import dev.openclaw.ferryman.host.ConnectedHost
 import dev.openclaw.ferryman.host.McpHost
 import dev.openclaw.ferryman.logging.RoutingDecision
 import dev.openclaw.ferryman.logging.RoutingLogger
+import dev.openclaw.ferryman.memory.MemoryStore
 import dev.openclaw.ferryman.providers.CompletionRequest
 import dev.openclaw.ferryman.providers.ConversationMessage
 import dev.openclaw.ferryman.providers.LlmProvider
@@ -58,6 +59,7 @@ class Orchestrator(
     private val host: McpHost,
     private val providers: ProviderRegistry,
     private val logger: RoutingLogger,
+    private val memory: MemoryStore? = null,
 ) {
     suspend fun runSkill(
         name: String,
@@ -85,13 +87,26 @@ class Orchestrator(
                     toolCalls = emptyList(),
                 )
 
+        // Seed user preferences on first use so a fresh checkout immediately
+        // carries the fit criteria without a manual step. Cheap + idempotent.
+        memory?.ensureSeeded()
+
+        // Prepend any remembered context to the skill body so the model sees
+        // prior runs and the user's standing preferences. Always-on user
+        // preferences + prior research for the company in the input, if any.
+        val system = withMemoryContext(skill.body, input)
+
         val started = System.currentTimeMillis()
         val toolCallsMade = mutableListOf<String>()
         var outcome = "ok"
         var error: String? = null
         try {
             return ConnectedHost.use(host.connect()) { connected ->
-                val outcome = runLoop(skill.body, input, provider, connected, toolCallsMade)
+                val outcome = runLoop(system, input, provider, connected, toolCallsMade)
+                // Persist the result so the next run on this company can
+                // cross-reference it. Keyed on the company name when one is
+                // parseable from the input; falls back to the skill name.
+                memory?.rememberResult(name, input, outcome.output)
                 SkillResult(
                     output = outcome.output,
                     provider = provider.id,
@@ -260,6 +275,80 @@ class Orchestrator(
         // callTool accepts Map<String, Any?>; JsonElement values are re-serialised
         // by the SDK on the wire, so passing them through as-is is fine.
         return obj.toMap()
+    }
+
+    /**
+     * Builds the system prompt by prepending remembered context to the skill
+     * body. Two layers:
+     * 1. Standing user preferences (always, if any are stored).
+     * 2. Prior research for the company named in the input, if any — so the
+     *    skill can cross-reference and build on earlier runs rather than start
+     *    from scratch.
+     *
+     * The skill body always comes last, unchanged. Returns [body] verbatim when
+     * no memory store is configured or nothing is remembered.
+     */
+    private fun withMemoryContext(
+        body: String,
+        input: String,
+    ): String {
+        val store = memory ?: return body
+        val sections = mutableListOf<String>()
+
+        store
+            .loadAll(MemoryStore.USER_PREFERENCES)
+            .takeIf { it.isNotEmpty() }
+            ?.let {
+                sections += "## User preferences (remembered)"
+                sections += it.joinToString("\n") { mem -> "- ${mem.key}: ${mem.content}" }
+            }
+
+        val company = parseCompany(input)
+        if (company != null) {
+            val prior =
+                store
+                    .loadAll(MemoryStore.COMPANY_RESEARCH)
+                    .filter { it.key.equals(company, ignoreCase = true) }
+            if (prior.isNotEmpty()) {
+                sections += "## Prior research on $company (remembered — reference and build on this)"
+                sections += prior.joinToString("\n\n") { mem -> mem.content }
+            }
+        }
+
+        if (sections.isEmpty()) return body
+        return sections.joinToString("\n\n") + "\n\n---\n\n" + body
+    }
+
+    /**
+     * Parses a `{"company": "..."}` field from a JSON-ish input so the result
+     * can be keyed on the company name. Returns null for unparseable input or a
+     * missing company field — then we just don't persist under a company key.
+     */
+    private fun parseCompany(input: String): String? =
+        try {
+            val obj =
+                kotlinx.serialization.json.Json
+                    .parseToJsonElement(input) as? kotlinx.serialization.json.JsonObject
+                    ?: return null
+            (obj["company"] as? kotlinx.serialization.json.JsonPrimitive)?.content
+        } catch (e: kotlinx.serialization.SerializationException) {
+            null
+        } catch (e: IllegalArgumentException) {
+            null
+        }
+
+    /**
+     * Remembers a skill result. Company-research skills are keyed on the company
+     * name; anything else falls back to the skill name so the run is still
+     * recoverable via `ferry memory list` / `search`.
+     */
+    private fun MemoryStore.rememberResult(
+        skillName: String,
+        input: String,
+        output: String,
+    ) {
+        val key = parseCompany(input) ?: skillName
+        save(MemoryStore.COMPANY_RESEARCH, key, output)
     }
 
     companion object {
