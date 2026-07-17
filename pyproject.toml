@@ -19,13 +19,8 @@ packages = ["eval_harness"]
 eval_harness = ["golden/*.json", "rubric.md"]
 
 [project.optional-dependencies]
-# promptfoo: chosen as the default scorer backend — fully self-hosted, no account,
-# local model invocation. Install only what you need; the harness degrades
-# gracefully if optional deps are absent (see invoke.py).
-promptfoo = ["promptfoo>=0.105"]
-# braintrust: the alternative backend, chosen if you want hosted dataset versioning
-# and experiment comparison. Requires a BRAINTRUST_API_KEY.
-braintrust = ["braintrust>=0.0.150"]
+# Install only what you need; the harness degrades gracefully if optional deps
+# are absent (see invoke.py).
 # judge scorer dependencies — the OpenAI-compatible client for the judge model.
 judge = ["httpx>=0.27"]
 dev = ["pytest>=8", "pytest-asyncio>=0.24"]
