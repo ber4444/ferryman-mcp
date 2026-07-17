@@ -6,7 +6,9 @@ returns canned CaseResults or raises.
 """
 from __future__ import annotations
 
+import json
 import sys
+from dataclasses import asdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
@@ -211,3 +213,80 @@ def test_run_all_skips_judge_on_errored_case(monkeypatch):
     assert err.error and err.judge_scores == [
         {"key": "_judge", "passed": False, "reason": f"skipped — case errored: {err.error}"}
     ]
+
+
+# --- --rescore-judge (re-judge captured outputs without provider re-spend) ---
+
+
+def _result_with_output(case_id: str, output: str, *, rule_scores=None, judge_scores=None) -> CaseResult:
+    return CaseResult(
+        id=case_id,
+        input={"fen": "...", "question": "Find the best move for the side to move."},
+        provider="hf-llama",
+        model="meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
+        output=output,
+        rule_scores=rule_scores or [{"key": "exactMove", "passed": True, "reason": "ok"}],
+        judge_scores=judge_scores or [{"key": "_judge", "passed": False, "reason": "old run"}],
+    )
+
+
+def test_load_results_round_trips_case_result(tmp_path):
+    """load_results reconstructs CaseResult objects from a written scorecard JSON."""
+    original = [_result_with_output("c1", "output one"), _result_with_output("c2", "output two")]
+    path = tmp_path / "scorecard.json"
+    path.write_text(json.dumps([asdict(r) for r in original]))
+
+    loaded = run_scorecard.load_results(path)
+    assert len(loaded) == 2
+    assert loaded[0].id == "c1" and loaded[0].output == "output one"
+    assert loaded[1].id == "c2" and loaded[1].output == "output two"
+    # Non-str fields round-trip too.
+    assert loaded[0].model == original[0].model
+    assert loaded[0].rule_scores == original[0].rule_scores
+
+
+def test_rescore_judge_recomputes_only_judge_scores(monkeypatch):
+    """rescore_judge must preserve rule_scores/latency/cost and replace only judge_scores."""
+    results = [_result_with_output("c1", "FINAL ANSWER: e2e4", rule_scores=[{"key": "exactMove", "passed": True, "reason": "matches"}])]
+    original_rule = results[0].rule_scores
+
+    def fake_judge(case_result, case, spec=None):
+        return [{"key": "specificity", "passed": True, "reason": "re-judged"}]
+
+    monkeypatch.setattr(run_scorecard, "_judge_if_available", fake_judge)
+    rescored = run_scorecard.rescore_judge(results)
+
+    assert rescored[0].rule_scores == original_rule  # untouched
+    assert rescored[0].judge_scores[0]["reason"] == "re-judged"  # replaced
+
+
+def test_rescore_judge_calls_judge_not_skips(monkeypatch):
+    """rescore_judge must actually invoke the judge path (not silently skip)."""
+    results = [_result_with_output("c1", "FINAL ANSWER: e2e4")]
+    call_count = {"n": 0}
+
+    def counting_judge(case_result, case, spec=None):
+        call_count["n"] += 1
+        return [{"key": "specificity", "passed": True, "reason": "called"}]
+
+    monkeypatch.setattr(run_scorecard, "_judge_if_available", counting_judge)
+    run_scorecard.rescore_judge(results)
+    assert call_count["n"] == 1, "judge must be called exactly once per result"
+
+
+def test_rescore_judge_skips_errored_rows_like_fresh_run(monkeypatch):
+    """An errored row must record a judge-skip, mirroring run_all's contract."""
+    errored = _result_with_output("c-err", "", rule_scores=[])
+    errored.error = "simulated timeout"
+    results = [errored]
+
+    def boom_judge(case_result, case, spec=None):
+        raise AssertionError("judge must never be called on an errored row")
+
+    monkeypatch.setattr(run_scorecard, "_judge_if_available", boom_judge)
+    rescored = run_scorecard.rescore_judge(results)
+    # _judge_if_available skips errored cases internally, so boom_judge isn't
+    # reached — but rescore_judge delegates to it, which means the skip logic
+    # in _judge_if_available handles it. Verify the judge wasn't called by the
+    # fact that no AssertionError propagated.
+    assert rescored[0].error == "simulated timeout"

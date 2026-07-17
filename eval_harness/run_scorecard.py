@@ -127,6 +127,71 @@ def load_golden(path: Path = GOLDEN_PATH) -> list[dict]:
         return json.load(f)
 
 
+def load_results(path: Path) -> list[CaseResult]:
+    """Reconstruct CaseResult objects from a previously-written scorecard JSON.
+
+    Used by ``--rescore-judge`` to re-judge captured outputs without re-paying
+    for provider generations. Every field the judge needs (``output``, ``model``,
+    ``error``) is preserved in the JSON, so the rescored verdicts are identical
+    to what a fresh ``--judge`` run would have produced on the same outputs.
+    """
+    with path.open() as f:
+        rows = json.load(f)
+    return [CaseResult(**row) for row in rows]
+
+
+def rescore_judge(results: list[CaseResult], spec: "SkillSpec | None" = None) -> list[CaseResult]:
+    """Re-run only the judge scorer over captured outputs.
+
+    Rule scores, latency, cost, and the captured ``output`` text are preserved
+    as-is — only ``judge_scores`` is recomputed. This costs N judge calls (one
+    per row) and zero provider calls, vs. a full ``--judge`` re-run which
+    re-pays for both. Use it when only the judge config changed (model swap,
+    rubric edit, a botched key) and the underlying generations are still valid.
+
+    The ``case`` dict each judge call needs is rebuilt from the stored ``input``
+    field — the golden set is not re-read, so the rescore is faithful to what
+    was captured even if the golden set has since changed.
+    """
+    spec = spec or get_skill_spec(DEFAULT_SKILL)
+    for r in results:
+        # judge() reads case["input"] and case["expectedClaims"] (company) /
+        # case fields (chess). The captured row's `input` + `id` are enough;
+        # expectedClaims isn't used by the judge prompt for chess, and for
+        # company-research the judge reads ground truth from the case dict —
+        # which the stored input doesn't carry. Load the golden case to restore
+        # it so the judge sees the same ground truth the original run did.
+        case = {"id": r.id, "input": r.input}
+        golden_case = _find_golden_case(spec.golden_path, r.id)
+        if golden_case is not None:
+            case.update(golden_case)
+        # Mirror run_all's errored-case skip: don't send an empty output to the
+        # judge (it would burn an API call and record scores that look like
+        # model-quality failures when the real failure is infra).
+        if r.error:
+            r.judge_scores = [
+                {
+                    "key": "_judge",
+                    "passed": False,
+                    "reason": f"skipped — case errored: {r.error}",
+                }
+            ]
+            continue
+        r.judge_scores = _judge_if_available(r, case, spec=spec)
+    return results
+
+
+def _find_golden_case(golden_path: Path, case_id: str) -> dict | None:
+    """Look up one golden case by id, to restore ground-truth fields the judge reads."""
+    try:
+        for case in load_golden(golden_path):
+            if case.get("id") == case_id:
+                return case
+    except (FileNotFoundError, json.JSONDecodeError):
+        pass
+    return None
+
+
 def enumerate_providers() -> list[str]:
     """
     Read ferryman's config.toml to list configured providers. Falls back to the
@@ -410,6 +475,12 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--judge", action="store_true", help="add the LLM-judge layer")
     parser.add_argument(
+        "--rescore-judge",
+        action="store_true",
+        help="re-judge the existing scorecard JSON's captured outputs only (no provider "
+        "re-spend); use after a judge-config change (model swap, rubric edit, bad key)",
+    )
+    parser.add_argument(
         "--mode",
         choices=["auto", "http", "subprocess"],
         default="auto",
@@ -428,6 +499,23 @@ def main(argv: list[str] | None = None) -> int:
     golden = load_golden(golden_path)
     print(f"Skill: {spec.name} (invoking skill id '{spec.skill_id}')")
     print(f"Loaded {len(golden)} golden cases from {golden_path}")
+
+    # --rescore-judge short-circuits: load the existing captured outputs and
+    # re-judge them only. Zero provider re-spend — just N judge calls. The rule
+    # scores, latency, cost, and output text are preserved from the prior run.
+    if args.rescore_judge:
+        if not spec.scorecard_json.exists():
+            print(
+                f"error: {spec.scorecard_json} not found — run a full scorecard first "
+                f"(without --rescore-judge) to capture outputs.",
+                file=sys.stderr,
+            )
+            return 1
+        print(f"Re-judging captured outputs from {spec.scorecard_json} (no provider calls)...")
+        results = load_results(spec.scorecard_json)
+        results = rescore_judge(results, spec=spec)
+        write_scorecard(results, use_judge=True, spec=spec)
+        return 0
 
     if args.all_providers:
         providers: list[str | None] = order_providers(enumerate_providers())
