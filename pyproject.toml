@@ -28,6 +28,13 @@ promptfoo = ["promptfoo>=0.105"]
 braintrust = ["braintrust>=0.0.150"]
 # judge scorer dependencies — the OpenAI-compatible client for the judge model.
 judge = ["httpx>=0.27"]
+# chess reason-faithfulness scorer — derives the deterministic tags a Move Coach
+# prompt would hand the model (capture/develops/center-control/…) from a FEN +
+# UCI move, so the chess-opening-coach skill can be scored on whether its
+# explanation stays faithful to those tags. python-chess is pure Python (no
+# native deps); the scorer degrades gracefully (records a skip) if absent, the
+# same way the judge degrades when httpx is missing.
+chess = ["python-chess>=1.999"]
 dev = ["pytest>=8", "pytest-asyncio>=0.24"]
 
 [tool.pytest.ini_options]

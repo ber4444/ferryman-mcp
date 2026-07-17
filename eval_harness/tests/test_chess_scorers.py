@@ -8,6 +8,8 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+import pytest
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from eval_harness import chess_scorers
@@ -146,10 +148,21 @@ def test_forbidden_phrases_elo_claim_fails():
 
 
 def test_score_for_case_dispatches_uci():
+    # UCI cases run three scorers: forbidden-phrase gate, exact-move, and
+    # reason-faithfulness. _TACTICS_CASE uses a placeholder FEN, so faithfulness
+    # records a skip (not a pass) — the test asserts structure, not that every
+    # scorer passes on a fake fixture.
     results = chess_scorers.score_for_case("FINAL ANSWER: e2e4\n", _TACTICS_CASE)
     keys = {r.key for r in results}
-    assert "exactMove" in keys and "forbiddenPhrases" in keys
-    assert all(r.passed for r in results)
+    assert keys == {"exactMove", "forbiddenPhrases", "reasonFaithfulness"}
+    exact = next(r for r in results if r.key == "exactMove")
+    forbidden = next(r for r in results if r.key == "forbiddenPhrases")
+    assert exact.passed and forbidden.passed
+    faithfulness = next(r for r in results if r.key == "reasonFaithfulness")
+    # Placeholder FEN can't be parsed — faithfulness reports a fixture error
+    # rather than passing silently.
+    assert not faithfulness.passed
+    assert "fixture error" in faithfulness.reason or "skip" in faithfulness.reason
 
 
 def test_score_for_case_dispatches_centipawn_band():
@@ -165,3 +178,124 @@ def test_score_for_case_unknown_format_surfaces():
     unknown = [r for r in results if r.key == "answerFormat"]
     assert len(unknown) == 1 and not unknown[0].passed
     assert "san" in unknown[0].reason
+
+
+# --- score_reason_faithfulness (Move Coach paraphrase contract) -------------
+#
+# These need a real FEN + correctAnswer so the tag set can be derived. Each
+# case is a position with a known tag set; the test output either covers those
+# tags faithfully, omits them, or invents a high-stakes concept the tags don't
+# support.
+#
+# These tests require python-chess (the optional [chess] extra) to build real
+# FEN cases. Skip the whole section gracefully when it's absent rather than
+# failing collection — CI runs without the [chess] extra installed.
+_chess = pytest.importorskip("chess")
+
+
+def _real_tactics_case(fen: str, answer: str) -> dict:
+    """A UCI tactics case with a parseable FEN, so faithfulness can derive tags."""
+    return {
+        "id": "t-real",
+        "input": {"fen": fen, "question": "Find the best move for the side to move."},
+        "correctAnswer": answer,
+        "answerFormat": "uci",
+        "taskCategory": "Short Tactics",
+    }
+
+
+# 1.e4 from the start: tags derive to {center-control, pawn-push, opening}.
+_E4_CASE = _real_tactics_case(_chess.Board().fen(), "e2e4")
+# Scholar's mate Qh5xf7#: tags derive to {capture, checkmate, material-swing, opening}.
+_SCHOLAR_CASE = _real_tactics_case(
+    "r1bqkb1r/pppp1ppp/2n2n2/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 4 4",
+    "h5f7",
+)
+# Bf1-c4 (developing move): tags derive to {develops, opening}.
+_DEVELOPS_CASE = _real_tactics_case(
+    "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 4 3",
+    "f1c4",
+)
+
+
+def test_faithfulness_passes_when_explanation_covers_supplied_tags():
+    # e4: tags are {center-control, pawn-push, opening}. Coverage checks the
+    # first two (opening is a phase marker, not coverage-gated). This output
+    # mentions "center" and "advance" — covers both.
+    r = chess_scorers.score_reason_faithfulness(
+        "e4 advances the pawn to claim central space.\nFINAL ANSWER: e2e4",
+        _E4_CASE,
+    )
+    assert r.passed and r.key == "reasonFaithfulness"
+
+
+def test_faithfulness_fails_when_explanation_omits_supplied_tag():
+    # e4: this output covers center but not the pawn-push concept
+    # ("space"/"advance"/"push"), so coverage fails on pawn-push.
+    r = chess_scorers.score_reason_faithfulness(
+        "e4 stakes a claim in the center.\nFINAL ANSWER: e2e4",
+        _E4_CASE,
+    )
+    assert not r.passed and "omits supplied tag concept" in r.reason
+    assert "pawn-push" in r.reason
+
+
+def test_faithfulness_catches_the_attacks_the_king_invention():
+    # The roadmap's named failure mode: tags say {develops, opening} (a quiet
+    # developing move), but the model writes "attacks the enemy king" — asserts
+    # a high-stakes concept (a threat to the king) the tags don't support.
+    r = chess_scorers.score_reason_faithfulness(
+        "Bc4 develops the bishop and attacks the enemy king, forcing mate.\nFINAL ANSWER: f1c4",
+        _DEVELOPS_CASE,
+    )
+    assert not r.passed
+    # The invented concept surfaces in the reason — checkmate/forced-mate claim
+    # is the catch.
+    assert "unsupported concept" in r.reason
+
+
+def test_faithfulness_catches_invented_check():
+    # The tags derive to {develops, opening} — no check. Claiming "gives check"
+    # is an unsupported invention.
+    r = chess_scorers.score_reason_faithfulness(
+        "Bc4 develops the bishop and gives check.\nFINAL ANSWER: f1c4",
+        _DEVELOPS_CASE,
+    )
+    assert not r.passed and "check" in r.reason
+
+
+def test_faithfulness_passes_on_scholar_mate_with_honest_explanation():
+    # Qxf7# genuinely captures, mates, and wins material — an explanation that
+    # says so is faithful to all four derived tags.
+    r = chess_scorers.score_reason_faithfulness(
+        "Qxf7 captures the pawn and delivers checkmate, winning material — "
+        "the bishop on c4 supports the queen.\nFINAL ANSWER: h5f7",
+        _SCHOLAR_CASE,
+    )
+    assert r.passed
+
+
+def test_faithfulness_fails_when_mate_claimed_but_not_mate():
+    # ChessQA case-001: Qf7-f8+ is a check, NOT checkmate (tags include `check`
+    # but not `checkmate`). The output honestly covers the check, then falsely
+    # claims checkmate — isolating the invention path (coverage passes, the
+    # unsupported checkmate is what fails it).
+    case = _real_tactics_case(
+        "3r3k/p4Qpp/8/1P2p3/1B6/P2rb1P1/1q5P/5R1K w - - 1 33",
+        "f7f8",
+    )
+    r = chess_scorers.score_reason_faithfulness(
+        "Qf8 gives check and delivers checkmate. FINAL ANSWER: f7f8",
+        case,
+    )
+    assert not r.passed
+    assert "unsupported concept" in r.reason
+    assert "checkmate" in r.reason
+
+
+def test_faithfulness_skips_when_no_fen():
+    # A case without a FEN can't derive tags — skip, never a silent pass.
+    r = chess_scorers.score_reason_faithfulness(
+        "FINAL ANSWER: e2e4", {"input": {}, "correctAnswer": "e2e4"}
+    )
+    assert not r.passed and "skip" in r.reason
