@@ -1045,1046 +1045,6 @@
       "fen": "3r3k/p4Qpp/8/1P2p3/1B6/P2rb1P1/1q5P/5R1K w - - 1 33",
       "question": "Find the best move for the side to move."
     },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3360,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 50696,
-    "estimated_cost_usd": 0.000202
-  },
-  {
-    "id": "short_tactics_rating_beginner_0014",
-    "input": {
-      "fen": "r2r2k1/p2Q1pbp/1p2p1p1/7n/2B5/4B2P/Pq3PP1/2RR2K1 w - - 2 24",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3367,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 72223,
-    "estimated_cost_usd": 0.000205
-  },
-  {
-    "id": "short_tactics_rating_beginner_0003",
-    "input": {
-      "fen": "6rk/pn5p/1p1p4/3Pp3/qPP1QpP1/3B1P2/2r5/3K1R2 w - - 0 41",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3364,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 70212,
-    "estimated_cost_usd": 0.000204
-  },
-  {
-    "id": "short_tactics_rating_beginner_0094",
-    "input": {
-      "fen": "r3k2r/ppp2ppp/2qpbn2/8/3QP3/N1PBP3/PP4PP/R3K2R w KQkq - 2 12",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 73754,
-    "estimated_cost_usd": 0.000205
-  },
-  {
-    "id": "short_tactics_rating_beginner_0035",
-    "input": {
-      "fen": "r5k1/1p3qpp/p2p1n2/2pP4/P1P1Q3/4P2P/1P4P1/R4RK1 b - - 0 24",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": "ferry subprocess timed out after 120s (cmd: /Users/presence/AndroidStudioProjects/ferryman/build/install/ferry/bin/ferry run --skill chess-opening-coach --input {\"fen\": \"r5k1/1p3qpp/p2p1n2/2pP4/P1P1Q3/4P2P/1P4P1/R4RK1 b - - 0 24\", \"question\": \"Find the best move for the side to move.\"} --provider zai-glm)",
-    "latency_ms": 120017,
-    "estimated_cost_usd": 3.7e-05
-  },
-  {
-    "id": "short_tactics_rating_intermediate_0031",
-    "input": {
-      "fen": "r2qkr2/4b1pp/p3Qp2/1p6/3P4/1BP2P2/P5PP/RN3nK1 w q - 1 21",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 76036,
-    "estimated_cost_usd": 0.000204
-  },
-  {
-    "id": "short_tactics_rating_intermediate_0028",
-    "input": {
-      "fen": "r4r1k/1pp2p1p/p1pb4/3q4/3P2R1/5Q2/PP3PPP/2R3K1 w - - 2 19",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3364,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 70833,
-    "estimated_cost_usd": 0.000204
-  },
-  {
-    "id": "short_tactics_rating_intermediate_0017",
-    "input": {
-      "fen": "7k/1pq4p/1p3R2/3pn3/7Q/1P5P/6PK/r4B2 w - - 5 37",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3356,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 60164,
-    "estimated_cost_usd": 0.000201
-  },
-  {
-    "id": "short_tactics_rating_intermediate_0094",
-    "input": {
-      "fen": "4n3/p1b2k2/1p6/2p1pP2/P1P5/4KB2/2PB4/8 w - - 1 41",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3358,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 64144,
-    "estimated_cost_usd": 0.000202
-  },
-  {
-    "id": "short_tactics_rating_intermediate_0013",
-    "input": {
-      "fen": "R4nk1/2R1Q3/3p1qpb/2pP3p/2P4P/2rB2P1/1r3PK1/4N3 b - - 2 38",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3368,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 81717,
-    "estimated_cost_usd": 0.000205
-  },
-  {
-    "id": "short_tactics_rating_advanced_0086",
-    "input": {
-      "fen": "2r5/p4rk1/6p1/7p/2q2p2/1R5P/P4bPN/2QR3K w - - 0 29",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3358,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 112129,
-    "estimated_cost_usd": 0.000202
-  },
-  {
-    "id": "short_tactics_rating_advanced_0094",
-    "input": {
-      "fen": "2r4k/6Np/8/3PQ3/1P1K4/4pP2/2Rnq1P1/8 b - - 4 50",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3360,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 76805,
-    "estimated_cost_usd": 0.000201
-  },
-  {
-    "id": "short_tactics_rating_advanced_0069",
-    "input": {
-      "fen": "8/1p6/p2k3p/3Pp1p1/1P2P2r/5K1R/1P4P1/8 b - - 3 41",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3361,\"outputTokens\":1402}}\n**Step-by-step reasoning:**\n\nBlack's rook on h4 sits directly in front of White's rook on h3 on the same file. Black can simply capture: **Rh4xh3+**. This wins an entire rook and simultaneously delivers check to White's king on f3 (both pieces lie on the 3rd rank). After the king is forced to move (e.g., Ke2, Ke3, or Kg4), Black remains up a full rook with a clearly winning position. There is no superior tactical alternative \u2014 this capture is both the simplest and strongest continuation.\n\nFINAL ANSWER: h4h3",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "move 'h4h3' != expected 'g5g4'"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 63795,
-    "estimated_cost_usd": 0.000715
-  },
-  {
-    "id": "short_tactics_rating_advanced_0011",
-    "input": {
-      "fen": "r4rk1/p3Rp2/4p2Q/4p3/3p2P1/8/q2NnB1P/5R1K b - - 0 24",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3361,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 76284,
-    "estimated_cost_usd": 0.000203
-  },
-  {
-    "id": "short_tactics_rating_advanced_0075",
-    "input": {
-      "fen": "2r3k1/1Q3ppp/p2rp3/1p2P3/1P3P2/PB4P1/1BP4q/2KR4 b - - 0 25",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3365,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 57038,
-    "estimated_cost_usd": 0.000205
-  },
-  {
-    "id": "short_tactics_rating_expert_0054",
-    "input": {
-      "fen": "rnQ2bnr/p1p1kppp/2b5/3pP3/8/1P3qP1/P1PP3P/RNB1KB2 w Q - 0 11",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": "ferry subprocess timed out after 120s (cmd: /Users/presence/AndroidStudioProjects/ferryman/build/install/ferry/bin/ferry run --skill chess-opening-coach --input {\"fen\": \"rnQ2bnr/p1p1kppp/2b5/3pP3/8/1P3qP1/P1PP3P/RNB1KB2 w Q - 0 11\", \"question\": \"Find the best move for the side to move.\"} --provider zai-glm)",
-    "latency_ms": 120017,
-    "estimated_cost_usd": 3.8e-05
-  },
-  {
-    "id": "short_tactics_rating_expert_0004",
-    "input": {
-      "fen": "r2kr3/pp3ppp/2P2n2/8/3q2b1/3B2P1/PPP2QKP/RNB4R b - - 4 16",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3361,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 18826,
-    "estimated_cost_usd": 0.000204
-  },
-  {
-    "id": "short_tactics_rating_expert_0003",
-    "input": {
-      "fen": "8/8/3n3p/3k3P/4BK2/8/8/8 b - - 0 53",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3347,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 18853,
-    "estimated_cost_usd": 0.000198
-  },
-  {
-    "id": "short_tactics_rating_expert_0011",
-    "input": {
-      "fen": "r1b1k3/pp1n4/1q1pp1p1/2p1n1B1/4P3/2bP3Q/PPP2PP1/1R1K2N1 w q - 0 15",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3373,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 20825,
-    "estimated_cost_usd": 0.000207
-  },
-  {
-    "id": "short_tactics_rating_expert_0027",
-    "input": {
-      "fen": "r5k1/1pp1Q1bp/3p1n2/5p2/3P4/5P2/qBP3PP/2KR3R b - - 0 22",
-      "question": "Find the best move for the side to move."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "exactMove",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 18943,
-    "estimated_cost_usd": 0.000204
-  },
-  {
-    "id": "position_judgement_advantage_0029",
-    "input": {
-      "fen": "r2qnrk1/bp1b4/p1ppn2p/2P1ppp1/1PN5/P2P2P1/1B1NPPBP/2RQ1RK1 b - -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3373,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 18429,
-    "estimated_cost_usd": 0.000215
-  },
-  {
-    "id": "position_judgement_advantage_0064",
-    "input": {
-      "fen": "6k1/p3q1np/2p1b1p1/2Pp1p2/6Pr/1P1N1PQ1/P3B2P/4R2K b - -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3370,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 16522,
-    "estimated_cost_usd": 0.000212
-  },
-  {
-    "id": "position_judgement_advantage_0077",
-    "input": {
-      "fen": "6r1/3kpn2/p5p1/4p2p/2p1N2P/2K1R3/PPP2PP1/8 b - -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":921}}\nLet me analyze the position from White's perspective.\n\n**Pawn count:** White has 6 pawns (a2, b2, c2, f2, g2, h4) vs. Black's 4 (a6, e7, g6, h5) \u2014 White is up two pawns.\n\n**Piece activity:** White's knight on e4 is a monster \u2014 centrally placed, impossible to challenge by Black's knight on f7, and supporting the kingside pawn advance. The rook on e3 is active and controls the open e-file. By contrast, Black's rook on g8 is passive.\n\n**Pawn structure:** White has a connected queenside pawn majority (a2, b2, c2) against Black's isolated a6. On the kingside, h4 vs. h5 and g2 vs. g6 are symmetric but White's extra f-pawn gives further material superiority.\n\n**King safety:** Both kings are reasonably safe, but White's king on c3 is well-placed to support the queenside pawn advance.\n\nWhite enjoys a clean two-pawn advantage with all pieces active and Black has no real counterplay. This is a decisive advantage.\n\nFINAL ANSWER: 400",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "band '400' != expected '200'"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 13367,
-    "estimated_cost_usd": 0.001144
-  },
-  {
-    "id": "position_judgement_advantage_0003",
-    "input": {
-      "fen": "2rqr1k1/p1pp1pp1/1p5p/1Q5n/3P4/2N2P1P/P1B2P2/R3R1K1 b - -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3370,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 15264,
-    "estimated_cost_usd": 0.000213
-  },
-  {
-    "id": "position_judgement_disadvantage_0071",
-    "input": {
-      "fen": "r1bq1bkr/ppp3pp/2n5/3pp1N1/8/5N2/PPPP1PPP/R1BQK2R w KQ -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3365,\"outputTokens\":1895}}\nLet me reconstruct the position from the FEN.\n\n**White:** King e1, Queen d1, Rooks a1/h1, Bishop c1, Knights f3 & g5, Pawns a2/b2/c2/d2/f2/g2/h2. Castling: KQ available.\n**Black:** King g8, Queen d8, Rooks a8/h8, Bishops c8 & f8, Knight c6, Pawns a7/b7/c7/d5/e5/g7/h7. No castling rights.\n\n**Key factors:**\n\n1. **Monster knight on g5:** The knight on g5 is powerfully placed, eyeing f7, h7, and e6. It creates immediate threats, especially against the vulnerable f7 pawn.\n2. **King safety disparity:** Black's king sits on g8 with **no castling rights** \u2014 a significant long-term liability. White retains both castling options and can reach safety at will.\n3. **Development lead:** White has both knights actively developed; Black has only one. Black's bishops (c8, f8) and queen remain on their starting squares.\n4. **Black's center:** Black holds d5 and e5, which is a solid point in their favor, providing stability and central control.\n\nThe combination of the aggressively placed knight, White's ability to castle, and Black's permanent inability to castle gives White a clear and lasting advantage. Black's center provides some compensation but doesn't offset the structural and safety issues. White is better, but not yet winning \u2014 Black has defensive resources.\n\nFINAL ANSWER: 200",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "band '200' != expected '-200'"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 15258,
-    "estimated_cost_usd": 0.0015
-  },
-  {
-    "id": "position_judgement_disadvantage_0025",
-    "input": {
-      "fen": "8/3b1k2/1p2Np2/p2Pp1p1/P3P2P/6P1/5K2/8 b - -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3361,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 16906,
-    "estimated_cost_usd": 0.000209
-  },
-  {
-    "id": "position_judgement_disadvantage_0091",
-    "input": {
-      "fen": "1r1q1rk1/3bppbp/3p2p1/3Bn3/3NP3/5P2/1PPQ1BPP/1K1R3R b - -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3369,\"outputTokens\":1238}}\nThe position features White's pieces on ideal squares. The bishop on d5 is a dominant outpost, firmly supported by the e4 pawn and difficult for Black to challenge. The knight on d4 is equally well-placed, eyeing f5, b5, and c6. Together these two minor pieces give White strong central control and pressure on the queenside.\n\nBlack's knight on e5 is active but the d6 pawn is a structural weakness \u2014 it lacks adjacent pawns for support and can become a target. Black's bishop on g7 is somewhat passive behind the g6/h7 pawn chain. Both rooks are developed and kings are castled, so king safety is roughly equal.\n\nWhite holds a clear but not overwhelming advantage driven by the superior minor piece placement (Bd5 + Nd4) and the structural vulnerability of Black's d6 pawn. White enjoys more space and better piece coordination.\n\nFINAL ANSWER: 200",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "band '200' != expected '-200'"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 10327,
-    "estimated_cost_usd": 0.001062
-  },
-  {
-    "id": "position_judgement_disadvantage_0083",
-    "input": {
-      "fen": "r3qrk1/p1p2ppp/2P2n2/8/1b4b1/2N2P2/PPP1B1PP/R1BQK2R b KQ -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3370,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 15975,
-    "estimated_cost_usd": 0.000213
-  },
-  {
-    "id": "position_judgement_losing_0089",
-    "input": {
-      "fen": "r4r1k/pb2pP1p/2q3p1/2pNb1B1/7Q/6PP/PP4B1/R5K1 b - -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3365,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 16477,
-    "estimated_cost_usd": 0.000211
-  },
-  {
-    "id": "position_judgement_losing_0069",
-    "input": {
-      "fen": "2rq1rk1/p3p2p/3p2p1/1p3nNP/1pb2P2/6P1/P4P2/2RQR1K1 b - -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3368,\"outputTokens\":1790}}\nLet me reconstruct the position from the FEN.\n\n**Material count:**\n- White: K, Q, 2R, N, 5P (a2, e4, f2, g3, h5) \u2014 missing both bishops and 3 pawns.\n- Black: K, Q, 2R, N, B, 7P (a7, b5, b4, d6, e7, g6, h7).\n\nBlack is ahead by **a full bishop and two pawns** \u2014 roughly +5 points of material (about \u2212500 cp from White's view).\n\n**Positional factors:**\n- Black's bishop on c4 is very active, reaching deep into White's camp. The knight on f5 is an excellent outpost. Black's king is safely castled on g8.\n- White's knight on g5 is active but isolated in attack; the rooks on c1 and e1 are decently placed but White lacks bishops entirely, which hurts in an open position.\n- The pawn structure favors Black: Black's chain (b5-b4, d6, e7, g6-h7) is solid, while White's queenside is barren (only a2) and the h5/g5 pawn structure is somewhat awkward.\n\nBlack's material edge of ~500 cp, combined with a generally superior piece placement and structure, clearly favors Black. The closest band is \u2212400.\n\nFINAL ANSWER: -400",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": true,
-        "reason": "band -400 matches expected -400"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 13673,
-    "estimated_cost_usd": 0.001226
-  },
-  {
-    "id": "position_judgement_losing_0053",
-    "input": {
-      "fen": "r1b1kb1r/pp1p1ppp/2n2n2/8/1q3B2/2PBP3/P3NPPP/R2QK2R b KQkq -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3370,\"outputTokens\":1792}}\nLet me analyze the position step by step.\n\n**Material:** Even \u2014 both sides have 6 pawns and all pieces remain on the board. Each side is missing two pawns that were exchanged or advanced.\n\n**White's setup:** King still on e1 (uncastled), bishops actively placed on d3 and f4 (good diagonals), knight on e2 (somewhat passive but flexible), queen on d1 (not yet active). Pawns on c3 and e3 create a solid but modest center.\n\n**Black's setup:** King on e8 (also uncastled), knights developed on c6 and f6 \u2014 both excellent classical squares. Queen is actively placed on b4, pressuring White's queenside and eyeing b2. Bishops on c8 and f8 remain undeveloped.\n\n**Key factors:** Neither side has castled, but White's king is marginally more exposed since the e-file could open. Black's queen on b4 is the most active piece on the board. However, White's two bishops are well-placed and give good control of central diagonals. Black's development edge (two active knights vs. one passive knight) is offset by the undeveloped bishops.\n\nThis is a balanced position with no significant structural or tactical advantage for either side.\n\nFINAL ANSWER: 0",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "band '0' != expected '-400'"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 12558,
-    "estimated_cost_usd": 0.001357
-  },
-  {
-    "id": "position_judgement_losing_0028",
-    "input": {
-      "fen": "r3r2k/5Qp1/p7/1p1bq3/1P6/P7/6PP/4RRK1 w - -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3358,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 14440,
-    "estimated_cost_usd": 0.000208
-  },
-  {
-    "id": "position_judgement_neutral_0057",
-    "input": {
-      "fen": "1rb2rk1/pnb2pp1/2p4p/3np3/1PP1N2q/3P3N/P2BBPPP/R2Q1RK1 b - -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3366,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 41164,
-    "estimated_cost_usd": 0.000214
-  },
-  {
-    "id": "position_judgement_neutral_0075",
-    "input": {
-      "fen": "rnbqkb1r/1p3p2/p2p2p1/3Pp1Pp/7P/2N5/PPP2P2/R1BQKB1R b KQkq -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3372,\"outputTokens\":1556}}\nLet me reconstruct the position:\n\n- **White**: King e1 (uncastled), Queen d1, Rooks a1/h1, Bishops c1/f1, Knight c3, Pawns a2, b2, c2, d5, f2, g4, h4.\n- **Black**: King e8 (uncastled), Queen d8, Rooks a8/h8, Bishops c8/f8, Knights b8/g8, Pawns a6, b7, d6, e5, f5, g6, h6.\n\n**Key factors:**\n\n1. **Material**: Equal (7 pawns, 2 knights, 2 bishops, queen, 2 rooks each).\n\n2. **Pawn structure**: White's d5 pawn is a space-gaining asset, but it's isolated and can become a target. The g4\u2013h4 pawns are overextended and create kingside light-square weaknesses around White's uncastled king. Black's structure (a6, b7, d6, e5, f5, g6, h6) is very solid and cohesive with a strong central presence.\n\n3. **Development**: Neither side has developed meaningfully \u2014 White's pieces are on starting squares except Nc3; Black's pieces are all home. Both kings are uncastled.\n\n4. **Central control**: Black's e5 pawn supported by d6 gives good central footing. White's d5 pawn is a counterweight but lacks immediate piece support.\n\nThe g4\u2013h4 advance is slightly weakening, and with both sides needing significant development, the position is quite balanced. White's space edge from d5 is offset by the loose kingside pawns and overall underdevelopment.\n\nFINAL ANSWER: 0",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": true,
-        "reason": "band 0 matches expected 0"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 20276,
-    "estimated_cost_usd": 0.001468
-  },
-  {
-    "id": "position_judgement_neutral_0035",
-    "input": {
-      "fen": "rnbqk2r/ppp1ppbp/3p1np1/8/2PPP3/2N2N2/PP3PPP/R1BQKB1R b KQkq -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3368,\"outputTokens\":1658}}\nLooking at this position:\n\n**Position overview:** White has established a strong three-pawn center with c4, d4, and e4, supported by knights on c3 and f3. Black has adopted a Modern/Pirc-style setup with \u2026d6, \u2026g6, \u2026Bg7, and \u2026Nf6, keeping the e7 pawn back.\n\n**Key factors:**\n- **Central control:** White's three connected central pawns dominate the board and give a real space advantage. Black's pieces are a bit cramped behind the d6/e7 pawn structure.\n- **Development:** Both sides are roughly equally developed \u2014 two knights each, though White's bishops are still on their starting squares (but so is Black's Bc8). Neither side has castled yet.\n- **Pawn tension:** White's center is imposing but not yet challenged. Black may aim for \u2026d5 or \u2026e5 breaks later, but for now White enjoys a comfortable spatial edge.\n\nThe position is still in the opening phase, but White's firm central grip and space advantage give a modest but real edge. Not overwhelming, as Black has a solid setup and typical counter-chances in this structure.\n\nFINAL ANSWER: 200",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "band '200' != expected '0'"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 27822,
-    "estimated_cost_usd": 0.001263
-  },
-  {
-    "id": "position_judgement_neutral_0000",
-    "input": {
-      "fen": "rnbq1rk1/ppp1ppbp/3p1np1/8/2PP1B2/2N1PN2/PP3PPP/R2QKB1R b KQ -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3367,\"outputTokens\":1009}}\n**Position Analysis:**\n\nWhite has established a powerful classical pawn center (c4, d4, e4) and developed three pieces actively (Nc3, Nf3, Bf4). Black has a solid fianchetto structure with Bg7 and a castled king, but two pieces remain undeveloped: Nb8 and Bc8. White's pieces enjoy more space and better coordination, and White can still castle to improve king safety. Black's position is structurally sound but passive, with d6/e7 pawns conceding central space.\n\nWhite has a clear but moderate advantage \u2014 strong center, better development, more active piece placement \u2014 though Black's king is safe and the pawn structure is intact.\n\nFINAL ANSWER: 200",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "band '200' != expected '0'"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 17025,
-    "estimated_cost_usd": 0.000867
-  },
-  {
-    "id": "position_judgement_winning_0097",
-    "input": {
-      "fen": "4r1k1/5p1R/pp3PpQ/2pbr3/3p4/2P5/P5PP/2B3K1 b - -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 24270,
-    "estimated_cost_usd": 0.00021
-  },
-  {
-    "id": "position_judgement_winning_0020",
-    "input": {
-      "fen": "2r3k1/p2nbppp/Q1P1pn2/4qb2/8/2N1B1P1/PP2PP1P/R4RK1 b - -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3365,\"outputTokens\":1684}}\nLooking at this position, Black has a commanding setup. The queen on e5, bishop on f5, and knight on g6 form a powerful attacking battery aimed directly at White's castled king on g1. The knight on d7 and bishop on e7 provide additional support, and Black enjoys the bishop pair advantage.\n\nWhite's queen on a6 is badly misplaced \u2014 far from the kingside where it's needed for defense. The passed c6-pawn is an asset but doesn't compensate for White's coordination problems. The knight on c3 and bishop on e3 are passive by comparison, and White's kingside pawn structure (f2, g3, h2) has weaknesses the bishop on f5 can exploit.\n\nBlack's pieces are overwhelmingly more active and coordinate beautifully against the king. While White retains two rooks and the c6-pawn as long-term resources, the immediate and medium-term pressure on the kingside gives Black a clear and significant advantage.\n\nFINAL ANSWER: -200",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "band '-200' != expected '400'"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 23759,
-    "estimated_cost_usd": 0.001125
-  },
-  {
-    "id": "position_judgement_winning_0089",
-    "input": {
-      "fen": "r1b1kn1r/1pp1qpp1/1n6/p3p2p/P2PP3/1QPBBN1P/5PP1/R4RK1 w kq -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3368,\"outputTokens\":2048}}",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 28134,
-    "estimated_cost_usd": 0.000214
-  },
-  {
-    "id": "position_judgement_winning_0054",
-    "input": {
-      "fen": "4k3/8/5p1p/4n1p1/4R3/7P/5PP1/6K1 w - -",
-      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
-    },
-    "provider": "zai-glm",
-    "model": "unknown",
-    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3356,\"outputTokens\":763}}\nThe position is a rook vs. knight endgame. White has a rook on e4 and three pawns (f2, g2, h3); Black has a knight on e5, three pawns (f6, g5, h6), and the king on e8.\n\nMaterial advantage clearly favors White: a rook is significantly stronger than a knight, especially in an endgame where its ability to control open files, penetrate to the 7th rank, and support passed pawns is decisive. The knight, while centralized on e5, cannot match the rook's scope and activity. White's king is safely placed on g1, and the rook can immediately create pressure by invading along the e-file or targeting the kingside pawns. Black's pawn structure is also somewhat vulnerable (e.g., isolated f6, doubled pawns possibilities), giving White additional converting chances.\n\nThe rook-vs-knight advantage with roughly equal pawns typically evaluates around +200 centipawns \u2014 White is better but not yet crushing.\n\nFINAL ANSWER: 200",
-    "rule_scores": [
-      {
-        "key": "forbiddenPhrases",
-        "passed": true,
-        "reason": "no forbidden phrases detected"
-      },
-      {
-        "key": "evalBand",
-        "passed": false,
-        "reason": "band '200' != expected '400'"
-      }
-    ],
-    "judge_scores": [],
-    "error": null,
-    "latency_ms": 17947,
-    "estimated_cost_usd": 0.001122
-  },
-  {
-    "id": "short_tactics_rating_beginner_0081",
-    "input": {
-      "fen": "3r3k/p4Qpp/8/1P2p3/1B6/P2rb1P1/1q5P/5R1K w - - 1 33",
-      "question": "Find the best move for the side to move."
-    },
     "provider": "gemini",
     "model": "unknown",
     "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"gemini\",\"model\":\"gemini-3.1-flash-lite\",\"inputTokens\":2909,\"outputTokens\":262}}\nThe position is `3r3k/p4Qpp/8/1P2p3/1B6/P2rb1P1/1q5P/5R1K w - - 1 33`. It is White's turn to move.\n\nWhite's queen is on f7, attacking the f8 rook and the h7 pawn. Black's king is restricted on the back rank. White has a strong bishop on b4. Black's threat includes the queen on b2, but White's king is relatively safe for the moment.\n\nThe most critical feature is the back-rank weakness of the black king. The queen on f7 is currently eyes-on for the bishop on b4. If White plays `f7f8+`, Black is forced to capture with the rook (`d8f8`). Then White plays `f1f8#`. This is a classic back-rank mate pattern.\n\n1. `f7f8+`\n2. `d8f8`\n3. `f1f8#`\n\nThis is a forced mate in two moves. No other move provides such a concrete advantage or ends the game immediately.\n\nFINAL ANSWER: f7f8",
@@ -3118,5 +2078,1045 @@
     "error": null,
     "latency_ms": 3271,
     "estimated_cost_usd": 0.00047
+  },
+  {
+    "id": "short_tactics_rating_beginner_0081",
+    "input": {
+      "fen": "3r3k/p4Qpp/8/1P2p3/1B6/P2rb1P1/1q5P/5R1K w - - 1 33",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3360,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 56956,
+    "estimated_cost_usd": 0.000202
+  },
+  {
+    "id": "short_tactics_rating_beginner_0014",
+    "input": {
+      "fen": "r2r2k1/p2Q1pbp/1p2p1p1/7n/2B5/4B2P/Pq3PP1/2RR2K1 w - - 2 24",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3367,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 66248,
+    "estimated_cost_usd": 0.000205
+  },
+  {
+    "id": "short_tactics_rating_beginner_0003",
+    "input": {
+      "fen": "6rk/pn5p/1p1p4/3Pp3/qPP1QpP1/3B1P2/2r5/3K1R2 w - - 0 41",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3364,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 35533,
+    "estimated_cost_usd": 0.000204
+  },
+  {
+    "id": "short_tactics_rating_beginner_0094",
+    "input": {
+      "fen": "r3k2r/ppp2ppp/2qpbn2/8/3QP3/N1PBP3/PP4PP/R3K2R w KQkq - 2 12",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 46163,
+    "estimated_cost_usd": 0.000205
+  },
+  {
+    "id": "short_tactics_rating_beginner_0035",
+    "input": {
+      "fen": "r5k1/1p3qpp/p2p1n2/2pP4/P1P1Q3/4P2P/1P4P1/R4RK1 b - - 0 24",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3366,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 42715,
+    "estimated_cost_usd": 0.000205
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0031",
+    "input": {
+      "fen": "r2qkr2/4b1pp/p3Qp2/1p6/3P4/1BP2P2/P5PP/RN3nK1 w q - 1 21",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 68689,
+    "estimated_cost_usd": 0.000204
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0028",
+    "input": {
+      "fen": "r4r1k/1pp2p1p/p1pb4/3q4/3P2R1/5Q2/PP3PPP/2R3K1 w - - 2 19",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3364,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 107900,
+    "estimated_cost_usd": 0.000204
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0017",
+    "input": {
+      "fen": "7k/1pq4p/1p3R2/3pn3/7Q/1P5P/6PK/r4B2 w - - 5 37",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3356,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 39246,
+    "estimated_cost_usd": 0.000201
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0094",
+    "input": {
+      "fen": "4n3/p1b2k2/1p6/2p1pP2/P1P5/4KB2/2PB4/8 w - - 1 41",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3358,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 48072,
+    "estimated_cost_usd": 0.000202
+  },
+  {
+    "id": "short_tactics_rating_intermediate_0013",
+    "input": {
+      "fen": "R4nk1/2R1Q3/3p1qpb/2pP3p/2P4P/2rB2P1/1r3PK1/4N3 b - - 2 38",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3368,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 34382,
+    "estimated_cost_usd": 0.000205
+  },
+  {
+    "id": "short_tactics_rating_advanced_0086",
+    "input": {
+      "fen": "2r5/p4rk1/6p1/7p/2q2p2/1R5P/P4bPN/2QR3K w - - 0 29",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3358,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 34006,
+    "estimated_cost_usd": 0.000202
+  },
+  {
+    "id": "short_tactics_rating_advanced_0094",
+    "input": {
+      "fen": "2r4k/6Np/8/3PQ3/1P1K4/4pP2/2Rnq1P1/8 b - - 4 50",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3360,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 34327,
+    "estimated_cost_usd": 0.000201
+  },
+  {
+    "id": "short_tactics_rating_advanced_0069",
+    "input": {
+      "fen": "8/1p6/p2k3p/3Pp1p1/1P2P2r/5K1R/1P4P1/8 b - - 3 41",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3361,\"outputTokens\":1821}}\nLooking at the position: Black has king d6, rook h4, and pawns a6/b7/e5/g6/h5. White has king f3, rook h3, and pawns b4/d5/e4/g2.\n\nThe critical feature is the rooks facing each other on the h-file. Black can simply capture: **\u2026Rxh3**. After the forced **Kxh3**, Black is up a full rook with an extra pawn \u2014 a completely winning endgame. Black's king on d6 can quickly infiltrate the center, while the outside passed pawns on the queenside (a6/b7) will be decisive.\n\nNo other move comes close, as nothing else wins nearly as much material.\n\nFINAL ANSWER: h4h3",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "move 'h4h3' != expected 'g5g4'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 51695,
+    "estimated_cost_usd": 0.000761
+  },
+  {
+    "id": "short_tactics_rating_advanced_0011",
+    "input": {
+      "fen": "r4rk1/p3Rp2/4p2Q/4p3/3p2P1/8/q2NnB1P/5R1K b - - 0 24",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3361,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 56170,
+    "estimated_cost_usd": 0.000203
+  },
+  {
+    "id": "short_tactics_rating_advanced_0075",
+    "input": {
+      "fen": "2r3k1/1Q3ppp/p2rp3/1p2P3/1P3P2/PB4P1/1BP4q/2KR4 b - - 0 25",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3365,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 51755,
+    "estimated_cost_usd": 0.000205
+  },
+  {
+    "id": "short_tactics_rating_expert_0054",
+    "input": {
+      "fen": "rnQ2bnr/p1p1kppp/2b5/3pP3/8/1P3qP1/P1PP3P/RNB1KB2 w Q - 0 11",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3364,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 59494,
+    "estimated_cost_usd": 0.000205
+  },
+  {
+    "id": "short_tactics_rating_expert_0004",
+    "input": {
+      "fen": "r2kr3/pp3ppp/2P2n2/8/3q2b1/3B2P1/PPP2QKP/RNB4R b - - 4 16",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3361,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 46731,
+    "estimated_cost_usd": 0.000204
+  },
+  {
+    "id": "short_tactics_rating_expert_0003",
+    "input": {
+      "fen": "8/8/3n3p/3k3P/4BK2/8/8/8 b - - 0 53",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3347,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 45842,
+    "estimated_cost_usd": 0.000198
+  },
+  {
+    "id": "short_tactics_rating_expert_0011",
+    "input": {
+      "fen": "r1b1k3/pp1n4/1q1pp1p1/2p1n1B1/4P3/2bP3Q/PPP2PP1/1R1K2N1 w q - 0 15",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3373,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 45050,
+    "estimated_cost_usd": 0.000207
+  },
+  {
+    "id": "short_tactics_rating_expert_0027",
+    "input": {
+      "fen": "r5k1/1pp1Q1bp/3p1n2/5p2/3P4/5P2/qBP3PP/2KR3R b - - 0 22",
+      "question": "Find the best move for the side to move."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "exactMove",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a move case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 88268,
+    "estimated_cost_usd": 0.000204
+  },
+  {
+    "id": "position_judgement_advantage_0029",
+    "input": {
+      "fen": "r2qnrk1/bp1b4/p1ppn2p/2P1ppp1/1PN5/P2P2P1/1B1NPPBP/2RQ1RK1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3373,\"outputTokens\":2048}}\n**Position Assessment**\n\nThis is a Benoni/King's Indian type structure. Let me evaluate key factors:\n\n**White's advantages:**\n- The **c5 pawn** is a powerful space-gainer, cramping Black's queenside and controlling d6/b6.\n- **Nc4** is an excellent piece, pressuring d6, b6, e5, and a5. It's a stable outpost.\n- White has good central pawn coverage (b4, c5, d3) and a solid king (castled, g2 bishop shelters well).\n- Both rooks are centralized on the c- and f-files.\n\n**Black's strengths:**\n- The **f5-g5-h6 pawn chain** provides good kingside shelter.\n- The e5 pawn is well-supported and blocks White's b2 bishop diagonal.\n- Black's king is safe.\n\n**Black's weaknesses:**\n- **Ne8** is a very passive piece",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 58885,
+    "estimated_cost_usd": 0.000921
+  },
+  {
+    "id": "position_judgement_advantage_0064",
+    "input": {
+      "fen": "6k1/p3q1np/2p1b1p1/2Pp1p2/6Pr/1P1N1PQ1/P3B2P/4R2K b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3370,\"outputTokens\":2048}}\nLet me analyze this position carefully.\n\n**Material:** Equal \u2014 both sides have R, Q, B, N and six pawns.\n\n**Piece placement:**\n- White: Re1 (active on e-file), Qg3 (aggressive diagonal), Nd3 (centralized), Be2 (solid but passive).\n- Black: Rh4 (awkward, looking at h2 but not very active), Qe7 (central), Be6 (good blocker), Nf7 (solid defender near king), Kg8 (safe behind g6/h7).\n\n**Pawn structure:** The c5 pawn (White) and d5 pawn (Black) create a locked center. White's g4 pawn is a double-edged factor \u2014 it cramps Black's kingside but is also far advanced and attackable via ...h5. The kingside structure (g4 vs g6/h7) is tense.\n\n**Assessment:** Both sides have roughly comparable activity. White's",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 43306,
+    "estimated_cost_usd": 0.000917
+  },
+  {
+    "id": "position_judgement_advantage_0077",
+    "input": {
+      "fen": "6r1/3kpn2/p5p1/4p2p/2p1N2P/2K1R3/PPP2PP1/8 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":2048}}\nLet me reconstruct the position from the FEN and evaluate it.\n\n**Position overview:**\n- White: Kc3, Re3, Ne4, pawns a2/b2/c2/f2/g2/h4\n- Black: Kd7, Rg8, Nf7, pawns a6/c4/e5/e7/f6/g5/h5\n- Black to move. Material is equal (R+N+6P each).\n\n**Key factors:**\n\n1. **Passed pawn blockaded:** Black's c4 pawn is the only passed pawn on the board, but White's king sits directly on c3, perfectly blockading it. This is textbook technique \u2014 the king neutralizes Black's main strategic asset.\n\n2. **Centralized knight:** White's knight on e4 is a dominant piece. It controls key squares like d6, f6, c5, c3, g5 and is extremely well-centralized. Combined with the active rook on e3, White's pieces coordinate powerfully.\n\n3. **Black's pieces:** The rook on g8 is passive, and the knight on f7 is somewhat awkwardly placed (it doesn't contest the center effectively). The king on d7 is reasonably centralized but can't improve easily.\n\n4. **Pawn structure:**",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 50070,
+    "estimated_cost_usd": 0.001156
+  },
+  {
+    "id": "position_judgement_advantage_0003",
+    "input": {
+      "fen": "2rqr1k1/p1pp1pp1/1p5p/1Q5n/3P4/2N2P1P/P1B2P2/R3R1K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3370,\"outputTokens\":1858}}\nThe position has Black to move. Let me assess material and key features.\n\n**Material count:**\n- White: Q, 2R, B, N, 5 pawns (a2, d4, f2, f3, h3)\n- Black: Q, 2R, N, 7 pawns (a7, b6, c7, d7, f7, g7, h6)\n\nBlack has **2 extra pawns** \u2014 a significant material advantage.\n\n**Positional factors:**\nWhite's queen on b5 is actively placed and eyes d7, but Black's structure is solid: both rooks cover the back rank (c8, e8), the queen on d8 defends well, and the pawn chain on the queenside (a7-b6-c7) and kingside (f7-g7-h6) is intact. White's bishop on c2 is somewhat passive, and the doubled f-pawns (f2, f3) are a minor structural weakness. Black's knight on h5 is slightly awkward but not a liability.\n\nThe white queen's activity on b5 doesn't generate any concrete tactical payoff \u2014 Qxd7 merely trades into a favorable endgame for Black given the extra pawns. With no meaningful compensation, Black's material edge should dominate.\n\n**Evaluation: ~-200** (Black is better, roughly two pawns up with a solid position).\n\nFINAL ANSWER: -200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '-200' != expected '200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 80191,
+    "estimated_cost_usd": 0.001248
+  },
+  {
+    "id": "position_judgement_disadvantage_0071",
+    "input": {
+      "fen": "r1bq1bkr/ppp3pp/2n5/3pp1N1/8/5N2/PPPP1PPP/R1BQK2R w KQ -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3365,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 49558,
+    "estimated_cost_usd": 0.000212
+  },
+  {
+    "id": "position_judgement_disadvantage_0025",
+    "input": {
+      "fen": "8/3b1k2/1p2Np2/p2Pp1p1/P3P2P/6P1/5K2/8 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3361,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 55789,
+    "estimated_cost_usd": 0.000209
+  },
+  {
+    "id": "position_judgement_disadvantage_0091",
+    "input": {
+      "fen": "1r1q1rk1/3bppbp/3p2p1/3Bn3/3NP3/5P2/1PPQ1BPP/1K1R3R b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3369,\"outputTokens\":945}}\nLet me reconstruct the position from the FEN.\n\n**Position overview:**\n- White: Kb1, Qd2, Rd1, Rh1, Be2, Nc4; pawns a2, b2, d4, e3, f2, g2, h2.\n- Black: Kg8, Qd8, Rc8, Rf8, Be7, Bf7, Nf5; pawns a7, b7, c6, d6, e6, g6, h7.\n\n**Key factors:**\n- Both sides are fully developed and castled \u2014 no immediate development concerns.\n- White's knight on c4 is a strong outpost, pressuring d6 and supporting central presence.\n- Black's knight on f5 is also actively placed, eyeing e3 and covering key squares.\n- Black retains the two bishops, giving slight long-term potential.\n- Pawn structures are solid for both sides; no obvious weaknesses.\n- No significant king safety issues for either side.\n\nThe position appears roughly balanced. White has a nice knight on c4, but Black's active pieces and bishop pair compensate well. Neither side has a meaningful edge.\n\nFINAL ANSWER: 0",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '0' != expected '-200'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 25112,
+    "estimated_cost_usd": 0.001079
+  },
+  {
+    "id": "position_judgement_disadvantage_0083",
+    "input": {
+      "fen": "r3qrk1/p1p2ppp/2P2n2/8/1b4b1/2N2P2/PPP1B1PP/R1BQK2R b KQ -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3370,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 52968,
+    "estimated_cost_usd": 0.000213
+  },
+  {
+    "id": "position_judgement_losing_0089",
+    "input": {
+      "fen": "r4r1k/pb2pP1p/2q3p1/2pNb1B1/7Q/6PP/PP4B1/R5K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3365,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 54029,
+    "estimated_cost_usd": 0.000211
+  },
+  {
+    "id": "position_judgement_losing_0069",
+    "input": {
+      "fen": "2rq1rk1/p3p2p/3p2p1/1p3nNP/1pb2P2/6P1/P4P2/2RQR1K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3368,\"outputTokens\":1831}}\n**Position breakdown:**\n\nBoard from White's perspective:\n- **White** ( Kg1, Qd1, Rc1, Re1, Ng5, Pa2 Pf2 Pf4 Pg3 Ph5 ) = 2R + Q + N + 5P\n- **Black** ( Kg8, Qd8, Rc8, Rf8, Nf5, Bc4, Pa7 Pb4 Pb5 Pd6 Pe7 Pg6 Ph7 ) = 2R + Q + N + B + 7P\n\n**Material:** Black has an extra **bishop** and **two extra pawns** \u2014 roughly +5 in standard point counts (~500 centipawns for Black). That alone is decisive.\n\n**Positional factors:**\n- Black's bishop on c4 is powerfully centralized, eyeing the kingside.\n- Black's knight on f5 is an excellent outpost, well-supported.\n- White's knight on g5 is active but cannot compensate for the full piece deficit.\n- Both sides have castled, but White has no attack to speak of and no structural compensation.\n- The doubled b-pawns for Black are a minor weakness, irrelevant given the material edge.\n\n**Conclusion:** Black is crushing with a full piece and two pawns advantage, active pieces, and no apparent compensation for White. The evaluation is strongly negative for White.\n\nFINAL ANSWER: -400",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": true,
+        "reason": "band -400 matches expected -400"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 64623,
+    "estimated_cost_usd": 0.001232
+  },
+  {
+    "id": "position_judgement_losing_0053",
+    "input": {
+      "fen": "r1b1kb1r/pp1p1ppp/2n2n2/8/1q3B2/2PBP3/P3NPPP/R2QK2R b KQkq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3370,\"outputTokens\":1491}}\nLet me analyze this position from White's perspective.\n\n**Board overview:** White has a solid setup \u2014 King on e1 (not yet castled), Queen on d1, Rooks on a1/h1, Bishops actively placed on f4 and d3, Knight on e2, and a sound pawn structure (a2, c3, e3, f2, g2, h2). Black has King on e8 (un castled), Queen out on b4, both bishops still undeveloped on c8/f8, Knights on c6/f6, and pawns on a7/b7/d7/f7/g7/h7.\n\n**Key factors:**\n- **Development:** White is essentially fully developed; only castling remains. Black's two bishops are still home, and the king is uncastled \u2014 a significant developmental deficit.\n- **Piece activity:** White's bishops on f4 and d3 are harmoniously placed, eyeing key diagonals. The knight on e2 is flexible. Black's queen on b4 looks slightly awkward \u2014 it targets c3 and b2 but can be challenged by a3.\n- **King safety:** White can castle immediately (0-0 is ready). Black still needs to prepare castling while the queen is offside.\n- **Pawn structure:** Both sides have solid structures; White's c3+e3 is a robust, classical setup.\n\nWhite has a clear edge due to better development, active bishop pair, and the ability to castle at will while Black lags. This looks like a comfortable White advantage, roughly in the +150 centipawn neighborhood.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '-400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 53866,
+    "estimated_cost_usd": 0.001507
+  },
+  {
+    "id": "position_judgement_losing_0028",
+    "input": {
+      "fen": "r3r2k/5Qp1/p7/1p1bq3/1P6/P7/6PP/4RRK1 w - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3358,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 48135,
+    "estimated_cost_usd": 0.000208
+  },
+  {
+    "id": "position_judgement_neutral_0057",
+    "input": {
+      "fen": "1rb2rk1/pnb2pp1/2p4p/3np3/1PP1N2q/3P3N/P2BBPPP/R2Q1RK1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3366,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 58457,
+    "estimated_cost_usd": 0.000214
+  },
+  {
+    "id": "position_judgement_neutral_0075",
+    "input": {
+      "fen": "rnbqkb1r/1p3p2/p2p2p1/3Pp1Pp/7P/2N5/PPP2P2/R1BQKB1R b KQkq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3372,\"outputTokens\":2048}}\nLet me analyze this position step by step.\n\n**Board reconstruction from FEN:**\n- White: King e1, Queen d1, Rooks a1/h1, Bishops c1/f1, Knight c3, Pawns a2, b2, c2, d5, f2, g5, h4. King uncastled.\n- Black: King e8, Queen d8, Rooks a8/h8, Bishops c8/f8, Knight b8, Pawns a6, b7, d6, e5, g6, h5. King uncastled, g8 knight missing.\n\n**Material:** White has 7 pawns vs. Black's 6 \u2014 White is up a pawn (Black missing c7 and f7 pawns; White missing e2 pawn, but that's only one vs. two for Black).\n\n**Key positional factors:**\n- White's d5 pawn is a strong central pawn, clamping down on e6 and c6.\n- White's g5-h4 pawn chain is overextended and potentially vulnerable.\n- Both kings are uncastled, but development is roughly symmetrical \u2014 both sides have pieces on back ranks.\n- White's extra pawn provides a meaningful structural advantage.\n- Black's e5-d6 pawn wedge is solid but doesn't compensate for",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 53834,
+    "estimated_cost_usd": 0.001112
+  },
+  {
+    "id": "position_judgement_neutral_0035",
+    "input": {
+      "fen": "rnbqk2r/ppp1ppbp/3p1np1/8/2PPP3/2N2N2/PP3PPP/R1BQKB1R b KQkq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3368,\"outputTokens\":1155}}\nLooking at this position:\n\nWhite has established a strong classical center with pawns on d4 and e4, supported by both knights on c3 and f3. White has a clear development lead \u2014 both knights are out, and both rooks are connected via the open first rank. White's dark-squared bishop on c1 is the only minor piece not yet developed, but the f1 bishop is reasonable for now.\n\nBlack has played ...d6, ...Nf6, ...g6, ...Bg7 \u2014 a King's Indian-style fianchetto setup but significantly behind in development. The b8 knight and c8 bishop remain undeveloped, and the king has not castled. The ...h6 pawn move is a slight weakening of the kingside. White's central space advantage (d4+e4 vs. d6) is meaningful, and White can pressure the center before Black completes development.\n\nThe position is solid but clearly favors White due to the development lead, better central control, and Black's lack of piece activity. White is better, but not crushing.\n\n```\nFINAL ANSWER: 200\n```",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '0'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 21123,
+    "estimated_cost_usd": 0.001182
+  },
+  {
+    "id": "position_judgement_neutral_0000",
+    "input": {
+      "fen": "rnbq1rk1/ppp1ppbp/3p1np1/8/2PP1B2/2N1PN2/PP3PPP/R2QKB1R b KQ -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3367,\"outputTokens\":1678}}\nLooking at this position:\n\n**FEN breakdown:** Black has castled kingside (Kg8, Rf8) with a solid setup: ...d6, ...g6, ...Bg7, ...Nf6. White has established a strong pawn center (c4, d4, e4) and developed Nc3, Nf3, and Bf4, but the kingside bishop (Bf1) is still home and the king remains on e1 \u2014 **White has not castled yet.**\n\n**Key factors:**\n\n- **White's strong center:** The pawns on c4, d4, and e4 give White excellent central control and space advantage. This is the most significant positional factor.\n- **Development advantage:** White has three active minor pieces (Nc3, Nf3, Bf4) vs. Black's two (Nf6, Bg7). Black's queenside (Nb8, Bc8) is completely undeveloped.\n- **King safety:** Black's king is safely castled. White's king is still uncastled \u2014 a real liability, though White can likely castle next move to resolve this.\n- **Bf4 pressure:** The bishop on f4 eyes the c7 and potentially g5/h6 squares, creating some kingside tension.\n\n**Assessment:** White's space advantage and development edge are meaningful. Once White castles, the position should favor White clearly. The uncastled king holds it back from being a larger advantage. Roughly +150\u2013200 centipawns for White.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '0'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 31325,
+    "estimated_cost_usd": 0.001422
+  },
+  {
+    "id": "position_judgement_winning_0097",
+    "input": {
+      "fen": "4r1k1/5p1R/pp3PpQ/2pbr3/3p4/2P5/P5PP/2B3K1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3362,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 80191,
+    "estimated_cost_usd": 0.00021
+  },
+  {
+    "id": "position_judgement_winning_0020",
+    "input": {
+      "fen": "2r3k1/p2nbppp/Q1P1pn2/4qb2/8/2N1B1P1/PP2PP1P/R4RK1 b - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3365,\"outputTokens\":2048}}\nLet me set up the position from the FEN.\n\n**White:** Kg1, Ra1, Rf1, Qa6, Nc3, Be3, pawns on a2, b2, **c6**, e2, f3, g2, h2\n**Black:** Kg8, Rc8, Nd7, Nf6, Be7, Bf5, Qe5, pawns on a7, e6, f7, g7, h7\n\nBlack to move.\n\n**Material:** White has 7 pawns vs. Black's 5 pawns \u2014 White is up **two pawns**. This is a significant material advantage.\n\n**Passed pawn:** White's c6 pawn is a dangerous passed pawn, already on the 6th rank. It's well supported and Black must devote resources to blockade it, which limits Black's activity.\n\n**Piece activity:** Black's queen on e5 and bishop on f5 are actively placed, eyeing the kingside. Black has two knights and two bishops vs. White's knight and bishop with two rooks each. However, White's rook on f1 defends and the king is safely castled.\n\n**Key factors:** White's two-pawn advantage combined with the powerful c",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 49865,
+    "estimated_cost_usd": 0.001066
+  },
+  {
+    "id": "position_judgement_winning_0089",
+    "input": {
+      "fen": "r1b1kn1r/1pp1qpp1/1n6/p3p2p/P2PP3/1QPBBN1P/5PP1/R4RK1 w kq -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3368,\"outputTokens\":2048}}",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "no FINAL ANSWER line found \u2014 cannot score a position-judgment case without it"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 54177,
+    "estimated_cost_usd": 0.000214
+  },
+  {
+    "id": "position_judgement_winning_0054",
+    "input": {
+      "fen": "4k3/8/5p1p/4n1p1/4R3/7P/5PP1/6K1 w - -",
+      "question": "Estimate the Stockfish evaluation (centipawns, White's perspective)."
+    },
+    "provider": "zai-glm",
+    "model": "unknown",
+    "output": "kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory\n{\"_meta\":{\"provider\":\"zai-glm\",\"model\":\"glm-5-turbo\",\"inputTokens\":3356,\"outputTokens\":609}}\n**Position assessment:**\n\nWhite has a rook versus a knight with equal pawns (3 vs. 3). The rook on e4 is actively placed, cutting the Black king off along the e-file. The knight on e5 is reasonably centralized but cannot fully compensate for the material deficit. Rook vs. knight is typically valued around +2 pawns, and this position is fairly straightforward \u2014 White should convert this advantage with proper technique. The pawn structures are symmetric on the kingside, no imminent tactical tricks exist, so the evaluation is driven cleanly by material.\n\nFINAL ANSWER: 200",
+    "rule_scores": [
+      {
+        "key": "forbiddenPhrases",
+        "passed": true,
+        "reason": "no forbidden phrases detected"
+      },
+      {
+        "key": "evalBand",
+        "passed": false,
+        "reason": "band '200' != expected '400'"
+      }
+    ],
+    "judge_scores": [],
+    "error": null,
+    "latency_ms": 20568,
+    "estimated_cost_usd": 0.000782
   }
 ]

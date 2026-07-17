@@ -1,6 +1,6 @@
 # ferryman eval scorecard — chess-opening-coach
 
-Generated: 2026-07-16 23:32:58
+Generated: 2026-07-17 00:16:18
 Cases: 120
 
 ## Rule-scorer results
@@ -47,46 +47,6 @@ Cases: 120
 | position_judgement_winning_0020 | hf-llama | 50% | evalBand | 6862 ms | $0.0003 |
 | position_judgement_winning_0089 | hf-llama | 50% | evalBand | 5319 ms | $0.0002 |
 | position_judgement_winning_0054 | hf-llama | 50% | evalBand | 12801 ms | $0.0002 |
-| short_tactics_rating_beginner_0081 | zai-glm | 50% | exactMove | 50696 ms | $0.0002 |
-| short_tactics_rating_beginner_0014 | zai-glm | 50% | exactMove | 72223 ms | $0.0002 |
-| short_tactics_rating_beginner_0003 | zai-glm | 50% | exactMove | 70212 ms | $0.0002 |
-| short_tactics_rating_beginner_0094 | zai-glm | 50% | exactMove | 73754 ms | $0.0002 |
-| short_tactics_rating_beginner_0035 | zai-glm | 50% | exactMove | 120017 ms | $0.0000 |
-| short_tactics_rating_intermediate_0031 | zai-glm | 50% | exactMove | 76036 ms | $0.0002 |
-| short_tactics_rating_intermediate_0028 | zai-glm | 50% | exactMove | 70833 ms | $0.0002 |
-| short_tactics_rating_intermediate_0017 | zai-glm | 50% | exactMove | 60164 ms | $0.0002 |
-| short_tactics_rating_intermediate_0094 | zai-glm | 50% | exactMove | 64144 ms | $0.0002 |
-| short_tactics_rating_intermediate_0013 | zai-glm | 50% | exactMove | 81717 ms | $0.0002 |
-| short_tactics_rating_advanced_0086 | zai-glm | 50% | exactMove | 112129 ms | $0.0002 |
-| short_tactics_rating_advanced_0094 | zai-glm | 50% | exactMove | 76805 ms | $0.0002 |
-| short_tactics_rating_advanced_0069 | zai-glm | 50% | exactMove | 63795 ms | $0.0007 |
-| short_tactics_rating_advanced_0011 | zai-glm | 50% | exactMove | 76284 ms | $0.0002 |
-| short_tactics_rating_advanced_0075 | zai-glm | 50% | exactMove | 57038 ms | $0.0002 |
-| short_tactics_rating_expert_0054 | zai-glm | 50% | exactMove | 120017 ms | $0.0000 |
-| short_tactics_rating_expert_0004 | zai-glm | 50% | exactMove | 18826 ms | $0.0002 |
-| short_tactics_rating_expert_0003 | zai-glm | 50% | exactMove | 18853 ms | $0.0002 |
-| short_tactics_rating_expert_0011 | zai-glm | 50% | exactMove | 20825 ms | $0.0002 |
-| short_tactics_rating_expert_0027 | zai-glm | 50% | exactMove | 18943 ms | $0.0002 |
-| position_judgement_advantage_0029 | zai-glm | 50% | evalBand | 18429 ms | $0.0002 |
-| position_judgement_advantage_0064 | zai-glm | 50% | evalBand | 16522 ms | $0.0002 |
-| position_judgement_advantage_0077 | zai-glm | 50% | evalBand | 13367 ms | $0.0011 |
-| position_judgement_advantage_0003 | zai-glm | 50% | evalBand | 15264 ms | $0.0002 |
-| position_judgement_disadvantage_0071 | zai-glm | 50% | evalBand | 15258 ms | $0.0015 |
-| position_judgement_disadvantage_0025 | zai-glm | 50% | evalBand | 16906 ms | $0.0002 |
-| position_judgement_disadvantage_0091 | zai-glm | 50% | evalBand | 10327 ms | $0.0011 |
-| position_judgement_disadvantage_0083 | zai-glm | 50% | evalBand | 15975 ms | $0.0002 |
-| position_judgement_losing_0089 | zai-glm | 50% | evalBand | 16477 ms | $0.0002 |
-| position_judgement_losing_0069 | zai-glm | 100% | — | 13673 ms | $0.0012 |
-| position_judgement_losing_0053 | zai-glm | 50% | evalBand | 12558 ms | $0.0014 |
-| position_judgement_losing_0028 | zai-glm | 50% | evalBand | 14440 ms | $0.0002 |
-| position_judgement_neutral_0057 | zai-glm | 50% | evalBand | 41164 ms | $0.0002 |
-| position_judgement_neutral_0075 | zai-glm | 100% | — | 20276 ms | $0.0015 |
-| position_judgement_neutral_0035 | zai-glm | 50% | evalBand | 27822 ms | $0.0013 |
-| position_judgement_neutral_0000 | zai-glm | 50% | evalBand | 17025 ms | $0.0009 |
-| position_judgement_winning_0097 | zai-glm | 50% | evalBand | 24270 ms | $0.0002 |
-| position_judgement_winning_0020 | zai-glm | 50% | evalBand | 23759 ms | $0.0011 |
-| position_judgement_winning_0089 | zai-glm | 50% | evalBand | 28134 ms | $0.0002 |
-| position_judgement_winning_0054 | zai-glm | 50% | evalBand | 17947 ms | $0.0011 |
 | short_tactics_rating_beginner_0081 | gemini | 50% | forbiddenPhrases | 3362 ms | $0.0004 |
 | short_tactics_rating_beginner_0014 | gemini | 100% | — | 3837 ms | $0.0005 |
 | short_tactics_rating_beginner_0003 | gemini | 50% | exactMove | 3234 ms | $0.0005 |
@@ -127,8 +87,48 @@ Cases: 120
 | position_judgement_winning_0020 | gemini | 50% | evalBand | 3079 ms | $0.0005 |
 | position_judgement_winning_0089 | gemini | 50% | evalBand | 2661 ms | $0.0004 |
 | position_judgement_winning_0054 | gemini | 50% | evalBand | 3271 ms | $0.0005 |
+| short_tactics_rating_beginner_0081 | zai-glm | 50% | exactMove | 56956 ms | $0.0002 |
+| short_tactics_rating_beginner_0014 | zai-glm | 50% | exactMove | 66248 ms | $0.0002 |
+| short_tactics_rating_beginner_0003 | zai-glm | 50% | exactMove | 35533 ms | $0.0002 |
+| short_tactics_rating_beginner_0094 | zai-glm | 50% | exactMove | 46163 ms | $0.0002 |
+| short_tactics_rating_beginner_0035 | zai-glm | 50% | exactMove | 42715 ms | $0.0002 |
+| short_tactics_rating_intermediate_0031 | zai-glm | 50% | exactMove | 68689 ms | $0.0002 |
+| short_tactics_rating_intermediate_0028 | zai-glm | 50% | exactMove | 107900 ms | $0.0002 |
+| short_tactics_rating_intermediate_0017 | zai-glm | 50% | exactMove | 39246 ms | $0.0002 |
+| short_tactics_rating_intermediate_0094 | zai-glm | 50% | exactMove | 48072 ms | $0.0002 |
+| short_tactics_rating_intermediate_0013 | zai-glm | 50% | exactMove | 34382 ms | $0.0002 |
+| short_tactics_rating_advanced_0086 | zai-glm | 50% | exactMove | 34006 ms | $0.0002 |
+| short_tactics_rating_advanced_0094 | zai-glm | 50% | exactMove | 34327 ms | $0.0002 |
+| short_tactics_rating_advanced_0069 | zai-glm | 50% | exactMove | 51695 ms | $0.0008 |
+| short_tactics_rating_advanced_0011 | zai-glm | 50% | exactMove | 56170 ms | $0.0002 |
+| short_tactics_rating_advanced_0075 | zai-glm | 50% | exactMove | 51755 ms | $0.0002 |
+| short_tactics_rating_expert_0054 | zai-glm | 50% | exactMove | 59494 ms | $0.0002 |
+| short_tactics_rating_expert_0004 | zai-glm | 50% | exactMove | 46731 ms | $0.0002 |
+| short_tactics_rating_expert_0003 | zai-glm | 50% | exactMove | 45842 ms | $0.0002 |
+| short_tactics_rating_expert_0011 | zai-glm | 50% | exactMove | 45050 ms | $0.0002 |
+| short_tactics_rating_expert_0027 | zai-glm | 50% | exactMove | 88268 ms | $0.0002 |
+| position_judgement_advantage_0029 | zai-glm | 50% | evalBand | 58885 ms | $0.0009 |
+| position_judgement_advantage_0064 | zai-glm | 50% | evalBand | 43306 ms | $0.0009 |
+| position_judgement_advantage_0077 | zai-glm | 50% | evalBand | 50070 ms | $0.0012 |
+| position_judgement_advantage_0003 | zai-glm | 50% | evalBand | 80191 ms | $0.0012 |
+| position_judgement_disadvantage_0071 | zai-glm | 50% | evalBand | 49558 ms | $0.0002 |
+| position_judgement_disadvantage_0025 | zai-glm | 50% | evalBand | 55789 ms | $0.0002 |
+| position_judgement_disadvantage_0091 | zai-glm | 50% | evalBand | 25112 ms | $0.0011 |
+| position_judgement_disadvantage_0083 | zai-glm | 50% | evalBand | 52968 ms | $0.0002 |
+| position_judgement_losing_0089 | zai-glm | 50% | evalBand | 54029 ms | $0.0002 |
+| position_judgement_losing_0069 | zai-glm | 100% | — | 64623 ms | $0.0012 |
+| position_judgement_losing_0053 | zai-glm | 50% | evalBand | 53866 ms | $0.0015 |
+| position_judgement_losing_0028 | zai-glm | 50% | evalBand | 48135 ms | $0.0002 |
+| position_judgement_neutral_0057 | zai-glm | 50% | evalBand | 58457 ms | $0.0002 |
+| position_judgement_neutral_0075 | zai-glm | 50% | evalBand | 53834 ms | $0.0011 |
+| position_judgement_neutral_0035 | zai-glm | 50% | evalBand | 21123 ms | $0.0012 |
+| position_judgement_neutral_0000 | zai-glm | 50% | evalBand | 31325 ms | $0.0014 |
+| position_judgement_winning_0097 | zai-glm | 50% | evalBand | 80191 ms | $0.0002 |
+| position_judgement_winning_0020 | zai-glm | 50% | evalBand | 49865 ms | $0.0011 |
+| position_judgement_winning_0089 | zai-glm | 50% | evalBand | 54177 ms | $0.0002 |
+| position_judgement_winning_0054 | zai-glm | 50% | evalBand | 20568 ms | $0.0008 |
 
-**Overall rule pass rate: 57%**
+**Overall rule pass rate: 56%**
 
 ## Per-provider summary
 
@@ -136,4 +136,4 @@ Cases: 120
 |---|---|---|---|---|---|
 | gemini | 40 | 62% | 3124 ms | $0.0005 | 2026-07-16 |
 | hf-llama | 40 | 55% | 9998 ms | $0.0002 | 2026-07-15 |
-| zai-glm | 40 | 52% | 42572 ms | $0.0005 | 2026-07-16 |
+| zai-glm | 40 | 51% | 51632 ms | $0.0005 | 2026-07-16 |
