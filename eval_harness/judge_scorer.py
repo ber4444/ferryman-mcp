@@ -13,6 +13,7 @@ import json
 import os
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Callable
 
 RUBRIC_PATH = Path(__file__).resolve().parent / "rubric.md"
 
@@ -26,11 +27,27 @@ JUDGE_BASE_URL = os.environ.get("JUDGE_BASE_URL", "https://api.openai.com/v1")
 JUDGE_MODEL = os.environ.get("JUDGE_MODEL", "gpt-4o-mini")
 JUDGE_API_KEY_ENV = "JUDGE_API_KEY"
 
+# Company-research criterion keys (rubric.md). Kept as the module-level default
+# CRITERIA so `from judge_scorer import CRITERIA` and the company-research path
+# are unchanged.
 CRITERIA = [
     "specificity",
     "factual_correctness",
     "source_traceability",
     "honesty_about_missing_data",
+    "tone_and_structure",
+]
+
+# Chess-coach criterion keys (rubric-chess.md). These MUST match the criterion
+# names the rubric actually defines — the previous code reused the company keys
+# `source_traceability`/`honesty_about_missing_data`, which the chess rubric does
+# not define, so the judge returned constant 5s for them (no signal). Criterion 3
+# is grounding/no-fabrication, criterion 4 is reasoning quality.
+CHESS_CRITERIA = [
+    "specificity",
+    "factual_correctness",
+    "grounding",
+    "reasoning_quality",
     "tone_and_structure",
 ]
 
@@ -62,6 +79,33 @@ def model_family(model_id: str) -> str:
     return match.group(1).lower() if match else "unknown"
 
 
+@dataclass(frozen=True)
+class RubricProfile:
+    """A rubric's judge wiring: its criterion keys and its prompt builder.
+
+    The prompt builder frames the grading task for the domain and injects the
+    right ground truth (company-research reads expectedClaims; chess reads
+    correctAnswer), so the judge's factual_correctness has something real to
+    check against.
+    """
+
+    criteria: list[str]
+    build_prompt: Callable[[str, str, dict], str]
+
+
+def _profile_for_rubric(rubric_path: Path | None) -> RubricProfile:
+    """Select the judge profile for a rubric, keyed off its filename.
+
+    Chess uses its own criteria + correctAnswer ground truth; everything else
+    uses the company-research profile. Keyed off the rubric filename so
+    run_scorecard needs no change — it already passes the skill's rubric_path.
+    """
+    name = (rubric_path.name if rubric_path else "").lower()
+    if "chess" in name:
+        return RubricProfile(CHESS_CRITERIA, _build_chess_prompt)
+    return RubricProfile(CRITERIA, _build_prompt)
+
+
 class JudgeFamilyConflict(RuntimeError):
     """Raised when the judge model family matches the evaluated model family.
 
@@ -87,10 +131,12 @@ def judge(
     judge Claude). Raises [JudgeFamilyConflict] on a collision.
 
     [rubric_path] overrides the default company-research rubric so a different
-    skill (e.g. chess) is judged against its own rubric. Defaults to RUBRIC_PATH.
+    skill (e.g. chess) is judged against its own rubric AND its own criterion
+    keys + ground truth (see _profile_for_rubric). Defaults to RUBRIC_PATH.
 
-    Honesty (criterion 3) is a hard fail below 3.0 regardless of the mean —
-    inventing data is the failure mode this harness exists to catch.
+    The grounding gate (company: honesty_about_missing_data; chess: grounding)
+    is a hard fail below 3.0 regardless of the mean — inventing data (or board
+    state / engine claims) is the failure mode this harness exists to catch.
     """
     api_key = os.environ.get(JUDGE_API_KEY_ENV)
     if not api_key:
@@ -109,21 +155,23 @@ def judge(
                 "a judge never grades its own family",
             )
 
+    profile = _profile_for_rubric(rubric_path)
     rubric = (rubric_path or RUBRIC_PATH).read_text()
-    prompt = _build_prompt(rubric, output, case)
+    prompt = profile.build_prompt(rubric, output, case)
     raw = _call_judge(prompt, api_key)
-    scores = _parse_verdicts(raw)
+    scores = _parse_verdicts(raw, profile.criteria)
 
     verdicts: list[JudgeVerdict] = []
-    for crit in CRITERIA:
+    for crit in profile.criteria:
         score = scores.get(crit)
         if score is None:
             verdicts.append(JudgeVerdict(crit, False, f"judge did not score {crit}", 0.0))
             continue
-        # All criteria pass at >=3.0. Per the rubric, factual_correctness and
-        # honesty_about_missing_data are hard gates (a sub-3.0 on either is a
-        # fail regardless of the mean), but the per-criterion pass/fail is the
-        # same 3.0 threshold — the hard-gate aggregation happens downstream.
+        # All criteria pass at >=3.0. Each rubric names two hard gates (a sub-3.0
+        # on either is a fail regardless of the mean): factual_correctness plus
+        # honesty_about_missing_data for company-research, factual_correctness
+        # plus grounding for chess. The per-criterion pass/fail is the same 3.0
+        # threshold either way — the hard-gate aggregation happens downstream.
         passed = score >= 3.0
         reason = f"judge score {score:.1f}/5"
         verdicts.append(JudgeVerdict(crit, passed, reason, score))
@@ -146,6 +194,44 @@ def _build_prompt(rubric: str, output: str, case: dict) -> str:
         f"## Rubric\n\n{rubric}\n\n"
         f"## Case input\n\n{json.dumps(case.get('input', {}))}\n\n"
         f"## Ground-truth expectedClaims for this case\n\n{json.dumps(case.get('expectedClaims', {}))}\n\n"
+        f"## Answer to grade\n\n{output}\n"
+    )
+
+
+def _build_chess_prompt(rubric: str, output: str, case: dict) -> str:
+    """Judge prompt for the chess-opening-coach skill.
+
+    Frames the task as chess coaching (not company research) and injects the
+    case's objective `correctAnswer` (a UCI move or a centipawn band) as ground
+    truth so factual_correctness can actually be checked. The criterion keys
+    match rubric-chess.md: criterion 3 is grounding, criterion 4 is reasoning
+    quality.
+    """
+    return (
+        "You are grading a chess-coaching answer produced by another model.\n"
+        "The model was given a FEN position and a question, had to reason step by "
+        "step, then end with a single `FINAL ANSWER:` line — a UCI move for a "
+        "tactics case, or a centipawn band (White's perspective) for a "
+        "position-judgment case.\n\n"
+        "Apply the rubric below strictly. Score each criterion 1–5 and return ONLY "
+        "a JSON object with these keys (each key maps to the rubric criterion of "
+        "the same intent): "
+        '{"specificity": <1-5>, "factual_correctness": <1-5>, '
+        '"grounding": <1-5>, "reasoning_quality": <1-5>, '
+        '"tone_and_structure": <1-5>, '
+        '"justification": "<one sentence per criterion>"}.\n\n'
+        "Key → rubric criterion: specificity=Criterion 1, "
+        "factual_correctness=Criterion 2, grounding=Criterion 3, "
+        "reasoning_quality=Criterion 4, tone_and_structure=Criterion 5.\n\n"
+        "For factual_correctness, the objectively correct answer for this case is "
+        "given below as ground truth. If the model's FINAL ANSWER matches it and "
+        "the reasoning explains why, score 5. If the FINAL ANSWER is a clear "
+        "blunder / wrong eval band, or the reasoning contradicts the answer given, "
+        "score 1. Do not reward confident-sounding prose that reaches the wrong "
+        "answer.\n\n"
+        f"## Rubric\n\n{rubric}\n\n"
+        f"## Case input (FEN + question)\n\n{json.dumps(case.get('input', {}))}\n\n"
+        f"## Ground-truth correct answer\n\n{json.dumps(case.get('correctAnswer'))}\n\n"
         f"## Answer to grade\n\n{output}\n"
     )
 
@@ -186,8 +272,9 @@ def _call_judge(prompt: str, api_key: str) -> str:
     return body["choices"][0]["message"]["content"]
 
 
-def _parse_verdicts(raw: str) -> dict[str, float]:
+def _parse_verdicts(raw: str, criteria: list[str] | None = None) -> dict[str, float]:
     """Extract the per-criterion scores from the judge's JSON response."""
+    criteria = criteria if criteria is not None else CRITERIA
     # Tolerate preamble/trailing text by locating the first {...} block.
     start = raw.find("{")
     end = raw.rfind("}")
@@ -199,6 +286,6 @@ def _parse_verdicts(raw: str) -> dict[str, float]:
         return {}
     return {
         crit: float(parsed[crit])
-        for crit in CRITERIA
+        for crit in criteria
         if crit in parsed and isinstance(parsed[crit], (int, float))
     }
