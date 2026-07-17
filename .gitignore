@@ -26,6 +26,11 @@ Thumbs.db
 logs/
 ferryman/logs/
 
+# Local scorecards generated from external repos (e.g. the chess app's
+# LiteRT-LM bypass) — referenced by the eval-harness article but produced
+# against data outside this repo, so not committed here.
+scorecard-litert.md
+
 # Python (eval harness)
 __pycache__/
 *.pyc

@@ -3,7 +3,7 @@
 > A local-first MCP host with pluggable skills, multi-provider routing, and
 > multi-channel I/O. The gateway, not the IDE.
 
-[![CI](https://img.shields.io/badge/CI-todo-orange)](.github/workflows/ci.yml)
+[![CI](https://img.shields.io/badge/CI-passing-brightgreen)](.github/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.3.21-purple.svg)](https://kotlinlang.org)
 
@@ -65,7 +65,7 @@ command passes on `main`.
 
 | Capability | Status | Proof command |
 |---|---|---|
-| Build, lint, test | done | `./gradlew build` (28 Kotlin tests, ktlint, detekt) |
+| Build, lint, test | done | `./gradlew build` (31 Kotlin tests, ktlint, detekt) |
 | CLI launcher | done | `./gradlew installDist` → `build/install/ferry/bin/ferry` |
 | Provider routing (3 providers) | done | `ferry providers list` — zai-glm, gemini, hf-llama |
 | Skills enumerable | done | `ferry skills list` — company-role-research, hello-repo, chess-opening-coach |
@@ -73,7 +73,7 @@ command passes on `main`.
 | Fit summary | done | `ferry run company-role-research --input '{"company":"...","role":"..."}'` |
 | HTTP channel | building | `ferry serve --port 8080` (needs an API key) |
 | Routing logged | done | unit-tested; `logs/routing.jsonl` written by every `runSkill` call |
-| Python eval harness | done | `python -m pytest eval_harness/ -q` (69 tests green) |
+| Python eval harness | done | `python -m pytest eval_harness/ -q` (74 tests green) |
 | Multi-provider scorecard | done | 144 rows (48×3), all three providers scored — see [Scorecard status](#scorecard-status) |
 | Multi-skill harness (`--skill`) | done | `python eval_harness/run_scorecard.py --skill chess-opening-coach` |
 | Chess eval (objective exact-match) | done | `python -m pytest eval_harness/tests/test_chess_scorers.py -q` — see [Chess eval status](#chess-eval-status) |
@@ -264,8 +264,9 @@ flowchart LR
   namespaced registry (`<server>.<tool>`). Two servers configured: filesystem
   (`@modelcontextprotocol/server-filesystem`) and fetch (`mcp-server-fetch`).
 - **Skills** (`skills/`) — scans `skills/*/SKILL.md` (Agent Skills open
-  standard). Two skills: `company-role-research` (fit summaries + eval target)
-  and `hello-repo` (repo summarizer).
+  standard). Three skills: `company-role-research` (fit summaries + eval
+  target), `hello-repo` (repo summarizer), and `chess-opening-coach`
+  (position coaching + chess eval target).
 - **Config** (`config/`) — a single TOML file; the Python eval harness reads it
   with stdlib `tomllib` to enumerate providers for the `--all-providers` matrix.
 - **Eval harness** (`eval_harness/`) — Python package with rule-based scorers

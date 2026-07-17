@@ -9,15 +9,12 @@ Scores a ferryman skill against a human-authored golden set. Two scorer layers:
   can't check (specificity, source-traceability, honesty, tone). Calls a
   *different* provider than the one being evaluated.
 
-## Tooling choice: promptfoo-default, Braintrust-optional
+## Runner
 
-**Default: promptfoo.** Chosen because it is fully self-hosted, needs no
-account, and runs locally against any OpenAI-compatible endpoint — which is
-exactly ferryman's provider model. Install it with `pip install -e .[promptfoo]`.
-
-**Alternative: Braintrust.** If you want hosted dataset versioning and
-experiment comparison, `pip install -e .[braintrust]` and set `BRAINTRUST_API_KEY`.
-The scorer layer is backend-agnostic; only the runner adapts.
+The primary runner is the hand-written `run_scorecard.py` — it's what CI uses
+and what the committed scorecards are produced with. It drives ferry through
+the same channels any consumer uses (subprocess or HTTP), runs the rule
+scorers, optionally the judge, and writes the per-provider matrix.
 
 The harness **degrades gracefully** if optional deps are absent: `invoke.py`
 uses only stdlib (`urllib`), and `judge_scorer.py` records a skip rather than
@@ -25,18 +22,18 @@ crashing when its deps or API key are missing.
 
 ## Skill under test: company/role research
 
-No production telemetry exists yet for ferryman, so per the eval-harness plan's
-default, the target skill is **company/role research** — a strong candidate
-because:
+The default target skill is **company/role research** (`company-role-research`,
+shipped in `ferryman/skills/`): given a company and a job title, it drives a
+fetch MCP tool to research the company and report on dimensions relevant to a
+mobile-engineer candidate. It is a strong eval target because:
 
-- Clear, checkable claims (comp bands, remote policy, tech stack).
+- Clear, checkable claims (tech stack, remote policy, AI posture, mobile-first).
 - No arithmetic ground truth (no "compute the right number" failure mode).
 - Directly relevant to an interview story.
 
 The harness invokes whatever skill name is configured (default
-`company-role-research`). Until that skill ships in `ferryman/skills/`, the
-harness runs against `hello-repo` to prove the loop end-to-end — the golden set
-and scorers are skill-agnostic and re-point with one config change.
+`company-role-research`); the golden set and scorers are skill-agnostic and
+re-point with one `SkillSpec` change.
 
 ## Multi-skill harness (`--skill`)
 
@@ -79,7 +76,7 @@ them.
 
 ## The golden set and the human-review gate
 
-`golden/golden_set.json` holds 25 cases (24 real companies + 1 deliberate
+`golden/golden_set.json` holds 48 cases (47 real companies + 1 deliberate
 negative: "Acme Holdings"). Each case's `expectedClaims` is a map of checkable
 assertions, not prose answers.
 

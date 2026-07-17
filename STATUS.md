@@ -1,6 +1,6 @@
 # Project Status
 
-Snapshot as of 2026-07-13. This file is the single source of truth for where
+Snapshot as of 2026-07-17. This file is the single source of truth for where
 the ferryman project stands against its three plans. Update it when a milestone
 lands or a gate is crossed.
 
@@ -8,12 +8,12 @@ lands or a gate is crossed.
 
 | Layer | State | Tests |
 |---|---|---|
-| ferryman (Kotlin host + CLI + HTTP) | MVP built, CI green | 28 Kotlin tests |
-| Eval harness (Python) | Scaffolded, rule + judge scorers wired | 35 Python tests |
-| Real scorecard with live provider numbers | **Done** — 144 rows, all 3 providers scored: hf-llama 80%, gemini 78%, zai-glm 69% | 144 rows |
+| ferryman (Kotlin host + CLI + HTTP) | MVP built, CI green | 31 Kotlin tests |
+| Eval harness (Python) | Scaffolded, rule + judge scorers wired | 74 Python tests |
+| Real scorecard with live provider numbers | **Done** — 144 rows, all 3 providers scored: hf-llama 82%, gemini 76%, zai-glm 68% | 144 rows |
 
-All commits are on `main`. This branch (`status/project-status`) exists only to
-carry this status document and open a draft PR for review.
+All commits are on `main`. This document is the living snapshot — update it in
+place when a milestone lands; it no longer rides on a dedicated status branch.
 
 ## What's done
 
@@ -106,10 +106,10 @@ run complete all 144 rows. The negation-aware scorer fix is applied.
 ## Verification commands
 
 ```bash
-python -m pytest eval_harness/ -q      # 31 passed
-./gradlew build                         # BUILD SUCCESSFUL (28 tests, ktlint, detekt)
+python -m pytest eval_harness/ -q      # 74 passed
+./gradlew build                         # BUILD SUCCESSFUL (31 tests, ktlint, detekt)
 ferry providers list                    # zai-glm, gemini, hf-llama as JSON
-ferry skills list                       # hello-repo, company-role-research
+ferry skills list                       # hello-repo, company-role-research, chess-opening-coach
 ```
 
 ## Dependency versions (all verified against primary sources)
