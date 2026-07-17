@@ -97,7 +97,8 @@ record the sign-off by setting `goldenSetApproved: true` in
 # rule scorers only (default — no judge API key needed)
 python -m eval_harness.run_scorecard
 
-# add the LLM judge layer
+# add the LLM judge layer (defaults to OpenAI gpt-4o-mini — family `gpt`,
+# zero overlap with the evaluated glm/gemini/meta providers, so no skips)
 JUDGE_API_KEY=... python -m eval_harness.run_scorecard --judge
 
 # run once per configured provider (the multi-provider matrix)
@@ -130,10 +131,13 @@ runs. A wildly inconsistent judge is worse than no judge. The
 and reports per-criterion spread; a spread > 1.0 is the "don't trust" signal.
 
 The judge also enforces **family exclusion** — a judge never grades its own
-family (per the z.ai/GLM addendum hard rule #5). If the evaluated route is GLM,
-the judge must be a non-GLM model, and vice versa. The `model_family()` helper
-derives the family from the model id; a collision raises `JudgeFamilyConflict`,
-which the scorecard runner catches and records as a skip.
+family. The default judge (`gpt-4o-mini`, family `gpt`) has no overlap with the
+configured evaluated providers (`glm` / `gemini` / `meta`), so no rows are
+skipped. If you re-point the judge at a GLM/Gemini/Llama model, those
+providers' rows skip with a `family conflict (skipped)` reason — by design.
+The `model_family()` helper derives the family from the model id; a collision
+raises `JudgeFamilyConflict`, which the scorecard runner catches and records
+as a skip.
 
 ## Latency and cost columns
 

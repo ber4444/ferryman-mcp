@@ -16,10 +16,14 @@ from pathlib import Path
 
 RUBRIC_PATH = Path(__file__).resolve().parent / "rubric.md"
 
-# The judge provider. Deliberately separate from the evaluated provider; default
-# to the OpenAI-compatible endpoint (z.ai or a local Ollama) via JUDGE_* env vars.
-JUDGE_BASE_URL = os.environ.get("JUDGE_BASE_URL", "https://api.z.ai/api/coding/paas/v4")
-JUDGE_MODEL = os.environ.get("JUDGE_MODEL", "glm-5.2")
+# The judge provider. Deliberately separate from the evaluated providers — a
+# judge never grades its own family (family-exclusion, see model_family()).
+# Default to OpenAI gpt-4o-mini: family `gpt` has zero overlap with the
+# configured evaluated providers (glm / gemini / meta), so no rows are ever
+# skipped via family-exclusion. Override JUDGE_BASE_URL / JUDGE_MODEL to point
+# at any other OpenAI-compatible endpoint (z.ai, a local Ollama, Azure, …).
+JUDGE_BASE_URL = os.environ.get("JUDGE_BASE_URL", "https://api.openai.com/v1")
+JUDGE_MODEL = os.environ.get("JUDGE_MODEL", "gpt-4o-mini")
 JUDGE_API_KEY_ENV = "JUDGE_API_KEY"
 
 CRITERIA = [

@@ -211,8 +211,15 @@ invocations — no fabricated results.
 To run the judge layer (requires a separate `JUDGE_API_KEY`):
 
 ```bash
+# Defaults to OpenAI gpt-4o-mini — family `gpt` has no overlap with the
+# evaluated providers (glm/gemini/meta), so family-exclusion skips no rows.
 JUDGE_API_KEY=... python eval_harness/run_scorecard.py --all-providers --judge
 ```
+
+The judge defaults to OpenAI `gpt-4o-mini` at `https://api.openai.com/v1`.
+Override `JUDGE_BASE_URL` / `JUDGE_MODEL` to use any other OpenAI-compatible
+endpoint — but note the family-exclusion rule: a judge never grades its own
+family, so picking a GLM/Gemini/Llama judge would skip those providers' rows.
 
 ### Troubleshooting
 

@@ -288,7 +288,16 @@ def _judge_if_available(case_result: CaseResult, case: dict, spec: SkillSpec | N
     """Apply the judge scorer if its deps are installed; otherwise record a skip."""
     spec = spec or get_skill_spec(DEFAULT_SKILL)
     try:
-        from . import judge_scorer
+        # Mirror the top-of-file import guard: the bare relative `from .` only
+        # resolves when this module is imported as part of the eval_harness
+        # package (python -m). When run as a script (python run_scorecard.py)
+        # __package__ is empty and the relative import raises ImportError — which
+        # used to be misreported as "judge deps not installed", sending users
+        # down a wrong httpx rabbit hole. Use the absolute import in script mode.
+        if __package__:
+            from . import judge_scorer
+        else:
+            from eval_harness import judge_scorer
     except ImportError:
         return [{"key": "_judge", "passed": False, "reason": "judge deps not installed (pip install -e .[judge])"}]
     try:
