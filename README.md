@@ -68,13 +68,15 @@ command passes on `main`.
 | Build, lint, test | done | `./gradlew build` (28 Kotlin tests, ktlint, detekt) |
 | CLI launcher | done | `./gradlew installDist` → `build/install/ferry/bin/ferry` |
 | Provider routing (3 providers) | done | `ferry providers list` — zai-glm, gemini, hf-llama |
-| Skills enumerable | done | `ferry skills list` — company-role-research, hello-repo |
+| Skills enumerable | done | `ferry skills list` — company-role-research, hello-repo, chess-opening-coach |
 | MCP host aggregates tools | done | `ferry tools list` — filesystem + fetch MCP servers |
 | Fit summary | done | `ferry run company-role-research --input '{"company":"...","role":"..."}'` |
 | HTTP channel | building | `ferry serve --port 8080` (needs an API key) |
 | Routing logged | done | unit-tested; `logs/routing.jsonl` written by every `runSkill` call |
-| Python eval harness | done | `python -m pytest eval_harness/ -q` (35 tests green) |
+| Python eval harness | done | `python -m pytest eval_harness/ -q` (69 tests green) |
 | Multi-provider scorecard | done | 144 rows (48×3), all three providers scored — see [Scorecard status](#scorecard-status) |
+| Multi-skill harness (`--skill`) | done | `python eval_harness/run_scorecard.py --skill chess-opening-coach` |
+| Chess eval (objective exact-match) | done | `python -m pytest eval_harness/tests/test_chess_scorers.py -q` — see [Chess eval status](#chess-eval-status) |
 
 ## Scorecard status
 
@@ -113,6 +115,47 @@ counted as a pass for `usesJetpackCompose`. `_positive_presence` is now
 negation-aware (a match preceded by "no evidence of…" no longer counts). The bug
 inflated every provider whose output honestly declines; it punished the most
 honest model hardest.
+
+## Chess eval status
+
+A second skill — `chess-opening-coach` — is evaluated against an **objective,
+exact-match** golden set, a stricter floor than the company-research harness's
+positive-presence + citation checks. This is the "deeper methodology" the
+chess-app repo's eval article points at this companion repo for: the chess app's
+own golden set is rule-based concept-substring scoring (owner-must-verify
+candidates); here the same position-evaluation task is scored against published
+answer keys with no judge in the loop for the floor.
+
+**The golden set is a vendored subset of [ChessQA](https://github.com/CSSLab/chessqa-benchmark)**
+(CSSLab, MIT — see `eval_harness/golden/CHESS_GOLDEN_LICENSE.txt`). 40
+stratified cases: 20 Short Tactics (best-move in UCI, across beginner→expert
+rating buckets) + 20 Position Judgment (centipawn-band estimation, across all
+five eval bands). The scorer ports ChessQA's `FINAL ANSWER:` extraction contract
+verbatim so its scoring matches the published methodology.
+
+**Two scoring axes, kept distinct** (never collapsed into one number):
+
+1. **Objective floor (rule layer):** `FINAL ANSWER:` is extracted and exact-
+   matched against the case's `correctAnswer` — UCI move normalization for
+   tactics, centipawn-band string match for position judgment. No judge, no
+   fuzziness. A forbidden-phrase gate (ported from the chess app's validators)
+   fails any output asserting engine depth/ELO/unsupported certainty.
+2. **Coaching-quality (judge layer):** the existing family-excluded LLM judge,
+   scored against a chess-specific rubric (`eval_harness/rubric-chess.md`).
+
+```bash
+python eval_harness/run_scorecard.py --skill chess-opening-coach --all-providers
+```
+
+**Honesty note — bootstrap vs canonical.** The ChessQA subset is a *bootstrap*
+set: templated, MIT-licensed, objective, runnable today. It is not the
+engine-grounded canonical set. The canonical follow-on — a Lichess→Stockfish
+curation pipeline that samples positions, re-analyzes each at a fixed engine
+config, derives move-quality labels from eval deltas, stratifies, and
+human-reviews + freezes the set — is specced in
+[`docs/plans/chess-lichess-curation.md`](docs/plans/chess-lichess-curation.md)
+(not yet built). No scorecard numbers are committed until a real run produces
+them.
 
 ## Quickstart
 
@@ -168,8 +211,15 @@ invocations — no fabricated results.
 To run the judge layer (requires a separate `JUDGE_API_KEY`):
 
 ```bash
+# Defaults to OpenAI gpt-4o-mini — family `gpt` has no overlap with the
+# evaluated providers (glm/gemini/meta), so family-exclusion skips no rows.
 JUDGE_API_KEY=... python eval_harness/run_scorecard.py --all-providers --judge
 ```
+
+The judge defaults to OpenAI `gpt-4o-mini` at `https://api.openai.com/v1`.
+Override `JUDGE_BASE_URL` / `JUDGE_MODEL` to use any other OpenAI-compatible
+endpoint — but note the family-exclusion rule: a judge never grades its own
+family, so picking a GLM/Gemini/Llama judge would skip those providers' rows.
 
 ### Troubleshooting
 

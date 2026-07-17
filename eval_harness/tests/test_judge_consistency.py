@@ -143,3 +143,45 @@ def test_family_exclusion_skipped_without_evaluated_model(monkeypatch):
         assert False, "no evaluated_model means no exclusion check"
     except Exception:
         pass  # network error expected
+
+
+# --- rubric-profile selection (domain-aware judge) -------------------------
+
+
+def test_chess_rubric_selects_chess_profile():
+    """A chess rubric path routes to the chess criteria + prompt builder."""
+    from pathlib import Path
+
+    profile = judge_scorer._profile_for_rubric(Path("eval_harness/rubric-chess.md"))
+    assert profile.criteria == judge_scorer.CHESS_CRITERIA
+    # The two degenerate company keys must not be graded for chess.
+    assert "source_traceability" not in profile.criteria
+    assert "honesty_about_missing_data" not in profile.criteria
+    # The chess-specific criteria that used to be missing must be present.
+    assert "grounding" in profile.criteria
+    assert "reasoning_quality" in profile.criteria
+
+
+def test_non_chess_rubric_uses_company_profile():
+    """Any non-chess (or absent) rubric keeps the company-research profile."""
+    from pathlib import Path
+
+    assert judge_scorer._profile_for_rubric(Path("eval_harness/rubric.md")).criteria == judge_scorer.CRITERIA
+    assert judge_scorer._profile_for_rubric(None).criteria == judge_scorer.CRITERIA
+
+
+def test_chess_prompt_injects_correct_answer_not_expected_claims():
+    """The chess judge prompt grades against correctAnswer, not expectedClaims."""
+    case = {
+        "input": {"fen": "8/8/8/8/8/8/8/8 w - -", "question": "Find best move."},
+        "correctAnswer": "e2e4",
+        "expectedClaims": {},  # chess cases carry none — must not be referenced
+    }
+    prompt = judge_scorer._build_chess_prompt("RUBRIC", "FINAL ANSWER: e2e4", case)
+    assert "e2e4" in prompt and "Ground-truth correct answer" in prompt
+    assert "chess-coaching answer" in prompt
+    assert "expectedClaims" not in prompt
+    assert "mobile-engineer" not in prompt
+    # Judge is asked for the chess keys only.
+    assert '"grounding"' in prompt and '"reasoning_quality"' in prompt
+    assert "source_traceability" not in prompt

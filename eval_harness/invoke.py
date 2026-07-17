@@ -204,29 +204,34 @@ def _parse_subprocess_output(
     """
     Split ferry CLI stdout into routing metadata and the answer text.
 
-    The CLI emits a leading ``{"_meta":{...}}`` JSON line carrying provider,
-    model and real token counts, followed by the answer text. When the leading
-    line isn't a _meta payload (older binary, or a non-JSON line) the whole
-    stdout is treated as the answer so we degrade gracefully.
+    The CLI emits a ``{"_meta":{...}}`` JSON line carrying provider, model and
+    real token counts, followed by the answer text. It is *not* guaranteed to be
+    the very first line: the JVM logger prints a
+    ``kotlin-logging: initializing...`` banner to stdout ahead of it. So we scan
+    the leading lines for the _meta payload, discard any noise lines before it,
+    and treat everything after it as the answer. When no _meta line is present
+    (older binary / unexpected output) the whole stdout is the answer so we
+    degrade gracefully.
     """
-    newline = stdout.find("\n")
-    first_line = stdout if newline == -1 else stdout[:newline]
-    rest = "" if newline == -1 else stdout[newline + 1 :]
-    meta = _maybe_meta(first_line)
-    if meta is None:
-        # No metadata line — treat the entire stdout as output (legacy path).
+    lines = stdout.splitlines()
+    for i, line in enumerate(lines):
+        meta = _maybe_meta(line)
+        if meta is None:
+            continue
+        meta_obj = meta["_meta"]
+        rest = "\n".join(lines[i + 1 :])
         return InvocationResult(
-            output=stdout.strip(),
-            provider=provider or "unknown",
-            model="unknown",
+            output=rest.strip(),
+            provider=meta_obj.get("provider", provider or "unknown"),
+            model=meta_obj.get("model", "unknown"),
+            input_tokens=meta_obj.get("inputTokens"),
+            output_tokens=meta_obj.get("outputTokens"),
         )
-    meta_obj = meta["_meta"]
+    # No metadata line anywhere — treat the entire stdout as output (legacy path).
     return InvocationResult(
-        output=rest.strip(),
-        provider=meta_obj.get("provider", provider or "unknown"),
-        model=meta_obj.get("model", "unknown"),
-        input_tokens=meta_obj.get("inputTokens"),
-        output_tokens=meta_obj.get("outputTokens"),
+        output=stdout.strip(),
+        provider=provider or "unknown",
+        model="unknown",
     )
 
 

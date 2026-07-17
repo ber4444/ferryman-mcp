@@ -30,13 +30,74 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
     from eval_harness import invoke as invoke_mod
     from eval_harness import rule_scorers
+    from eval_harness import chess_scorers
 else:
     from . import invoke as invoke_mod
     from . import rule_scorers
+    from . import chess_scorers
 
-GOLDEN_PATH = Path(__file__).resolve().parent / "golden" / "golden_set.json"
+_GOLDEN_DIR = Path(__file__).resolve().parent / "golden"
+GOLDEN_PATH = _GOLDEN_DIR / "golden_set.json"
 SCORECARD_MD = Path(__file__).resolve().parent / "scorecard.md"
 SCORECARD_JSON = Path(__file__).resolve().parent / "scorecard.json"
+
+# Default skill id when --skill is not given. Preserved for backward
+# compatibility — the company-research harness runs unchanged with no args.
+DEFAULT_SKILL = "company-role-research"
+
+
+@dataclass
+class SkillSpec:
+    """Per-skill eval wiring: which golden set + scorer + skill id + outputs.
+
+    The eval-harness contract (AGENTS.md: skills enumerable, config TOML,
+    Orchestrator.runSkill) is unchanged — this just lets one harness score more
+    than one skill. Each spec names the skill the orchestrator should invoke and
+    the scorer callable that turns a case into ScoreResults.
+    """
+
+    name: str
+    skill_id: str  # the ferryman skill name passed to Orchestrator.runSkill
+    golden_path: Path
+    scorecard_md: Path
+    scorecard_json: Path
+    # (scorer_callable, case) -> list[ScoreResult]. Mirrors rule_scorers.score_all's shape.
+    scorer: Callable[[str, dict], list]
+    # The claim-like field the scorer reads from each case. company-research uses
+    # expectedClaims; chess uses the whole case (correctAnswer lives on the case).
+    # Kept as a label for the scorecard, not a behavioral branch.
+    rubric_path: Path | None = None
+
+
+# Registry of evaluable skills. Adding a skill is: add a SKILL.md, a golden set,
+# a scorer module, and one entry here.
+_SKILL_SPECS: dict[str, SkillSpec] = {
+    "company-role-research": SkillSpec(
+        name="company-role-research",
+        skill_id="company-role-research",
+        golden_path=_GOLDEN_DIR / "golden_set.json",
+        scorecard_md=Path(__file__).resolve().parent / "scorecard.md",
+        scorecard_json=Path(__file__).resolve().parent / "scorecard.json",
+        scorer=lambda output, case: rule_scorers.score_all(
+            output, case["expectedClaims"], case_input=case.get("input", {})
+        ),
+        rubric_path=Path(__file__).resolve().parent / "rubric.md",
+    ),
+    "chess-opening-coach": SkillSpec(
+        name="chess-opening-coach",
+        skill_id="chess-opening-coach",
+        golden_path=_GOLDEN_DIR / "chess_golden.json",
+        scorecard_md=Path(__file__).resolve().parent / "scorecard-chess.md",
+        scorecard_json=Path(__file__).resolve().parent / "scorecard-chess.json",
+        scorer=chess_scorers.score_for_case,
+        rubric_path=Path(__file__).resolve().parent / "rubric-chess.md",
+    ),
+}
+
+
+def get_skill_spec(name: str | None) -> SkillSpec:
+    """Resolve a skill name to its spec, defaulting to company-role-research."""
+    return _SKILL_SPECS[name or DEFAULT_SKILL]
 
 
 @dataclass
@@ -143,17 +204,16 @@ def estimate_cost(result: invoke_mod.InvocationResult, pricing: dict) -> float |
     return round(cost, 6)
 
 
-def run_one(case: dict, provider: str | None, mode: str) -> CaseResult:
-    """Invoke the skill for one case and apply rule scorers."""
-    result = invoke_mod.invoke(case["input"], provider=provider, mode=mode)
-    rule_scores = [
-        s.as_dict()
-        for s in rule_scorers.score_all(
-            result.output,
-            case["expectedClaims"],
-            case_input=case["input"],
-        )
-    ]
+def run_one(case: dict, provider: str | None, mode: str, spec: SkillSpec | None = None) -> CaseResult:
+    """Invoke the skill for one case and apply its scorers.
+
+    [spec] selects the skill + scorer; defaults to company-role-research so the
+    pre-existing call sites (and the harness's backward-compat contract) are
+    unchanged.
+    """
+    spec = spec or get_skill_spec(DEFAULT_SKILL)
+    result = invoke_mod.invoke(case["input"], skill=spec.skill_id, provider=provider, mode=mode)
+    rule_scores = [s.as_dict() for s in spec.scorer(result.output, case)]
     pricing = load_pricing()
     return CaseResult(
         id=case["id"],
@@ -181,6 +241,7 @@ def run_all(
     mode: str,
     use_judge: bool = False,
     on_provider_done: "Callable[[list[CaseResult]], None] | None" = None,
+    spec: SkillSpec | None = None,
 ) -> list[CaseResult]:
     """Run the full golden set across the given providers.
 
@@ -189,7 +250,11 @@ def run_all(
     can no longer abort the whole batch. After each provider finishes,
     [on_provider_done] (if given) is called with the accumulated results so a
     partial scorecard is always on disk if the run is interrupted later.
+
+    [spec] selects the skill + scorer + output paths; defaults to
+    company-role-research.
     """
+    spec = spec or get_skill_spec(DEFAULT_SKILL)
     results: list[CaseResult] = []
     for provider in providers:
         for case in golden:
@@ -198,7 +263,7 @@ def run_all(
             # not a batch abort. Follows the harness's own _judge_if_available
             # convention (broad except, record, continue).
             try:
-                case_result = run_one(case, provider, mode)
+                case_result = run_one(case, provider, mode, spec=spec)
             except Exception as e:  # noqa: BLE001 — one case must not kill the batch
                 case_result = CaseResult(
                     id=case["id"],
@@ -209,7 +274,20 @@ def run_all(
                     error=f"{type(e).__name__}: {e}",
                 )
             if use_judge:
-                case_result.judge_scores = _judge_if_available(case_result, case)
+                # Don't judge a case that errored: its output is empty, so the
+                # judge would burn an API call and record scores that look like
+                # model-quality failures when the real failure is infra. The
+                # error is already captured on case_result.error.
+                if case_result.error:
+                    case_result.judge_scores = [
+                        {
+                            "key": "_judge",
+                            "passed": False,
+                            "reason": f"skipped — case errored: {case_result.error}",
+                        }
+                    ]
+                else:
+                    case_result.judge_scores = _judge_if_available(case_result, case, spec=spec)
             results.append(case_result)
             if _THROTTLE_SECONDS > 0:
                 time.sleep(_THROTTLE_SECONDS)
@@ -219,16 +297,32 @@ def run_all(
     return results
 
 
-def _judge_if_available(case_result: CaseResult, case: dict) -> list[dict]:
+def _judge_if_available(case_result: CaseResult, case: dict, spec: SkillSpec | None = None) -> list[dict]:
     """Apply the judge scorer if its deps are installed; otherwise record a skip."""
+    spec = spec or get_skill_spec(DEFAULT_SKILL)
     try:
-        from . import judge_scorer
+        # Mirror the top-of-file import guard: the bare relative `from .` only
+        # resolves when this module is imported as part of the eval_harness
+        # package (python -m). When run as a script (python run_scorecard.py)
+        # __package__ is empty and the relative import raises ImportError — which
+        # used to be misreported as "judge deps not installed", sending users
+        # down a wrong httpx rabbit hole. Use the absolute import in script mode.
+        if __package__:
+            from . import judge_scorer
+        else:
+            from eval_harness import judge_scorer
     except ImportError:
         return [{"key": "_judge", "passed": False, "reason": "judge deps not installed (pip install -e .[judge])"}]
     try:
         # Pass the evaluated model so the judge can enforce family-exclusion
-        # (a judge never grades its own family).
-        verdicts = judge_scorer.judge(case_result.output, case, evaluated_model=case_result.model)
+        # (a judge never grades its own family), and the skill's rubric so chess
+        # is judged against the chess rubric, not the company-research one.
+        verdicts = judge_scorer.judge(
+            case_result.output,
+            case,
+            evaluated_model=case_result.model,
+            rubric_path=spec.rubric_path,
+        )
         return [v.as_dict() for v in verdicts]
     except judge_scorer.JudgeFamilyConflict as e:
         return [{"key": "_judge", "passed": False, "reason": f"family conflict (skipped): {e}"}]
@@ -236,17 +330,19 @@ def _judge_if_available(case_result: CaseResult, case: dict) -> list[dict]:
         return [{"key": "_judge", "passed": False, "reason": f"judge error: {e}"}]
 
 
-def write_scorecard(results: list[CaseResult], *, use_judge: bool) -> None:
-    """Write scorecard.md and scorecard.json."""
-    SCORECARD_JSON.write_text(json.dumps([asdict(r) for r in results], indent=2))
-    SCORECARD_MD.write_text(_render_markdown(results, use_judge=use_judge))
-    print(f"\nScorecard written:\n  {SCORECARD_MD}\n  {SCORECARD_JSON}")
+def write_scorecard(results: list[CaseResult], *, use_judge: bool, spec: SkillSpec | None = None) -> None:
+    """Write the scorecard markdown + json for the given skill's spec."""
+    spec = spec or get_skill_spec(DEFAULT_SKILL)
+    spec.scorecard_json.write_text(json.dumps([asdict(r) for r in results], indent=2))
+    spec.scorecard_md.write_text(_render_markdown(results, use_judge=use_judge, spec=spec))
+    print(f"\nScorecard written:\n  {spec.scorecard_md}\n  {spec.scorecard_json}")
 
 
-def _render_markdown(results: list[CaseResult], *, use_judge: bool) -> str:
+def _render_markdown(results: list[CaseResult], *, use_judge: bool, spec: SkillSpec | None = None) -> str:
+    spec = spec or get_skill_spec(DEFAULT_SKILL)
     pricing = load_pricing()
     lines = [
-        "# ferryman eval scorecard",
+        f"# ferryman eval scorecard — {spec.name}",
         "",
         f"Generated: {time.strftime('%Y-%m-%d %H:%M:%S')}",
         f"Cases: {len(results)}",
@@ -300,6 +396,12 @@ def _render_markdown(results: list[CaseResult], *, use_judge: bool) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Run the ferryman eval scorecard.")
+    parser.add_argument(
+        "--skill",
+        default=DEFAULT_SKILL,
+        choices=sorted(_SKILL_SPECS.keys()),
+        help=f"skill to evaluate (default: {DEFAULT_SKILL})",
+    )
     parser.add_argument("--provider", help="single provider id to run")
     parser.add_argument(
         "--all-providers",
@@ -313,11 +415,19 @@ def main(argv: list[str] | None = None) -> int:
         default="auto",
         help="invocation mode (default: try http, fall back to subprocess)",
     )
-    parser.add_argument("--golden", type=Path, default=GOLDEN_PATH, help="path to golden set JSON")
+    parser.add_argument(
+        "--golden",
+        type=Path,
+        default=None,
+        help="path to golden set JSON (default: the skill's registered golden set)",
+    )
     args = parser.parse_args(argv)
 
-    golden = load_golden(args.golden)
-    print(f"Loaded {len(golden)} golden cases from {args.golden}")
+    spec = get_skill_spec(args.skill)
+    golden_path = args.golden or spec.golden_path
+    golden = load_golden(golden_path)
+    print(f"Skill: {spec.name} (invoking skill id '{spec.skill_id}')")
+    print(f"Loaded {len(golden)} golden cases from {golden_path}")
 
     if args.all_providers:
         providers: list[str | None] = order_providers(enumerate_providers())
@@ -330,7 +440,7 @@ def main(argv: list[str] | None = None) -> int:
     # Incremental save: after each provider finishes, write the scorecard so
     # an interrupted run (a later provider timing out) keeps earlier results.
     def save_so_far(so_far: list[CaseResult]) -> None:
-        write_scorecard(so_far, use_judge=args.judge)
+        write_scorecard(so_far, use_judge=args.judge, spec=spec)
 
     print(f"Running golden set (mode={args.mode}, judge={args.judge})...")
     results = run_all(
@@ -339,8 +449,9 @@ def main(argv: list[str] | None = None) -> int:
         mode=args.mode,
         use_judge=args.judge,
         on_provider_done=save_so_far if args.all_providers else None,
+        spec=spec,
     )
-    write_scorecard(results, use_judge=args.judge)
+    write_scorecard(results, use_judge=args.judge, spec=spec)
     return 0
 
 
