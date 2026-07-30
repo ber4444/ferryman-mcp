@@ -146,6 +146,28 @@ def test_piece_type_pawn_optional():
     assert result.passed
 
 
+def test_piece_type_fails_when_pawn_move_is_called_another_piece():
+    # Observed on b2b4 (a pawn move): the model answered "Bishop b2→b4: Develops
+    # the bishop ... The bishop moves from b2 to b4". 'pawn' never appears, so
+    # the pawn-leniency branch used to pass a plainly wrong piece claim.
+    output = (
+        "Bishop b2→b4: Develops the bishop and sets up for future play. "
+        "The bishop moves from b2 to b4, enhancing its position."
+    )
+    result = slo._check_piece_type(output, "pawn")
+    assert not result.passed
+    assert "bishop" in result.reason
+
+
+def test_piece_type_pawn_move_may_mention_other_pieces_in_passing():
+    # Leniency must survive: naming another piece as a *bystander* is not a
+    # piece-type error, only claiming it as the mover is.
+    result = slo._check_piece_type(
+        "Advances to b4, opening a line for the bishop and gaining space.", "pawn"
+    )
+    assert result.passed
+
+
 def test_piece_type_castling_skipped_for_king():
     # Castling is described as "Castles kingside" by the app, not "king" —
     # so a king move that's castling shouldn't fail the piece-type check.

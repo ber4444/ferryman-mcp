@@ -94,6 +94,32 @@ def _expected_piece_name(fen: str, uci_move: str) -> str | None:
         return None
 
 
+_PIECE_NAMES = ("knight", "bishop", "rook", "queen", "king")
+
+
+def _claims_other_piece_as_mover(lowered: str, expected_piece: str) -> str | None:
+    """Return a piece name the output claims *moved*, if it isn't the right one.
+
+    Only a piece named as the thing that moved counts. "Bishop b2→b4" and "the
+    bishop moves from b2" are wrong-piece claims; a passing reference such as
+    "advances to b4, opening a line for the bishop" is not an error and must
+    still pass. Deliberately narrow: it matches the shapes the model actually
+    produces when it echoes describeMove's "<Piece> <from>→<to>" prompt line.
+    """
+    for piece in _PIECE_NAMES:
+        if piece == expected_piece:
+            continue
+        patterns = (
+            rf"\b{piece}\s+[a-h][1-8]",  # "bishop b2→b4"
+            rf"\b{piece}\s+from\s+[a-h][1-8]",  # "bishop from b2"
+            rf"\b{piece}\s+(?:moves?|advances?|develops?|jumps?|goes|steps?|travels?)",
+            rf"\b{piece}\s+is\s+(?:moving|advancing|developing)",
+        )
+        if any(re.search(p, lowered) for p in patterns):
+            return piece
+    return None
+
+
 def _check_piece_type(output: str, expected_piece: str) -> ScoreResult:
     """Check the output names the right piece type.
 
@@ -113,6 +139,13 @@ def _check_piece_type(output: str, expected_piece: str) -> ScoreResult:
     # no explicit piece claim for pawn moves (many correct explanations say
     # 'advances to e4' without naming the pawn).
     if expected_piece == "pawn" and expected_piece not in lowered:
+        # ...but "optional" must not mean "any piece will do". Observed failure:
+        # b2b4 (a pawn move) explained as "Bishop b2→b4: ... The bishop moves
+        # from b2 to b4" — no 'pawn' anywhere, so the leniency above passed a
+        # plainly wrong piece claim.
+        wrong = _claims_other_piece_as_mover(lowered, expected_piece)
+        if wrong:
+            return ScoreResult("pieceType", False, f"output calls the pawn a {wrong}")
         return ScoreResult("pieceType", True, "pawn move — piece name optional")
     if expected_piece in lowered:
         return ScoreResult("pieceType", True, f"output names the correct piece ({expected_piece})")
