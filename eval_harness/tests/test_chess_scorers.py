@@ -154,7 +154,7 @@ def test_score_for_case_dispatches_uci():
     # scorer passes on a fake fixture.
     results = chess_scorers.score_for_case("FINAL ANSWER: e2e4\n", _TACTICS_CASE)
     keys = {r.key for r in results}
-    assert keys == {"exactMove", "forbiddenPhrases", "reasonFaithfulness"}
+    assert keys == {"exactMove", "forbiddenPhrases", "reasonFaithfulness", "readability"}
     exact = next(r for r in results if r.key == "exactMove")
     forbidden = next(r for r in results if r.key == "forbiddenPhrases")
     assert exact.passed and forbidden.passed
@@ -163,12 +163,23 @@ def test_score_for_case_dispatches_uci():
     # rather than passing silently.
     assert not faithfulness.passed
     assert "fixture error" in faithfulness.reason or "skip" in faithfulness.reason
+    # Same principle for readability: this fixture is a bare FINAL ANSWER line
+    # with no coaching prose, so there is nothing to score and it must say so
+    # rather than pass by default.
+    readability = next(r for r in results if r.key == "readability")
+    assert not readability.passed
+    assert "no coaching prose" in readability.reason
 
 
 def test_score_for_case_dispatches_centipawn_band():
-    results = chess_scorers.score_for_case("FINAL ANSWER: 200\n", _EVAL_CASE)
+    # Carries real coaching prose, not just the marker: a position-judgment
+    # response has text a learner reads, and `all(passed)` is only a meaningful
+    # assertion when every scorer has something to score.
+    results = chess_scorers.score_for_case(
+        "White is a pawn up and the king is safe. FINAL ANSWER: 200\n", _EVAL_CASE
+    )
     keys = {r.key for r in results}
-    assert "evalBand" in keys and "forbiddenPhrases" in keys
+    assert "evalBand" in keys and "forbiddenPhrases" in keys and "readability" in keys
     assert all(r.passed for r in results)
 
 
@@ -299,3 +310,63 @@ def test_faithfulness_skips_when_no_fen():
         "FINAL ANSWER: e2e4", {"input": {}, "correctAnswer": "e2e4"}
     )
     assert not r.passed and "skip" in r.reason
+
+
+# --- readability -----------------------------------------------------------
+
+
+def test_readability_passes_plain_coaching_prose():
+    r = chess_scorers.score_readability(
+        "Take the knight. It guards the pawn on e5. FINAL ANSWER: e2e4", {}
+    )
+    assert r.passed, r.reason
+
+
+def test_readability_fails_dense_prose():
+    dense = (
+        "Prophylactic restraint of counterplay necessitates reevaluating the "
+        "positional considerations underlying incremental accumulation of "
+        "structural advantages throughout the ensuing complications. "
+        "FINAL ANSWER: e2e4"
+    )
+    r = chess_scorers.score_readability(dense, {})
+    assert not r.passed
+    assert "exceeds" in r.reason
+
+
+def test_readability_ignores_the_final_answer_line():
+    # "FINAL ANSWER: e2e4" is a protocol token. Counting it as a sentence
+    # shortens mean sentence length and flatters the score, so a response that
+    # is *only* the marker must not read as excellent prose — it has none.
+    r = chess_scorers.score_readability("FINAL ANSWER: e2e4", {})
+    assert not r.passed
+    assert "no coaching prose" in r.reason
+
+
+def test_readability_strips_think_blocks():
+    # Same <think> contamination the faithfulness scorer had to handle: the
+    # deliberation is not what the learner reads, so it must not be scored.
+    noisy = (
+        "<think>I must weigh whether the resulting endgame configuration "
+        "constitutes sufficient compensation for the sacrificed material.</think>"
+        "Take the knight. It guards the pawn. FINAL ANSWER: e2e4"
+    )
+    assert chess_scorers.score_readability(noisy, {}).passed
+
+
+def test_readability_is_wired_into_score_for_case():
+    # A scorer nobody calls is the failure mode this scorer exists to fix.
+    keys = {
+        s.key
+        for s in chess_scorers.score_for_case(
+            "Take the knight. FINAL ANSWER: e2e4",
+            {"answerFormat": "uci", "correctAnswer": "e2e4", "input": {}},
+        )
+    }
+    assert "readability" in keys
+
+
+def test_syllable_counter_does_not_overstrip_sibilant_es():
+    # "pieces" is pie-ces; stripping "-es" after a sibilant scores it 1.
+    assert chess_scorers._count_syllables("pieces") >= 2
+    assert chess_scorers._count_syllables("moves") == 1
