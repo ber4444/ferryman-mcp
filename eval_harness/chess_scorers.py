@@ -332,6 +332,119 @@ def score_reason_faithfulness(output: str, case: dict) -> ScoreResult:
 # --- dispatch --------------------------------------------------------------
 
 
+# --- readability -----------------------------------------------------------
+#
+# Why this exists: the judge's `tone_and_structure` criterion passes 120/120 on
+# this skill's scorecard. Checking the raw scores shows why — the judge never
+# rates it below 3.0, and 3.0 is the pass threshold, so its floor sits exactly
+# on the bar. Every other judge criterion emits 1s and 2s. A criterion that has
+# never failed is a criterion that has not been tested, so this replaces the
+# fluency half of it with something deterministic that demonstrably varies.
+#
+# Note what this scorer is NOT: the chess app's three tone rules
+# (process-praise, criticism-carries-a-next-step, no-self-reference) were tried
+# here first and two of them are inert on this corpus — criticism vocabulary
+# appears in 1 of 91 stored outputs, so "criticism must carry a next step"
+# passes without ever firing. They discriminate in the app, where the coach
+# critiques the player's own move. Reading level was the one that varied here.
+# A scorer is only meaningful relative to the corpus it runs on.
+
+# Grade bound, calibrated 2026-08-02 against the 91 non-blank stored outputs in
+# scorecard-chess.json (29 zai-glm cases have no retained output).
+#
+#   bound  overall fail   gemini  hf-llama  zai-glm
+#     6.0     62.6%         55%      72%      55%
+#     8.0     36.3%         25%      50%      27%     <- chosen
+#     9.5     14.3%         18%      15%       0%
+#    12.0      0.0%          0%       0%       0%
+#
+# 8.0 is picked for discrimination, not for being a "correct" grade level: it
+# separates hf-llama at roughly twice the others, which independently agrees
+# with its worst-in-set rule pass rate (52%), reasoning quality (38%) and
+# factual correctness (8%). A bound that ranks providers the same way the other
+# scorers do is measuring something real. Above ~9.5 the separation collapses
+# and inverts; at 12.0 nothing fails and we are back to a decorative column.
+_READABILITY_MAX_GRADE = 8.0
+
+_THINK_BLOCK = re.compile(r"<think>.*?</think>", re.IGNORECASE | re.DOTALL)
+
+
+def _count_syllables(word: str) -> int:
+    """
+    Vowel-group syllable estimate. Approximate by design — Flesch-Kincaid needs
+    an aggregate, and the bound above was calibrated with this same function, so
+    its bias applies to both sides and largely cancels. Consequence: treat the
+    grades as ordinal, not as real US grade levels.
+    """
+    clean = "".join(ch for ch in word.lower() if ch.isalpha())
+    if not clean:
+        return 1
+    if len(clean) <= 3:
+        return 1
+    # Strip at most one trailing inflection, and only a silent "e". "-es" is
+    # silent after a non-sibilant ("moves" = mov-es) but its own syllable after
+    # c/s/x/z/ch/sh ("pieces" = pie-ces), so stripping it there under-counts.
+    if clean.endswith("es") and not re.search(r"(c|s|x|z|ch|sh)$", clean[:-2]):
+        stem = clean[:-2]
+    elif clean.endswith("e") and not clean.endswith("le"):
+        stem = clean[:-1]
+    elif clean.endswith("s") and not clean.endswith("ss"):
+        stem = clean[:-1]
+    else:
+        stem = clean
+    groups = [g for g in re.split(r"[^aeiouy]+", stem) if g]
+    return max(len(groups), 1)
+
+
+def flesch_kincaid_grade(text: str) -> float:
+    """0.39 * (words/sentences) + 11.8 * (syllables/words) - 15.59, floored at 0."""
+    stripped = (text or "").strip()
+    if not stripped:
+        return 0.0
+    sentences = [s for s in re.split(r"[.!?]+", stripped) if s.strip()] or [stripped]
+    words = [w for w in re.split(r"[^a-z0-9']+", stripped.lower()) if w]
+    if not words:
+        return 0.0
+    syllables = max(sum(_count_syllables(w) for w in words), 1)
+    grade = 0.39 * (len(words) / len(sentences)) + 11.8 * (syllables / len(words)) - 15.59
+    return max(round(grade, 1), 0.0)
+
+
+def coaching_prose(output: str) -> str:
+    """
+    The part of the response a learner actually reads.
+
+    Drops `<think>` deliberation (same contamination the faithfulness scorer had
+    to strip) and the machine-readable `FINAL ANSWER:` line — "FINAL ANSWER:
+    e2e4" is a protocol token, not prose, and counting it as a sentence skews
+    both terms of the formula.
+    """
+    text = _THINK_BLOCK.sub(" ", output or "")
+    text = _FINAL_ANSWER_PATTERN.sub(" ", text)
+    return text.strip()
+
+
+def score_readability(output: str, case: dict) -> ScoreResult:
+    """
+    Bound the reading level of the coaching prose. Coaching a learner in prose
+    they have to re-read twice is a real failure even when the move is right —
+    and it is a failure the exact-match scorers cannot see.
+    """
+    prose = coaching_prose(output)
+    if not prose:
+        return ScoreResult(
+            "readability",
+            False,
+            "no coaching prose outside the FINAL ANSWER line",
+        )
+    grade = flesch_kincaid_grade(prose)
+    if grade <= _READABILITY_MAX_GRADE:
+        return ScoreResult("readability", True, f"grade {grade} <= {_READABILITY_MAX_GRADE}")
+    return ScoreResult(
+        "readability", False, f"grade {grade} exceeds {_READABILITY_MAX_GRADE}"
+    )
+
+
 def score_for_case(output: str, case: dict) -> list[ScoreResult]:
     """
     Run the correct exact-match scorer for the case's answer format, plus the
@@ -352,4 +465,5 @@ def score_for_case(output: str, case: dict) -> list[ScoreResult]:
         results.append(
             ScoreResult("answerFormat", False, f"unknown answerFormat: {fmt!r}")
         )
+    results.append(score_readability(output, case))
     return results
