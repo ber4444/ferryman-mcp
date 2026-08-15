@@ -77,6 +77,7 @@ command passes on `main`.
 | Multi-provider scorecard | done | 144 rows (48×3), all three providers scored — see [Scorecard status](#scorecard-status) |
 | Multi-skill harness (`--skill`) | done | `python eval_harness/run_scorecard.py --skill chess-opening-coach` |
 | Chess eval (objective exact-match) | done | `python -m pytest eval_harness/tests/test_chess_scorers.py -q` — see [Chess eval status](#chess-eval-status) |
+| Deterministic readability axis | done | `python -m pytest eval_harness/tests/test_chess_scorers.py -k readability -q` (5 tests) |
 | Scoring on-device runs ferryman didn't generate | done | `python eval_harness/score_move_coach_run.py <results.jsonl> <candidates.json>` — see [On-device runs](#on-device-runs) |
 
 ## Scorecard status
@@ -139,10 +140,38 @@ verbatim so its scoring matches the published methodology.
 1. **Objective floor (rule layer):** `FINAL ANSWER:` is extracted and exact-
    matched against the case's `correctAnswer` — UCI move normalization for
    tactics, centipawn-band string match for position judgment. No judge, no
-   fuzziness. A forbidden-phrase gate (ported from the chess app's validators)
-   fails any output asserting engine depth/ELO/unsupported certainty.
+   fuzziness. Three deterministic scorers run alongside it: a **forbidden-phrase**
+   gate (ported from the chess app's validators) fails any output asserting engine
+   depth/ELO/unsupported certainty; **reason-faithfulness** checks the explanation
+   against the move's derived tags, on UCI cases (they are the ones with a move,
+   and so a tag set, to be faithful to); and **readability** bounds the reading
+   level of the coaching prose.
 2. **Coaching-quality (judge layer):** the existing family-excluded LLM judge,
    scored against a chess-specific rubric (`eval_harness/rubric-chess.md`).
+
+**Why readability is a rule and not a judge criterion.** The judge's
+`tone_and_structure` passed **120/120** on this skill — and the raw scores show a
+criterion whose *floor* sits exactly on the pass bar (`{3.0: 57, 4.0: 12, 5.0: 51}`)
+while every other criterion emits 1s and 2s. A criterion that has never failed has
+not been tested. `score_readability` replaces it with Flesch-Kincaid over the prose,
+after stripping `<think>` deliberation and the `FINAL ANSWER:` line (a protocol
+token, not prose — counting it as a sentence flatters the score). An output carrying
+only the marker reports *"no coaching prose"* rather than passing by default.
+
+Two things to know before touching the bound. **8.0 is chosen for discrimination,
+not correctness** — it separates hf-llama at roughly twice the others, which agrees
+independently with its worst-in-set rule pass rate, reasoning quality and factual
+correctness; above ~9.5 the separation collapses and inverts, and at 12.0 nothing
+fails and the column is decorative. And **the grades are ordinal, not real US grade
+levels**: the syllable counter is a heuristic, and it only works because the same
+function both sets the bound and checks against it, so the bias cancels. An absolute
+figure needs CMUdict and a recalibration.
+
+The chess app's own tone rules were tried here first and **two of the three are inert
+on this corpus** — `no_person_praise` never fires in 91 outputs, and
+`criticism_has_next_step` passes almost without firing because criticism vocabulary
+appears in 1 of 91. They discriminate in the app, where the coach critiques the
+player's *own* move. A scorer is only meaningful relative to the corpus it runs on.
 
 ```bash
 python eval_harness/run_scorecard.py --skill chess-opening-coach --all-providers
