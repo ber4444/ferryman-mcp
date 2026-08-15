@@ -370,3 +370,48 @@ def test_syllable_counter_does_not_overstrip_sibilant_es():
     # "pieces" is pie-ces; stripping "-es" after a sibilant scores it 1.
     assert chess_scorers._count_syllables("pieces") >= 2
     assert chess_scorers._count_syllables("moves") == 1
+
+
+# --- check_invention: the invention half, callable without coverage masking it ---------------
+
+
+def test_check_invention_reports_independently_of_coverage():
+    """`_check_faithfulness` returns the coverage failure first, so a candidate that omits a
+    supplied tag never reports its inventions. Scoring a two-sentence Move Coach panel handed
+    several tags, coverage fails almost always — which masked one column's inventions while the
+    other's stayed visible, and made a head-to-head comparison read backwards."""
+    text = "This delivers checkmate."
+    tags = {"develops", "center-control"}
+    # Coverage fails (neither supplied concept is mentioned) …
+    folded = chess_scorers._check_faithfulness(text, tags)
+    assert not folded.passed
+    assert "omits" in folded.reason
+    # … and the invention is still reported.
+    assert chess_scorers.check_invention(text, tags) == ["checkmate"]
+
+
+def test_winning_chances_is_not_a_capture_claim():
+    """`capture`'s vocabulary included bare "win", which matched "your winning chances" — the
+    phrase the Move Coach surface uses on nearly every line. Measured on a 100-case on-device run:
+    67 of 67 model and 17 of 17 deterministic "invents a capture" flags were that substring, and
+    none named a captured piece."""
+    assert chess_scorers.check_invention("It drops your winning chances by 7%.", {"develops"}) == []
+    assert chess_scorers.check_invention("This move takes space in the centre.", {"pawn-push"}) == []
+
+
+def test_a_capture_naming_its_object_is_still_flagged():
+    """The fix must not turn the gate off: a capture claim with an object is still an invention
+    when the tags do not supply one."""
+    assert chess_scorers.check_invention("It wins the rook on a1.", {"develops"}) == ["capture"]
+    assert chess_scorers.check_invention("It captures a pawn.", {"develops"}) == ["capture"]
+
+
+def test_material_and_estimates_are_not_checkmate_claims():
+    """"mate" is a substring of "material" and "estimates". Every checkmate flag on the 2026-08-15
+    on-device run came from one of those two words, and none of them claimed mate."""
+    assert chess_scorers.check_invention("The engine estimates a material swing.", {"capture"}) == []
+    assert chess_scorers.check_invention("That is checkmate.", {"capture"}) == ["checkmate"]
+
+
+def test_a_supplied_high_stakes_tag_is_never_an_invention():
+    assert chess_scorers.check_invention("That is checkmate.", {"checkmate"}) == []

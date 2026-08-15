@@ -178,7 +178,14 @@ def score_forbidden_phrases(output: str, case: dict) -> ScoreResult:
 # to narrate "this is an opening move" — only to paraphrase the *reasoning*
 # tags. Including opening would fail any explanation that didn't say "opening."
 _TAG_CONCEPTS: dict[str, list[str]] = {
-    "capture": ["capture", "take", "win"],
+    # A capture claim names what was taken. Bare "take"/"win" matched ordinary
+    # coaching prose — "takes space", "takes control", and above all "your
+    # winning chances", which the Move Coach surface says on nearly every line.
+    # Measured on a 100-case on-device run: 67 of 67 model and 17 of 17
+    # deterministic "invents a capture" flags were that substring and *none*
+    # named a captured piece. Same shape as the chess app's own
+    # CAPTURE_OBJECT_PHRASES, arrived at independently.
+    "capture": ["capture", "takes the", "takes a", "take the", "wins the", "wins a", "won the"],
     "check": ["check"],
     "checkmate": ["checkmate", "mate"],
     # Note: bare "kingside"/"queenside" are deliberately NOT keywords — they
@@ -210,6 +217,42 @@ _HIGH_STAKES_TAGS = {
 }
 
 
+def check_invention(output: str, tags: set[str]) -> list[str]:
+    """High-stakes concepts ``output`` asserts that ``tags`` do not supply.
+
+    The invention half of [_check_faithfulness], callable on its own. That
+    matters for any short-answer surface: `_check_faithfulness` returns the
+    *coverage* failure first, so a candidate that omits a supplied tag never
+    reports its inventions at all. Scoring a two-sentence Move Coach panel
+    handed five tags, coverage fails ~99% of the time — which silently masked
+    the deterministic baseline's inventions while the model's stayed visible,
+    and made a head-to-head comparison of the two read backwards.
+    """
+    lowered = (output or "").lower()
+    return [tag for tag in sorted(_HIGH_STAKES_TAGS) if tag not in tags and _mentions(tag, lowered)]
+
+
+# "check" is a substring of "checkmate", and "mate" is a substring of "material"
+# and "estimates" — both need a word boundary rather than `in`. Without it, every
+# sentence containing "material swing" was scored as claiming checkmate: 4 of the
+# 4 checkmate flags on the 2026-08-15 on-device run, none of them real.
+_CHECK_CHESS = re.compile(r"\bcheck(?!mate| if\b| whether\b)")
+_MATE_CHESS = re.compile(r"\b(?:checkmate|mate|mated|mating)\b")
+
+
+def _mentions(tag: str, lowered: str) -> bool:
+    """Whether ``lowered`` discusses ``tag``'s concept. One definition, used by
+    both the coverage and the invention half."""
+    concepts = _TAG_CONCEPTS.get(tag, [])
+    if not concepts:
+        return False
+    if tag == "check":
+        return bool(_CHECK_CHESS.search(lowered))
+    if tag == "checkmate":
+        return bool(_MATE_CHESS.search(lowered))
+    return any(c in lowered for c in concepts)
+
+
 def _check_faithfulness(output: str, tags: set[str]) -> ScoreResult:
     """
     The pure core of reason-faithfulness scoring: given a set of deterministic
@@ -223,26 +266,8 @@ def _check_faithfulness(output: str, tags: set[str]) -> ScoreResult:
     """
     lowered = (output or "").lower()
 
-    # `check` is a substring of `checkmate`, so a plain substring test for the
-    # `check` concept would fire on every "checkmate" mention. Use a word-
-    # boundary match: "check" not followed by "mate". (checkmate has its own
-    # concept entry and is matched normally.)
-    #
-    # Also exclude the clearest verb usages — "check if/whether" (the model
-    # deliberating "check if the king is safe" is not the chess concept of
-    # giving check). We don't try to catch every verb form; the <think>-stripping
-    # upstream removes most, and the chess concept is far more common than the
-    # verb in a delivered Move Coach answer, so this errs toward catching real
-    # inventions at the cost of rare verb false-positives.
-    _CHECK_CHESS = re.compile(r"\bcheck(?!mate| if\b| whether\b)")
-
     def mentions(tag: str) -> bool:
-        concepts = _TAG_CONCEPTS.get(tag, [])
-        if not concepts:
-            return False
-        if tag == "check":
-            return bool(_CHECK_CHESS.search(lowered))
-        return any(c in lowered for c in concepts)
+        return _mentions(tag, lowered)
 
     # 1. Coverage: each supplied tag's concept should be mentioned.
     missing = []
@@ -253,12 +278,7 @@ def _check_faithfulness(output: str, tags: set[str]) -> ScoreResult:
             missing.append(tag)
 
     # 2. Unsupported invention: high-stakes concept asserted but not supplied.
-    invented = []
-    for tag in _HIGH_STAKES_TAGS:
-        if tag in tags:
-            continue  # genuinely supplied — not an invention
-        if mentions(tag):
-            invented.append(tag)
+    invented = check_invention(output, tags)
 
     if missing:
         return ScoreResult(
