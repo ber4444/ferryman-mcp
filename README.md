@@ -73,10 +73,11 @@ command passes on `main`.
 | Fit summary | done | `ferry run company-role-research --input '{"company":"...","role":"..."}'` |
 | HTTP channel | building | `ferry serve --port 8080` (needs an API key) |
 | Routing logged | done | unit-tested; `logs/routing.jsonl` written by every `runSkill` call |
-| Python eval harness | done | `python -m pytest eval_harness/ -q` (74 tests green) |
+| Python eval harness | done | `python -m pytest eval_harness/ -q` (133 tests green) |
 | Multi-provider scorecard | done | 144 rows (48×3), all three providers scored — see [Scorecard status](#scorecard-status) |
 | Multi-skill harness (`--skill`) | done | `python eval_harness/run_scorecard.py --skill chess-opening-coach` |
 | Chess eval (objective exact-match) | done | `python -m pytest eval_harness/tests/test_chess_scorers.py -q` — see [Chess eval status](#chess-eval-status) |
+| Scoring on-device runs ferryman didn't generate | done | `python eval_harness/score_move_coach_run.py <results.jsonl> <candidates.json>` — see [On-device runs](#on-device-runs) |
 
 ## Scorecard status
 
@@ -156,6 +157,59 @@ human-reviews + freezes the set — is specced in
 [`docs/plans/chess-lichess-curation.md`](docs/plans/chess-lichess-curation.md)
 (not yet built). No scorecard numbers are committed until a real run produces
 them.
+
+### On-device runs
+
+ferryman is an HTTP-only MCP host with no on-device provider, and the generators
+worth measuring — LiteRT-LM, ML Kit/AICore — live inside the chess app. But the
+scorers here are provider-agnostic: they check a string of prose against a tag
+set. So generation and scoring are decoupled. The app writes a file, ferryman
+scores it, and a model that ferryman cannot call is still scored by the same
+rules as any cloud provider.
+
+| Script | Input | What it answers |
+|---|---|---|
+| `score_litert_outputs.py` | `litert-outputs.json` (`EvalLiteRtDriver.kt`) | Does LiteRT-LM's paraphrase stay faithful to the deterministic tags? |
+| `score_move_coach_run.py` | `results.jsonl` (`AndroidBenchRunner`) | Does the on-device Move Coach beat the deterministic sentence in the same row? |
+| `judge_move_coach_run.py` | the same `results.jsonl` | The judge layer for the above — needs `JUDGE_API_KEY`. |
+
+```bash
+# Rule layer — no key, no network
+python eval_harness/score_move_coach_run.py results.jsonl evals/golden/candidates.json
+
+# Judge layer — blinded pairwise preference + a separate veto pass
+JUDGE_BASE_URL=https://api.deepinfra.com/v1/openai \
+JUDGE_MODEL=deepseek-ai/DeepSeek-V4-Flash \
+python eval_harness/judge_move_coach_run.py results.jsonl
+```
+
+The Move Coach run carries **two candidates per row** — the model's answer and
+the deterministic sentence that was in the model's own prompt. That makes the
+product question directly scorable: not "does the model pass a gate" but "does
+it beat the free, instant sentence it was handed".
+
+**Three things this measurement taught, all of them about the harness:**
+
+- **Coverage does not transfer to every surface.** `_check_faithfulness` folds
+  two checks together, and only the invention half applies to a two-sentence
+  panel handed five tags. Coverage failed 99/100 for the *shipping* deterministic
+  line — a statement about the rule, not the product. `check_invention` is now
+  callable on its own; the folded verdict returned coverage first and so hid one
+  column's inventions entirely.
+- **A vocabulary entry is a measurement instrument.** `capture` held bare `win`,
+  which matches "your winning chances"; `mate` matched inside "material". Every
+  capture and checkmate flag in a 100-row run came from those two substrings and
+  none was real.
+- **A control that only tests identity is not a control.** The judge's veto
+  scored 0/100 on the deterministic column — but that text appears verbatim in
+  the veto prompt's ground truth, so the zero proves only that the judge
+  recognises identity, never that it tolerates paraphrase. Hand-verifying 12 of
+  its 81 flags on the model column found 1 real. A trustworthy veto needs a
+  known-good *paraphrase* as its control; that is not built yet.
+
+Judge models are compared on that control before use, not chosen by reputation:
+on the same rows, false positives on the deterministic column were 5/12 for
+Llama-3.1-70B, 3/11 for gpt-oss-120b, and 0/12 for DeepSeek-V4-Flash.
 
 ## Quickstart
 
