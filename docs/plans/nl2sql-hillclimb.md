@@ -4,6 +4,10 @@ Status: **harness ready, not yet run.** The skill, golden set, scorer, controls
 and comparison tooling are built and tested. No provider has been scored yet,
 so this file has no results. Fill in the log below from real runs only.
 
+Why it isn't run: the cloud sandbox this was built in has no provider API
+keys, and Hugging Face and Ollama are blocked, so there was no local model
+either. Run it where the keys are set (see AGENTS.md → Cloud sandbox limits).
+
 ## What gets claimed, and how
 
 The claim this produces has one shape:
