@@ -74,6 +74,38 @@ is a specced follow-on in
 (not yet built). No scorecard numbers are committed until a real run produces
 them.
 
+## Two engines: hand-rolled vs Koog (`--engine`, `head_to_head.py`)
+
+ferry runs a skill on either of two agent hosts: the hand-rolled orchestrator
+(`ferryman`, the default) or the same skill rebuilt on JetBrains Koog (`koog`).
+The harness passes the choice through both channels and refuses a result from
+the wrong engine (an older `ferry serve` that ignores the field becomes an error,
+not a mislabeled row).
+
+```bash
+# one engine, the usual scorecard — koog writes scorecard-koog.{md,json}
+python eval_harness/run_scorecard.py --all-providers --engine koog
+
+# both engines, interleaved per case, plus a paired comparison
+python eval_harness/head_to_head.py --all-providers          # → eval_harness/head_to_head/report.md
+python eval_harness/head_to_head.py --compare-only           # rebuild the report from saved rows
+
+# what each engine puts on the wire — no keys, no internet, ~8 s
+python eval_harness/wire_diff.py
+```
+
+`head_to_head.py` runs each case on both engines back to back, alternating which
+goes first, so both see the same live pages, model version and rate limits. The
+report gives per-provider rule pass rate (all rows and answered rows only),
+errors, latency, cost, tokens, tool discipline (exactly one fetch, as the skill
+asks; budget exhaustion), per-claim pass rates, and a paired per-case comparison
+with an exact two-sided sign test. Disagreeing cases are listed one by one.
+
+`wire_diff.py` runs one case per engine against a local scripted model and a
+local company page, through the real MCP servers, and diffs the request bodies.
+It reports the model's view of the run, not a score. Method and findings:
+[`docs/koog-head-to-head.md`](../docs/koog-head-to-head.md).
+
 ## The golden set and the human-review gate
 
 `golden/golden_set.json` holds 48 cases (47 real companies + 1 deliberate

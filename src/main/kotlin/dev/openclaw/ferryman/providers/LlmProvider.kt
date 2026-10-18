@@ -82,9 +82,10 @@ data class CompletionResult(
  * Provider-neutral LLM interface. Implemented once per provider family; the
  * orchestrator selects which instance to call based on skill/config hints.
  *
- * The graduation path if this grows beyond two implementations is
- * `ai.koog:koog-agents` (1.0.0, Apache-2.0) — see plan. For the MVP the thin
- * layer wins on legibility and eval-friendliness.
+ * Koog (`ai.koog`, Apache-2.0) was the planned graduation path. It now runs
+ * the same skills as a second engine (`--engine koog`, see `koog/`), so the
+ * thin layer and the framework can be compared on the same eval rather than
+ * by argument — see docs/koog-head-to-head.md.
  */
 interface LlmProvider {
     val id: String

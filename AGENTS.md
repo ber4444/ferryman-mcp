@@ -21,7 +21,8 @@ executes — those are data, this file is build/contribution rules.
 ferry providers list            # JSON enumeration of configured providers
 ferry skills list               # JSON enumeration of discovered skills
 ferry tools list                # aggregated MCP tools (stdio servers must be runnable)
-ferry run hello-repo --input "summarize this repo"
+ferry run --skill hello-repo --input "summarize this repo"
+ferry run --skill company-role-research --engine koog --input '{"company":"X","role":"Y"}'
 ferry serve --port 8080         # HTTP channel sharing the same orchestrator
 ```
 
@@ -34,8 +35,9 @@ CI: `.github/workflows/ci.yml` runs `./gradlew build` on push/PR to `main`.
 | `host/` | MCP host: read `.mcp.json`, connect stdio servers, aggregate tools |
 | `providers/` | `LlmProvider` interface + `AnthropicProvider`, `OpenAiCompatibleProvider` |
 | `skills/` | `SkillLoader` scanning `skills/*/SKILL.md` |
-| `orchestrator/` | `Orchestrator.runSkill(name, input)` — the programmatic entry point |
-| `channels/` | CLI (in `Main.kt`) + `HttpServer` — both call the same orchestrator |
+| `orchestrator/` | `Orchestrator.runSkill(name, input)` — the programmatic entry point; `SkillRunner` + `Engine` |
+| `koog/` | The same skills on JetBrains Koog (`--engine koog`): strategy graph, Koog OpenAI client, Koog MCP bridge |
+| `channels/` | CLI (in `Main.kt`) + `HttpServer` — both call the same `SkillRunner`, picked by `--engine` |
 | `config/` | TOML loader (`ferryman/config.toml`) |
 | `logging/` | `RoutingLogger` → `logs/routing.jsonl` |
 

@@ -29,6 +29,9 @@ data class SkillResult(
     // usage data — the scorecard then falls back to a chars/4 estimate.
     val inputTokens: Int? = null,
     val outputTokens: Int? = null,
+    // Which agent host produced this result (see [Engine]). Defaults to the
+    // hand-rolled orchestrator so existing callers are unchanged.
+    val engine: String = Engine.FERRYMAN.id,
 )
 
 /**
@@ -58,11 +61,11 @@ class Orchestrator(
     private val host: McpHost,
     private val providers: ProviderRegistry,
     private val logger: RoutingLogger,
-) {
-    suspend fun runSkill(
+) : SkillRunner {
+    override suspend fun runSkill(
         name: String,
         input: String,
-        providerOverride: String? = null,
+        providerOverride: String?,
     ): SkillResult {
         val skill =
             skills.find(name)
