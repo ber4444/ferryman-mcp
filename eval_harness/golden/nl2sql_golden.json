@@ -1,0 +1,4202 @@
+[
+  {
+    "id": "spider_dev_0046",
+    "input": {
+      "question": "How many pets have a greater weight than 10?",
+      "db_id": "pets_1"
+    },
+    "goldSql": "SELECT count(*) FROM pets WHERE weight  >  10",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "57bef760fb89a203031bbe72e55cf5bab21c5ca125e9c6746867fc8bef330aba",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 46
+    }
+  },
+  {
+    "id": "spider_dev_0056",
+    "input": {
+      "question": "How many different types of pet are there?",
+      "db_id": "pets_1"
+    },
+    "goldSql": "SELECT count(DISTINCT pettype) FROM pets",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "4f6004d56a1c5c58e6b2639eab81fb2ecb71c74b823f95e24a6f3536daea2fcd",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 56
+    }
+  },
+  {
+    "id": "spider_dev_0117",
+    "input": {
+      "question": "What is the average miles per gallon(mpg) of the cars with 4 cylinders?",
+      "db_id": "car_1"
+    },
+    "goldSql": "SELECT avg(mpg) FROM CARS_DATA WHERE Cylinders  =  4;",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "e31ca7ca80afc138751425d32365f9101bd7e50b3bc4dbd33b4a5abd30514a2b",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 117
+    }
+  },
+  {
+    "id": "spider_dev_0118",
+    "input": {
+      "question": "What is the average miles per gallon of all the cards with 4 cylinders?",
+      "db_id": "car_1"
+    },
+    "goldSql": "SELECT avg(mpg) FROM CARS_DATA WHERE Cylinders  =  4;",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "e31ca7ca80afc138751425d32365f9101bd7e50b3bc4dbd33b4a5abd30514a2b",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 118
+    }
+  },
+  {
+    "id": "spider_dev_0144",
+    "input": {
+      "question": "What is the number of cars with more than 4 cylinders?",
+      "db_id": "car_1"
+    },
+    "goldSql": "SELECT count(*) FROM CARS_DATA WHERE Cylinders  >  4;",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "4b2113e400a3629fafd2f28c14c713f4ce89c77a6dd6459e33e528e6fc2e4aab",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 144
+    }
+  },
+  {
+    "id": "spider_dev_0381",
+    "input": {
+      "question": "How many teachers are there?",
+      "db_id": "course_teach"
+    },
+    "goldSql": "SELECT count(*) FROM teacher",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "8de951489245846fe0bbab71d117eaa4fec8a5e37c47a71967f49bf58592eb6c",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 381
+    }
+  },
+  {
+    "id": "spider_dev_0384",
+    "input": {
+      "question": "What are the names of the teachers ordered by ascending age?",
+      "db_id": "course_teach"
+    },
+    "goldSql": "SELECT Name FROM teacher ORDER BY Age ASC",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 7,
+    "goldResultSha256": "79d92bc039888f02021a0d4edc088f2ba6981a270e9026f687e2d71d91191554",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 384
+    }
+  },
+  {
+    "id": "spider_dev_0388",
+    "input": {
+      "question": "What are the names of the teachers whose hometown is not `` Little Lever Urban District '' ?",
+      "db_id": "course_teach"
+    },
+    "goldSql": "select name from teacher where hometown != \"little lever urban district\"",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 7,
+    "goldResultSha256": "79d92bc039888f02021a0d4edc088f2ba6981a270e9026f687e2d71d91191554",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 388
+    }
+  },
+  {
+    "id": "spider_dev_0411",
+    "input": {
+      "question": "How many visitors below age 30 are there?",
+      "db_id": "museum_visit"
+    },
+    "goldSql": "SELECT count(*) FROM visitor WHERE age  <  30",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "4f6004d56a1c5c58e6b2639eab81fb2ecb71c74b823f95e24a6f3536daea2fcd",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 411
+    }
+  },
+  {
+    "id": "spider_dev_0413",
+    "input": {
+      "question": "What is the average age of the visitors whose membership level is not higher than 4?",
+      "db_id": "museum_visit"
+    },
+    "goldSql": "SELECT avg(age) FROM visitor WHERE Level_of_membership  <=  4",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "6ba43001d8cd36c36beeac3b1bb92a97a3eddaebf29f2a5146bee573f6b03ed5",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 413
+    }
+  },
+  {
+    "id": "spider_dev_0416",
+    "input": {
+      "question": "Find the average number of staff working for the museums that were open before 2009.",
+      "db_id": "museum_visit"
+    },
+    "goldSql": "SELECT avg(num_of_staff) FROM museum WHERE open_year  <  2009",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "8fcc98bf876f5b95d6496b621182734b2fc75262ec4a66d84011d5879607fd7f",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 416
+    }
+  },
+  {
+    "id": "spider_dev_0491",
+    "input": {
+      "question": "How many ships ended up being 'Captured'?",
+      "db_id": "battle_death"
+    },
+    "goldSql": "SELECT count(*) FROM ship WHERE disposition_of_ship  =  'Captured'",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "7e8d2c7ee37efe5dce9a28569df8e762adcd11aa08d4fab419236b565c389a7e",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 491
+    }
+  },
+  {
+    "id": "spider_dev_0495",
+    "input": {
+      "question": "What is the average number of injuries caused each time?",
+      "db_id": "battle_death"
+    },
+    "goldSql": "SELECT avg(injured) FROM death",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "4db9c49d2baa0290a15139cbda9cd6cea3a5086832ac54d4c467f5aeb1168e5b",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 495
+    }
+  },
+  {
+    "id": "spider_dev_0502",
+    "input": {
+      "question": "How many different results are there for the battles?",
+      "db_id": "battle_death"
+    },
+    "goldSql": "SELECT count(DISTINCT RESULT) FROM battle",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "0b1d211ee60374f57523163b7e10cd6c10bbb832304fe6bcd8f0bd76b1d59de8",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 502
+    }
+  },
+  {
+    "id": "spider_dev_0511",
+    "input": {
+      "question": "How is the math course described?",
+      "db_id": "student_transcripts_tracking"
+    },
+    "goldSql": "SELECT course_description FROM Courses WHERE course_name  =  'math'",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "ce5757bdc32244dce31583ccdcf78a71fbcab56ce8b09cda798788a92d847c35",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 511
+    }
+  },
+  {
+    "id": "spider_dev_0568",
+    "input": {
+      "question": "How many transcripts are listed?",
+      "db_id": "student_transcripts_tracking"
+    },
+    "goldSql": "SELECT count(*) FROM Transcripts",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "45042d565a22107ac0d70e0a25096d506ecd80c9d86485a42814d3e978f58f57",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 568
+    }
+  },
+  {
+    "id": "spider_dev_0687",
+    "input": {
+      "question": "How many states are there?",
+      "db_id": "voter_1"
+    },
+    "goldSql": "SELECT count(*) FROM area_code_state",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "4a54a6d520b8c35e630666e3425db7ecce20ecfc3aa7ee874ce355b1388f5be3",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 687
+    }
+  },
+  {
+    "id": "spider_dev_0691",
+    "input": {
+      "question": "What is last date created of votes from the state 'CA'?",
+      "db_id": "voter_1"
+    },
+    "goldSql": "SELECT max(created) FROM votes WHERE state  =  'CA'",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "6cdca699e09d19095051197b7ce14c209aea62c1f13f2a088871e7b5d1a8e20e",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 691
+    }
+  },
+  {
+    "id": "spider_dev_0834",
+    "input": {
+      "question": "How many different nationalities do conductors have?",
+      "db_id": "orchestra"
+    },
+    "goldSql": "SELECT count(DISTINCT Nationality) FROM conductor",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "057c7fd2a1edc167af871d7ddaabbe99292e25b34432dda23037b24dbcb1c8be",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 834
+    }
+  },
+  {
+    "id": "spider_dev_0835",
+    "input": {
+      "question": "Count the number of different nationalities of conductors.",
+      "db_id": "orchestra"
+    },
+    "goldSql": "SELECT count(DISTINCT Nationality) FROM conductor",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "057c7fd2a1edc167af871d7ddaabbe99292e25b34432dda23037b24dbcb1c8be",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 835
+    }
+  },
+  {
+    "id": "spider_dev_0869",
+    "input": {
+      "question": "Return the grade for the high schooler named Kyle.",
+      "db_id": "network_1"
+    },
+    "goldSql": "SELECT grade FROM Highschooler WHERE name  =  \"Kyle\"",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "057c7fd2a1edc167af871d7ddaabbe99292e25b34432dda23037b24dbcb1c8be",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 869
+    }
+  },
+  {
+    "id": "spider_dev_0873",
+    "input": {
+      "question": "What is Kyle's id?",
+      "db_id": "network_1"
+    },
+    "goldSql": "SELECT ID FROM Highschooler WHERE name  =  \"Kyle\"",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "28c68849808b9ec7f9729faf5b8c3f85a627bb3e6d213b26dc8f89206449f773",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 873
+    }
+  },
+  {
+    "id": "spider_dev_0967",
+    "input": {
+      "question": "Count the number of dogs that went through a treatment.",
+      "db_id": "dog_kennels"
+    },
+    "goldSql": "SELECT count(DISTINCT dog_id) FROM Treatments",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "45042d565a22107ac0d70e0a25096d506ecd80c9d86485a42814d3e978f58f57",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 967
+    }
+  },
+  {
+    "id": "spider_dev_0969",
+    "input": {
+      "question": "Find the number of professionals who have ever treated dogs.",
+      "db_id": "dog_kennels"
+    },
+    "goldSql": "SELECT count(DISTINCT professional_id) FROM Treatments",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "45042d565a22107ac0d70e0a25096d506ecd80c9d86485a42814d3e978f58f57",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 969
+    }
+  },
+  {
+    "id": "spider_dev_0992",
+    "input": {
+      "question": "How much does the most expensive charge type costs?",
+      "db_id": "dog_kennels"
+    },
+    "goldSql": "SELECT max(charge_amount) FROM Charges",
+    "hardness": "easy",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "98a6a1539916dc89e7259dd6729e6d20ceffaddd932741e2e2246736233057d4",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 992
+    }
+  },
+  {
+    "id": "spider_dev_0072",
+    "input": {
+      "question": "What is the average and maximum age for each pet type?",
+      "db_id": "pets_1"
+    },
+    "goldSql": "SELECT avg(pet_age) ,  max(pet_age) ,  pettype FROM pets GROUP BY pettype",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 2,
+    "goldResultSha256": "318a52591f4efe443e73f70a2ae956d82b4aa156db6008d9ae6ee71557885979",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 72
+    }
+  },
+  {
+    "id": "spider_dev_0076",
+    "input": {
+      "question": "What are the different first names and ages of the students who do have pets?",
+      "db_id": "pets_1"
+    },
+    "goldSql": "SELECT DISTINCT T1.fname ,  T1.age FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 3,
+    "goldResultSha256": "cb2c6e1e2fd5211d4e680ec9054d6f23befc8bcb0cdaacc17f04127cafc3cb6f",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 76
+    }
+  },
+  {
+    "id": "spider_dev_0110",
+    "input": {
+      "question": "What is the number of car models that are produced by each maker and what is the id and full name of each maker?",
+      "db_id": "car_1"
+    },
+    "goldSql": "SELECT Count(*) ,  T2.FullName ,  T2.id FROM MODEL_LIST AS T1 JOIN CAR_MAKERS AS T2 ON T1.Maker  =  T2.Id GROUP BY T2.id;",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 23,
+    "goldResultSha256": "794d6d5d6f563df43482f394cd3cca6914e5a7da22334eebaf9bb8faa535ecb1",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 110
+    }
+  },
+  {
+    "id": "spider_dev_0128",
+    "input": {
+      "question": "What is the average weight and year for each year?",
+      "db_id": "car_1"
+    },
+    "goldSql": "SELECT avg(Weight) ,  YEAR FROM CARS_DATA GROUP BY YEAR;",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 3,
+    "goldResultSha256": "5f4ce863db38ea38bdf32dea31494b6b39f4bf5c6fceb7d1b7889a29d152d421",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 128
+    }
+  },
+  {
+    "id": "spider_dev_0161",
+    "input": {
+      "question": "How many countries has more than 2 car makers ?",
+      "db_id": "car_1"
+    },
+    "goldSql": "select count(*) from countries as t1 join car_makers as t2 on t1.countryid  =  t2.country group by t1.countryid having count(*)  >  2",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 4,
+    "goldResultSha256": "aefa0f659a246aef741fba31f2d51c0d77bc5186d39f0b3857021735bba86ae2",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 161
+    }
+  },
+  {
+    "id": "spider_dev_0386",
+    "input": {
+      "question": "What is the age and hometown of every teacher?",
+      "db_id": "course_teach"
+    },
+    "goldSql": "SELECT Age ,  Hometown FROM teacher",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 7,
+    "goldResultSha256": "a7a3e435fd9ae2ebf5adf6efecf1045e2fa67e41d895e24c03802fa33523ea9c",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 386
+    }
+  },
+  {
+    "id": "spider_dev_0389",
+    "input": {
+      "question": "Show the name of teachers aged either 32 or 33?",
+      "db_id": "course_teach"
+    },
+    "goldSql": "SELECT Name FROM teacher WHERE Age  =  32 OR Age  =  33",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 2,
+    "goldResultSha256": "e56c3a439bd561f9adba8d27dba522022e9955625b4af4a10c54856b3c465185",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 389
+    }
+  },
+  {
+    "id": "spider_dev_0390",
+    "input": {
+      "question": "What are the names of the teachers who are aged either 32 or 33?",
+      "db_id": "course_teach"
+    },
+    "goldSql": "SELECT Name FROM teacher WHERE Age  =  32 OR Age  =  33",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 2,
+    "goldResultSha256": "e56c3a439bd561f9adba8d27dba522022e9955625b4af4a10c54856b3c465185",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 390
+    }
+  },
+  {
+    "id": "spider_dev_0415",
+    "input": {
+      "question": "Find the id and name of the museum that has the most staff members?",
+      "db_id": "museum_visit"
+    },
+    "goldSql": "SELECT museum_id ,  name FROM museum ORDER BY num_of_staff DESC LIMIT 1",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "61704b17874eac51bf37141f2025ff59c65c187427c164db87e39ba9a9beff7c",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 415
+    }
+  },
+  {
+    "id": "spider_dev_0424",
+    "input": {
+      "question": "What are the average and maximum number of tickets bought in all visits?",
+      "db_id": "museum_visit"
+    },
+    "goldSql": "SELECT avg(num_of_ticket) ,  max(num_of_ticket) FROM visit",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "cf424019d46738e810a742bf598a016d82d81208d8c7524a62f8dab42f350076",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 424
+    }
+  },
+  {
+    "id": "spider_dev_0425",
+    "input": {
+      "question": "What is the total ticket expense of the visitors whose membership level is 1?",
+      "db_id": "museum_visit"
+    },
+    "goldSql": "SELECT sum(t2.Total_spent) FROM visitor AS t1 JOIN visit AS t2 ON t1.id  =  t2.visitor_id WHERE t1.Level_of_membership  =  1",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "7b6a07c2cd51c5575c8e82a03365fc73c7eac1138e4f678c531336d2f30ad38e",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 425
+    }
+  },
+  {
+    "id": "spider_dev_0492",
+    "input": {
+      "question": "List the name and tonnage ordered by in descending alphaetical order for the names.",
+      "db_id": "battle_death"
+    },
+    "goldSql": "SELECT name ,  tonnage FROM ship ORDER BY name DESC",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 7,
+    "goldResultSha256": "9c1695875e07a74d43dd49a51d987e96ac29ab9c48c8a0168d01d4ee14fd2a79",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 492
+    }
+  },
+  {
+    "id": "spider_dev_0497",
+    "input": {
+      "question": "What are the name and results of the battles when the bulgarian commander is not 'Boril'",
+      "db_id": "battle_death"
+    },
+    "goldSql": "SELECT name ,  RESULT FROM battle WHERE bulgarian_commander != 'Boril'",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 6,
+    "goldResultSha256": "0a01a283bbc95ae77dd3ad4df014a3b8188ab5f3c9c8496c9b649b05e8578df0",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 497
+    }
+  },
+  {
+    "id": "spider_dev_0498",
+    "input": {
+      "question": "What are the different ids and names of the battles that lost any 'Brig' type shipes?",
+      "db_id": "battle_death"
+    },
+    "goldSql": "SELECT DISTINCT T1.id ,  T1.name FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle WHERE T2.ship_type  =  'Brig'",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 5,
+    "goldResultSha256": "7d1a81a551c361645afe4d13726f1333da47d23d721997d9ef2156cdadd2fc1c",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 498
+    }
+  },
+  {
+    "id": "spider_dev_0553",
+    "input": {
+      "question": "What is the phone number of the man with the first name Timmothy and the last name Ward?",
+      "db_id": "student_transcripts_tracking"
+    },
+    "goldSql": "SELECT cell_mobile_number FROM Students WHERE first_name  =  'Timmothy' AND last_name  =  'Ward'",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "36d61731ce4bb3100c8a918edbb00d89b066dcc51a65e085e217a1dfe2ce9623",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 553
+    }
+  },
+  {
+    "id": "spider_dev_0556",
+    "input": {
+      "question": "What is the first, middle, and last name of the first student to register?",
+      "db_id": "student_transcripts_tracking"
+    },
+    "goldSql": "SELECT first_name ,  middle_name ,  last_name FROM Students ORDER BY date_first_registered ASC LIMIT 1",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "55997c54b28bf9777b763325d16a73aa83450870da9434badde34a99a775180b",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 556
+    }
+  },
+  {
+    "id": "spider_dev_0690",
+    "input": {
+      "question": "What are the maximum and minimum values of area codes?",
+      "db_id": "voter_1"
+    },
+    "goldSql": "SELECT max(area_code) ,  min(area_code) FROM area_code_state",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "746bf81da642ae269b537d0c8bf61501cb8bc7a61bee7e9ff989b41d631a63e0",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 690
+    }
+  },
+  {
+    "id": "spider_dev_0701",
+    "input": {
+      "question": "Return the names of the contestants whose names contain the substring 'Al' .",
+      "db_id": "voter_1"
+    },
+    "goldSql": "select contestant_name from contestants where contestant_name like \"%al%\"",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 4,
+    "goldResultSha256": "30bfaa4ae65138e7c0d4fa4618903369a3850cc65455ee508bae251dc672cd1e",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 701
+    }
+  },
+  {
+    "id": "spider_dev_0850",
+    "input": {
+      "question": "Please show the record formats of orchestras in ascending order of count.",
+      "db_id": "orchestra"
+    },
+    "goldSql": "SELECT Major_Record_Format FROM orchestra GROUP BY Major_Record_Format ORDER BY COUNT(*) ASC",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 3,
+    "goldResultSha256": "cc3fb2456022dcb7c7bdc212c2776ed28de0e43b1b013abe3b863218bf63a08a",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 850
+    }
+  },
+  {
+    "id": "spider_dev_0858",
+    "input": {
+      "question": "Find the number of orchestras whose record format is \"CD\" or \"DVD\".",
+      "db_id": "orchestra"
+    },
+    "goldSql": "SELECT COUNT(*) FROM orchestra WHERE Major_Record_Format  =  \"CD\" OR Major_Record_Format  =  \"DVD\"",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "0a95890283121df17f1e2773fb86127b0802522674ff8fee9a1ab6f7aaf89884",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 858
+    }
+  },
+  {
+    "id": "spider_dev_0893",
+    "input": {
+      "question": "Count the number of friends Kyle has.",
+      "db_id": "network_1"
+    },
+    "goldSql": "SELECT count(*) FROM Friend AS T1 JOIN Highschooler AS T2 ON T1.student_id  =  T2.id WHERE T2.name  =  \"Kyle\"",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "98e0407ddfa10caa3fe95d610f5f89beb335f6a4973ba8a105ae53c5ecd300e6",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 893
+    }
+  },
+  {
+    "id": "spider_dev_0912",
+    "input": {
+      "question": "How many likes does Kyle have?",
+      "db_id": "network_1"
+    },
+    "goldSql": "SELECT count(*) FROM Likes AS T1 JOIN Highschooler AS T2 ON T1.student_id  =  T2.id WHERE T2.name  =  \"Kyle\"",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "98e0407ddfa10caa3fe95d610f5f89beb335f6a4973ba8a105ae53c5ecd300e6",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 912
+    }
+  },
+  {
+    "id": "spider_dev_0947",
+    "input": {
+      "question": "What are the date and the operating professional's first name of each treatment?",
+      "db_id": "dog_kennels"
+    },
+    "goldSql": "SELECT T1.date_of_treatment ,  T2.first_name FROM Treatments AS T1 JOIN Professionals AS T2 ON T1.professional_id  =  T2.professional_id",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 15,
+    "goldResultSha256": "9276292d941eded8a4d81a8600c8745f3d84862b5e5cfdd8eb1fe654d733dd9a",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 947
+    }
+  },
+  {
+    "id": "spider_dev_0965",
+    "input": {
+      "question": "List the arrival date and the departure date for all the dogs.",
+      "db_id": "dog_kennels"
+    },
+    "goldSql": "SELECT date_arrived ,  date_departed FROM Dogs",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 15,
+    "goldResultSha256": "4903256d8dcf23a657479a64c66b1708f1fb5cf3fe99d07fac3937acecb3c797",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 965
+    }
+  },
+  {
+    "id": "spider_dev_0990",
+    "input": {
+      "question": "How much does each charge type costs? List both charge type and amount.",
+      "db_id": "dog_kennels"
+    },
+    "goldSql": "SELECT charge_type ,  charge_amount FROM Charges",
+    "hardness": "medium",
+    "split": "hillclimb",
+    "goldRowCount": 3,
+    "goldResultSha256": "a6aba8e23368cd63dbc6fe1de95f82653f4a4a1daf05eba00a8231e9f1c6b193",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 990
+    }
+  },
+  {
+    "id": "spider_dev_0053",
+    "input": {
+      "question": "Find the number of dog pets that are raised by female students (with sex F).",
+      "db_id": "pets_1"
+    },
+    "goldSql": "SELECT count(*) FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T2.petid  =  T3.petid WHERE T1.sex  =  'F' AND T3.pettype  =  'dog'",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "57bef760fb89a203031bbe72e55cf5bab21c5ca125e9c6746867fc8bef330aba",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 53
+    }
+  },
+  {
+    "id": "spider_dev_0063",
+    "input": {
+      "question": "Find the id of students who do not have a cat pet.",
+      "db_id": "pets_1"
+    },
+    "goldSql": "SELECT stuid FROM student EXCEPT SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat'",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 33,
+    "goldResultSha256": "0dc3191fd6067fba16600da486bcbb9ebe0863a64ab88ecbfd036e1db173b04b",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 63
+    }
+  },
+  {
+    "id": "spider_dev_0084",
+    "input": {
+      "question": "What is the last name of the student who has a cat that is 3 years old?",
+      "db_id": "pets_1"
+    },
+    "goldSql": "SELECT T1.lname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pet_age  =  3 AND T3.pettype  =  'cat'",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "1dae7cefeb120dfb2d193a7eeaa2d91986b1793e6f4b00f5b99dc019eb9e9db6",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 84
+    }
+  },
+  {
+    "id": "spider_dev_0105",
+    "input": {
+      "question": "How many car makers are there in each continents? List the continent name and the count.",
+      "db_id": "car_1"
+    },
+    "goldSql": "SELECT T1.Continent ,  count(*) FROM CONTINENTS AS T1 JOIN COUNTRIES AS T2 ON T1.ContId  =  T2.continent JOIN car_makers AS T3 ON T2.CountryId  =  T3.Country GROUP BY T1.Continent;",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 3,
+    "goldResultSha256": "44f47db224eb37dcbffeb69db0739a368730b0e17a0cef688f68f34d0904ed79",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 105
+    }
+  },
+  {
+    "id": "spider_dev_0115",
+    "input": {
+      "question": "How many car models are produced in the usa?",
+      "db_id": "car_1"
+    },
+    "goldSql": "SELECT count(*) FROM MODEL_LIST AS T1 JOIN CAR_MAKERS AS T2 ON T1.Maker  =  T2.Id JOIN COUNTRIES AS T3 ON T2.Country  =  T3.CountryId WHERE T3.CountryName  =  'usa';",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "fdab6f06b0b9718668ff4837960692f2ebc5a95ba1c6645359e9ba9ad627fa3e",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 115
+    }
+  },
+  {
+    "id": "spider_dev_0174",
+    "input": {
+      "question": "What are the names of the countries with no car makers?",
+      "db_id": "car_1"
+    },
+    "goldSql": "SELECT CountryName FROM countries EXCEPT SELECT T1.CountryName FROM countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.countryId  =  T2.Country;",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 7,
+    "goldResultSha256": "254f8175b636a4e3edd145ef2a94bb4ac38f56ceb5b0cf3e928fbc416c99623e",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 174
+    }
+  },
+  {
+    "id": "spider_dev_0395",
+    "input": {
+      "question": "List the most common hometown of teachers.",
+      "db_id": "course_teach"
+    },
+    "goldSql": "SELECT Hometown FROM teacher GROUP BY Hometown ORDER BY COUNT(*) DESC LIMIT 1",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "ed556cac7f40fa5dac2466323f7802ba4d2e3bd76ffacada3bad5dec19be3cc1",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 395
+    }
+  },
+  {
+    "id": "spider_dev_0403",
+    "input": {
+      "question": "Show the name of the teacher for the math course.",
+      "db_id": "course_teach"
+    },
+    "goldSql": "SELECT T3.Name FROM course_arrange AS T1 JOIN course AS T2 ON T1.Course_ID  =  T2.Course_ID JOIN teacher AS T3 ON T1.Teacher_ID  =  T3.Teacher_ID WHERE T2.Course  =  \"Math\"",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 2,
+    "goldResultSha256": "3614825a4951bb2c227df6180f60b85814858b8f1f195f76830d7a7ba89e646c",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 403
+    }
+  },
+  {
+    "id": "spider_dev_0410",
+    "input": {
+      "question": "What are the names of the teachers whose courses have not been arranged?",
+      "db_id": "course_teach"
+    },
+    "goldSql": "SELECT Name FROM teacher WHERE Teacher_id NOT IN (SELECT Teacher_id FROM course_arrange)",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 2,
+    "goldResultSha256": "e56c3a439bd561f9adba8d27dba522022e9955625b4af4a10c54856b3c465185",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 410
+    }
+  },
+  {
+    "id": "spider_dev_0418",
+    "input": {
+      "question": "find the names of museums which have more staff than the minimum staff number of all museums opened after 2010.",
+      "db_id": "museum_visit"
+    },
+    "goldSql": "SELECT name FROM museum WHERE num_of_staff  >  (SELECT min(num_of_staff) FROM museum WHERE open_year  >  2010)",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 3,
+    "goldResultSha256": "ff2699809a90a7403b764ce9db01843b9d456a1e2ffd684fb039ef5f227d9994",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 418
+    }
+  },
+  {
+    "id": "spider_dev_0422",
+    "input": {
+      "question": "What is the name of the museum that had no visitor yet?",
+      "db_id": "museum_visit"
+    },
+    "goldSql": "SELECT name FROM museum WHERE Museum_ID NOT IN (SELECT museum_id FROM visit)",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 4,
+    "goldResultSha256": "d4ad4d3702471879ee115bf0a1cd71b14f6151856b21d71d599e4e0cbd074978",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 422
+    }
+  },
+  {
+    "id": "spider_dev_0423",
+    "input": {
+      "question": "Find the name and age of the visitor who bought the most tickets at once.",
+      "db_id": "museum_visit"
+    },
+    "goldSql": "SELECT t1.name ,  t1.age FROM visitor AS t1 JOIN visit AS t2 ON t1.id  =  t2.visitor_id ORDER BY t2.num_of_ticket DESC LIMIT 1",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "19be497b26c15c3f96a65b9d95b5cce0ad028713cf02727957eb5ea3ef5cfea1",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 423
+    }
+  },
+  {
+    "id": "spider_dev_0499",
+    "input": {
+      "question": "What are the ids and names of the battles that led to more than 10 people killed in total.",
+      "db_id": "battle_death"
+    },
+    "goldSql": "SELECT T1.id ,  T1.name FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle JOIN death AS T3 ON T2.id  =  T3.caused_by_ship_id GROUP BY T1.id HAVING sum(T3.killed)  >  10",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 3,
+    "goldResultSha256": "0fc4247dfbc783952db065aa9ccc44b5b3103a53cba20c21332bdd2f0b7eaf48",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 499
+    }
+  },
+  {
+    "id": "spider_dev_0535",
+    "input": {
+      "question": "Who is enrolled in a Bachelor degree program? List the first name, middle name, last name.",
+      "db_id": "student_transcripts_tracking"
+    },
+    "goldSql": "SELECT DISTINCT T1.first_name ,  T1.middle_name ,  T1.last_name FROM Students AS T1 JOIN Student_Enrolment AS T2 ON T1.student_id  =  T2.student_id JOIN Degree_Programs AS T3 ON T2.degree_program_id  =  T3.degree_program_id WHERE T3.degree_summary_name  =  'Bachelor'",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 8,
+    "goldResultSha256": "22da67ce1ac09ce679d01f8b89d92689f11386df5cfc228059c8098a1bdc69d4",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 535
+    }
+  },
+  {
+    "id": "spider_dev_0544",
+    "input": {
+      "question": "What is the name of the semester with no students enrolled?",
+      "db_id": "student_transcripts_tracking"
+    },
+    "goldSql": "SELECT semester_name FROM Semesters WHERE semester_id NOT IN( SELECT semester_id FROM Student_Enrolment )",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 6,
+    "goldResultSha256": "23b6e8f130544f0ae67033db8cb0546d74548260482bc6e796808815cfdebef5",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 544
+    }
+  },
+  {
+    "id": "spider_dev_0583",
+    "input": {
+      "question": "Find the first name of the students who permanently live in the country Haiti or have the cell phone number 09700166582 .",
+      "db_id": "student_transcripts_tracking"
+    },
+    "goldSql": "select t1.first_name from students as t1 join addresses as t2 on t1.permanent_address_id  =  t2.address_id where t2.country  =  'haiti' or t1.cell_mobile_number  =  '09700166582'",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "094ec01b6f139e877b5d8ff99cd316c31a0b4de09c3ef5fc51a91867eaa98255",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 583
+    }
+  },
+  {
+    "id": "spider_dev_0852",
+    "input": {
+      "question": "List the record company shared by the most number of orchestras.",
+      "db_id": "orchestra"
+    },
+    "goldSql": "SELECT Record_Company FROM orchestra GROUP BY Record_Company ORDER BY COUNT(*) DESC LIMIT 1",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "f4b44e14b7d81282b1c2bd8e37ec7735eb86f6a9728fe5bfc2b827e51b2aed3e",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 852
+    }
+  },
+  {
+    "id": "spider_dev_0855",
+    "input": {
+      "question": "What are the orchestras that do not have any performances?",
+      "db_id": "orchestra"
+    },
+    "goldSql": "SELECT Orchestra FROM orchestra WHERE Orchestra_ID NOT IN (SELECT Orchestra_ID FROM performance)",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "a53e084eba711f956d51773d8e624b56aee27deb34af4ff2c8a51c9ac8743d25",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 855
+    }
+  },
+  {
+    "id": "spider_dev_0856",
+    "input": {
+      "question": "Show the record companies shared by orchestras founded before 2003 and after 2003.",
+      "db_id": "orchestra"
+    },
+    "goldSql": "SELECT Record_Company FROM orchestra WHERE Year_of_Founded  <  2003 INTERSECT SELECT Record_Company FROM orchestra WHERE Year_of_Founded  >  2003",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "f4b44e14b7d81282b1c2bd8e37ec7735eb86f6a9728fe5bfc2b827e51b2aed3e",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 856
+    }
+  },
+  {
+    "id": "spider_dev_0894",
+    "input": {
+      "question": "Show ids of all students who do not have any friends.",
+      "db_id": "network_1"
+    },
+    "goldSql": "SELECT id FROM Highschooler EXCEPT SELECT student_id FROM Friend",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 2,
+    "goldResultSha256": "aaf26fec690a92a91b04ac0963c37640492a910fd63743693833869d964f1d24",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 894
+    }
+  },
+  {
+    "id": "spider_dev_0895",
+    "input": {
+      "question": "What are the ids of high school students who do not have friends?",
+      "db_id": "network_1"
+    },
+    "goldSql": "SELECT id FROM Highschooler EXCEPT SELECT student_id FROM Friend",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 2,
+    "goldResultSha256": "aaf26fec690a92a91b04ac0963c37640492a910fd63743693833869d964f1d24",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 895
+    }
+  },
+  {
+    "id": "spider_dev_0897",
+    "input": {
+      "question": "What are the names of students who have no friends?",
+      "db_id": "network_1"
+    },
+    "goldSql": "SELECT name FROM Highschooler EXCEPT SELECT T2.name FROM Friend AS T1 JOIN Highschooler AS T2 ON T1.student_id  =  T2.id",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 2,
+    "goldResultSha256": "d1f44ae3bdcabed162e9e883f44cf05463d60ac7cda1134047b2f7abdb599e2a",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 897
+    }
+  },
+  {
+    "id": "spider_dev_0920",
+    "input": {
+      "question": "What is the average age of the dogs who have gone through any treatments?",
+      "db_id": "dog_kennels"
+    },
+    "goldSql": "SELECT avg(age) FROM Dogs WHERE dog_id IN ( SELECT dog_id FROM Treatments )",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "2c9c2fcf86a4a724efef315901904007684fabc48d4e65b359cfe7c005f6baa9",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 920
+    }
+  },
+  {
+    "id": "spider_dev_0921",
+    "input": {
+      "question": "Find the average age of the dogs who went through treatments.",
+      "db_id": "dog_kennels"
+    },
+    "goldSql": "SELECT avg(age) FROM Dogs WHERE dog_id IN ( SELECT dog_id FROM Treatments )",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "2c9c2fcf86a4a724efef315901904007684fabc48d4e65b359cfe7c005f6baa9",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 921
+    }
+  },
+  {
+    "id": "spider_dev_0927",
+    "input": {
+      "question": "Find the first names that are used for professionals or owners but are not used as dog names.",
+      "db_id": "dog_kennels"
+    },
+    "goldSql": "SELECT first_name FROM Professionals UNION SELECT first_name FROM Owners EXCEPT SELECT name FROM Dogs",
+    "hardness": "hard",
+    "split": "hillclimb",
+    "goldRowCount": 30,
+    "goldResultSha256": "d381a52c5ec974b01baeb94138dafbd1d429fcfcdbdce238ccc3f58a7588759a",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 927
+    }
+  },
+  {
+    "id": "spider_dev_0061",
+    "input": {
+      "question": "Find the major and age of students who do not have a cat pet.",
+      "db_id": "pets_1"
+    },
+    "goldSql": "SELECT major ,  age FROM student WHERE stuid NOT IN (SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat')",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 33,
+    "goldResultSha256": "2f4df14e541511249862ae86729bef849bb06e7edfda57ece9b03a39cef9e005",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 61
+    }
+  },
+  {
+    "id": "spider_dev_0062",
+    "input": {
+      "question": "What major is every student who does not own a cat as a pet, and also how old are they?",
+      "db_id": "pets_1"
+    },
+    "goldSql": "SELECT major ,  age FROM student WHERE stuid NOT IN (SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat')",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 33,
+    "goldResultSha256": "2f4df14e541511249862ae86729bef849bb06e7edfda57ece9b03a39cef9e005",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 62
+    }
+  },
+  {
+    "id": "spider_dev_0085",
+    "input": {
+      "question": "Find the average age of students who do not have any pet .",
+      "db_id": "pets_1"
+    },
+    "goldSql": "select avg(age) from student where stuid not in (select stuid from has_pet)",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "2cd57bc53ddf1ac8222fb7137eb802c5daf38d859f24eddd9a3b5f010537daac",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 85
+    }
+  },
+  {
+    "id": "spider_dev_0166",
+    "input": {
+      "question": "For all of the 4 cylinder cars, which model has the most horsepower?",
+      "db_id": "car_1"
+    },
+    "goldSql": "SELECT T1.Model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T2.Cylinders  =  4 ORDER BY T2.horsepower DESC LIMIT 1;",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "d006561775ea31b44eebdb581e9419bd8a00ebf91bcd1b692619da18e902dd27",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 166
+    }
+  },
+  {
+    "id": "spider_dev_0172",
+    "input": {
+      "question": "What are the different models wthat are lighter than 3500 but were not built by the Ford Motor Company?",
+      "db_id": "car_1"
+    },
+    "goldSql": "SELECT DISTINCT T1.model FROM MODEL_LIST AS T1 JOIN CAR_NAMES AS T2 ON T1.Model  =  T2.Model JOIN CARS_DATA AS T3 ON T2.MakeId  =  T3.Id JOIN CAR_MAKERS AS T4 ON T1.Maker  =  T4.Id WHERE T3.weight  <  3500 AND T4.FullName != 'Ford Motor Company';",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 5,
+    "goldResultSha256": "38e64b62f5344b00d6f587700c44d94bdfc9e70d99ae46e4073898def062ff0b",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 172
+    }
+  },
+  {
+    "id": "spider_dev_0176",
+    "input": {
+      "question": "What are the ids and makers of all car makers that produce at least 2 models and make more than 3 cars?",
+      "db_id": "car_1"
+    },
+    "goldSql": "SELECT T1.Id ,  T1.Maker FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker GROUP BY T1.Id HAVING count(*)  >=  2 INTERSECT SELECT T1.Id ,  T1.Maker FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker JOIN CAR_NAMES AS T3 ON T2.model  =  T3.model GROUP BY T1.Id HAVING count(*)  >  3;",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 6,
+    "goldResultSha256": "2d6a4e350b63c7b751b6ec347b4323f2fbb8ed299d809340d6a6dd116d45d54c",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 176
+    }
+  },
+  {
+    "id": "spider_dev_0420",
+    "input": {
+      "question": "What are the id, name and membership level of visitors who have spent the largest amount of money in total in all museum tickets?",
+      "db_id": "museum_visit"
+    },
+    "goldSql": "SELECT t2.visitor_id ,  t1.name ,  t1.Level_of_membership FROM visitor AS t1 JOIN visit AS t2 ON t1.id  =  t2.visitor_id GROUP BY t2.visitor_id ORDER BY sum(t2.Total_spent) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "4a99b415217373e00f0298aab0e7b0a3be295b0cdc7dc69cdd44d78969d8bf26",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 420
+    }
+  },
+  {
+    "id": "spider_dev_0421",
+    "input": {
+      "question": "What are the id and name of the museum visited most times?",
+      "db_id": "museum_visit"
+    },
+    "goldSql": "SELECT t2.Museum_ID ,  t1.name FROM museum AS t1 JOIN visit AS t2 ON t1.Museum_ID  =  t2.Museum_ID GROUP BY t2.Museum_ID ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "852c3b0a45c607b06ced467b2a07fca50611eb11da275094e1eeb41a25534a66",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 421
+    }
+  },
+  {
+    "id": "spider_dev_0427",
+    "input": {
+      "question": "Find the number of visitors who did not visit any museum opened after 2010.",
+      "db_id": "museum_visit"
+    },
+    "goldSql": "SELECT count(*) FROM visitor WHERE id NOT IN (SELECT t2.visitor_id FROM museum AS t1 JOIN visit AS t2 ON t1.Museum_ID  =  t2.Museum_ID WHERE t1.open_year  >  2010)",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "4f6004d56a1c5c58e6b2639eab81fb2ecb71c74b823f95e24a6f3536daea2fcd",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 427
+    }
+  },
+  {
+    "id": "spider_dev_0500",
+    "input": {
+      "question": "What is the ship id and name that caused most total injuries?",
+      "db_id": "battle_death"
+    },
+    "goldSql": "SELECT T2.id ,  T2.name FROM death AS T1 JOIN ship AS t2 ON T1.caused_by_ship_id  =  T2.id GROUP BY T2.id ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "10c33aa28b039dff3f10fe4ef0b690b66ff9894bcbc12a415a928340d1c409c3",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 500
+    }
+  },
+  {
+    "id": "spider_dev_0504",
+    "input": {
+      "question": "List the name and date the battle that has lost the ship named 'Lettice' and the ship named 'HMS Atalanta'",
+      "db_id": "battle_death"
+    },
+    "goldSql": "SELECT T1.name ,  T1.date FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle WHERE T2.name  =  'Lettice' INTERSECT SELECT T1.name ,  T1.date FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle WHERE T2.name  =  'HMS Atalanta'",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "4de857ba247a0b0f380bfc6f9ce3f3687c291ca133c9fc33fc665ee713f78d98",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 504
+    }
+  },
+  {
+    "id": "spider_dev_0505",
+    "input": {
+      "question": "Show names, results and bulgarian commanders of the battles with no ships lost in the 'English Channel'.",
+      "db_id": "battle_death"
+    },
+    "goldSql": "SELECT name ,  RESULT ,  bulgarian_commander FROM battle EXCEPT SELECT T1.name ,  T1.result ,  T1.bulgarian_commander FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle WHERE T2.location  =  'English Channel'",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 3,
+    "goldResultSha256": "070c423635bd065f47be8badb0a1a0080b6a458357cc007451166fff31a0b8b9",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 505
+    }
+  },
+  {
+    "id": "spider_dev_0530",
+    "input": {
+      "question": "For each semester, what is the name and id of the one with the most students registered?",
+      "db_id": "student_transcripts_tracking"
+    },
+    "goldSql": "SELECT T1.semester_name ,  T1.semester_id FROM Semesters AS T1 JOIN Student_Enrolment AS T2 ON T1.semester_id  =  T2.semester_id GROUP BY T1.semester_id ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "328a51454693192480ba034e4b13a565ade837c592b88fb5546e5cc52a6fefd9",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 530
+    }
+  },
+  {
+    "id": "spider_dev_0561",
+    "input": {
+      "question": "Which address holds the most number of students currently? List the address id and all lines.",
+      "db_id": "student_transcripts_tracking"
+    },
+    "goldSql": "SELECT T1.address_id ,  T1.line_1 ,  T1.line_2 FROM Addresses AS T1 JOIN Students AS T2 ON T1.address_id  =  T2.current_address_id GROUP BY T1.address_id ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "ef52ad8f9ee81592d973a712e9d654d17daa7caf22ac7adee347cf5883443883",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 561
+    }
+  },
+  {
+    "id": "spider_dev_0573",
+    "input": {
+      "question": "Show the date of the transcript which shows the least number of results, also list the id.",
+      "db_id": "student_transcripts_tracking"
+    },
+    "goldSql": "SELECT T2.transcript_date ,  T1.transcript_id FROM Transcript_Contents AS T1 JOIN Transcripts AS T2 ON T1.transcript_id  =  T2.transcript_id GROUP BY T1.transcript_id ORDER BY count(*) ASC LIMIT 1",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "dd2a355fb2766aadf474a792bce206005fdd03b2083cc06798f79be8653bf11e",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 573
+    }
+  },
+  {
+    "id": "spider_dev_0695",
+    "input": {
+      "question": "Of all the contestants who got voted, what is the contestant number and name of the contestant who got least votes?",
+      "db_id": "voter_1"
+    },
+    "goldSql": "SELECT T1.contestant_number , T1.contestant_name FROM contestants AS T1 JOIN votes AS T2 ON T1.contestant_number  =  T2.contestant_number GROUP BY T1.contestant_number ORDER BY count(*) ASC LIMIT 1",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "5a6e95c8b25071aee25ea7493c6aa62baff2af23138a55885d464b21f2f74ad6",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 695
+    }
+  },
+  {
+    "id": "spider_dev_0700",
+    "input": {
+      "question": "List the area codes in which voters voted both for the contestant 'Tabatha Gehling' and the contestant 'Kelly Clauss'.",
+      "db_id": "voter_1"
+    },
+    "goldSql": "SELECT T3.area_code FROM contestants AS T1 JOIN votes AS T2 ON T1.contestant_number  =  T2.contestant_number JOIN area_code_state AS T3 ON T2.state  =  T3.state WHERE T1.contestant_name  =  'Tabatha Gehling' INTERSECT SELECT T3.area_code FROM contestants AS T1 JOIN votes AS T2 ON T1.contestant_number  =  T2.contestant_number JOIN area_code_state AS T3 ON T2.state  =  T3.state WHERE T1.contestant_name  =  'Kelly Clauss'",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 14,
+    "goldResultSha256": "014b450a822c4f18620a26ed510409705dd2661f020708d9947445538fbc6427",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 700
+    }
+  },
+  {
+    "id": "spider_dev_0844",
+    "input": {
+      "question": "Show the name of the conductor that has conducted the most number of orchestras.",
+      "db_id": "orchestra"
+    },
+    "goldSql": "SELECT T1.Name FROM conductor AS T1 JOIN orchestra AS T2 ON T1.Conductor_ID  =  T2.Conductor_ID GROUP BY T2.Conductor_ID ORDER BY COUNT(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "8ee05b2257f25e453a61e75bedb6bd71d769c400c150a8216f44292edb4eca69",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 844
+    }
+  },
+  {
+    "id": "spider_dev_0845",
+    "input": {
+      "question": "What is the name of the conductor who has conducted the most orchestras?",
+      "db_id": "orchestra"
+    },
+    "goldSql": "SELECT T1.Name FROM conductor AS T1 JOIN orchestra AS T2 ON T1.Conductor_ID  =  T2.Conductor_ID GROUP BY T2.Conductor_ID ORDER BY COUNT(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "8ee05b2257f25e453a61e75bedb6bd71d769c400c150a8216f44292edb4eca69",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 845
+    }
+  },
+  {
+    "id": "spider_dev_0886",
+    "input": {
+      "question": "What is the name of the high schooler who has the greatest number of friends?",
+      "db_id": "network_1"
+    },
+    "goldSql": "SELECT T2.name FROM Friend AS T1 JOIN Highschooler AS T2 ON T1.student_id  =  T2.id GROUP BY T1.student_id ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "f44c76676a257b7497def9fcc1757a618c537029ae13c6c05c580f5dacb4535b",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 886
+    }
+  },
+  {
+    "id": "spider_dev_0906",
+    "input": {
+      "question": "What is the name of the high schooler who has the greatest number of likes?",
+      "db_id": "network_1"
+    },
+    "goldSql": "SELECT T2.name FROM Likes AS T1 JOIN Highschooler AS T2 ON T1.student_id  =  T2.id GROUP BY T1.student_id ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "0f7273c7d102eb7cd669e07b71f7f39ecb0520f2e10bd76b8812c58da1e420ee",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 906
+    }
+  },
+  {
+    "id": "spider_dev_0917",
+    "input": {
+      "question": "What is the lowest grade of students who do not have any friends?",
+      "db_id": "network_1"
+    },
+    "goldSql": "SELECT min(grade) FROM Highschooler WHERE id NOT IN (SELECT T1.student_id FROM Friend AS T1 JOIN Highschooler AS T2 ON T1.student_id  =  T2.id)",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "844fc58419c37405719781a9a979c72cb4bc93ccf3d300bec00c6c7fe2e7acae",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 917
+    }
+  },
+  {
+    "id": "spider_dev_0922",
+    "input": {
+      "question": "Which professionals live in the state of Indiana or have done treatment on more than 2 treatments? List his or her id, last name and cell phone.",
+      "db_id": "dog_kennels"
+    },
+    "goldSql": "SELECT professional_id ,  last_name ,  cell_number FROM Professionals WHERE state  =  'Indiana' UNION SELECT T1.professional_id ,  T1.last_name ,  T1.cell_number FROM Professionals AS T1 JOIN Treatments AS T2 ON T1.professional_id  =  T2.professional_id GROUP BY T1.professional_id HAVING count(*)  >  2",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 3,
+    "goldResultSha256": "521afd242fe57474c291e038474307d75966846caffbb66ac862baa38fb4d1b5",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 922
+    }
+  },
+  {
+    "id": "spider_dev_0931",
+    "input": {
+      "question": "Return the owner id, first name and last name of the owner who has the most dogs.",
+      "db_id": "dog_kennels"
+    },
+    "goldSql": "SELECT T1.owner_id ,  T2.first_name ,  T2.last_name FROM Dogs AS T1 JOIN Owners AS T2 ON T1.owner_id  =  T2.owner_id GROUP BY T1.owner_id ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "16dce164d520fb40673fc422ba2b203372d526e0386f513fb1554dabb6ce0a88",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 931
+    }
+  },
+  {
+    "id": "spider_dev_0937",
+    "input": {
+      "question": "Tell me the owner id and last name of the owner who spent the most on treatments of his or her dogs.",
+      "db_id": "dog_kennels"
+    },
+    "goldSql": "SELECT T1.owner_id ,  T1.last_name FROM Owners AS T1 JOIN Dogs AS T2 ON T1.owner_id  =  T2.owner_id JOIN Treatments AS T3 ON T2.dog_id  =  T3.dog_id GROUP BY T1.owner_id ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "hillclimb",
+    "goldRowCount": 1,
+    "goldResultSha256": "cb6f828e4fc1940e0ef6c8bcaba967a82124ce87b3344710a5caef55b8267eb3",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 937
+    }
+  },
+  {
+    "id": "spider_dev_0001",
+    "input": {
+      "question": "What is the total number of singers?",
+      "db_id": "concert_singer"
+    },
+    "goldSql": "SELECT count(*) FROM singer",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "7a309002eba7d579e730f01f63212ab804ff0288ff302e8fe6ade2943a848c9c",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 1
+    }
+  },
+  {
+    "id": "spider_dev_0008",
+    "input": {
+      "question": "What are all distinct countries where singers above age 20 are from?",
+      "db_id": "concert_singer"
+    },
+    "goldSql": "SELECT DISTINCT country FROM singer WHERE age  >  20",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 6,
+    "goldResultSha256": "2fe656e00f864c0268ba5b85b2060373c1b1fc2349c05342e0f3ff17e31399af",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 8
+    }
+  },
+  {
+    "id": "spider_dev_0009",
+    "input": {
+      "question": "What are  the different countries with singers above age 20?",
+      "db_id": "concert_singer"
+    },
+    "goldSql": "SELECT DISTINCT country FROM singer WHERE age  >  20",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 6,
+    "goldResultSha256": "2fe656e00f864c0268ba5b85b2060373c1b1fc2349c05342e0f3ff17e31399af",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 9
+    }
+  },
+  {
+    "id": "spider_dev_0179",
+    "input": {
+      "question": "Which country does Airline \"JetBlue Airways\" belong to?",
+      "db_id": "flight_2"
+    },
+    "goldSql": "SELECT Country FROM AIRLINES WHERE Airline  =  \"JetBlue Airways\"",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "0e4818ed7ffe8d246f3463e4d4809b5f9191c6d6369814c0766455ebaac454d9",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 179
+    }
+  },
+  {
+    "id": "spider_dev_0180",
+    "input": {
+      "question": "What country is Jetblue Airways affiliated with?",
+      "db_id": "flight_2"
+    },
+    "goldSql": "SELECT Country FROM AIRLINES WHERE Airline  =  \"JetBlue Airways\"",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "0e4818ed7ffe8d246f3463e4d4809b5f9191c6d6369814c0766455ebaac454d9",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 180
+    }
+  },
+  {
+    "id": "spider_dev_0248",
+    "input": {
+      "question": "Give the flight numbers of flights leaving from APG.",
+      "db_id": "flight_2"
+    },
+    "goldSql": "SELECT FlightNo FROM FLIGHTS WHERE SourceAirport  =  \"APG\"",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "bdaef865a7a61c96a519eab4f84d44778404121302aa1bb9f3b11bd08514e783",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 248
+    }
+  },
+  {
+    "id": "spider_dev_0259",
+    "input": {
+      "question": "How many employees are there?",
+      "db_id": "employee_hire_evaluation"
+    },
+    "goldSql": "SELECT count(*) FROM employee",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "844fc58419c37405719781a9a979c72cb4bc93ccf3d300bec00c6c7fe2e7acae",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 259
+    }
+  },
+  {
+    "id": "spider_dev_0260",
+    "input": {
+      "question": "Count the number of employees",
+      "db_id": "employee_hire_evaluation"
+    },
+    "goldSql": "SELECT count(*) FROM employee",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "844fc58419c37405719781a9a979c72cb4bc93ccf3d300bec00c6c7fe2e7acae",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 260
+    }
+  },
+  {
+    "id": "spider_dev_0295",
+    "input": {
+      "question": "How many different store locations are there?",
+      "db_id": "employee_hire_evaluation"
+    },
+    "goldSql": "SELECT count(DISTINCT LOCATION) FROM shop",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "9311c3e500b35b96ba553cb84c04128ddbd5192ea0efb2b7524891798ad3eaad",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 295
+    }
+  },
+  {
+    "id": "spider_dev_0297",
+    "input": {
+      "question": "How many documents do we have?",
+      "db_id": "cre_Doc_Template_Mgt"
+    },
+    "goldSql": "SELECT count(*) FROM Documents",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "621d5945f2ccfcc1d8603cd6f809e3a9f75ead6788b3249603aa833e40ea21c1",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 297
+    }
+  },
+  {
+    "id": "spider_dev_0306",
+    "input": {
+      "question": "Count the number of different templates used for documents.",
+      "db_id": "cre_Doc_Template_Mgt"
+    },
+    "goldSql": "SELECT count(DISTINCT template_id) FROM Documents",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "621d5945f2ccfcc1d8603cd6f809e3a9f75ead6788b3249603aa833e40ea21c1",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 306
+    }
+  },
+  {
+    "id": "spider_dev_0357",
+    "input": {
+      "question": "How many paragraphs in total?",
+      "db_id": "cre_Doc_Template_Mgt"
+    },
+    "goldSql": "SELECT count(*) FROM Paragraphs",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "45042d565a22107ac0d70e0a25096d506ecd80c9d86485a42814d3e978f58f57",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 357
+    }
+  },
+  {
+    "id": "spider_dev_0586",
+    "input": {
+      "question": "What are the titles of the cartoons sorted alphabetically?",
+      "db_id": "tvshow"
+    },
+    "goldSql": "SELECT Title FROM Cartoon ORDER BY title",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 12,
+    "goldResultSha256": "2a5e87026847f4f1d77c376e89dd59fdc1049ba1a8c8c9e91dff3ebc6eb28d05",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 586
+    }
+  },
+  {
+    "id": "spider_dev_0603",
+    "input": {
+      "question": "How many TV Channel using language English?",
+      "db_id": "tvshow"
+    },
+    "goldSql": "SELECT count(*) FROM TV_Channel WHERE LANGUAGE = \"English\";",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "4f6004d56a1c5c58e6b2639eab81fb2ecb71c74b823f95e24a6f3536daea2fcd",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 603
+    }
+  },
+  {
+    "id": "spider_dev_0621",
+    "input": {
+      "question": "What is Weekly Rank of TV series with Episode \"A Love of a Lifetime\"?",
+      "db_id": "tvshow"
+    },
+    "goldSql": "SELECT Weekly_Rank FROM TV_series WHERE Episode = \"A Love of a Lifetime\";",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "330be923bc757bb097e33a80777bc4460fb09166ee552442508ab2edf247ba5b",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 621
+    }
+  },
+  {
+    "id": "spider_dev_0649",
+    "input": {
+      "question": "List the earnings of poker players in descending order.",
+      "db_id": "poker_player"
+    },
+    "goldSql": "SELECT Earnings FROM poker_player ORDER BY Earnings DESC",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 5,
+    "goldResultSha256": "7c88275d005950ffb207036e525d9554fb5cda7b8e473eb793ba89b00ed5159d",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 649
+    }
+  },
+  {
+    "id": "spider_dev_0653",
+    "input": {
+      "question": "What is the average earnings of poker players?",
+      "db_id": "poker_player"
+    },
+    "goldSql": "SELECT avg(Earnings) FROM poker_player",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "09d7f3c4cd9c32e061d282b8f7a2fa804c6f94c7b1fa148d292b6b8e461a1ef8",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 653
+    }
+  },
+  {
+    "id": "spider_dev_0682",
+    "input": {
+      "question": "What are the names of people who are not from Russia?",
+      "db_id": "poker_player"
+    },
+    "goldSql": "SELECT Name FROM people WHERE Nationality != \"Russia\"",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "c6fe08072059ac6f3d3206981219bff3385abb992726e95e5d1906ebbf00759a",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 682
+    }
+  },
+  {
+    "id": "spider_dev_0732",
+    "input": {
+      "question": "How many unique languages are spoken in the world?",
+      "db_id": "world_1"
+    },
+    "goldSql": "SELECT count(DISTINCT LANGUAGE) FROM countrylanguage",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "769b05e09649b8a8eaf1c3683318a8436b03b6c410d86e6b93f5b42c9db2da88",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 732
+    }
+  },
+  {
+    "id": "spider_dev_0745",
+    "input": {
+      "question": "What is the number of nations that use English and Dutch?",
+      "db_id": "world_1"
+    },
+    "goldSql": "SELECT COUNT(*) FROM (SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"English\" INTERSECT SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"Dutch\")",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "4f6004d56a1c5c58e6b2639eab81fb2ecb71c74b823f95e24a6f3536daea2fcd",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 745
+    }
+  },
+  {
+    "id": "spider_dev_0812",
+    "input": {
+      "question": "What are the cities whose population is between 160000 and 900000?",
+      "db_id": "world_1"
+    },
+    "goldSql": "SELECT name FROM city WHERE Population BETWEEN 160000 AND 900000",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1860,
+    "goldResultSha256": "55a8c6d9ff891969c3cf232b545c806282cecdc4d4783408317befa4707c9041",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 812
+    }
+  },
+  {
+    "id": "spider_dev_1001",
+    "input": {
+      "question": "What is the count of singers?",
+      "db_id": "singer"
+    },
+    "goldSql": "SELECT count(*) FROM singer",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "0b1d211ee60374f57523163b7e10cd6c10bbb832304fe6bcd8f0bd76b1d59de8",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 1001
+    }
+  },
+  {
+    "id": "spider_dev_1002",
+    "input": {
+      "question": "List the name of singers in ascending order of net worth.",
+      "db_id": "singer"
+    },
+    "goldSql": "SELECT Name FROM singer ORDER BY Net_Worth_Millions ASC",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 8,
+    "goldResultSha256": "3adf91def4263093ff3bb410757e68635a09a9fce401672e48e317ae1bd0dbce",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 1002
+    }
+  },
+  {
+    "id": "spider_dev_1006",
+    "input": {
+      "question": "List the name of singers whose citizenship is not \"France\".",
+      "db_id": "singer"
+    },
+    "goldSql": "SELECT Name FROM singer WHERE Citizenship != \"France\"",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 7,
+    "goldResultSha256": "b52d7f29a6b391fe7a8c33e334540e7263cbca0a3dacd09fca63e26c9c866f20",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 1006
+    }
+  },
+  {
+    "id": "spider_dev_1030",
+    "input": {
+      "question": "How many available features are there in total?",
+      "db_id": "real_estate_properties"
+    },
+    "goldSql": "SELECT count(*) FROM Other_Available_Features",
+    "hardness": "easy",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "4f6004d56a1c5c58e6b2639eab81fb2ecb71c74b823f95e24a6f3536daea2fcd",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 1030
+    }
+  },
+  {
+    "id": "spider_dev_0006",
+    "input": {
+      "question": "Show the name and the release year of the song by the youngest singer.",
+      "db_id": "concert_singer"
+    },
+    "goldSql": "SELECT song_name ,  song_release_year FROM singer ORDER BY age LIMIT 1",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "e78f251eacfa7910ab194f0c67e79788573bdd57d0b4917d83d8f0b976b90674",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 6
+    }
+  },
+  {
+    "id": "spider_dev_0035",
+    "input": {
+      "question": "List singer names and number of concerts for each singer.",
+      "db_id": "concert_singer"
+    },
+    "goldSql": "SELECT T2.name ,  count(*) FROM singer_in_concert AS T1 JOIN singer AS T2 ON T1.singer_id  =  T2.singer_id GROUP BY T2.singer_id",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 5,
+    "goldResultSha256": "f50ddc49487ca7788b3a1357253e5a5d4ef708b6294334dbd25f82f53f656bf2",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 35
+    }
+  },
+  {
+    "id": "spider_dev_0040",
+    "input": {
+      "question": "What is the name and country of origin of every singer who has a song with the word 'Hey' in its title?",
+      "db_id": "concert_singer"
+    },
+    "goldSql": "SELECT name ,  country FROM singer WHERE song_name LIKE '%Hey%'",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "2d4e8101af96869dcd805a19c6ad32a423d43a714bbe90ea07c3f6ea72318dbf",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 40
+    }
+  },
+  {
+    "id": "spider_dev_0241",
+    "input": {
+      "question": "Find all airlines that have at least 10 flights.",
+      "db_id": "flight_2"
+    },
+    "goldSql": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline GROUP BY T1.Airline HAVING count(*)  >  10",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 3,
+    "goldResultSha256": "104ed5bfbb50751d8e0eb802613f444303c75b062121b8a05a0cbb4b63798d1d",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 241
+    }
+  },
+  {
+    "id": "spider_dev_0242",
+    "input": {
+      "question": "Which airlines have at least 10 flights?",
+      "db_id": "flight_2"
+    },
+    "goldSql": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline GROUP BY T1.Airline HAVING count(*)  >  10",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 3,
+    "goldResultSha256": "104ed5bfbb50751d8e0eb802613f444303c75b062121b8a05a0cbb4b63798d1d",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 242
+    }
+  },
+  {
+    "id": "spider_dev_0245",
+    "input": {
+      "question": "What are flight numbers of Airline \"United Airlines\"?",
+      "db_id": "flight_2"
+    },
+    "goldSql": "SELECT T1.FlightNo FROM FLIGHTS AS T1 JOIN AIRLINES AS T2 ON T2.uid  =  T1.Airline WHERE T2.Airline  =  \"United Airlines\"",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "bdaef865a7a61c96a519eab4f84d44778404121302aa1bb9f3b11bd08514e783",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 245
+    }
+  },
+  {
+    "id": "spider_dev_0264",
+    "input": {
+      "question": "Count the number of employees for each city.",
+      "db_id": "employee_hire_evaluation"
+    },
+    "goldSql": "SELECT count(*) ,  city FROM employee GROUP BY city",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 5,
+    "goldResultSha256": "8f4d68ea389de7ab9db7102af3fb485d12195fcd7f57cde271a07eab96eb828b",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 264
+    }
+  },
+  {
+    "id": "spider_dev_0266",
+    "input": {
+      "question": "Find the cities that have more than one employee under age 30.",
+      "db_id": "employee_hire_evaluation"
+    },
+    "goldSql": "SELECT city FROM employee WHERE age  <  30 GROUP BY city HAVING count(*)  >  1",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "d4e6e4beedc897725e2fb9cf2d2517bf9fc49bbb5c8f57af798b271643ae5209",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 266
+    }
+  },
+  {
+    "id": "spider_dev_0271",
+    "input": {
+      "question": "find the minimum and maximum number of products of all stores.",
+      "db_id": "employee_hire_evaluation"
+    },
+    "goldSql": "SELECT min(Number_products) ,  max(Number_products) FROM shop",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "7267c83425c113f888e1dd74994db027dd1ccf5bce92c209931dfee83bbfb275",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 271
+    }
+  },
+  {
+    "id": "spider_dev_0355",
+    "input": {
+      "question": "What are the template ids with template type description \"Presentation\".",
+      "db_id": "cre_Doc_Template_Mgt"
+    },
+    "goldSql": "SELECT T2.template_id FROM Ref_template_types AS T1 JOIN Templates AS T2 ON T1.template_type_code  = T2.template_type_code WHERE T1.template_type_description  =  \"Presentation\"",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 3,
+    "goldResultSha256": "0e8b11bfd31d7e5443b7b671e7d806f7d805b173584515791fd933f247a75e81",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 355
+    }
+  },
+  {
+    "id": "spider_dev_0359",
+    "input": {
+      "question": "How many paragraphs for the document with name 'Summer Show'?",
+      "db_id": "cre_Doc_Template_Mgt"
+    },
+    "goldSql": "SELECT count(*) FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_ID  =  T2.document_ID WHERE T2.document_name  =  'Summer Show'",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "98e0407ddfa10caa3fe95d610f5f89beb335f6a4973ba8a105ae53c5ecd300e6",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 359
+    }
+  },
+  {
+    "id": "spider_dev_0367",
+    "input": {
+      "question": "Show all document ids and the number of paragraphs in each document. Order by document id.",
+      "db_id": "cre_Doc_Template_Mgt"
+    },
+    "goldSql": "SELECT document_id ,  count(*) FROM Paragraphs GROUP BY document_id ORDER BY document_id",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 10,
+    "goldResultSha256": "5e3390f5cd51f2337003e1e15f57d1cc968c48eed638f08019eb34b52a39ef27",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 367
+    }
+  },
+  {
+    "id": "spider_dev_0625",
+    "input": {
+      "question": "List the Episode of all  TV series showed on TV Channel with series name \"Sky Radio\".",
+      "db_id": "tvshow"
+    },
+    "goldSql": "SELECT T2.Episode FROM TV_Channel AS T1 JOIN TV_series AS T2 ON T1.id = T2.Channel WHERE T1.series_name = \"Sky Radio\";",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 2,
+    "goldResultSha256": "5b7fb75d8095ab3c9d46b9679f88e7681e5edb202731843a764dee17768330f5",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 625
+    }
+  },
+  {
+    "id": "spider_dev_0630",
+    "input": {
+      "question": "What is the produdction code and channel of the most recent cartoon ?",
+      "db_id": "tvshow"
+    },
+    "goldSql": "select production_code ,  channel from cartoon order by original_air_date desc limit 1",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "c03b214b83a10e170dc26bad4025aa3b69906fa2e37b8d3bafaad6e114c41dc1",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 630
+    }
+  },
+  {
+    "id": "spider_dev_0639",
+    "input": {
+      "question": "find the pixel aspect ratio and nation of the tv channels that do not use English.",
+      "db_id": "tvshow"
+    },
+    "goldSql": "SELECT Pixel_aspect_ratio_PAR ,  country FROM tv_channel WHERE LANGUAGE != 'English'",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 12,
+    "goldResultSha256": "51209b6ce463579717644cdca56c5bd15d0d7e3ec84011376b43c502e39ed1db",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 639
+    }
+  },
+  {
+    "id": "spider_dev_0652",
+    "input": {
+      "question": "What are the final tables made and best finishes for all poker players?",
+      "db_id": "poker_player"
+    },
+    "goldSql": "SELECT Final_Table_Made ,  Best_Finish FROM poker_player",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 5,
+    "goldResultSha256": "283c4fc6e13ad253458df698e7fd662b9267ced792ddd6834c93058a2e507355",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 652
+    }
+  },
+  {
+    "id": "spider_dev_0672",
+    "input": {
+      "question": "Return the names of poker players sorted by their earnings descending.",
+      "db_id": "poker_player"
+    },
+    "goldSql": "SELECT T1.Name FROM people AS T1 JOIN poker_player AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Earnings DESC",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 5,
+    "goldResultSha256": "51fdbecd0cf0eac26501f70b36177da9fd939c99f0aea37920cb8c0f2899004b",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 672
+    }
+  },
+  {
+    "id": "spider_dev_0673",
+    "input": {
+      "question": "What are different nationalities of people and the corresponding number of people from each nation?",
+      "db_id": "poker_player"
+    },
+    "goldSql": "SELECT Nationality ,  COUNT(*) FROM people GROUP BY Nationality",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 2,
+    "goldResultSha256": "4ff8218386e058a45c34cc3e2698aa3b7079eb2d4e291b2012eead1e826bf30c",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 673
+    }
+  },
+  {
+    "id": "spider_dev_0801",
+    "input": {
+      "question": "Return the names and surface areas of the 5 largest countries.",
+      "db_id": "world_1"
+    },
+    "goldSql": "SELECT Name ,  SurfaceArea FROM country ORDER BY SurfaceArea DESC LIMIT 5",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 5,
+    "goldResultSha256": "1f8ae84c19060fb2a8a9e85c5c40e9914b704fa3c89f8d03108065f8291fb2de",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 801
+    }
+  },
+  {
+    "id": "spider_dev_0802",
+    "input": {
+      "question": "What are names of countries with the top 3 largest population?",
+      "db_id": "world_1"
+    },
+    "goldSql": "SELECT Name FROM country ORDER BY Population DESC LIMIT 3",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 3,
+    "goldResultSha256": "7f6369617b91fee89f3dac85564c5f0becbd6d004d08b3e8aff82a1cff0274e5",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 802
+    }
+  },
+  {
+    "id": "spider_dev_1008",
+    "input": {
+      "question": "Show the name of singers whose birth year is either 1948 or 1949?",
+      "db_id": "singer"
+    },
+    "goldSql": "SELECT Name FROM singer WHERE Birth_Year  =  1948 OR Birth_Year  =  1949",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 2,
+    "goldResultSha256": "166088a451791e63cdea9bb6840d569c688bff0d9f8360e0f3e6a10c14176d56",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 1008
+    }
+  },
+  {
+    "id": "spider_dev_1021",
+    "input": {
+      "question": "what are the different names of the singers that have sales more than 300000?",
+      "db_id": "singer"
+    },
+    "goldSql": "SELECT DISTINCT T1.Name FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID WHERE T2.Sales  >  300000",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 4,
+    "goldResultSha256": "31b2fd4ba03eec82f727dd91c8cf9abdb0a20e78516b9b97441c6f871e78390b",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 1021
+    }
+  },
+  {
+    "id": "spider_dev_1024",
+    "input": {
+      "question": "Show the names of singers and the total sales of their songs.",
+      "db_id": "singer"
+    },
+    "goldSql": "SELECT T1.Name ,  sum(T2.Sales) FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID GROUP BY T1.Name",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 6,
+    "goldResultSha256": "b06084a8a59cf59d84a71081c03d2347602dda1fa8be1b29001a40a9833feb58",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 1024
+    }
+  },
+  {
+    "id": "spider_dev_1031",
+    "input": {
+      "question": "What is the feature type name of feature AirCon?",
+      "db_id": "real_estate_properties"
+    },
+    "goldSql": "SELECT T2.feature_type_name FROM Other_Available_Features AS T1 JOIN Ref_Feature_Types AS T2 ON T1.feature_type_code  =  T2.feature_type_code WHERE T1.feature_name  =  \"AirCon\"",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "db66b0a528733e49a188eb0664ddeabab055752f68495b91f905a52343097bee",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 1031
+    }
+  },
+  {
+    "id": "spider_dev_1032",
+    "input": {
+      "question": "Show the property type descriptions of properties belonging to that code.",
+      "db_id": "real_estate_properties"
+    },
+    "goldSql": "SELECT T2.property_type_description FROM Properties AS T1 JOIN Ref_Property_Types AS T2 ON T1.property_type_code  =  T2.property_type_code GROUP BY T1.property_type_code",
+    "hardness": "medium",
+    "split": "heldout",
+    "goldRowCount": 5,
+    "goldResultSha256": "db86f92ae8e47dd9fa32a47b172246df3b52f48865b5ebe5f5a21b311521fe48",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 1032
+    }
+  },
+  {
+    "id": "spider_dev_0013",
+    "input": {
+      "question": "What are all the song names by singers who are older than average?",
+      "db_id": "concert_singer"
+    },
+    "goldSql": "SELECT song_name FROM singer WHERE age  >  (SELECT avg(age) FROM singer)",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 3,
+    "goldResultSha256": "4f2823a76738e3be973acb4fffed64ada6edcb2277734ab474f810cf801317de",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 13
+    }
+  },
+  {
+    "id": "spider_dev_0027",
+    "input": {
+      "question": "What is the year that had the most concerts?",
+      "db_id": "concert_singer"
+    },
+    "goldSql": "SELECT YEAR FROM concert GROUP BY YEAR ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "674db854800efe3fc7a42244eac46ce1eaa41a98242df787449027890ca939a6",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 27
+    }
+  },
+  {
+    "id": "spider_dev_0029",
+    "input": {
+      "question": "What are the names of the stadiums without any concerts?",
+      "db_id": "concert_singer"
+    },
+    "goldSql": "SELECT name FROM stadium WHERE stadium_id NOT IN (SELECT stadium_id FROM concert)",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 4,
+    "goldResultSha256": "58206997afd73bdb62ed5c16f154940375b5d40aaa4cc346edadbfeb842ee3f1",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 29
+    }
+  },
+  {
+    "id": "spider_dev_0032",
+    "input": {
+      "question": "What are the names of all stadiums that did not have a concert in 2014?",
+      "db_id": "concert_singer"
+    },
+    "goldSql": "SELECT name FROM stadium EXCEPT SELECT T2.name FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.year  =  2014",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 6,
+    "goldResultSha256": "8b9c70eef8b386e2ee6187380033d4848e87cdca3b508b88a49c120fbac481f7",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 32
+    }
+  },
+  {
+    "id": "spider_dev_0257",
+    "input": {
+      "question": "Find the name of airports which do not have any flight in and out.",
+      "db_id": "flight_2"
+    },
+    "goldSql": "SELECT AirportName FROM Airports WHERE AirportCode NOT IN (SELECT SourceAirport FROM Flights UNION SELECT DestAirport FROM Flights)",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 58,
+    "goldResultSha256": "de43e79364c0714866a938268b5537a87cc4fc1d6815f760b94fd9d92168c41a",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 257
+    }
+  },
+  {
+    "id": "spider_dev_0258",
+    "input": {
+      "question": "Which airports do not have departing or arriving flights?",
+      "db_id": "flight_2"
+    },
+    "goldSql": "SELECT AirportName FROM Airports WHERE AirportCode NOT IN (SELECT SourceAirport FROM Flights UNION SELECT DestAirport FROM Flights)",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 58,
+    "goldResultSha256": "de43e79364c0714866a938268b5537a87cc4fc1d6815f760b94fd9d92168c41a",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 258
+    }
+  },
+  {
+    "id": "spider_dev_0275",
+    "input": {
+      "question": "Find the names of stores whose number products is more than the average number of products.",
+      "db_id": "employee_hire_evaluation"
+    },
+    "goldSql": "SELECT name FROM shop WHERE number_products  >  (SELECT avg(number_products) FROM shop)",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 3,
+    "goldResultSha256": "c8f78d41c0f1652ddb8dc0ca48121902726939c467cb6c5db42e34aba0bede17",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 275
+    }
+  },
+  {
+    "id": "spider_dev_0281",
+    "input": {
+      "question": "Find the names of employees who never won any award in the evaluation.",
+      "db_id": "employee_hire_evaluation"
+    },
+    "goldSql": "SELECT name FROM employee WHERE Employee_ID NOT IN (SELECT Employee_ID FROM evaluation)",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 5,
+    "goldResultSha256": "31a246dea3cb5c0d8cc0b256435fe2beba942e915d47af277fbb9a62da37851e",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 281
+    }
+  },
+  {
+    "id": "spider_dev_0285",
+    "input": {
+      "question": "Find the name of the shops that do not hire any employee.",
+      "db_id": "employee_hire_evaluation"
+    },
+    "goldSql": "SELECT name FROM shop WHERE shop_id NOT IN (SELECT shop_id FROM hiring)",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 3,
+    "goldResultSha256": "67497375e6ba281dd9785cda4a882a78aefe1b4088920d33231b3c7d1d790b98",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 285
+    }
+  },
+  {
+    "id": "spider_dev_0346",
+    "input": {
+      "question": "What are the codes of template types that are not used for any document?",
+      "db_id": "cre_Doc_Template_Mgt"
+    },
+    "goldSql": "SELECT template_type_code FROM Templates EXCEPT SELECT template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "c275110285d9f4f94fd5576c65fce0eba96db9510993834dc9ae5ee56da5555d",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 346
+    }
+  },
+  {
+    "id": "spider_dev_0375",
+    "input": {
+      "question": "What is the document id with least number of paragraphs?",
+      "db_id": "cre_Doc_Template_Mgt"
+    },
+    "goldSql": "SELECT document_id FROM Paragraphs GROUP BY document_id ORDER BY count(*) ASC LIMIT 1",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "4f6004d56a1c5c58e6b2639eab81fb2ecb71c74b823f95e24a6f3536daea2fcd",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 375
+    }
+  },
+  {
+    "id": "spider_dev_0380",
+    "input": {
+      "question": "What are the ids of documents that contain the paragraph text 'Brazil' and 'Ireland'?",
+      "db_id": "cre_Doc_Template_Mgt"
+    },
+    "goldSql": "SELECT document_id FROM Paragraphs WHERE paragraph_text  =  'Brazil' INTERSECT SELECT document_id FROM Paragraphs WHERE paragraph_text  =  'Ireland'",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "1603e4d979fd99140b6f05bc69847449faab5d90282d54628a3ce068a24c8e49",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 380
+    }
+  },
+  {
+    "id": "spider_dev_0605",
+    "input": {
+      "question": "List the language used least number of TV Channel. List language and number of TV Channel.",
+      "db_id": "tvshow"
+    },
+    "goldSql": "SELECT LANGUAGE ,  count(*) FROM TV_Channel GROUP BY LANGUAGE ORDER BY count(*) ASC LIMIT 1;",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "7e1ff70f6bdc8fad70572fbf3cb767c74be96dfdde9d74d12aecaa047d0bc1f6",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 605
+    }
+  },
+  {
+    "id": "spider_dev_0644",
+    "input": {
+      "question": "What are the ids of the TV channels that do not have any cartoons directed by Ben Jones?",
+      "db_id": "tvshow"
+    },
+    "goldSql": "SELECT id FROM TV_Channel EXCEPT SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones'",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 11,
+    "goldResultSha256": "6ee2cc971851f72289ada6d285bf2dfbc2c746cdd44e789fd0bc1535271ed2f9",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 644
+    }
+  },
+  {
+    "id": "spider_dev_0646",
+    "input": {
+      "question": "What are the package options of all tv channels that are not playing any cartoons directed by Ben Jones?",
+      "db_id": "tvshow"
+    },
+    "goldSql": "SELECT package_option FROM TV_Channel WHERE id NOT IN (SELECT channel FROM cartoon WHERE directed_by  =  'Ben Jones')",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 11,
+    "goldResultSha256": "a3431b0bbdce535bbdca24019ca6c161832d2db8d4b07f4600662c51894cd576",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 646
+    }
+  },
+  {
+    "id": "spider_dev_0668",
+    "input": {
+      "question": "Return the money rank of the poker player with the greatest height.",
+      "db_id": "poker_player"
+    },
+    "goldSql": "SELECT T2.Money_Rank FROM people AS T1 JOIN poker_player AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T1.Height DESC LIMIT 1",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "7e8b84634cba81f401fec1ed2a4d0f99c7579b5cc389831f2b9a2fb3c4d2b977",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 668
+    }
+  },
+  {
+    "id": "spider_dev_0676",
+    "input": {
+      "question": "Give the nationality that is most common across all people.",
+      "db_id": "poker_player"
+    },
+    "goldSql": "SELECT Nationality FROM people GROUP BY Nationality ORDER BY COUNT(*) DESC LIMIT 1",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "03373ad46185df7419c4135c92865e8710e95cf30e722e6ac8b433a9b4bf638a",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 676
+    }
+  },
+  {
+    "id": "spider_dev_0684",
+    "input": {
+      "question": "What are the names of people who do not play poker?",
+      "db_id": "poker_player"
+    },
+    "goldSql": "SELECT Name FROM people WHERE People_ID NOT IN (SELECT People_ID FROM poker_player)",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 2,
+    "goldResultSha256": "561a0289405521622806e447a599330b964e8136021accdc8c8713a429ebf1fe",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 684
+    }
+  },
+  {
+    "id": "spider_dev_0759",
+    "input": {
+      "question": "What languages are only used by a single country with a republic government?",
+      "db_id": "world_1"
+    },
+    "goldSql": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.GovernmentForm  =  \"Republic\" GROUP BY T2.Language HAVING COUNT(*)  =  1",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 258,
+    "goldResultSha256": "d76f517095492620844e4157dc5d46d4026e5d47e9f1558d7fefaa0f434b25ea",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 759
+    }
+  },
+  {
+    "id": "spider_dev_0783",
+    "input": {
+      "question": "Return the codes of countries that do not speak English and do not have Republics for governments.",
+      "db_id": "world_1"
+    },
+    "goldSql": "SELECT Code FROM country WHERE GovernmentForm != \"Republic\" EXCEPT SELECT CountryCode FROM countrylanguage WHERE LANGUAGE  =  \"English\"",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 69,
+    "goldResultSha256": "24d187200260149f1c4c15976e20060f51d53c2bfac927b695d29756c2d5d25a",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 783
+    }
+  },
+  {
+    "id": "spider_dev_0815",
+    "input": {
+      "question": "Give the language that is spoken in the most countries.",
+      "db_id": "world_1"
+    },
+    "goldSql": "SELECT LANGUAGE FROM countrylanguage GROUP BY LANGUAGE ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "5db9a519786c26981ca52d0e565095b14fa0c431d530a4d73e72eb7dc72368de",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 815
+    }
+  },
+  {
+    "id": "spider_dev_1014",
+    "input": {
+      "question": "Please show the most common citizenship of singers.",
+      "db_id": "singer"
+    },
+    "goldSql": "SELECT Citizenship FROM singer GROUP BY Citizenship ORDER BY COUNT(*) DESC LIMIT 1",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "43490f787b9abebbdcc9155f3c6b748d1149a86a6a59de1c91c39fa34c922b3f",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 1014
+    }
+  },
+  {
+    "id": "spider_dev_1015",
+    "input": {
+      "question": "What is the most common singer citizenship ?",
+      "db_id": "singer"
+    },
+    "goldSql": "select citizenship from singer group by citizenship order by count(*) desc limit 1",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "43490f787b9abebbdcc9155f3c6b748d1149a86a6a59de1c91c39fa34c922b3f",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 1015
+    }
+  },
+  {
+    "id": "spider_dev_1028",
+    "input": {
+      "question": "Show the citizenship shared by singers with birth year before 1945 and after 1955.",
+      "db_id": "singer"
+    },
+    "goldSql": "SELECT Citizenship FROM singer WHERE Birth_Year  <  1945 INTERSECT SELECT Citizenship FROM singer WHERE Birth_Year  >  1955",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "43490f787b9abebbdcc9155f3c6b748d1149a86a6a59de1c91c39fa34c922b3f",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 1028
+    }
+  },
+  {
+    "id": "spider_dev_1033",
+    "input": {
+      "question": "What are the names of properties that are either houses or apartments with more than 1 room?",
+      "db_id": "real_estate_properties"
+    },
+    "goldSql": "SELECT property_name FROM Properties WHERE property_type_code  =  \"House\" UNION SELECT property_name FROM Properties WHERE property_type_code  =  \"Apartment\" AND room_count  >  1",
+    "hardness": "hard",
+    "split": "heldout",
+    "goldRowCount": 8,
+    "goldResultSha256": "6173e395487801e4707ad0194e0a1bbc70e24cb51f5250f1f43900a54d06f271",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 1033
+    }
+  },
+  {
+    "id": "spider_dev_0024",
+    "input": {
+      "question": "Show the stadium name and capacity with most number of concerts in year 2014 or after.",
+      "db_id": "concert_singer"
+    },
+    "goldSql": "SELECT T2.name ,  T2.capacity FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.year  >=  2014 GROUP BY T2.stadium_id ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "af19232e4cb98c759245531e5d26086c634f57b75c1f1072c688582553be9d5f",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 24
+    }
+  },
+  {
+    "id": "spider_dev_0025",
+    "input": {
+      "question": "What is the name and capacity of the stadium with the most concerts after 2013 ?",
+      "db_id": "concert_singer"
+    },
+    "goldSql": "select t2.name ,  t2.capacity from concert as t1 join stadium as t2 on t1.stadium_id  =  t2.stadium_id where t1.year  >  2013 group by t2.stadium_id order by count(*) desc limit 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "af19232e4cb98c759245531e5d26086c634f57b75c1f1072c688582553be9d5f",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 25
+    }
+  },
+  {
+    "id": "spider_dev_0041",
+    "input": {
+      "question": "Find the name and location of the stadiums which some concerts happened in the years of both 2014 and 2015.",
+      "db_id": "concert_singer"
+    },
+    "goldSql": "SELECT T2.name ,  T2.location FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.Year  =  2014 INTERSECT SELECT T2.name ,  T2.location FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.Year  =  2015",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "0a6585ee783d24f3ee75345b8acbdd4cb9255368d4125f0ac99c73e2467c63af",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 41
+    }
+  },
+  {
+    "id": "spider_dev_0042",
+    "input": {
+      "question": "What are the names and locations of the stadiums that had concerts that occurred in both 2014 and 2015?",
+      "db_id": "concert_singer"
+    },
+    "goldSql": "SELECT T2.name ,  T2.location FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.Year  =  2014 INTERSECT SELECT T2.name ,  T2.location FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.Year  =  2015",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "0a6585ee783d24f3ee75345b8acbdd4cb9255368d4125f0ac99c73e2467c63af",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 42
+    }
+  },
+  {
+    "id": "spider_dev_0221",
+    "input": {
+      "question": "Which city has most number of arriving flights?",
+      "db_id": "flight_2"
+    },
+    "goldSql": "SELECT T1.City FROM AIRPORTS AS T1 JOIN FLIGHTS AS T2 ON T1.AirportCode  =  T2.DestAirport GROUP BY T1.City ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "36d17f663d4833fb6e990a5720a5148287981898821c08b99c095e4f8b60881a",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 221
+    }
+  },
+  {
+    "id": "spider_dev_0225",
+    "input": {
+      "question": "What is the code of airport that has the highest number of flights?",
+      "db_id": "flight_2"
+    },
+    "goldSql": "SELECT T1.AirportCode FROM AIRPORTS AS T1 JOIN FLIGHTS AS T2 ON T1.AirportCode  =  T2.DestAirport OR T1.AirportCode  =  T2.SourceAirport GROUP BY T1.AirportCode ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "fcee0ea8ed5efdcd49c5d71919400f475f130de1c328cffea1366c836fd7d38e",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 225
+    }
+  },
+  {
+    "id": "spider_dev_0229",
+    "input": {
+      "question": "Which airline has most number of flights?",
+      "db_id": "flight_2"
+    },
+    "goldSql": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline GROUP BY T1.Airline ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "0abf03aea035faf0600db9280119342cc9f5e8c3768f736cd05c6e96025fe1bb",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 229
+    }
+  },
+  {
+    "id": "spider_dev_0232",
+    "input": {
+      "question": "What is the abbreviation of the airilne has the fewest flights and what country is it in?",
+      "db_id": "flight_2"
+    },
+    "goldSql": "SELECT T1.Abbreviation ,  T1.Country FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline GROUP BY T1.Airline ORDER BY count(*) LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "b7eeaa0fa74a2dcf5958daaa505f61c42396caa5626d89e0250eb4897d2b856c",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 232
+    }
+  },
+  {
+    "id": "spider_dev_0239",
+    "input": {
+      "question": "Find all airlines that have flights from airport 'CVO' but not from 'APG'.",
+      "db_id": "flight_2"
+    },
+    "goldSql": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.SourceAirport  =  \"CVO\" EXCEPT SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.SourceAirport  =  \"APG\"",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "8ee1671c326a65067a87cfcbce4d336d351b23f50ed5265de998eae0c70e49cc",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 239
+    }
+  },
+  {
+    "id": "spider_dev_0277",
+    "input": {
+      "question": "find the name of employee who was awarded the most times in the evaluation.",
+      "db_id": "employee_hire_evaluation"
+    },
+    "goldSql": "SELECT t1.name FROM employee AS t1 JOIN evaluation AS t2 ON t1.Employee_ID  =  t2.Employee_ID GROUP BY t2.Employee_ID ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "a1e795cae06d4ef911000612f737da241e538f2dc13847c50c6b9e7843a542da",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 277
+    }
+  },
+  {
+    "id": "spider_dev_0278",
+    "input": {
+      "question": "Which employee received the most awards in evaluations? Give me the employee name.",
+      "db_id": "employee_hire_evaluation"
+    },
+    "goldSql": "SELECT t1.name FROM employee AS t1 JOIN evaluation AS t2 ON t1.Employee_ID  =  t2.Employee_ID GROUP BY t2.Employee_ID ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "a1e795cae06d4ef911000612f737da241e538f2dc13847c50c6b9e7843a542da",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 278
+    }
+  },
+  {
+    "id": "spider_dev_0283",
+    "input": {
+      "question": "What is the name of the shop that is hiring the largest number of employees?",
+      "db_id": "employee_hire_evaluation"
+    },
+    "goldSql": "SELECT t2.name FROM hiring AS t1 JOIN shop AS t2 ON t1.shop_id  =  t2.shop_id GROUP BY t1.shop_id ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "321fd78b8b2b1cb1978062ef2521f1060f305c94ddcfcae3530508ec1d0c90fd",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 283
+    }
+  },
+  {
+    "id": "spider_dev_0284",
+    "input": {
+      "question": "Which shop has the most employees? Give me the shop name.",
+      "db_id": "employee_hire_evaluation"
+    },
+    "goldSql": "SELECT t2.name FROM hiring AS t1 JOIN shop AS t2 ON t1.shop_id  =  t2.shop_id GROUP BY t1.shop_id ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "321fd78b8b2b1cb1978062ef2521f1060f305c94ddcfcae3530508ec1d0c90fd",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 284
+    }
+  },
+  {
+    "id": "spider_dev_0311",
+    "input": {
+      "question": "What is the id and type code for the template used by the most documents?",
+      "db_id": "cre_Doc_Template_Mgt"
+    },
+    "goldSql": "SELECT T1.template_id ,  T2.Template_Type_Code FROM Documents AS T1 JOIN Templates AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_id ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "971fc7d6a4ac09cde14e3f36ca02058d2bd68d6d905c16de90bbb656db8dd4b7",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 311
+    }
+  },
+  {
+    "id": "spider_dev_0343",
+    "input": {
+      "question": "Which template type code is used by most number of documents?",
+      "db_id": "cre_Doc_Template_Mgt"
+    },
+    "goldSql": "SELECT T1.template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "d41fe304a6efcbc6667cfaaa8fe7e1ba59ff0eef1694fd67c8b580a8fe315ec6",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 343
+    }
+  },
+  {
+    "id": "spider_dev_0344",
+    "input": {
+      "question": "Return the code of the template type that is most commonly used in documents.",
+      "db_id": "cre_Doc_Template_Mgt"
+    },
+    "goldSql": "SELECT T1.template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "d41fe304a6efcbc6667cfaaa8fe7e1ba59ff0eef1694fd67c8b580a8fe315ec6",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 344
+    }
+  },
+  {
+    "id": "spider_dev_0373",
+    "input": {
+      "question": "What is the document id and name with greatest number of paragraphs?",
+      "db_id": "cre_Doc_Template_Mgt"
+    },
+    "goldSql": "SELECT T1.document_id ,  T2.document_name FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id GROUP BY T1.document_id ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "b3cb39e4fdc52eafabb4755510e96f2d6d3742048843a8786dd5931af0293aa7",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 373
+    }
+  },
+  {
+    "id": "spider_dev_0374",
+    "input": {
+      "question": "Return the id and name of the document with the most paragraphs.",
+      "db_id": "cre_Doc_Template_Mgt"
+    },
+    "goldSql": "SELECT T1.document_id ,  T2.document_name FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_id  =  T2.document_id GROUP BY T1.document_id ORDER BY count(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "b3cb39e4fdc52eafabb4755510e96f2d6d3742048843a8786dd5931af0293aa7",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 374
+    }
+  },
+  {
+    "id": "spider_dev_0637",
+    "input": {
+      "question": "Find the series name and country of the tv channel that is playing some cartoons directed by Ben Jones and Michael Chang?",
+      "db_id": "tvshow"
+    },
+    "goldSql": "SELECT T1.series_name ,  T1.country FROM TV_Channel AS T1 JOIN cartoon AS T2 ON T1.id = T2.Channel WHERE T2.directed_by  =  'Michael Chang' INTERSECT SELECT T1.series_name ,  T1.country FROM TV_Channel AS T1 JOIN cartoon AS T2 ON T1.id = T2.Channel WHERE T2.directed_by  =  'Ben Jones'",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "119e872a69ff25b0645d2841719bc42fb74b615354efb69889b9974156ed6a5e",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 637
+    }
+  },
+  {
+    "id": "spider_dev_0638",
+    "input": {
+      "question": "What is the series name and country of all TV channels that are playing cartoons directed by Ben Jones and cartoons directed by Michael Chang?",
+      "db_id": "tvshow"
+    },
+    "goldSql": "SELECT T1.series_name ,  T1.country FROM TV_Channel AS T1 JOIN cartoon AS T2 ON T1.id = T2.Channel WHERE T2.directed_by  =  'Michael Chang' INTERSECT SELECT T1.series_name ,  T1.country FROM TV_Channel AS T1 JOIN cartoon AS T2 ON T1.id = T2.Channel WHERE T2.directed_by  =  'Ben Jones'",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "119e872a69ff25b0645d2841719bc42fb74b615354efb69889b9974156ed6a5e",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 638
+    }
+  },
+  {
+    "id": "spider_dev_0740",
+    "input": {
+      "question": "What is name of the country that speaks the largest number of languages?",
+      "db_id": "world_1"
+    },
+    "goldSql": "SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode GROUP BY T1.Name ORDER BY COUNT(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "43490f787b9abebbdcc9155f3c6b748d1149a86a6a59de1c91c39fa34c922b3f",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 740
+    }
+  },
+  {
+    "id": "spider_dev_0741",
+    "input": {
+      "question": "Give the name of the nation that uses the greatest amount of languages.",
+      "db_id": "world_1"
+    },
+    "goldSql": "SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode GROUP BY T1.Name ORDER BY COUNT(*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "43490f787b9abebbdcc9155f3c6b748d1149a86a6a59de1c91c39fa34c922b3f",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 741
+    }
+  },
+  {
+    "id": "spider_dev_0746",
+    "input": {
+      "question": "What are the names of nations speak both English and French?",
+      "db_id": "world_1"
+    },
+    "goldSql": "SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"English\" INTERSECT SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"French\"",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 6,
+    "goldResultSha256": "4674fbebcdf8eeb0ef49d60a32363cb6ad2747899874eabad28dbd2c88fe4503",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 746
+    }
+  },
+  {
+    "id": "spider_dev_0747",
+    "input": {
+      "question": "Give the names of nations that speak both English and French.",
+      "db_id": "world_1"
+    },
+    "goldSql": "SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"English\" INTERSECT SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"French\"",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 6,
+    "goldResultSha256": "4674fbebcdf8eeb0ef49d60a32363cb6ad2747899874eabad28dbd2c88fe4503",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 747
+    }
+  },
+  {
+    "id": "spider_dev_0756",
+    "input": {
+      "question": "Which language is the most popular on the Asian continent?",
+      "db_id": "world_1"
+    },
+    "goldSql": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.Continent  =  \"Asia\" GROUP BY T2.Language ORDER BY COUNT (*) DESC LIMIT 1",
+    "hardness": "extra",
+    "split": "heldout",
+    "goldRowCount": 1,
+    "goldResultSha256": "fef244a2c2cd2089e24e9e0211d150c41a19a36758b9007a43b10a5bcdc970af",
+    "provenance": {
+      "source": "Spider 1.0 dev (Yu et al., EMNLP 2018)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://yale-lily.github.io/spider",
+      "questionsAndGoldSql": "taoyds/spider evaluation_examples/examples/dev.json",
+      "hardness": "Spider eval_hardness, via InterCode ic_spider_dev.json",
+      "database": "InterCode ic_spider_dbs.sql (MySQL), re-imported into SQLite",
+      "devIndex": 756
+    }
+  }
+]

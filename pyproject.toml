@@ -16,7 +16,7 @@ dependencies = ["mcp-server-fetch>=2026.7.10"]
 packages = ["eval_harness"]
 
 [tool.setuptools.package-data]
-eval_harness = ["golden/*.json", "rubric.md"]
+eval_harness = ["golden/*.json", "golden/*.txt", "golden/nl2sql_dbs/*.sql", "rubric.md"]
 
 [project.optional-dependencies]
 # Install only what you need; the harness degrades gracefully if optional deps

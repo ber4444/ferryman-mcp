@@ -74,6 +74,44 @@ is a specced follow-on in
 (not yet built). No scorecard numbers are committed until a real run produces
 them.
 
+### nl2sql
+
+A question + schema → SQLite skill, scored by **execution accuracy** on a
+vendored Spider 1.0 dev subset. Same objective-floor pattern as chess: no judge
+(`rubric_path=None`, so `--judge` records a skip).
+
+- **Golden set:** `golden/nl2sql_golden.json`, 200 cases, 25 per hardness level
+  in each of two database-disjoint splits (`hillclimb`, `heldout`). The
+  databases are SQLite text dumps in `golden/nl2sql_dbs/`, loaded in memory at
+  score time. License and provenance: `golden/NL2SQL_GOLDEN_LICENSE.txt`.
+  `build_nl2sql_golden.py` regenerates both from local copies of the sources.
+  Don't hand-edit either one: every gold result is pinned by hash in a test.
+- **Scorers (`nl2sql_scorers.py`):** the last ` ```sql ` block is extracted and
+  run read-only (authorizer, timeout, row cap) next to the gold query. Results
+  are compared with the Spider test-suite evaluator's `result_eq`, ported with
+  its defaults. Keys: `executionAccuracy` (headline), `executes` (diagnostic),
+  `readOnly` (safety gate).
+- **Input:** `SkillSpec.build_input` renders the schema from the vendored
+  database at run time. `FERRY_NL2SQL_SAMPLE_ROWS=N` appends N example rows per
+  table, so the schema representation can change without changing the frozen
+  golden file. Each row's `meta` records the setting.
+- **Controls (`nl2sql_controls.py`):** identity, a constant query, and one-edit
+  mutants of each gold query. These measure the scorer's coincidental-match
+  rate on this data, with no model.
+- **Hill-climbing:** `--split` and `--tag` on the runner, then
+  `compare_runs.py BEFORE.json AFTER.json` for a paired comparison with an
+  exact McNemar p-value. Protocol: `docs/plans/nl2sql-hillclimb.md`.
+
+```bash
+python eval_harness/run_scorecard.py --skill nl2sql --provider hf-llama --split hillclimb --tag baseline
+python eval_harness/nl2sql_controls.py
+python eval_harness/compare_runs.py eval_harness/scorecard-nl2sql.baseline.json eval_harness/scorecard-nl2sql.it1.json
+```
+
+Any skill can opt into the same runner features through its `SkillSpec`:
+`build_input`, `case_meta`, `headline_key` (reported alone with a Wilson 95%
+interval) and `breakdowns`. Skills that don't set them render exactly as before.
+
 ## The golden set and the human-review gate
 
 `golden/golden_set.json` holds 48 cases (47 real companies + 1 deliberate
