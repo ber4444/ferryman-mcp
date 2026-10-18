@@ -290,3 +290,104 @@ def test_rescore_judge_skips_errored_rows_like_fresh_run(monkeypatch):
     # in _judge_if_available handles it. Verify the judge wasn't called by the
     # fact that no AssertionError propagated.
     assert rescored[0].error == "simulated timeout"
+
+
+# --- nl2sql wiring: input builder, meta, headline, --split / --tag ----------
+
+
+def test_nl2sql_spec_is_registered_with_headline_and_no_judge():
+    spec = run_scorecard.get_skill_spec("nl2sql")
+    assert spec.skill_id == "nl2sql" and spec.golden_path.name == "nl2sql_golden.json"
+    assert spec.headline_key == "executionAccuracy"
+    assert spec.rubric_path is None and spec.build_input is not None
+
+
+def test_run_one_sends_built_input_but_records_golden_input(monkeypatch):
+    """The skill receives the rendered schema; the scorecard row keeps the
+    compact golden input plus per-case meta for breakdowns."""
+    sent: dict = {}
+
+    def fake_invoke(skill_input, *, skill="", provider=None, mode="auto", **kw):
+        sent.update(skill_input)
+        return invoke_mod.InvocationResult(
+            output="```sql\nSELECT count(*) FROM pets WHERE weight > 10\n```", provider="hf-llama", model="m"
+        )
+
+    monkeypatch.setattr(invoke_mod, "invoke", fake_invoke)
+    monkeypatch.delenv("FERRY_NL2SQL_SAMPLE_ROWS", raising=False)
+    case = {
+        "id": "spider_dev_x",
+        "input": {"question": "How many pets weigh more than 10?", "db_id": "pets_1"},
+        "goldSql": "SELECT count(*) FROM pets WHERE weight  >  10",
+        "hardness": "easy",
+        "split": "hillclimb",
+    }
+    r = run_scorecard.run_one(case, provider=None, mode="subprocess", spec=run_scorecard.get_skill_spec("nl2sql"))
+    assert 'CREATE TABLE "pets"' in sent["schema"]
+    assert r.input == case["input"]
+    assert r.meta == {"hardness": "easy", "split": "hillclimb", "db_id": "pets_1", "sampleRows": 0}
+    assert run_scorecard.headline_passed(r, "executionAccuracy")
+
+
+def test_judge_is_skipped_for_a_skill_without_rubric():
+    spec = run_scorecard.get_skill_spec("nl2sql")
+    out = run_scorecard._judge_if_available(_stub_result("c", "hf-llama"), {"id": "c"}, spec=spec)
+    assert out[0]["key"] == "_judge" and "no judge rubric" in out[0]["reason"]
+
+
+def test_output_paths_tag_keeps_snapshot_beside_default():
+    spec = run_scorecard.get_skill_spec("nl2sql")
+    md, js = run_scorecard.output_paths(spec, "baseline")
+    assert md.name == "scorecard-nl2sql.baseline.md" and js.name == "scorecard-nl2sql.baseline.json"
+    assert run_scorecard.output_paths(spec) == (spec.scorecard_md, spec.scorecard_json)
+
+
+def test_output_paths_rejects_path_like_tags():
+    import pytest
+
+    with pytest.raises(ValueError):
+        run_scorecard.output_paths(run_scorecard.get_skill_spec("nl2sql"), "../escape")
+
+
+def test_main_rejects_unknown_split(capsys):
+    assert run_scorecard.main(["--skill", "nl2sql", "--split", "nope"]) == 1
+    assert "no golden cases have split 'nope'" in capsys.readouterr().err
+
+
+def test_wilson_interval_bounds():
+    lo, hi = run_scorecard.wilson_interval(50, 100)
+    assert 0.40 < lo < 0.41 and 0.59 < hi < 0.60
+    assert run_scorecard.wilson_interval(0, 10)[0] == 0.0
+    assert run_scorecard.wilson_interval(10, 10)[1] == 1.0
+    assert run_scorecard.wilson_interval(0, 0) == (0.0, 0.0)
+
+
+def test_headline_section_counts_errored_rows_as_misses():
+    spec = run_scorecard.get_skill_spec("nl2sql")
+
+    def row(case_id, passed, hardness, error=None):
+        return CaseResult(
+            id=case_id, input={}, provider="hf-llama", model="m", output="",
+            rule_scores=[] if error else [{"key": "executionAccuracy", "passed": passed, "reason": ""}],
+            error=error, meta={"split": "hillclimb", "hardness": hardness},
+        )
+
+    results = [row("a", True, "easy"), row("b", False, "easy"), row("c", True, "hard"), row("d", False, "hard", error="timeout")]
+    md = run_scorecard._render_markdown(results, use_judge=False, spec=spec)
+    assert "## Headline: executionAccuracy" in md
+    assert "| hf-llama | 2/4 | 50% |" in md and "| 1 |" in md  # one errored row, counted as a miss
+    assert "### executionAccuracy by hardness" in md and "| hf-llama | 1/2 (50%) | 1/2 (50%) |" in md
+
+
+def test_skills_without_headline_render_unchanged():
+    spec = run_scorecard.get_skill_spec("chess-opening-coach")
+    md = run_scorecard._render_markdown([_stub_result("c", "hf-llama")], use_judge=False, spec=spec)
+    assert "Headline" not in md
+
+
+def test_load_results_accepts_scorecards_written_before_meta_existed(tmp_path):
+    row = asdict(_stub_result("c", "hf-llama"))
+    del row["meta"]
+    path = tmp_path / "old.json"
+    path.write_text(json.dumps([row]))
+    assert run_scorecard.load_results(path)[0].meta == {}

@@ -6,6 +6,9 @@ Usage:
     python -m eval_harness.run_scorecard --judge               # add the LLM judge layer
     python -m eval_harness.run_scorecard --all-providers       # run once per configured provider
     python -m eval_harness.run_scorecard --provider anthropic  # single provider override
+    python -m eval_harness.run_scorecard --skill nl2sql --split hillclimb --tag baseline
+                                                              # one split, snapshot kept as
+                                                              # scorecard-nl2sql.baseline.{md,json}
 
 Output:
     eval_harness/scorecard.md  — human-readable scorecard
@@ -18,7 +21,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import os
+import re
 import sys
 import time
 from dataclasses import asdict, dataclass, field
@@ -31,10 +36,12 @@ if __package__ in (None, ""):
     from eval_harness import invoke as invoke_mod
     from eval_harness import rule_scorers
     from eval_harness import chess_scorers
+    from eval_harness import nl2sql_scorers
 else:
     from . import invoke as invoke_mod
     from . import rule_scorers
     from . import chess_scorers
+    from . import nl2sql_scorers
 
 _GOLDEN_DIR = Path(__file__).resolve().parent / "golden"
 GOLDEN_PATH = _GOLDEN_DIR / "golden_set.json"
@@ -66,7 +73,22 @@ class SkillSpec:
     # The claim-like field the scorer reads from each case. company-research uses
     # expectedClaims; chess uses the whole case (correctAnswer lives on the case).
     # Kept as a label for the scorecard, not a behavioral branch.
+    # None means the skill has no judge layer: --judge records a skip.
     rubric_path: Path | None = None
+    # Derives the payload sent to the skill from a golden case. Default: the
+    # case's own `input`. nl2sql renders the database schema here at run time,
+    # so the golden file stays question + db_id and the representation can
+    # change without touching the frozen benchmark.
+    build_input: Callable[[dict], dict] | None = None
+    # Per-case fields copied onto each CaseResult.meta (hardness, split, ...)
+    # for breakdowns, without changing what the skill is sent.
+    case_meta: Callable[[dict], dict] | None = None
+    # The one scorer key that is the skill's headline metric. When set, the
+    # scorecard reports it on its own, with a 95% interval, instead of only
+    # inside the blended mean pass rate (which an always-passing gate inflates).
+    headline_key: str | None = None
+    # CaseResult.meta keys to break the headline down by, in this order.
+    breakdowns: tuple[str, ...] = ()
 
 
 # Registry of evaluable skills. Adding a skill is: add a SKILL.md, a golden set,
@@ -92,6 +114,21 @@ _SKILL_SPECS: dict[str, SkillSpec] = {
         scorer=chess_scorers.score_for_case,
         rubric_path=Path(__file__).resolve().parent / "rubric-chess.md",
     ),
+    "nl2sql": SkillSpec(
+        name="nl2sql",
+        skill_id="nl2sql",
+        golden_path=_GOLDEN_DIR / "nl2sql_golden.json",
+        scorecard_md=Path(__file__).resolve().parent / "scorecard-nl2sql.md",
+        scorecard_json=Path(__file__).resolve().parent / "scorecard-nl2sql.json",
+        scorer=nl2sql_scorers.score_for_case,
+        # Objective floor only. Execution accuracy is the verdict; a judge
+        # grading SQL prose would add cost and noise, not signal.
+        rubric_path=None,
+        build_input=nl2sql_scorers.build_input,
+        case_meta=nl2sql_scorers.case_meta,
+        headline_key="executionAccuracy",
+        breakdowns=("split", "hardness"),
+    ),
 }
 
 
@@ -114,6 +151,8 @@ class CaseResult:
     error: str | None = None
     latency_ms: int | None = None
     estimated_cost_usd: float | None = None
+    # Per-case metadata from SkillSpec.case_meta (empty for skills without it).
+    meta: dict[str, object] = field(default_factory=dict)
 
     @property
     def rule_pass_rate(self) -> float:
@@ -277,7 +316,8 @@ def run_one(case: dict, provider: str | None, mode: str, spec: SkillSpec | None 
     unchanged.
     """
     spec = spec or get_skill_spec(DEFAULT_SKILL)
-    result = invoke_mod.invoke(case["input"], skill=spec.skill_id, provider=provider, mode=mode)
+    skill_input = spec.build_input(case) if spec.build_input else case["input"]
+    result = invoke_mod.invoke(skill_input, skill=spec.skill_id, provider=provider, mode=mode)
     rule_scores = [s.as_dict() for s in spec.scorer(result.output, case)]
     pricing = load_pricing()
     return CaseResult(
@@ -290,7 +330,12 @@ def run_one(case: dict, provider: str | None, mode: str, spec: SkillSpec | None 
         error=result.error,
         latency_ms=result.latency_ms,
         estimated_cost_usd=estimate_cost(result, pricing),
+        meta=_case_meta(case, spec),
     )
+
+
+def _case_meta(case: dict, spec: SkillSpec) -> dict[str, object]:
+    return spec.case_meta(case) if spec.case_meta else {}
 
 
 # Inter-call delay (seconds) to stay under per-provider rate limits, e.g.
@@ -337,6 +382,7 @@ def run_all(
                     model="unknown",
                     output="",
                     error=f"{type(e).__name__}: {e}",
+                    meta=_case_meta(case, spec),
                 )
             if use_judge:
                 # Don't judge a case that errored: its output is empty, so the
@@ -365,6 +411,8 @@ def run_all(
 def _judge_if_available(case_result: CaseResult, case: dict, spec: SkillSpec | None = None) -> list[dict]:
     """Apply the judge scorer if its deps are installed; otherwise record a skip."""
     spec = spec or get_skill_spec(DEFAULT_SKILL)
+    if spec.rubric_path is None:
+        return [{"key": "_judge", "passed": False, "reason": f"skipped — {spec.name} has no judge rubric (objective floor only)"}]
     try:
         # Mirror the top-of-file import guard: the bare relative `from .` only
         # resolves when this module is imported as part of the eval_harness
@@ -395,12 +443,94 @@ def _judge_if_available(case_result: CaseResult, case: dict, spec: SkillSpec | N
         return [{"key": "_judge", "passed": False, "reason": f"judge error: {e}"}]
 
 
-def write_scorecard(results: list[CaseResult], *, use_judge: bool, spec: SkillSpec | None = None) -> None:
+_TAG_PATTERN = re.compile(r"^[A-Za-z0-9._-]+$")
+
+
+def output_paths(spec: SkillSpec, tag: str | None = None) -> tuple[Path, Path]:
+    """(markdown, json) paths for a run. A tag keeps a snapshot beside the
+    default scorecard — scorecard-nl2sql.baseline.md — instead of overwriting
+    it, which is what a before/after comparison needs."""
+    if not tag:
+        return spec.scorecard_md, spec.scorecard_json
+    if not _TAG_PATTERN.match(tag):
+        raise ValueError(f"tag {tag!r} must match {_TAG_PATTERN.pattern}")
+    md, js = spec.scorecard_md, spec.scorecard_json
+    return md.with_name(f"{md.stem}.{tag}{md.suffix}"), js.with_name(f"{js.stem}.{tag}{js.suffix}")
+
+
+def write_scorecard(
+    results: list[CaseResult], *, use_judge: bool, spec: SkillSpec | None = None, tag: str | None = None
+) -> None:
     """Write the scorecard markdown + json for the given skill's spec."""
     spec = spec or get_skill_spec(DEFAULT_SKILL)
-    spec.scorecard_json.write_text(json.dumps([asdict(r) for r in results], indent=2))
-    spec.scorecard_md.write_text(_render_markdown(results, use_judge=use_judge, spec=spec))
-    print(f"\nScorecard written:\n  {spec.scorecard_md}\n  {spec.scorecard_json}")
+    md_path, json_path = output_paths(spec, tag)
+    json_path.write_text(json.dumps([asdict(r) for r in results], indent=2))
+    md_path.write_text(_render_markdown(results, use_judge=use_judge, spec=spec))
+    print(f"\nScorecard written:\n  {md_path}\n  {json_path}")
+
+
+def headline_passed(result: CaseResult, key: str) -> bool:
+    """Whether a row passed the headline scorer. An errored row has no rule
+    scores, and counts as a miss — the caller saw no answer."""
+    return any(s["key"] == key and s["passed"] for s in result.rule_scores)
+
+
+def wilson_interval(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
+    """95% Wilson score interval for k successes in n trials. Unlike the
+    normal approximation it stays inside [0, 1] at small n and extreme rates."""
+    if n == 0:
+        return (0.0, 0.0)
+    p = k / n
+    denom = 1 + z * z / n
+    center = (p + z * z / (2 * n)) / denom
+    half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / denom
+    return (max(0.0, center - half), min(1.0, center + half))
+
+
+def _render_headline(results: list[CaseResult], spec: SkillSpec) -> list[str]:
+    key = spec.headline_key
+    lines = [
+        "",
+        f"## Headline: {key}",
+        "",
+        "Errored rows (provider timeouts, transport failures) count as misses.",
+        "",
+        "| Provider | Passed | Rate | 95% CI | Errored |",
+        "|---|---|---|---|---|",
+    ]
+    providers = sorted({r.provider for r in results})
+    for provider_id in providers:
+        rows = [r for r in results if r.provider == provider_id]
+        k, n = sum(headline_passed(r, key) for r in rows), len(rows)
+        lo, hi = wilson_interval(k, n)
+        errored = sum(1 for r in rows if r.error)
+        lines.append(f"| {provider_id} | {k}/{n} | {k / n:.0%} | {lo:.0%}–{hi:.0%} | {errored} |")
+    for field_name in spec.breakdowns:
+        values = list(dict.fromkeys(r.meta.get(field_name) for r in results if r.meta.get(field_name) is not None))
+        if not values:
+            continue
+        lines += ["", f"### {key} by {field_name}", ""]
+        lines.append("| Provider | " + " | ".join(str(v) for v in values) + " |")
+        lines.append("|---|" + "---|" * len(values))
+        for provider_id in providers:
+            cells = []
+            for v in values:
+                rows = [r for r in results if r.provider == provider_id and r.meta.get(field_name) == v]
+                k = sum(headline_passed(r, key) for r in rows)
+                cells.append(f"{k}/{len(rows)} ({k / len(rows):.0%})" if rows else "—")
+            lines.append(f"| {provider_id} | " + " | ".join(cells) + " |")
+    return lines
+
+
+def print_headline(results: list[CaseResult], spec: SkillSpec) -> None:
+    """One line per provider on stdout — the number a hill-climb iteration watches."""
+    if not spec.headline_key:
+        return
+    for provider_id in sorted({r.provider for r in results}):
+        rows = [r for r in results if r.provider == provider_id]
+        k, n = sum(headline_passed(r, spec.headline_key) for r in rows), len(rows)
+        lo, hi = wilson_interval(k, n)
+        print(f"  {spec.headline_key} [{provider_id}]: {k}/{n} = {k / n:.1%} (95% CI {lo:.1%}–{hi:.1%})")
 
 
 def _render_markdown(results: list[CaseResult], *, use_judge: bool, spec: SkillSpec | None = None) -> str:
@@ -445,6 +575,8 @@ def _render_markdown(results: list[CaseResult], *, use_judge: bool, spec: SkillS
         lines.append(
             f"| {provider_id} | {len(prov_results)} | {mean_pass:.0%} | {mean_lat} | {mean_cost} | {date_checked} |",
         )
+    if spec.headline_key:
+        lines.extend(_render_headline(results, spec))
     if use_judge:
         lines.append("")
         lines.append("## Judge-scorer results")
@@ -492,6 +624,15 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help="path to golden set JSON (default: the skill's registered golden set)",
     )
+    parser.add_argument(
+        "--split",
+        help="run only golden cases whose `split` field equals this (nl2sql: hillclimb | heldout)",
+    )
+    parser.add_argument(
+        "--tag",
+        help="write scorecard-<skill>.<tag>.{md,json} instead of overwriting the default "
+        "scorecard — keeps before/after snapshots for compare_runs.py",
+    )
     args = parser.parse_args(argv)
 
     spec = get_skill_spec(args.skill)
@@ -499,22 +640,35 @@ def main(argv: list[str] | None = None) -> int:
     golden = load_golden(golden_path)
     print(f"Skill: {spec.name} (invoking skill id '{spec.skill_id}')")
     print(f"Loaded {len(golden)} golden cases from {golden_path}")
+    if args.tag:
+        try:
+            output_paths(spec, args.tag)
+        except ValueError as e:
+            print(f"error: {e}", file=sys.stderr)
+            return 1
+    if args.split:
+        golden = [c for c in golden if c.get("split") == args.split]
+        if not golden:
+            print(f"error: no golden cases have split {args.split!r}", file=sys.stderr)
+            return 1
+        print(f"--split {args.split}: {len(golden)} cases")
 
     # --rescore-judge short-circuits: load the existing captured outputs and
     # re-judge them only. Zero provider re-spend — just N judge calls. The rule
     # scores, latency, cost, and output text are preserved from the prior run.
     if args.rescore_judge:
-        if not spec.scorecard_json.exists():
+        _, captured = output_paths(spec, args.tag)
+        if not captured.exists():
             print(
-                f"error: {spec.scorecard_json} not found — run a full scorecard first "
+                f"error: {captured} not found — run a full scorecard first "
                 f"(without --rescore-judge) to capture outputs.",
                 file=sys.stderr,
             )
             return 1
-        print(f"Re-judging captured outputs from {spec.scorecard_json} (no provider calls)...")
-        results = load_results(spec.scorecard_json)
+        print(f"Re-judging captured outputs from {captured} (no provider calls)...")
+        results = load_results(captured)
         results = rescore_judge(results, spec=spec)
-        write_scorecard(results, use_judge=True, spec=spec)
+        write_scorecard(results, use_judge=True, spec=spec, tag=args.tag)
         return 0
 
     if args.all_providers:
@@ -528,7 +682,7 @@ def main(argv: list[str] | None = None) -> int:
     # Incremental save: after each provider finishes, write the scorecard so
     # an interrupted run (a later provider timing out) keeps earlier results.
     def save_so_far(so_far: list[CaseResult]) -> None:
-        write_scorecard(so_far, use_judge=args.judge, spec=spec)
+        write_scorecard(so_far, use_judge=args.judge, spec=spec, tag=args.tag)
 
     print(f"Running golden set (mode={args.mode}, judge={args.judge})...")
     results = run_all(
@@ -539,7 +693,8 @@ def main(argv: list[str] | None = None) -> int:
         on_provider_done=save_so_far if args.all_providers else None,
         spec=spec,
     )
-    write_scorecard(results, use_judge=args.judge, spec=spec)
+    write_scorecard(results, use_judge=args.judge, spec=spec, tag=args.tag)
+    print_headline(results, spec)
     return 0
 
 

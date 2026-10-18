@@ -9,7 +9,7 @@ lands or a gate is crossed.
 | Layer | State | Tests |
 |---|---|---|
 | ferryman (Kotlin host + CLI + HTTP) | MVP built, CI green | 31 Kotlin tests |
-| Eval harness (Python) | Scaffolded, rule + judge scorers wired | 74 Python tests |
+| Eval harness (Python) | Rule + judge scorers wired; chess and nl2sql objective floors | 208 Python tests |
 | Real scorecard with live provider numbers | **Done** — 144 rows, all 3 providers scored: hf-llama 82%, gemini 76%, zai-glm 68% | 144 rows |
 
 All commits are on `main`. This document is the living snapshot — update it in
@@ -44,6 +44,24 @@ place when a milestone lands; it no longer rides on a dedicated status branch.
   helper, 7 new tests
 - M4 — `.github/workflows/eval-harness.yml` runs rule scorers on skill/harness
   changes
+
+**nl2sql skill (2026-10-18):**
+
+- `ferryman/skills/nl2sql/SKILL.md`: question + schema → one read-only SQLite
+  query. A standard zero-shot baseline, kept deliberately free of
+  Spider-specific advice so later gains are measurable.
+- Golden set: 200 Spider 1.0 dev cases, stratified by hardness, split by
+  database into `hillclimb` / `heldout` (CC BY-SA 4.0). Databases recovered
+  from InterCode's MySQL dump, because the originals are Google Drive only.
+  Not leaderboard-comparable; see README → NL2SQL eval status.
+- Execution-accuracy scorer ported from the Spider test-suite evaluator, in a
+  read-only sandbox. Runner gained `--split`, `--tag`, a headline metric with a
+  95% interval, and `compare_runs.py` (paired, exact McNemar).
+- Controls, measured with no model: identity 200/200, `SELECT 1` 3/200,
+  one-edit near-miss mutants 9/205.
+- End-to-end plumbing verified against a mock OpenAI-compatible provider
+  through `ferry serve`. **No provider has been scored yet**: the hill-climb
+  needs API keys. Protocol: `docs/plans/nl2sql-hillclimb.md`.
 
 ## Scorecard — full three-provider run (2026-07-16)
 
@@ -106,10 +124,10 @@ run complete all 144 rows. The negation-aware scorer fix is applied.
 ## Verification commands
 
 ```bash
-python -m pytest eval_harness/ -q      # 74 passed
+python -m pytest eval_harness/ -q      # 208 passed
 ./gradlew build                         # BUILD SUCCESSFUL (31 tests, ktlint, detekt)
 ferry providers list                    # zai-glm, gemini, hf-llama as JSON
-ferry skills list                       # hello-repo, company-role-research, chess-opening-coach
+ferry skills list                       # hello-repo, company-role-research, chess-opening-coach, nl2sql
 ```
 
 ## Dependency versions (all verified against primary sources)

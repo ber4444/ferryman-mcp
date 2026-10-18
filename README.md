@@ -68,17 +68,20 @@ command passes on `main`.
 | Build, lint, test | done | `./gradlew build` (31 Kotlin tests, ktlint, detekt) |
 | CLI launcher | done | `./gradlew installDist` → `build/install/ferry/bin/ferry` |
 | Provider routing (3 providers) | done | `ferry providers list` — zai-glm, gemini, hf-llama |
-| Skills enumerable | done | `ferry skills list` — company-role-research, hello-repo, chess-opening-coach |
+| Skills enumerable | done | `ferry skills list` — company-role-research, hello-repo, chess-opening-coach, nl2sql |
 | MCP host aggregates tools | done | `ferry tools list` — filesystem + fetch MCP servers |
 | Fit summary | done | `ferry run company-role-research --input '{"company":"...","role":"..."}'` |
 | HTTP channel | building | `ferry serve --port 8080` (needs an API key) |
 | Routing logged | done | unit-tested; `logs/routing.jsonl` written by every `runSkill` call |
-| Python eval harness | done | `python -m pytest eval_harness/ -q` (133 tests green) |
+| Python eval harness | done | `python -m pytest eval_harness/ -q` (208 tests green) |
 | Multi-provider scorecard | done | 144 rows (48×3), all three providers scored — see [Scorecard status](#scorecard-status) |
 | Multi-skill harness (`--skill`) | done | `python eval_harness/run_scorecard.py --skill chess-opening-coach` |
 | Chess eval (objective exact-match) | done | `python -m pytest eval_harness/tests/test_chess_scorers.py -q` — see [Chess eval status](#chess-eval-status) |
 | Deterministic readability axis | done | `python -m pytest eval_harness/tests/test_chess_scorers.py -k readability -q` (5 tests) |
 | Scoring on-device runs ferryman didn't generate | done | `python eval_harness/score_move_coach_run.py <results.jsonl> <candidates.json>` — see [On-device runs](#on-device-runs) |
+| NL2SQL eval (execution accuracy, Spider subset) | done | `python -m pytest eval_harness/tests/test_nl2sql_scorers.py -q` — see [NL2SQL eval status](#nl2sql-eval-status) |
+| NL2SQL scorer controls | done | `python eval_harness/nl2sql_controls.py` (no model, no network) |
+| NL2SQL hill-climb (X% → Y%) | **not run** | needs a provider key — protocol in [`docs/plans/nl2sql-hillclimb.md`](docs/plans/nl2sql-hillclimb.md) |
 
 ## Scorecard status
 
@@ -240,6 +243,99 @@ Judge models are compared on that control before use, not chosen by reputation:
 on the same rows, false positives on the deterministic column were 5/12 for
 Llama-3.1-70B, 3/11 for gpt-oss-120b, and 0/12 for DeepSeek-V4-Flash.
 
+## NL2SQL eval status
+
+A third evaluated skill, `nl2sql`, follows the chess pattern: a vendored subset
+of a public benchmark, a fixed output contract, and an objective floor with no
+judge in the loop. The skill gets a question plus the database's `CREATE TABLE`
+schema and returns one read-only SQLite query in a final ` ```sql ` block.
+
+**The floor is execution accuracy (EX).** The gold and predicted SQL both run
+against the same database, and the result tables are compared. Exact-match on
+SQL text would fail correct rewrites; EX asks whether the query returned the
+right rows. The comparison is ported from the Spider test-suite evaluator
+(`taoyds/test-suite-sql-eval`, Apache-2.0) with its defaults: rows compared as
+a bag under any column order, row order checked only when the gold query has
+`ORDER BY`, and `DISTINCT` stripped from both sides. Predictions run in a
+sandbox: in-memory database, a SQLite authorizer that denies anything but
+reads, a 10 s timeout, and a row cap.
+
+**The golden set is 200 Spider 1.0 dev questions** (CC BY-SA 4.0, see
+`eval_harness/golden/NL2SQL_GOLDEN_LICENSE.txt`). They are stratified 25 per
+hardness level (easy / medium / hard / extra) in each of two splits that use
+**disjoint databases**:
+
+- `hillclimb` (100 cases, 10 databases) is where prompt changes are tried.
+- `heldout` (100 cases, 9 databases) is run only for the baseline and the
+  final prompt.
+
+With 100 cases per split, one case is one percentage point. The database split
+keeps a prompt tweak that helps `hillclimb` schemas from leaking into the
+reported number. Spider splits its own train and dev sets by database for the
+same reason.
+
+Three deterministic scorers are reported separately:
+
+| Key | Checks | Role |
+|---|---|---|
+| `executionAccuracy` | Predicted result equals gold result | **Headline.** Reported alone with a 95% interval, by split and by hardness |
+| `executes` | Predicted SQL runs without error | Diagnostic: separates schema/syntax errors from wrong answers |
+| `readOnly` | One statement, `SELECT`/`WITH` only | Safety gate: emitting `DROP TABLE` fails even if the rows would match |
+
+The scorecard shows `executionAccuracy` as its own headline, because the
+blended mean pass rate is inflated by `readOnly`, which nearly always passes.
+
+**Controls, measured without any model** (`python eval_harness/nl2sql_controls.py`):
+
+| Control | EX pass rate |
+|---|---|
+| Gold SQL as the prediction | 200/200 |
+| Constant `SELECT 1` | 3/200 (the chance floor) |
+| Gold with one plausible wrong edit: flip a sort, swap MIN/MAX, flip a comparison, AND→OR, LIMIT n+1, AVG→SUM, IN↔NOT IN, swap a set operator | 9/205 (4%): 8/99 on `hillclimb`, 1/106 on `heldout` |
+| Gold with DISTINCT dropped | 16/16. EX can't see it, by the official evaluator's design |
+
+The near-miss rate is how often EX passes a wrong query by coincidence on this
+data. All nine passing mutants were checked by hand. Each is a different query
+that happens to return the same rows: in museum_visit, `age < 30` and
+`age > 30` both count 3 visitors. The rate is higher on `hillclimb` because
+those databases are smaller (pets_1 has three pets), so a `hillclimb` gain of a
+few points can be noise. That is why the claim is made on `heldout`.
+
+Controls have to be checked too. The first version of the MIN/MAX mutant
+swapped every occurrence, which turns `SELECT max(a), min(a)` into the same
+answer with its columns swapped. EX accepted it correctly, and the control
+wrongly counted that as a false pass. It now swaps only the first one.
+
+**Where the data comes from, and what that costs.** The original Spider
+`.sqlite` files are only distributed through Google Drive. The databases here
+were recovered from InterCode's MySQL dump of the Spider dev databases
+(`princeton-nlp/intercode`, MIT) and re-imported into SQLite by
+`eval_harness/build_nl2sql_golden.py`, which is committed so the subset can be
+rebuilt. That dump was built from Spider's `schema.sql` files, which can hold
+fewer rows than the `.sqlite` files, and `wta_1` has no rows at all (excluded).
+Gold and predicted SQL run on the same vendored data, so EX is self-consistent,
+**but the numbers are not comparable to the Spider leaderboard.** The build
+also drops questions whose gold result can't discriminate: empty, a single 0 or
+NULL, or an answer that changes when the rows are stored in reverse order (ties
+under `ORDER BY`, bare `GROUP BY` columns). Each kept gold result is pinned by
+hash in a test.
+
+**Hill-climb status: not run.** The tooling is in place. `--split` runs one
+split, `--tag` keeps a snapshot (`scorecard-nl2sql.<tag>.json`) instead of
+overwriting the scorecard, `FERRY_NL2SQL_SAMPLE_ROWS=3` adds example rows to
+the schema, and `compare_runs.py` gives a paired before/after with an exact
+McNemar p-value. The committed `SKILL.md` is a standard zero-shot baseline.
+The candidate improvements are listed as hypotheses in
+[`docs/plans/nl2sql-hillclimb.md`](docs/plans/nl2sql-hillclimb.md). No EX
+numbers are committed until a real provider run produces them.
+
+```bash
+# Baseline on both splits, then iterate on hillclimb only
+python eval_harness/run_scorecard.py --skill nl2sql --provider hf-llama --tag baseline
+python eval_harness/run_scorecard.py --skill nl2sql --provider hf-llama --split hillclimb --tag it1
+python eval_harness/compare_runs.py eval_harness/scorecard-nl2sql.baseline.json eval_harness/scorecard-nl2sql.it1.json
+```
+
 ## Quickstart
 
 ```bash
@@ -347,9 +443,10 @@ flowchart LR
   namespaced registry (`<server>.<tool>`). Two servers configured: filesystem
   (`@modelcontextprotocol/server-filesystem`) and fetch (`mcp-server-fetch`).
 - **Skills** (`skills/`) — scans `skills/*/SKILL.md` (Agent Skills open
-  standard). Three skills: `company-role-research` (fit summaries + eval
-  target), `hello-repo` (repo summarizer), and `chess-opening-coach`
-  (position coaching + chess eval target).
+  standard). Four skills: `company-role-research` (fit summaries + eval
+  target), `hello-repo` (repo summarizer), `chess-opening-coach`
+  (position coaching + chess eval target), and `nl2sql` (question + schema →
+  SQLite query, scored by execution accuracy).
 - **Config** (`config/`) — a single TOML file; the Python eval harness reads it
   with stdlib `tomllib` to enumerate providers for the `--all-providers` matrix.
 - **Eval harness** (`eval_harness/`) — Python package with rule-based scorers

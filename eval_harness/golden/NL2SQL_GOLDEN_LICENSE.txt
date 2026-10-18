@@ -1,0 +1,66 @@
+The nl2sql golden set — nl2sql_golden.json and the databases in nl2sql_dbs/ —
+is an adapted subset of Spider 1.0, licensed under CC BY-SA 4.0. These data
+files are NOT covered by this repository's Apache-2.0 license; the share-alike
+terms below apply to them and to any further adaptation of them.
+
+Source:    Spider 1.0 (Yale LILY) — https://yale-lily.github.io/spider
+           Questions and gold SQL: https://github.com/taoyds/spider
+           (evaluation_examples/examples/dev.json)
+Paper:     Yu, Zhang, Yang, Yasunaga, Wang, Li, Ma, Li, Yao, Roman, Zhang,
+           Radev. "Spider: A Large-Scale Human-Labeled Dataset for Complex and
+           Cross-Domain Semantic Parsing and Text-to-SQL Task." EMNLP 2018.
+           arXiv:1809.08887
+License:   Creative Commons Attribution-ShareAlike 4.0 International
+           https://creativecommons.org/licenses/by-sa/4.0/
+
+Changes made (CC BY-SA 4.0 §3(a)(1)(B)):
+
+  * Selected 200 of the 1,034 dev questions: stratified by Spider's own
+    hardness label (easy / medium / hard / extra), split by database into a
+    `hillclimb` half and a disjoint `heldout` half. Questions and gold SQL are
+    verbatim.
+  * Dropped questions whose gold result is empty, a single 0 or NULL, all
+    NULL, or changes when the database's rows are stored in reverse order.
+    Dropped the `wta_1` database, which has no rows in the source dump.
+  * The databases were not taken from the original .sqlite files (distributed
+    only via Google Drive). They were recovered from InterCode's MySQL
+    conversion of the Spider dev databases and re-imported into SQLite. Row
+    counts can differ from the original release, and some key column types
+    were harmonized by InterCode before conversion. Gold results were
+    re-computed on this data and pinned (goldResultSha256).
+
+The full procedure is eval_harness/build_nl2sql_golden.py.
+
+Hardness labels and the MySQL database dump come from InterCode:
+
+Source:    https://github.com/princeton-nlp/intercode
+           data/sql/spider/ic_spider_dev.json, data/sql/spider/ic_spider_dbs.sql
+Paper:     Yang, Prabhakar, Narasimhan, Yao. "InterCode: Standardizing and
+           Benchmarking Interactive Coding with Execution Feedback."
+           NeurIPS 2023 Datasets and Benchmarks. arXiv:2306.14898
+
+MIT License
+
+Copyright (c) 2023 Princeton Natural Language Processing
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+The execution-accuracy comparison in eval_harness/nl2sql_scorers.py is ported
+from the Spider test-suite evaluator (https://github.com/taoyds/test-suite-sql-eval,
+exec_eval.py), licensed under Apache-2.0 — the same license as this repository.
