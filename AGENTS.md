@@ -21,11 +21,32 @@ executes — those are data, this file is build/contribution rules.
 ferry providers list            # JSON enumeration of configured providers
 ferry skills list               # JSON enumeration of discovered skills
 ferry tools list                # aggregated MCP tools (stdio servers must be runnable)
-ferry run hello-repo --input "summarize this repo"
 ferry serve --port 8080         # HTTP channel sharing the same orchestrator
 ```
 
-CI: `.github/workflows/ci.yml` runs `./gradlew build` on push/PR to `main`.
+Each skill under `ferryman/skills/` takes its own input shape — see its
+`SKILL.md`:
+
+```bash
+ferry run hello-repo --input "summarize this repo"
+ferry run company-role-research \
+  --input '{"company":"EarnIn","role":"Senior Mobile Engineer (Android)"}'
+ferry run chess-opening-coach \
+  --input '{"fen":"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1","question":"Find the best move for the side to move."}'
+```
+
+The Python eval harness has its own test suite, which `./gradlew build` does
+**not** run. Run it after touching `eval_harness/` or any `SKILL.md`:
+
+```bash
+pip install -e '.[dev]'                     # once; add ,chess for python-chess scorers
+python -m pytest eval_harness/ -q           # rule scorers — no API key needed
+python -m eval_harness.run_scorecard        # regenerate scorecard (needs a running ferry)
+```
+
+CI: `.github/workflows/ci.yml` runs `./gradlew build` on push/PR to `main`;
+`.github/workflows/eval-harness.yml` runs the pytest suite when
+`ferryman/skills/**` or `eval_harness/**` change.
 
 ## Package map (`src/main/kotlin/dev/openclaw/ferryman/`)
 
