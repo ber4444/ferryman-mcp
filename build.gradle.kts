@@ -51,6 +51,27 @@ dependencies {
     // TOML config parsing (readable by both Kotlin here and Python's tomllib).
     implementation("org.tomlj:tomlj:1.1.1")
 
+    // Koog — the second engine (`ferry run --engine koog`). Only the modules the
+    // rebuilt skill uses, not the `koog-agents` umbrella (which pulls Bedrock,
+    // OpenTelemetry, RAG, …). Core, OpenAI client and event handler are stable
+    // 1.3.0; the MCP bridge only ships as 1.3.0-beta, outside Koog's 1.x
+    // stability guarantee. Verify at https://repo.maven.apache.org/maven2/ai/koog/
+    implementation("ai.koog:agents-core:1.3.0")
+    implementation("ai.koog:agents-features-event-handler:1.3.0")
+    implementation("ai.koog:prompt-executor-openai-client:1.3.0")
+    implementation("ai.koog:http-client-ktor:1.3.0")
+    implementation("ai.koog:agents-mcp:1.3.0-beta") {
+        // agents-mcp drags in every Koog LLM client (Bedrock → the AWS SDK, …).
+        // The MCP bridge doesn't use them; the OpenAI client above is enough.
+        exclude(group = "ai.koog", module = "prompt-executor-llms-all")
+    }
+    // Note: agents-mcp is built against MCP Kotlin SDK 0.11.1; Gradle resolves it
+    // up to the 0.14.0 the host uses. KoogMcpBridgeTest drives an in-process MCP
+    // server through Koog's bridge to prove it still links against 0.14.0.
+
+    // In-process MCP server for the Koog bridge test (no npx/network in CI).
+    testImplementation("io.modelcontextprotocol:kotlin-sdk-server:0.14.0")
+
     testImplementation(kotlin("test"))
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
 }

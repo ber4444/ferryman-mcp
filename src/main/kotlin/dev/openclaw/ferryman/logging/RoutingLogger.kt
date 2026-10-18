@@ -27,6 +27,10 @@ data class RoutingDecision(
     @SerialName("latency_ms") val latencyMs: Long,
     val outcome: String,
     val error: String? = null,
+    // Agent host that ran the skill. Null (and so omitted, encodeDefaults=false)
+    // for the hand-rolled orchestrator, keeping its log lines unchanged; the Koog
+    // engine writes "koog".
+    val engine: String? = null,
 )
 
 /**

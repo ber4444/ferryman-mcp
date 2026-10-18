@@ -7,21 +7,30 @@ import com.github.ajalt.clikt.core.subcommands
 import com.github.ajalt.clikt.parameters.options.default
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
+import com.github.ajalt.clikt.parameters.types.choice
 import com.github.ajalt.clikt.parameters.types.int
 import dev.openclaw.ferryman.channels.HttpServer
 import dev.openclaw.ferryman.config.ConfigLoader
+import dev.openclaw.ferryman.host.McpConfigParser
 import dev.openclaw.ferryman.host.McpHost
+import dev.openclaw.ferryman.koog.KoogSkillRunner
+import dev.openclaw.ferryman.koog.McpKoogToolSource
 import dev.openclaw.ferryman.logging.RoutingLogger
+import dev.openclaw.ferryman.orchestrator.Engine
 import dev.openclaw.ferryman.orchestrator.Orchestrator
+import dev.openclaw.ferryman.orchestrator.SkillRunner
 import dev.openclaw.ferryman.providers.ProviderRegistry
 import dev.openclaw.ferryman.skills.SkillLoader
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
+import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
+import kotlin.io.path.readText
 
 fun main(args: Array<String>) =
     Ferry()
@@ -72,6 +81,23 @@ class AppContext(
             providers = providers,
             logger = logger,
         )
+
+    /** The Koog rebuild: same skills, providers, MCP servers and routing log as [orchestrator]. */
+    fun koogRunner(): KoogSkillRunner =
+        KoogSkillRunner(
+            skills = SkillLoader(skillsPath),
+            config = config,
+            tools = McpKoogToolSource(mcpServerSpecs()),
+            logger = logger,
+        )
+
+    fun runner(engine: Engine): SkillRunner =
+        when (engine) {
+            Engine.FERRYMAN -> orchestrator()
+            Engine.KOOG -> koogRunner()
+        }
+
+    private fun mcpServerSpecs() = if (Files.exists(mcpConfigPath)) McpConfigParser.parse(mcpConfigPath.readText()) else emptyList()
 }
 
 /** Base for `ferry <group>` commands that only route to subcommands. */
@@ -125,13 +151,16 @@ class ToolsListCommand : CoreCliktCommand(name = "list") {
     }
 }
 
-/** `ferry run --skill <name> --input "..." [--provider <id>]` — run a skill end to end. */
+/** `ferry run --skill <name> --input "..." [--provider <id>] [--engine ferryman|koog]` — run a skill end to end. */
 class RunCommand : CoreCliktCommand(name = "run") {
     override fun help(context: Context): String = "Run a skill end to end"
 
     private val skill by option("--skill").required()
     private val input by option("--input").required()
     private val provider by option("--provider")
+    private val engine by option("--engine", help = "agent host: ferryman (hand-rolled, default) or koog")
+        .choice(Engine.entries.associateBy { it.id })
+        .default(Engine.FERRYMAN)
 
     override fun run() {
         // A provider failure (timeout, exhausted 429 retries) throws from
@@ -141,7 +170,7 @@ class RunCommand : CoreCliktCommand(name = "run") {
         // harness maps a non-zero exit to a per-case error and keeps going.
         val result =
             try {
-                runBlocking { AppContext().orchestrator().runSkill(skill, input, provider) }
+                runBlocking { AppContext().runner(engine).runSkill(skill, input, provider) }
             } catch (e: RuntimeException) {
                 System.err.println("ferry: ${e.message}")
                 kotlin.system.exitProcess(1)
@@ -164,6 +193,8 @@ class RunCommand : CoreCliktCommand(name = "run") {
             buildJsonObject {
                 put("provider", JsonPrimitive(result.provider))
                 put("model", JsonPrimitive(result.model))
+                put("engine", JsonPrimitive(result.engine))
+                put("toolCalls", JsonArray(result.toolCalls.map { JsonPrimitive(it) }))
                 result.inputTokens?.let { put("inputTokens", JsonPrimitive(it)) }
                 result.outputTokens?.let { put("outputTokens", JsonPrimitive(it)) }
             }
@@ -179,6 +210,7 @@ class ServeCommand : CoreCliktCommand(name = "serve") {
     private val port by option("--port").int().default(8080)
 
     override fun run() {
-        runBlocking { HttpServer(AppContext().orchestrator(), port).start() }
+        val app = AppContext()
+        runBlocking { HttpServer(Engine.entries.associateWith { app.runner(it) }, port).start() }
     }
 }
