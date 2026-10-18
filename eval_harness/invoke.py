@@ -10,6 +10,12 @@ Two invocation modes, selected at runtime:
   * "subprocess": shells out to the installed `ferry run` CLI. Used when no
     server is running (e.g. CI without a long-lived process).
 
+Both channels take an optional ``engine`` — ``"ferryman"`` (the hand-rolled
+orchestrator) or ``"koog"`` (the same skill rebuilt on JetBrains Koog). When one
+is requested, the engine ferry reports back must match it: a result from the
+wrong engine (an older server that ignores the field) is an error, never a
+silently mislabeled row.
+
 The harness degrades gracefully: if neither a server nor the binary is
 available, invoke() raises a clear error rather than returning fake output —
 the hard rule is "never fabricate what it found".
@@ -49,6 +55,9 @@ class InvocationResult:
     # fallback token estimate when real `usage` data is absent.
     input_chars: int = 0
     output_chars: int = 0
+    # Agent host that produced the output, as ferry reported it. None when an
+    # older binary/server didn't say (only acceptable when no engine was requested).
+    engine: str | None = None
 
     @property
     def ok(self) -> bool:
@@ -63,6 +72,7 @@ def invoke(
     mode: str = "auto",
     http_url: str = DEFAULT_HTTP_URL,
     binary: str = DEFAULT_BINARY,
+    engine: str | None = None,
 ) -> InvocationResult:
     """
     Invoke a ferryman skill and return its raw output.
@@ -74,6 +84,8 @@ def invoke(
         mode: "http" | "subprocess" | "auto" (auto tries http then falls back to subprocess).
         http_url: base URL of a running `ferry serve` instance.
         binary: name/path of the installed ferry CLI for subprocess mode.
+        engine: optional agent host ("ferryman" | "koog"); None keeps ferry's default
+            and skips the engine check.
 
     Returns:
         InvocationResult with the skill's output text and routing metadata.
@@ -81,7 +93,7 @@ def invoke(
     import time
 
     started = time.monotonic()
-    result = _dispatch(skill_input, skill, provider, mode, http_url, binary)
+    result = _dispatch(skill_input, skill, provider, mode, http_url, binary, engine)
     result.latency_ms = int((time.monotonic() - started) * 1000)
     # Record char counts so the scorecard can estimate cost. The input payload
     # is what we sent (serialized); the output is what came back.
@@ -97,23 +109,24 @@ def _dispatch(
     mode: str,
     http_url: str,
     binary: str,
+    engine: str | None = None,
 ) -> InvocationResult:
     """Select and run the invocation mode. Timed by the caller."""
     if mode == "auto":
         try:
-            return _invoke_http(skill_input, skill, provider, http_url)
+            return _invoke_http(skill_input, skill, provider, http_url, engine)
         except (ConnectionError, RuntimeError) as http_err:
             try:
-                return _invoke_subprocess(skill_input, skill, provider, binary)
+                return _invoke_subprocess(skill_input, skill, provider, binary, engine)
             except FileNotFoundError as e:
                 raise RuntimeError(
                     f"Neither HTTP channel ({http_url}) nor ferry binary ({binary}) "
                     f"available. HTTP error: {http_err}; subprocess error: {e}.",
                 ) from e
     elif mode == "http":
-        return _invoke_http(skill_input, skill, provider, http_url)
+        return _invoke_http(skill_input, skill, provider, http_url, engine)
     elif mode == "subprocess":
-        return _invoke_subprocess(skill_input, skill, provider, binary)
+        return _invoke_subprocess(skill_input, skill, provider, binary, engine)
     raise ValueError(f"unknown mode: {mode!r} (expected 'http', 'subprocess', or 'auto')")
 
 
@@ -122,6 +135,7 @@ def _invoke_http(
     skill: str,
     provider: str | None,
     http_url: str,
+    engine: str | None = None,
 ) -> InvocationResult:
     """POST to the HTTP channel's /invoke endpoint."""
     # urllib is stdlib — no dependency required for the default adapter.
@@ -131,6 +145,8 @@ def _invoke_http(
     payload = {"skill": skill, "input": json.dumps(skill_input)}
     if provider:
         payload["provider"] = provider
+    if engine:
+        payload["engine"] = engine
     data = json.dumps(payload).encode()
     req = urllib.request.Request(
         f"{http_url.rstrip('/')}/invoke",
@@ -143,6 +159,9 @@ def _invoke_http(
             body = json.loads(resp.read().decode())
     except urllib.error.URLError as e:
         raise ConnectionError(f"ferry HTTP channel not reachable at {http_url}: {e}") from e
+    # RuntimeError (not a per-case error) so auto mode falls back to the binary,
+    # which is the build that has the requested engine.
+    _check_engine(engine, body.get("engine"), channel=f"HTTP channel at {http_url}", exc=RuntimeError)
     return InvocationResult(
         output=body.get("output", ""),
         provider=body.get("provider", "unknown"),
@@ -150,6 +169,7 @@ def _invoke_http(
         tool_calls=body.get("toolCalls", []),
         input_tokens=body.get("inputTokens"),
         output_tokens=body.get("outputTokens"),
+        engine=body.get("engine"),
     )
 
 
@@ -158,6 +178,7 @@ def _invoke_subprocess(
     skill: str,
     provider: str | None,
     binary: str,
+    engine: str | None = None,
 ) -> InvocationResult:
     """Shell out to the installed ferry CLI's `run` command."""
     # Resolve the binary: check PATH first, then the Gradle install location.
@@ -171,6 +192,8 @@ def _invoke_subprocess(
     cmd = [resolved, "run", "--skill", skill, "--input", json.dumps(skill_input)]
     if provider:
         cmd += ["--provider", provider]
+    if engine:
+        cmd += ["--engine", engine]
     try:
         completed = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
     except subprocess.TimeoutExpired:
@@ -194,7 +217,22 @@ def _invoke_subprocess(
     # real token counts instead of a chars/4 estimate. If the first line isn't
     # a _meta line (old binary / unexpected output) we fall back to treating the
     # whole stdout as output, matching the pre-metadata behaviour.
-    return _parse_subprocess_output(completed.stdout, provider)
+    result = _parse_subprocess_output(completed.stdout, provider)
+    try:
+        _check_engine(engine, result.engine, channel=f"ferry binary {resolved}", exc=ValueError)
+    except ValueError as e:
+        return InvocationResult(output="", provider=result.provider, model=result.model, error=str(e))
+    return result
+
+
+def _check_engine(requested: str | None, reported: str | None, *, channel: str, exc: type[Exception]) -> None:
+    """Raise ``exc`` if an engine was requested and ferry ran (or reported) a different one."""
+    if requested and reported != requested:
+        raise exc(
+            f"{channel} ran engine {reported or '(unreported — older build?)'!r}, "
+            f"but {requested!r} was requested. Rebuild with `./gradlew installDist` "
+            f"or restart `ferry serve`."
+        )
 
 
 def _parse_subprocess_output(
@@ -224,8 +262,10 @@ def _parse_subprocess_output(
             output=rest.strip(),
             provider=meta_obj.get("provider", provider or "unknown"),
             model=meta_obj.get("model", "unknown"),
+            tool_calls=meta_obj.get("toolCalls", []),
             input_tokens=meta_obj.get("inputTokens"),
             output_tokens=meta_obj.get("outputTokens"),
+            engine=meta_obj.get("engine"),
         )
     # No metadata line anywhere — treat the entire stdout as output (legacy path).
     return InvocationResult(

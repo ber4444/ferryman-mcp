@@ -6,6 +6,7 @@ Usage:
     python -m eval_harness.run_scorecard --judge               # add the LLM judge layer
     python -m eval_harness.run_scorecard --all-providers       # run once per configured provider
     python -m eval_harness.run_scorecard --provider anthropic  # single provider override
+    python -m eval_harness.run_scorecard --engine koog         # same skill on the Koog engine
 
 Output:
     eval_harness/scorecard.md  — human-readable scorecard
@@ -21,7 +22,7 @@ import json
 import os
 import sys
 import time
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, replace
 from pathlib import Path
 from typing import Callable
 
@@ -67,6 +68,37 @@ class SkillSpec:
     # expectedClaims; chess uses the whole case (correctAnswer lives on the case).
     # Kept as a label for the scorecard, not a behavioral branch.
     rubric_path: Path | None = None
+    # Agent host to run the skill on ("ferryman" | "koog"). None = ferry's default
+    # (the hand-rolled orchestrator) with no engine check — the pre-Koog behaviour.
+    engine: str | None = None
+
+
+ENGINES = ("ferryman", "koog")
+
+
+def with_engine(spec: SkillSpec, engine: str | None) -> SkillSpec:
+    """The same skill spec pinned to an engine.
+
+    The hand-rolled engine keeps the spec's own scorecard paths; any other engine
+    writes beside them with an ``-<engine>`` suffix (``scorecard-koog.md``), so a
+    Koog run never overwrites the committed hand-rolled scorecard.
+    """
+    if engine is None:
+        return spec
+    if engine not in ENGINES:
+        raise ValueError(f"unknown engine {engine!r} (expected one of {ENGINES})")
+    if engine == "ferryman":
+        return replace(spec, engine=engine)
+
+    def suffixed(path: Path) -> Path:
+        return path.with_name(f"{path.stem}-{engine}{path.suffix}")
+
+    return replace(
+        spec,
+        engine=engine,
+        scorecard_md=suffixed(spec.scorecard_md),
+        scorecard_json=suffixed(spec.scorecard_json),
+    )
 
 
 # Registry of evaluable skills. Adding a skill is: add a SKILL.md, a golden set,
@@ -114,6 +146,12 @@ class CaseResult:
     error: str | None = None
     latency_ms: int | None = None
     estimated_cost_usd: float | None = None
+    # Which agent host produced the row, and the tools it called. Defaults keep
+    # scorecard JSON written before these fields existed loadable.
+    engine: str = "ferryman"
+    tool_calls: list[str] = field(default_factory=list)
+    input_tokens: int | None = None
+    output_tokens: int | None = None
 
     @property
     def rule_pass_rate(self) -> float:
@@ -277,7 +315,10 @@ def run_one(case: dict, provider: str | None, mode: str, spec: SkillSpec | None 
     unchanged.
     """
     spec = spec or get_skill_spec(DEFAULT_SKILL)
-    result = invoke_mod.invoke(case["input"], skill=spec.skill_id, provider=provider, mode=mode)
+    # Only pass engine when pinned, so invoke() stand-ins written before engines
+    # existed keep working.
+    engine_kw = {"engine": spec.engine} if spec.engine else {}
+    result = invoke_mod.invoke(case["input"], skill=spec.skill_id, provider=provider, mode=mode, **engine_kw)
     rule_scores = [s.as_dict() for s in spec.scorer(result.output, case)]
     pricing = load_pricing()
     return CaseResult(
@@ -290,6 +331,10 @@ def run_one(case: dict, provider: str | None, mode: str, spec: SkillSpec | None 
         error=result.error,
         latency_ms=result.latency_ms,
         estimated_cost_usd=estimate_cost(result, pricing),
+        engine=result.engine or spec.engine or "ferryman",
+        tool_calls=list(result.tool_calls),
+        input_tokens=result.input_tokens,
+        output_tokens=result.output_tokens,
     )
 
 
@@ -324,42 +369,59 @@ def run_all(
     for provider in providers:
         for case in golden:
             print(f"  [{provider or 'default'}] {case['id']}...", flush=True)
-            # Per-case isolation: a thrown exception becomes an error CaseResult,
-            # not a batch abort. Follows the harness's own _judge_if_available
-            # convention (broad except, record, continue).
-            try:
-                case_result = run_one(case, provider, mode, spec=spec)
-            except Exception as e:  # noqa: BLE001 — one case must not kill the batch
-                case_result = CaseResult(
-                    id=case["id"],
-                    input=case.get("input", {}),
-                    provider=provider or "unknown",
-                    model="unknown",
-                    output="",
-                    error=f"{type(e).__name__}: {e}",
-                )
-            if use_judge:
-                # Don't judge a case that errored: its output is empty, so the
-                # judge would burn an API call and record scores that look like
-                # model-quality failures when the real failure is infra. The
-                # error is already captured on case_result.error.
-                if case_result.error:
-                    case_result.judge_scores = [
-                        {
-                            "key": "_judge",
-                            "passed": False,
-                            "reason": f"skipped — case errored: {case_result.error}",
-                        }
-                    ]
-                else:
-                    case_result.judge_scores = _judge_if_available(case_result, case, spec=spec)
-            results.append(case_result)
+            results.append(run_case_isolated(case, provider, mode, spec=spec, use_judge=use_judge))
             if _THROTTLE_SECONDS > 0:
                 time.sleep(_THROTTLE_SECONDS)
         # Incremental save: write whatever's accumulated after each provider.
         if on_provider_done is not None:
             on_provider_done(results)
     return results
+
+
+def run_case_isolated(
+    case: dict,
+    provider: str | None,
+    mode: str,
+    *,
+    spec: SkillSpec,
+    use_judge: bool = False,
+) -> CaseResult:
+    """Run and score one case; an exception becomes an error row, never a batch abort.
+
+    Shared by run_all and the engine head-to-head so both treat errors and the
+    judge layer identically.
+    """
+    # Per-case isolation: a thrown exception becomes an error CaseResult,
+    # not a batch abort. Follows the harness's own _judge_if_available
+    # convention (broad except, record, continue).
+    try:
+        case_result = run_one(case, provider, mode, spec=spec)
+    except Exception as e:  # noqa: BLE001 — one case must not kill the batch
+        case_result = CaseResult(
+            id=case["id"],
+            input=case.get("input", {}),
+            provider=provider or "unknown",
+            model="unknown",
+            output="",
+            error=f"{type(e).__name__}: {e}",
+            engine=spec.engine or "ferryman",
+        )
+    if use_judge:
+        # Don't judge a case that errored: its output is empty, so the
+        # judge would burn an API call and record scores that look like
+        # model-quality failures when the real failure is infra. The
+        # error is already captured on case_result.error.
+        if case_result.error:
+            case_result.judge_scores = [
+                {
+                    "key": "_judge",
+                    "passed": False,
+                    "reason": f"skipped — case errored: {case_result.error}",
+                }
+            ]
+        else:
+            case_result.judge_scores = _judge_if_available(case_result, case, spec=spec)
+    return case_result
 
 
 def _judge_if_available(case_result: CaseResult, case: dict, spec: SkillSpec | None = None) -> list[dict]:
@@ -407,7 +469,7 @@ def _render_markdown(results: list[CaseResult], *, use_judge: bool, spec: SkillS
     spec = spec or get_skill_spec(DEFAULT_SKILL)
     pricing = load_pricing()
     lines = [
-        f"# ferryman eval scorecard — {spec.name}",
+        f"# ferryman eval scorecard — {spec.name}" + (f" (engine: {spec.engine})" if spec.engine else ""),
         "",
         f"Generated: {time.strftime('%Y-%m-%d %H:%M:%S')}",
         f"Cases: {len(results)}",
@@ -469,6 +531,12 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--provider", help="single provider id to run")
     parser.add_argument(
+        "--engine",
+        choices=ENGINES,
+        default=None,
+        help="agent host: ferryman (hand-rolled, default) or koog; koog writes scorecard-koog.*",
+    )
+    parser.add_argument(
         "--all-providers",
         action="store_true",
         help="run the full golden set once per configured provider",
@@ -494,7 +562,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    spec = get_skill_spec(args.skill)
+    spec = with_engine(get_skill_spec(args.skill), args.engine)
     golden_path = args.golden or spec.golden_path
     golden = load_golden(golden_path)
     print(f"Skill: {spec.name} (invoking skill id '{spec.skill_id}')")
