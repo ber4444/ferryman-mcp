@@ -65,7 +65,7 @@ command passes on `main`.
 
 | Capability | Status | Proof command |
 |---|---|---|
-| Build, lint, test | done | `./gradlew build` (31 Kotlin tests, ktlint, detekt) |
+| Build, lint, test | done | `./gradlew build` (48 Kotlin tests, ktlint, detekt) |
 | CLI launcher | done | `./gradlew installDist` → `build/install/ferry/bin/ferry` |
 | Provider routing (3 providers) | done | `ferry providers list` — zai-glm, gemini, hf-llama |
 | Skills enumerable | done | `ferry skills list` — company-role-research, hello-repo, chess-opening-coach |
@@ -73,12 +73,43 @@ command passes on `main`.
 | Fit summary | done | `ferry run company-role-research --input '{"company":"...","role":"..."}'` |
 | HTTP channel | building | `ferry serve --port 8080` (needs an API key) |
 | Routing logged | done | unit-tested; `logs/routing.jsonl` written by every `runSkill` call |
-| Python eval harness | done | `python -m pytest eval_harness/ -q` (133 tests green) |
+| Python eval harness | done | `python -m pytest eval_harness/ -q` (154 tests green) |
 | Multi-provider scorecard | done | 144 rows (48×3), all three providers scored — see [Scorecard status](#scorecard-status) |
 | Multi-skill harness (`--skill`) | done | `python eval_harness/run_scorecard.py --skill chess-opening-coach` |
 | Chess eval (objective exact-match) | done | `python -m pytest eval_harness/tests/test_chess_scorers.py -q` — see [Chess eval status](#chess-eval-status) |
 | Deterministic readability axis | done | `python -m pytest eval_harness/tests/test_chess_scorers.py -k readability -q` (5 tests) |
 | Scoring on-device runs ferryman didn't generate | done | `python eval_harness/score_move_coach_run.py <results.jsonl> <candidates.json>` — see [On-device runs](#on-device-runs) |
+| Same skill on Koog (second engine) | done | `ferry run --skill company-role-research --engine koog --input '{"company":"...","role":"..."}'` |
+| Engine wire diff (no keys, no internet) | done | `python eval_harness/wire_diff.py` — see [Rebuilt in Koog](#rebuilt-in-koog) |
+| Engine head-to-head scorecard | building — live run not done yet | `python eval_harness/head_to_head.py --all-providers` (needs provider keys) |
+
+## Rebuilt in Koog
+
+The company-research skill also runs on [JetBrains Koog](https://github.com/JetBrains/koog)
+1.3.0: `--engine koog` picks a Koog agent (a strategy graph, Koog's OpenAI client,
+Koog's MCP bridge) in place of the hand-rolled loop. Everything that is not
+the framework stays the same: the `SKILL.md` prompt, provider endpoints, MCP server
+processes, the 4-call budget, the output cap, the retry policy and the scorers. The harness runs
+both engines on each case back to back and compares them per case.
+
+**The live three-provider head-to-head has not run yet.** It needs provider
+keys. What is measured so far needs no model:
+
+- The prompt is byte-identical on both engines, but what surrounds it isn't.
+  Koog drops Gemini's `thought_signature` when echoing a tool call back (the
+  hand-rolled provider keeps it — a fix it needed in July). It strips 12 of 20
+  JSON-schema keywords from the fetch tool, sends tool results as escaped JSON
+  instead of plain text, and caps output with `max_completion_tokens` rather
+  than `max_tokens`.
+- Framework overhead is +0.13 s median per run (15 alternating pairs, instant
+  local model). That's noise next to real model latency.
+- The Koog engine is ~400 lines, against ~800 for the hand-rolled loop, client
+  and MCP glue. It adds 37 jars (+9.3 MB).
+- Koog 1.3.0 has a retry bug (`jitterFactor = 0.0` passes validation, then
+  crashes on the first retry), and its MCP bridge is still `-beta`.
+
+Full write-up, method and run instructions:
+[`docs/koog-head-to-head.md`](docs/koog-head-to-head.md).
 
 ## Scorecard status
 
@@ -335,7 +366,9 @@ flowchart LR
     Orchestrator -->|writes| Logs[routing.jsonl]
 ```
 
-- **Channels** (`channels/`) — CLI and HTTP both call the same `Orchestrator`.
+- **Channels** (`channels/`) — CLI and HTTP both call the same `SkillRunner`;
+  `--engine` / `"engine"` picks the hand-rolled `Orchestrator` (default) or the
+  Koog rebuild (`koog/`).
 - **Orchestrator** (`orchestrator/`) — `runSkill(name, input)`: loads the skill,
   selects a provider, runs the model↔tool loop, writes a routing log line.
 - **Providers** (`providers/`) — `LlmProvider` with `OpenAiCompatibleProvider`

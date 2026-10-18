@@ -11,6 +11,7 @@ lands or a gate is crossed.
 | ferryman (Kotlin host + CLI + HTTP) | MVP built, CI green | 31 Kotlin tests |
 | Eval harness (Python) | Scaffolded, rule + judge scorers wired | 74 Python tests |
 | Real scorecard with live provider numbers | **Done** — 144 rows, all 3 providers scored: hf-llama 82%, gemini 76%, zai-glm 68% | 144 rows |
+| Koog engine (`--engine koog`) + engine head-to-head | Built and tested; wire diff measured; **live head-to-head not run yet** (needs provider keys) | 17 Kotlin + 21 Python tests |
 
 All commits are on `main`. This document is the living snapshot — update it in
 place when a milestone lands; it no longer rides on a dedicated status branch.
@@ -76,6 +77,25 @@ gemini timeout and saved nothing; robustness fixes (per-case isolation,
 incremental writes, provider ordering llama→zai→gemini, timeout retry) let this
 run complete all 144 rows. The negation-aware scorer fix is applied.
 
+## Koog rebuild (2026-10-18)
+
+`company-role-research` also runs on JetBrains Koog 1.3.0 (`src/main/kotlin/…/koog/`),
+holding prompt, endpoints, MCP servers, budget and retries equal to the
+hand-rolled engine. Harness support: `--engine` on `run_scorecard.py`,
+`head_to_head.py` (interleaved runs + paired sign test), and `wire_diff.py` (no keys).
+
+- **Measured without a model:** identical prompt bytes. On the wire, Koog drops Gemini's
+  `thought_signature`, strips 12/20 fetch-schema keywords, sends tool results as
+  escaped JSON, and uses `max_completion_tokens`. Overhead is +0.13 s median per
+  run; the distribution grows by 37 jars (+9.3 MB). A plumbing run of 6 golden
+  cases with a scripted model scored identically on both engines (6/6 ties), so the
+  harness itself is engine-neutral.
+- **Not yet measured:** the model-quality comparison. The session that built this
+  had no provider keys, and its network policy blocked z.ai, DeepInfra and the
+  company sites the fetch tool needs. Prediction to check first: Gemini rows fail
+  on the second call under Koog because of the dropped signature.
+- Write-up: `docs/koog-head-to-head.md`.
+
 ## What's not done (human gates)
 
 1. **M1 of the z.ai/GLM addendum (chess-server `LlmComposer`).** Blocked: the
@@ -106,8 +126,8 @@ run complete all 144 rows. The negation-aware scorer fix is applied.
 ## Verification commands
 
 ```bash
-python -m pytest eval_harness/ -q      # 74 passed
-./gradlew build                         # BUILD SUCCESSFUL (31 tests, ktlint, detekt)
+python -m pytest eval_harness/ -q      # 154 passed
+./gradlew build                         # BUILD SUCCESSFUL (48 tests, ktlint, detekt)
 ferry providers list                    # zai-glm, gemini, hf-llama as JSON
 ferry skills list                       # hello-repo, company-role-research, chess-opening-coach
 ```
@@ -125,7 +145,7 @@ ferry skills list                       # hello-repo, company-role-research, che
 | detekt | 1.23.8 | Maven Central |
 | ktlint-gradle | 14.2.0 | GitHub releases |
 | z.ai GLM model | glm-5-turbo | docs.z.ai (was glm-5.2) |
-| koog (reference only) | 1.0.0 | GitHub releases (not depended on) |
+| Koog (`--engine koog`) | 1.3.0 (core, OpenAI client, event handler); 1.3.0-beta (agents-mcp) | Maven Central (2026-09-23) |
 
 ## Naming
 
